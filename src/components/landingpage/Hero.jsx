@@ -1,0 +1,45 @@
+import React from "react";
+import { Bead } from "../../assets";
+
+const Hero = () => {
+  return (
+    <>
+      <div className="flex flex-col bg-main-back bg-cover h-screen w-full p-4 sm:p-12 xl:p-16">
+        <div className="flex xl:text-[68px] md:text-[56px] text-5xl font-bold font-montserrat items-center mt-32 md:mt-24 lg:mt-16 leading-snug firstheader">
+          Imagine your Music Album <br /> & video is in a keychain
+        </div>
+        <div className="flex xl:text-[68px] md:text-[55px] text-5xl items-center font-montserrat font-bold text-teal mt-8">
+          Musical Bead
+        </div>
+        <div className="flex xl:text-[40px] text-[32px] items-center font-montserrat font-bold text-teal max-sm:mt-8 mt-4 leading-snug">
+          The New Medium That Holds & Plays Music
+        </div>
+      </div>
+      <div className="md:-mt-96 -mt-60">
+        <div className="flex w-full justify-center content-center bottom-0 ">
+          <img src={Bead} alt="Musical Bead" />
+        </div>
+        <div className="flex w-full justify-center content-center">
+          <p className="text-center font-normal lg:text-[41px] md:text-4xl sm:text-2xl text-xl text-teal font-montserrat">
+            Simply tap your phone
+            <br /> to the keychain and
+            <br /> music will play
+          </p>
+        </div>
+        <div className="flex w-full justify-center content-center text-center items-center mt-4">
+          <hr className="xl:w-[25%] lg:w-[40%] md:w-[50%] w-[55%] text-teal" />
+        </div>
+        <div className="flex w-full md:text-[54px] text-[44px] font-bold justify-center content-center text-center items-center mt-4 radientText font-montserrat">
+          We connect artist and fans!
+        </div>
+        <div className="flex w-full md:text-4xl lg:text-5xl text-[32px] font-medium font-montserrat text-teal justify-center content-center text-center items-center mt-8">
+          Be the First to share your Musical Bead today,
+        </div>
+        <div className="flex w-full md:text-4xl lg:text-5xl text-[32px] font-medium font-montserrat text-teal justify-center content-center text-center items-center">
+          make history together and keep music alive.
+        </div>
+      </div>
+    </>
+  );
+};
+export default Hero;

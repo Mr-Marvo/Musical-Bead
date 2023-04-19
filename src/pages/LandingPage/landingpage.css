@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-color: black;
+  color: white;
+}
+
+.firstheader {
+  color: white;
+  background: #2aafc1;
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 2px transparent;
+}
+
+.radientText {
+  background-image: linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+  background-clip: text;
+  color: transparent;
+}
+
+.borderedText {
+  color: black;
+  background: linear-gradient(80deg, #eda752, #2aafc1, #2aafc1, #eda752);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 8px transparent;
+}
+
+.customizedText {
+  color: black;
+  background: linear-gradient(80deg, #e09539, #2aafc1, #2aafc1, #eda752);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 8px transparent;
+}
+
+.productCard {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 225, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+  border: 1px solid #2aafc1;
+  border-radius: 5.50831px;
+}
+
+.benifitRadientText {
+  background-image: linear-gradient(60deg, #d2d8d7, #2aafc1);
+  background-clip: text;
+  color: transparent;
+}
