@@ -13,7 +13,6 @@ const Beads = () => {
 
   const loadData = () => {
     axios.post(`https://api.musicalbead.com/api/beads`).then((res) => {
-      console.log(res);
       setBeads(res.data.output);
     });
   };
@@ -27,7 +26,11 @@ const Beads = () => {
   };
 
   return (
-    <div className="flex flex-col w-full lg:p-16 sm:p-8 p-4">
+    <div
+      className={`${
+        beads.length === 0 ? "hidden" : "visible"
+      } flex flex-col w-full lg:p-16 sm:p-8 p-4`}
+    >
       <div className="flex w-full lg:mt-4 mt-16 font-bold lg:text-[54px] md:text-[48px] leading-relaxed text-4xl justify-center content-center text-center text-teal">
         Order Your Musical Bead Keychain Today
       </div>

@@ -30,7 +30,7 @@ const Header = () => {
                   <div className="flex flex-row">
                     <div className="flex">
                       <img
-                        className="sm:h-32 w-full h-24 block mt-4 md:mt-0"
+                        className="sm:h-16 w-full h-16 block mt-4 md:mt-0"
                         src={Logo}
                         alt="Musical Bead"
                       />
