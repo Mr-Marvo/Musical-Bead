@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <>
       <div className="flex flex-col bg-main-back bg-cover h-screen w-full p-4 sm:p-12 xl:p-16">
-        <Flip bottom cascade>
+        <Flip bottom>
           <div className="flex xl:text-[68px] md:text-[56px] text-5xl font-bold font-montserrat items-center mt-32 md:mt-24 lg:mt-16 leading-snug firstheader">
             Imagine your Music Album <br /> & video is in a keychain
           </div>
