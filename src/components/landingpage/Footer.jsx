@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useContentContext } from "../../providers/ContentContext";
 import { AppDownloadICon } from "../../assets";
 
 const Footer = () => {
