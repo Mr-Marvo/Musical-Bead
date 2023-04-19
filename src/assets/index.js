@@ -1,2 +1,15 @@
-export { default as Logo } from './images/logo.png'
-export { default as Bead } from './images/bead.png'
+export { default as Logo } from "./images/logo.png";
+export { default as Bead } from "./images/bead.png";
+export { default as Frame1 } from "./images/frame-1.png";
+export { default as Frame2 } from "./images/frame-2.png";
+export { default as Frame3 } from "./images/frame-3.png";
+export { default as Frame4 } from "./images/frame-4.png";
+export { default as Frame5 } from "./images/frame-5.png";
+export { default as Frame6 } from "./images/frame-6.png";
+export { default as Star } from "./images/star.png";
+export { default as Music } from "./images/music-icon.png";
+export { default as UserBenifits } from "./images/user-benifits.png";
+export { default as Settingsup } from './images/settings-up.png'
+export { default as Tag } from './images/tag.png'
+export { default as Note } from './images/note.png'
+export { default as AppDownloadICon } from './images/download.png'
