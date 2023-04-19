@@ -9,7 +9,10 @@ export { default as Frame6 } from "./images/frame-6.png";
 export { default as Star } from "./images/star.png";
 export { default as Music } from "./images/music-icon.png";
 export { default as UserBenifits } from "./images/user-benifits.png";
-export { default as Settingsup } from './images/settings-up.png'
-export { default as Tag } from './images/tag.png'
-export { default as Note } from './images/note.png'
-export { default as AppDownloadICon } from './images/download.png'
+export { default as Settingsup } from './images/settings-up.png';
+export { default as Tag } from './images/tag.png';
+export { default as Note } from './images/note.png';
+export { default as AppDownloadICon } from './images/download.png';
+export { default as LTwitter } from './images/ltwitter.png';
+export { default as LFacebook } from './images/lfacebook.png';
+export { default as LEmail } from './images/lemail.png';

@@ -1,8 +1,11 @@
 import { Star } from "../../assets";
+import { motion } from "framer-motion";
+import { Slide } from "react-reveal";
 
 const ArtistSignUp = () => {
   return (
     <div className="flex flex-col w-full lg:p-16 sm:p-8 p-4 mt-72 items-center justify-center text-center">
+      <Slide bottom>
       <div className="flex lg:flex-row flex-col font-bold 2xl:text-[48px] lg:text-[36px] text-[28px] text-teal justify-center">
         <p className="radientText">Partner with Musical Bead</p> &nbsp;
         <p className="radientText">Deepen the connections</p>
@@ -47,20 +50,28 @@ const ArtistSignUp = () => {
       </div>
 
       <div className="flex w-full text-center justify-center cursor-pointer md:text-[32px] lg:text-[26px] text-[18px] font-medium text-white mt-8">
-        <a href="https://system.musicalbead.com/artist">Sign Me Up Now</a>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <a href="https://system.musicalbead.com/artist">Sign Me Up Now</a>
+        </motion.div>
       </div>
 
       <div className="flex w-full flex-col  mt-8">
         <p className="flex md:text-[28px] text-center justify-center lg:text-[22px] text-[18px] font-bold text-teal">
           Profit sharing info
         </p>
-        <a
-          className="flex md:text-[28px] text-center justify-center underline lg:text-[22px] text-[18px] font-normal text-teal"
-          href="/"
-        >
-          Click here to learn more
-        </a>
+        <div className="flex justify-center items-center">
+          <a
+            className="flex md:text-[28px] lg:text-[22px] text-[18px] font-normal text-teal relative w-fit after:items-end after:justify-end after:content-[''] after:bg-teal after:absolute after:h-[3px] after:w-[0%] after:left-0 after:bottom-0 after:rounded-xl after:duration-300 hover:after:w-full"
+            href="/"
+          >
+            Click here to learn more
+          </a>
+        </div>
       </div>
+      </Slide>
     </div>
   );
 };

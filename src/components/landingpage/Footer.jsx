@@ -1,4 +1,4 @@
-import { AppDownloadICon } from "../../assets";
+import { AppDownloadICon, LEmail, LFacebook, LTwitter } from "../../assets";
 
 const Footer = () => {
   return (
@@ -16,6 +16,12 @@ const Footer = () => {
                   MusicalBead@gmail.com
                 </p>
               </nav>
+
+              <div className="flex flex-row mt-8 gap-4">
+                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" /></a>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" /></a>
+                <a href="#" target="_blank" rel="noreferrer"><img src={LEmail} alt='Email' className="w-10" /></a>
+              </div>
             </div>
 
             <div className="col-span-2 sm:col-span-1">

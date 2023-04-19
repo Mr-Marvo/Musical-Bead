@@ -26,10 +26,10 @@ const LandingPage = () => {
       <Hero />
       <Info />
       <Customize />
-      <div>{userType === 1 ? <Benifits /> : <></>}</div>
-      <div>{userType === 1 ? <SettingsUp /> : <></>}</div>
+      <div>{userType === 1 ? <></> : <Benifits />}</div>
+      <div>{userType === 1 ? <></> : <SettingsUp />}</div>
       <div>{userType === 1 ? <Albums /> : <Beads />}</div>
-      <div>{userType === 1 ?  <FanSignUp /> : <ArtistSignUp />}</div>
+      <div>{userType === 1 ? <FanSignUp /> : <ArtistSignUp />}</div>
       <Footer />
     </div>
   );

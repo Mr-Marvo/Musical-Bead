@@ -30,7 +30,7 @@ const Header = () => {
                   <div className="flex flex-row">
                     <div className="flex">
                       <img
-                        className="sm:h-32 w-full h-24 block mt-4 md:mt-0"
+                        className="sm:h-16 w-full h-16 block mt-4 md:mt-0"
                         src={Logo}
                         alt="Musical Bead"
                       />
@@ -83,7 +83,7 @@ const Header = () => {
           </div>
 
           <Disclosure.Panel className="lg:hidden">
-            <div className="flex flex-col gap-3 mt-6 px-4 sm:px-16 bg-slate-950">
+            <div className="flex flex-col gap-3 pt-32 pb-4 px-4 sm:px-16 bg-slate-950">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -103,6 +103,7 @@ const Header = () => {
                 onChange={(e) => {
                   action(e.target.value);
                 }}
+                aria-hidden="true"
               >
                 <option value={1}>FAN</option>
                 <option value={2}>ARTIST</option>
