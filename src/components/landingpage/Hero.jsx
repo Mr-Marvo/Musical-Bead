@@ -32,10 +32,10 @@ const Hero = () => {
         <div className="flex w-full md:text-[54px] text-[44px] font-bold justify-center content-center text-center items-center mt-4 radientText font-montserrat">
           We connect artist and fans!
         </div>
-        <div className="flex w-full md:text-4xl lg:text-5xl text-[32px] font-medium font-montserrat text-teal justify-center content-center text-center items-center mt-8">
+        <div className="flex w-full md:text-[34px] lg:text-[44px] text-[28px] font-medium font-montserrat text-teal justify-center content-center text-center items-center mt-8">
           Be the First to share your Musical Bead today,
         </div>
-        <div className="flex w-full md:text-4xl lg:text-5xl text-[32px] font-medium font-montserrat text-teal justify-center content-center text-center items-center">
+        <div className="flex w-full md:text-[34px] lg:text-[44px] text-[28px] font-medium font-montserrat text-teal justify-center content-center text-center items-center">
           make history together and keep music alive.
         </div>
       </div>

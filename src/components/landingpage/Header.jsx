@@ -13,7 +13,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Header = () => {
-  const { userType, setUserType } = useContentContext();
+  const { setUserType } = useContentContext();
 
   const action = (id) => {
     setUserType(id);
