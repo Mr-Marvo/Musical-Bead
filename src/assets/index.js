@@ -16,3 +16,6 @@ export { default as AppDownloadICon } from './images/download.png';
 export { default as LTwitter } from './images/ltwitter.png';
 export { default as LFacebook } from './images/lfacebook.png';
 export { default as LEmail } from './images/lemail.png';
+
+export { default as TagTop } from './images/tag_top.png'
+export { default as TagBottom } from './images/tag_bottom.png'
