@@ -19,18 +19,6 @@ const LandingPage = () => {
   let { userType } = useContentContext();
 
   useEffect(() => {
-    alert('test');
-    navigator.vibrate =
-      navigator.vibrate ||
-      navigator.webkitVibrate ||
-      navigator.mozVibrate ||
-      navigator.msVibrate;
-
-    if (navigator.vibrate) {
-      navigator.vibrate(1000);
-    }else{
-      alert('not supported');
-    }
   }, [userType]);
 
   return (
