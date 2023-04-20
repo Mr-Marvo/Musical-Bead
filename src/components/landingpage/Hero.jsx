@@ -5,6 +5,21 @@ import Pulse from "react-reveal/Pulse";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+
+  const handleScroll = () => {
+    navigator.vibrate =
+      navigator.vibrate ||
+      navigator.webkitVibrate ||
+      navigator.mozVibrate ||
+      navigator.msVibrate;
+
+    if (navigator.vibrate) {
+      window.navigator.vibrate(2000);
+      navigator.vibrate([1000, 500, 1000]);
+      navigator.vibrate(500);
+    }
+  }
+
   return (
     <>
       <div className="flex flex-col bg-main-back bg-cover h-screen w-full p-4 sm:p-12 xl:p-16">
@@ -20,7 +35,7 @@ const Hero = () => {
           </div>
         </Flip>
       </div>
-      <div className="md:-mt-96 -mt-60">
+      <div className="md:-mt-96 -mt-60" onTouchStart={handleScroll}>
         <div className="flex w-full justify-center content-center bottom-0 ">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
