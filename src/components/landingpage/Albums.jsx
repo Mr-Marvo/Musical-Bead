@@ -45,16 +45,16 @@ const Albums = () => {
         {albums.map((album) => {
           return (
             <div className="flex flex-col p-4 w-fit rounded overflow-hidden shadow-lg border-[1px] border-teal m-4 productCard">
-              <div className="flex flex-col rounded-lg w-full bg-white py-2 h-fit content-center justify-center items-center text-center">
+              <div className="flex flex-col rounded-lg w-[220px] 3xl:w-[400px] bg-white py-2 h-fit content-center justify-center items-center text-center">
                 <img
                   src={TagTop}
-                  className="w-[200px]"
+                  className="3xl:w-[200px] w-[100px]"
                   alt="Bead"
                 />
-                <div className="flex bg-tag-bottom bg-cover bg-center w-[200px] h-[190px] justify-center items-center">
+                <div className="flex bg-tag-bottom bg-cover bg-center w-[98px] h-[90px] 3xl:w-[200px] 3xl:h-[190px] justify-center items-center">
                 <img
                   src={album.cover_image_path}
-                  className="flex w-[135px] rounded-full mb-4 mr-1"
+                  className="flex 3xl:w-[135px] w-[65px] rounded-full mb-2 3xl:mb-4 3xl:mr-1"
                   alt="Bead"
                 />
                 </div>
@@ -71,7 +71,7 @@ const Albums = () => {
                 </div>
                 <div className="flex content-center justify-center items-center text-center">
                   <div
-                    className="flex bg-teal rounded-full text-[27px] font-semibold text-white mt-8 px-8 py-2 w-max text-center justify-center cursor-pointer"
+                    className="flex bg-teal hover:bg-dark-teal rounded-full text-[22px] font-semibold text-white mt-8 px-6 py-2 w-max text-center justify-center cursor-pointer"
                     onClick={orderNow}
                   >
                     Order Now
