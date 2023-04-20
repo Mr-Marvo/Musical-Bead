@@ -11,7 +11,7 @@ import {
   Hero,
   Info,
   SettingsUp,
-} from "../../components";
+} from "../../components/landingpage";
 import "./landingpage.css";
 import { useContentContext } from "../../providers/ContentContext";
 
