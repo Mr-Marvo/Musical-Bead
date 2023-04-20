@@ -18,7 +18,20 @@ import { useContentContext } from "../../providers/ContentContext";
 const LandingPage = () => {
   let { userType } = useContentContext();
 
-  useEffect(() => {}, [userType]);
+  useEffect(() => {
+    alert('test');
+    navigator.vibrate =
+      navigator.vibrate ||
+      navigator.webkitVibrate ||
+      navigator.mozVibrate ||
+      navigator.msVibrate;
+
+    if (navigator.vibrate) {
+      navigator.vibrate(1000);
+    }else{
+      alert('not supported');
+    }
+  }, [userType]);
 
   return (
     <div>
