@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Music, Note } from "../../assets";
+import { Music, Note, TagBottom, TagTop } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
 
 const Albums = () => {
@@ -32,7 +32,11 @@ const Albums = () => {
   };
 
   return (
-    <div className="flex flex-col w-full lg:p-16 sm:p-8 p-4">
+    <div
+      className={`${
+        albums.length === 0 ? "hidden" : "visible"
+      } flex flex-col w-full lg:p-16 sm:p-8 p-4 mb-60`}
+    >
       <div className="flex w-full lg:mt-4 mt-16 font-bold lg:text-[54px] md:text-[48px] leading-relaxed text-4xl justify-center content-center text-center text-teal">
         Order Your Album Today
       </div>
@@ -40,13 +44,20 @@ const Albums = () => {
       <div className="flex lg:flex-row flex-col w-full justify-center content-center items-center">
         {albums.map((album) => {
           return (
-            <div className="flex flex-col p-4 max-w-md rounded overflow-hidden shadow-lg border-[1px] border-teal m-4 productCard">
-              <div className="rounded-lg w-full bg-white h-full content-center justify-center items-center text-center">
+            <div className="flex flex-col p-4 w-fit rounded overflow-hidden shadow-lg border-[1px] border-teal m-4 productCard">
+              <div className="flex flex-col rounded-lg w-full bg-white py-2 h-fit content-center justify-center items-center text-center">
                 <img
-                  src={album.cover_image_path}
-                  className="w-[300px] h-[300px]"
+                  src={TagTop}
+                  className="w-[200px]"
                   alt="Bead"
                 />
+                <div className="flex bg-tag-bottom bg-cover bg-center w-[200px] h-[190px] justify-center items-center">
+                <img
+                  src={album.cover_image_path}
+                  className="flex w-[135px] rounded-full mb-4 mr-1"
+                  alt="Bead"
+                />
+                </div>
               </div>
               <div className="py-4 content-center justify-center items-center text-center">
                 <div className="font-semibold text-[25px]">{album.title}</div>
