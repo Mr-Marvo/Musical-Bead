@@ -14,8 +14,6 @@ const Hero = () => {
       navigator.msVibrate;
 
     if (navigator.vibrate) {
-      window.navigator.vibrate(2000);
-      navigator.vibrate([1000, 500, 1000]);
       navigator.vibrate(500);
     }
   }
