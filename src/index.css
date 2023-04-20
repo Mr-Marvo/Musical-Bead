@@ -6,3 +6,8 @@
   font-family: "Montserrat";
   src: url("./assets/fonts/Montserrat.ttf");
 }
+
+@font-face {
+  font-family: "Nunito";
+  src: url("./assets/fonts/Nunito-Light.ttf");
+}

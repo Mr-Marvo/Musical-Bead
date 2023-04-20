@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'main-back': "url('/src/assets/images/main-bg.png')",
-        'tag-bottom': "url('/src/assets/images/tag_bottom.png')"
+        'main-back': "url('/src/assets/images/landingpage/main-bg.png')",
+        'tag-bottom': "url('/src/assets/images/landingpage/tag_bottom.png')"
       },
       colors: {
         teal: "#2AAFC1",
@@ -25,7 +25,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      'montserrat': ['Montserrat']
+      'montserrat': ['Montserrat'],
+      'nunito': ['Nunito']
     }
   },
   plugins: [],
