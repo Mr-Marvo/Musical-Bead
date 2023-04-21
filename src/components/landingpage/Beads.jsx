@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Music, Note, Tag } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
+import { Link } from "react-router-dom";
 
 const Beads = () => {
   let { userType } = useContentContext();
@@ -15,14 +16,6 @@ const Beads = () => {
     axios.post(`https://api.musicalbead.com/api/beads`).then((res) => {
       setBeads(res.data.output);
     });
-  };
-
-  const orderNow = () => {
-    if (userType === 1) {
-      window.location.assign("https://system.musicalbead.com/customer");
-    } else {
-      window.location.assign("https://system.musicalbead.com/artist");
-    }
   };
 
   return (
@@ -56,12 +49,11 @@ const Beads = () => {
                   </div>
                 </div>
                 <div className="flex content-center justify-center items-center text-center">
-                  <div
+                  <Link to='/signup'
                     className="flex bg-teal rounded-full text-[27px] font-semibold text-white mt-8 px-8 py-2 w-max text-center justify-center cursor-pointer"
-                    onClick={orderNow}
                   >
                     Order Now
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>

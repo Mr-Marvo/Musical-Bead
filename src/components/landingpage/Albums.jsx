@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Music, Note, TagBottom, TagTop } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
+import { Link } from "react-router-dom";
 
 const Albums = () => {
   let { userType } = useContentContext();
@@ -21,14 +22,6 @@ const Albums = () => {
         }
       });
     });
-  };
-
-  const orderNow = () => {
-    if (userType === 1) {
-      window.location.assign("https://system.musicalbead.com/customer");
-    } else {
-      window.location.assign("https://system.musicalbead.com/artist");
-    }
   };
 
   return (
@@ -70,12 +63,11 @@ const Albums = () => {
                   </div>
                 </div>
                 <div className="flex content-center justify-center items-center text-center">
-                  <div
+                  <Link to='/signup'
                     className="flex bg-teal hover:bg-dark-teal rounded-full text-[22px] font-semibold text-white mt-8 px-6 py-2 w-max text-center justify-center cursor-pointer"
-                    onClick={orderNow}
                   >
                     Order Now
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>

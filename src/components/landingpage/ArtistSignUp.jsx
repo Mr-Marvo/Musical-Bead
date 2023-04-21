@@ -54,7 +54,7 @@ const ArtistSignUp = () => {
           whileHover={{ scale: 1.1 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <a href="https://system.musicalbead.com/artist">Sign Me Up Now</a>
+          <a href="/signup">Sign Me Up Now</a>
         </motion.div>
       </div>
 
