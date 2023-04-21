@@ -4,7 +4,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'main-back': "url('/src/assets/images/landingpage/main-bg.png')",
-        'tag-bottom': "url('/src/assets/images/landingpage/tag_bottom.png')"
+        'tag-bottom': "url('/src/assets/images/landingpage/tag_bottom.png')",
+        'signup-back': "url('/src/assets/images/system/signup-back.png')"
       },
       colors: {
         teal: "#2AAFC1",

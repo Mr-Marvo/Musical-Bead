@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Instagram, Logo, Tiktok, Twitter } from "../../assets";
+import { AppStore, Facebook, Instagram, Logo, Tiktok, Twitter } from "../../assets";
 
 const Footer = () => {
   return (
@@ -67,6 +67,16 @@ const Footer = () => {
           <div className="text-white">Musical Bead App:</div>
           <div className="text-teal">
             Available on iTunes & Google Play store.
+          </div>
+          <div className="flex flex-row gap-3">
+            <button className="flex flex-row gap-2 justify-center items-center text-teal border-2 border-teal px-3 rounded-full py-1">
+              <img src={AppStore} alt="app store" className="w-6" />
+              App Store
+            </button>
+            <button className="flex flex-row gap-2 justify-center items-center text-teal border-2 border-teal px-3 rounded-full py-1">
+              {/* <img src={AppStore} alt="app store" className="w-6" /> */}
+              Play Store
+            </button>
           </div>
         </div>
       </div>
