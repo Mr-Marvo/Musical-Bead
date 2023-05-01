@@ -3,10 +3,20 @@ import '../../App.css';
 /* Images */
 import Logo from '../../assets/images/common/logo.png';
 import Singer from '../../assets/images/common/singer.png';
+import { AppDownloadICon, LEmail, LFacebook, LTwitter } from "../../assets";
 /* Icons */
 import { FaBars } from 'react-icons/fa';
 import {BiMessageAltDots} from 'react-icons/bi';
 import {BsBell} from 'react-icons/bs';
+import {RiArrowUpSFill} from 'react-icons/ri';
+import {RiArrowDownSFill} from 'react-icons/ri';
+import {AiTwotoneSetting} from 'react-icons/ai';
+import {AiFillDollarCircle} from 'react-icons/ai';
+import {BiSupport} from 'react-icons/bi';
+import {TbLogout} from 'react-icons/tb';
+import {RiAppleLine} from 'react-icons/ri';
+import {FaGooglePlay} from 'react-icons/fa';
+
 /* Components */
 import Footer from '../../components/landingpage/Footer';
 
@@ -36,6 +46,12 @@ function New_Musician_Dashboard() {
         setIsCollapsed2(!isCollapsed2);
     };
 
+    const [isCollapsed3, setIsCollapsed3] = useState(true);
+
+    const handleToggleCollapse3 = () => {
+        setIsCollapsed3(!isCollapsed3);
+    };
+
     return ( 
     <>
         {/* Header Navigation Bar */}
@@ -57,6 +73,20 @@ function New_Musician_Dashboard() {
                 <BsBell style={{fontSize:46,padding:10}}/>
                 <img src={Singer} alt="User Image" className='singer_image' />
                 <p className='user_tag'> {userTag} </p>
+                <div onClick={handleToggleCollapse3}>
+                    <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>} </span>
+                    {isCollapsed3 ? null : 
+                    <div className='navbar_toggle'>
+                        <ul>
+                            <li><AiTwotoneSetting/><a href='/#'>Settings</a></li>
+                            <li><AiFillDollarCircle/><a href='/#'>Billings</a></li>
+                            <li><BiSupport/><a href='/#'>Support</a></li>
+                            <li><TbLogout/><a href='/#'>Log out</a></li>
+                        </ul>
+                    </div>
+                }
+                </div>
+                
             </div>
           
         </header>
@@ -72,7 +102,7 @@ function New_Musician_Dashboard() {
                                 Step 01
                             </div>
                             <span className='step_healine'>Complete Your Musical Profile</span>
-                            <span className='step_toggle'>{isCollapsed1 ? '^' : '-'}</span>
+                            <span className='step_toggle'>{isCollapsed1 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>}</span>
                         </div>
                     </div>
                     {isCollapsed1 ? null : 
@@ -99,7 +129,7 @@ function New_Musician_Dashboard() {
                                 Step 01
                             </div>
                             <span className='step_healine'>Complete Your Musical Profile</span>
-                            <span className='step_toggle'>{isCollapsed2 ? '^' : '-'}</span>
+                            <span className='step_toggle'>{isCollapsed2 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>}</span>
                         </div>
                     </div>
                     {isCollapsed2 ? null : 
@@ -146,7 +176,57 @@ function New_Musician_Dashboard() {
 
 
         {/* Footer Content */}
-        <Footer/>
+        <footer className='footer'>
+            <div className='footer_container'>
+                <div className='footer_content1'>
+                    <p>For More Info Contacts:</p>
+
+                    <nav>
+                        <pre>MusicalBead@gmail.com</pre>
+                    </nav>
+
+                    <div className="flex flex-row mt-8 gap-4">
+                        <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" /></a>
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" /></a>
+                        <a href="#" target="_blank" rel="noreferrer"><img src={LEmail} alt='Email' className="w-10" /></a>
+                    </div>
+                </div>
+                <div className='footer_content2'>
+                    <ul>
+                        <li><pre>Site Map</pre></li>
+                        <li><pre>Company Info</pre></li>
+                        <li><pre>How it's work</pre></li>
+                        <li><pre>Privacy Policy</pre></li>
+                    </ul>
+                </div>
+
+                <div className='footer_content3'>
+                    <p>Presented By:</p>
+                    
+                    <pre>Musical Beads is patented by Bruce Quarto </pre>
+                    <pre>from Quarto Valley Record and Chi HuynH </pre>
+                    <pre>from Galatea / Momento NFC technology</pre>
+                   
+                </div>
+
+                <div className='footer_content4'>
+                    <p>Musical Bead App:</p>
+                    
+                    <pre>Available in iTunes & Google Play Store. </pre>
+                    <div className='store_wrap'>
+                        <div className='store_container'><RiAppleLine/><span>App Store</span></div>
+                        <div className='store_container'><FaGooglePlay/><span>Play Store</span></div>
+                    </div>
+                    
+                </div>
+            </div>
+           
+            <div className='copyright_container'>
+                <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
+                <span> Copyright &copy; Musical Beads International Ltd. 2023</span>
+                <span>EN <span>USA</span></span>
+            </div>
+        </footer>
     </>
      );
 }
