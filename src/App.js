@@ -1,13 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LandingPage, NotFound, SignIn, SignUp } from "./pages";
+import { LandingPage, NotFound, SignIn, SignUp,  } from "./pages";
+import New_Musician_Dashboard from "./pages/New_Musican_Dashboard/New_Musician_Dashboard";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
+      { /*   <Route exact path="/" element={<LandingPage />} />
+         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} /> */}
+        <Route path="/" element={<New_Musician_Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
