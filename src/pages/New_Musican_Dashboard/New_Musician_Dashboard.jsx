@@ -1,9 +1,17 @@
+/* 
+    ruvi@Aventure
+    ruvi.ijse@hmail.com
+*/
 import React, { useRef, useState } from 'react';
 import '../../App.css';
+
 /* Images */
 import Logo from '../../assets/images/common/logo.png';
 import Singer from '../../assets/images/common/singer.png';
-import { AppDownloadICon, LEmail, LFacebook, LTwitter } from "../../assets";
+import {LFacebook, LTwitter } from "../../assets";
+import instagram from "../../assets/images/common/instagram.png";
+import tiktok from "../../assets/images/common/tiktok.png";
+
 /* Icons */
 import { FaBars } from 'react-icons/fa';
 import {BiMessageAltDots} from 'react-icons/bi';
@@ -17,8 +25,6 @@ import {TbLogout} from 'react-icons/tb';
 import {RiAppleLine} from 'react-icons/ri';
 import {FaGooglePlay} from 'react-icons/fa';
 
-/* Components */
-import Footer from '../../components/landingpage/Footer';
 
 function New_Musician_Dashboard() {
 
@@ -30,9 +36,9 @@ function New_Musician_Dashboard() {
    
     const [userTag,setUserTag] = useState('Hi! Oliver');
 
-    const find_user_tag = () => {
+    /* const find_user_tag = () => {
         setUserTag('Hi! Oliver')
-    }
+    } */
 
     const [isCollapsed1, setIsCollapsed1] = useState(true);
 
@@ -134,13 +140,13 @@ function New_Musician_Dashboard() {
                     </div>
                     {isCollapsed2 ? null : 
                         <div className='step_content'>
-                             <div className='img_container2'>
+                                <div className='img_container2'>
                                 
                                 </div>
                                 <div className='data_container data_container2'>
                                     <form>
                                         <label>Album Name</label>
-                                        <input type="text" placeholder='Title' className='album_name'></input>
+                                        <input type="text" placeholder='Album Name' className='album_name'></input>
                                         <div>
                                             <div>
                                                 <label>Category</label>
@@ -186,9 +192,10 @@ function New_Musician_Dashboard() {
                     </nav>
 
                     <div className="flex flex-row mt-8 gap-4">
-                        <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" /></a>
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" /></a>
-                        <a href="#" target="_blank" rel="noreferrer"><img src={LEmail} alt='Email' className="w-10" /></a>
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={instagram} alt='Instergram' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
+                        <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
+                        <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={tiktok} alt='Tiktok' className="w-10" style={{background:'#2AAEC0',borderRadius:17}} /></a>
                     </div>
                 </div>
                 <div className='footer_content2'>
@@ -227,6 +234,7 @@ function New_Musician_Dashboard() {
                 <span>EN <span>USA</span></span>
             </div>
         </footer>
+
     </>
      );
 }

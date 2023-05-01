@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LandingPage, NotFound, SignIn, SignUp,  } from "./pages";
 import New_Musician_Dashboard from "./pages/New_Musican_Dashboard/New_Musician_Dashboard";
+import Musician_Dashboard from "./pages/Musician_Dashboard/Musician_Dashboard";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       { /*   <Route exact path="/" element={<LandingPage />} />
          <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} /> */}
-        <Route path="/" element={<New_Musician_Dashboard />} />
+        <Route path="/" element={<Musician_Dashboard/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

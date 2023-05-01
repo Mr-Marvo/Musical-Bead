@@ -120,6 +120,12 @@ header .nav-btn {
 
 .navbar_toggle ul li a {
     margin-left: 20px;
+    font-weight: 400;
+}
+
+.navbar_toggle ul li a:hover {
+    font-weight: 800;
+    color: #2aafc1;
 }
 
 .btn-container div span {
@@ -594,3 +600,178 @@ header .nav-btn {
         font-size: 10px;
     }
 }
+
+
+
+/* ======================================================================================================================================= */
+/* Musican Dashboard */
+
+.headline {
+    text-align: center;
+    margin-bottom: 1rem;
+    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.headline_left {
+    text-align: left;
+    margin-bottom: 1rem;
+    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.special_container {
+    width: 120px;
+    height: 120px;
+    background-color: #121212;
+}
+
+.special_container2 {
+    width: 240px;
+    height: 120px;
+    background-color: #121212;
+}
+
+.submit_btn {
+    background: linear-gradient( #0cd928, #eda752, #2aafc1, #2aafc1);
+    padding: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: 20px;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.submit_btn:hover {
+    font-weight: 800;
+    box-shadow: 0 6px 8px 0 rgba(238, 238, 238, 0.24), 0 8px 25px 0 rgba(255, 255, 255, 0.19);
+}
+
+
+
+
+.musician_dashboard_container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.musician_dashboard_sub_container1 {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.sub_container1_left {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 50px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub_container1_left>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.sub_container1_left>div form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub_container1_left>div form p {
+    margin-top: 15px;
+}
+
+.sub_container1_left>div form textarea,
+.sub_container1_left>div form input{
+   background-color: #121212;
+   padding: 10px;
+   margin-top: 10px;
+   width: 100%;
+   border-radius: 10px;
+   border: none;
+   outline: none;
+   cursor: pointer;
+}
+
+.sub_container1_left>div form>div {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sub_container1_left>div form>div>div {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.sub_container1_left>div form textarea,
+.sub_container1_left>div form input:hover {
+    box-shadow: 10px 10px 5px rgba(24, 23, 23, .5);
+}
+
+.sub_container1_right {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 50px;
+    background-color: #000;
+}
+
+.musician_dashboard_sub_container2 {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    background-color: #000;
+    margin: 2rem;
+}
+
+.musician_dashboard_sub_container2>div:nth-child(1) {
+    width: 20%;
+}
+
+.musician_dashboard_sub_container2>div:nth-child(2) {
+    width: 40%;
+    text-align: left;
+}
+
+.musician_dashboard_sub_container2>div:nth-child(2)>pre {
+    text-align: left;
+    margin-bottom: 1rem;
+    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.musician_dashboard_sub_container2>div:nth-child(3) {
+    width: 30%;
+}
+
+.musician_dashboard_sub_container2>div>div {
+    border: 1px solid var(--textColor);
+    border-radius: 50px;
+    width: 300px;
+    background: rgba(143, 143, 143, 0.4);
+}
+
+.musician_dashboard_sub_container2>div>div>div {
+    width: 75%;
+    height: 24px;
+    background-image: linear-gradient(to right, #eda752, #eda752, #2aafc1, #2aafc1);
+}
+
+.musician_dashboard_sub_container3 {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    padding: 2rem;
+    background-color: #000;
+}
+
