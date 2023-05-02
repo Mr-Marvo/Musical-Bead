@@ -85,12 +85,12 @@ function Musician_Dashboard() {
             
             </header>
             
-             {/* Body Content */}
+            {/* Body Content */}
             <main>
                 <div className='musician_dashboard_container'>
                     <div className='musician_dashboard_sub_container1'>
                         <div className='sub_container1_left'>
-                            <pre className='headline'>Publish New Musical Bead Album +</pre>
+                            <pre className='headline'>Publish New Musical Bead Album+</pre>
                             <div>
                                 <div className='img_container2'>
                                 </div>
@@ -131,12 +131,12 @@ function Musician_Dashboard() {
                         <div  className='sub_container1_right'>
                             <pre className='headline'>Pending Albums</pre>
                             <div style={{display:'flex',flexDirection:'column'}}>
-                                <div style={{display:'grid',gridTemplateColumns: 'auto auto auto',justifyContent:'center',alignItems:'center',gap:5,marginBottom:20}}>
+                                <div>
                                     <div className='special_container'> </div>
                                     <div className='special_container'> </div>
                                     <div className='special_container'> </div>           
                                 </div>
-                                <div style={{display:'grid',gridTemplateColumns: 'auto auto auto',justifyContent:'center',alignItems:'center',gap:5,marginTop:20,marginBottom:20}}>
+                                <div>
                                     <div className='special_container'> </div>
                                     <div className='special_container'> </div>
                                     <div className='special_container'> </div>           
@@ -151,8 +151,8 @@ function Musician_Dashboard() {
                     </div>
 
                     <div className='musician_dashboard_sub_container2'>
-                        <div>
-                            <img src={Singer} alt="User Image" className='singer_image' />
+                        <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+                            <img src={Singer} alt="User Image" className='singer_image' style={{width:'80px'}}/>
                             <pre className='user_tag'> {fullnameTag} </pre>
                         </div>
                         <div>
@@ -173,13 +173,13 @@ function Musician_Dashboard() {
                         <div>
                             <pre className='headline_left'>To Ship</pre>
                             <div style={{display:'flex',flexDirection:'column'}}>
-                                <div style={{display:'grid',gridTemplateColumns: 'auto auto auto auto',justifyContent:'center',alignItems:'center',gap:5,marginBottom:20}}>
+                                <div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>     
                                     <div className='special_container2'> </div>       
                                 </div>
-                                <div style={{display:'grid',gridTemplateColumns: 'auto auto auto auto',justifyContent:'center',alignItems:'center',gap:5,marginTop:20,marginBottom:20}}>
+                                <div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>   
@@ -190,13 +190,13 @@ function Musician_Dashboard() {
                         <div>
                             <pre className='headline_left'>Shipped Orders</pre>
                             <div style={{display:'flex',flexDirection:'column'}}>
-                                <div style={{display:'grid',gridTemplateColumns: 'auto auto auto auto',justifyContent:'center',alignItems:'center',gap:5,marginBottom:20}}>
+                                <div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>     
                                     <div className='special_container2'> </div>       
                                 </div>
-                                <div style={{display:'grid',gridTemplateColumns: 'auto auto auto auto',justifyContent:'center',alignItems:'center',gap:5,marginTop:20,marginBottom:20}}>
+                                <div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>
                                     <div className='special_container2'> </div>   
