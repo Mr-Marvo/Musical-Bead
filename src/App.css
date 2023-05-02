@@ -1316,3 +1316,259 @@ header .nav-btn {
 
 /* ======================================================================================================================================= */
 /* Earnings  */
+
+.view_btn {
+    width: 160px;
+    padding: 10px;
+    background-color: #121212;
+    border: 1px solid #2AAEC0;
+    border-radius: 15px;
+}
+
+.view_btn:hover {
+    font-weight: 600;
+    color: #010101;
+    border: 2px solid #fff;
+}
+
+.earning_container1 {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 80rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    margin: 1rem;
+    border-radius: 50px;
+}
+
+.earning_container1_sub1{
+    width: 80%;
+}
+
+.earning_container1_sub1>pre{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.earning_container1_sub2 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub2_sub1 {
+    width: 70%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 1rem;
+    margin: 1rem;
+} 
+
+.sub2_sub1>div {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.sub2_sub1>div>h1 {
+    color: #2AAEC0;
+    font-size: 28px;
+}
+
+.sub2_sub1>div>span {
+    text-align: center;
+    font-size: 16px;
+}
+
+.sub2_sub2 {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+} 
+
+.sub2_sub2>h1 {
+    color: #06803b;
+    font-size: 28px;
+}
+
+.sub2_sub2 .withdraw_btn {
+    width: 200px;
+    padding: 10px;
+    background-color: #06803b;
+    font-weight: 500;
+    border-radius: 15px;
+    margin: 1rem;
+}
+
+.sub2_sub2 .withdraw_btn:hover {
+    font-weight: 800;
+    border: 2px solid #ffffff;
+}
+
+.earning_container2 {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    width: 80rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    margin: 1rem;
+    border-radius: 50px; 
+}
+
+.earning_container2>div:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+
+.earning_container2 table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.earning_container2 table thead,
+.earning_container2 table tbody {
+    width: 100%;
+}
+
+.earning_container2 table th,
+.earning_container2 table td {
+    padding: 8px;
+    border-bottom: 1px solid white;
+}
+
+.earning_container2 table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: white;
+}
+
+@media only screen and (max-width: 1300px){
+    .earning_container1{
+        width: 70rem;
+    }
+
+    .earning_container2{
+        width: 70rem;
+    }
+}
+
+@media only screen and (max-width: 1160px){
+    .earning_container1{
+        width: 65rem;
+    }
+
+    .earning_container2{
+        width: 65rem;
+    }
+}
+
+@media only screen and (max-width: 1060px){
+    .earning_container1{
+        width: 60rem;
+    }
+
+    .earning_container2{
+        width: 60rem;
+    }
+}
+
+@media only screen and (max-width: 980px){
+    .earning_container1{
+        width: 55rem;
+    }
+
+    .earning_container1_sub2 {
+        flex-direction: column;
+    }
+
+    .sub2_sub1 {
+        width: 100%;
+    }
+
+    .sub2_sub2 {
+        width: 100%;
+    }
+
+    .tbl_container {
+        width: 50rem;
+        overflow-x:auto;
+        overflow-y: scroll;
+    }
+
+
+    .earning_container2{
+        width: 55rem;
+    }
+}
+
+@media only screen and (max-width: 920px){
+    .earning_container1{
+        width: 50rem;
+    }
+
+    .earning_container2 table{
+        width: 45rem;
+        overflow-x: scroll;
+    }
+
+
+    .earning_container2{
+        width: 50rem;
+    }
+}
+
+
+@media only screen and (max-width: 812px){
+    .earning_container1{
+        width: 45rem;
+    }
+
+    .earning_container2{
+        width: 45rem;
+    }
+}
+
+@media only screen and (max-width: 760px){
+    .earning_container1{
+        width: 40rem;
+    }
+
+    .earning_container2{
+        width: 40rem;
+    }
+
+    .sub2_sub1 {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 660px){
+    .earning_container1{
+        width: 30rem;
+    }
+
+    .earning_container2{
+        width: 30rem;
+    }
+}
