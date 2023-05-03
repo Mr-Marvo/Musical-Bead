@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +22,7 @@ body {
 
 main {
     padding: 4rem 2rem;
-    background-color: var(--mainColor);
+    background-color: #161616;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +39,7 @@ header {
     justify-content: space-between;
     height: 80px;
     color: var(--textColor);
-    background-color: #000;
+    background-color: #121212;
 }
 
 nav {
@@ -81,24 +83,29 @@ header .nav-btn {
 
 .logo {
     width: 200px;
-    background: black;
+    background: #121212;
     justify-self: flex-start;
     margin-left: 4rem;
 }
 
 .singer_image {
-    width: 30px;
+    width: 50px;
+    height: 50px;
     border: 2px solid white;
     border-radius: 50%;
     margin-left: 40px;
+    background-color: #121212;
+    align-self: center;
+    justify-self: center;
 } 
 
 .user_tag {
-    font-size: 14px;
+    font-size: 24px;
     padding: 10px;
-    background-color: black;
+    background-color: #121212;
     display: flex;
-    margin-right: 1rem;
+    align-self: center;
+    justify-self: center;
 }
 
 .navbar_toggle {
@@ -190,6 +197,7 @@ header .nav-btn {
 
 .footer_container p {
     padding-bottom: 20px;
+    font-size: 20px;
 }
 
 .footer_content1 {
@@ -198,6 +206,7 @@ header .nav-btn {
 
 .footer_content1 pre {
     color: #2AAEC0;
+    font-size: 20px;
 }
 
 .footer_content2 {
@@ -208,12 +217,21 @@ header .nav-btn {
     padding: 8px;
 }
 
+.footer_content2 ul li pre {
+    font-size: 20px;
+}
+
 .footer_content3 {
     width: 35%;  
 }
 
+.footer_content3 p {
+    font-size: 20px;
+}
+
 .footer_content3 pre {
     color: #2AAEC0;
+    font-size: 20px;
 }
 
 .footer_content4 {
@@ -222,6 +240,7 @@ header .nav-btn {
 
 .footer_content4 pre {
     color: #2AAEC0;
+    font-size: 20px;
 }
 
 .copyright_container {
@@ -253,6 +272,7 @@ header .nav-btn {
 
 .store_container span {
     margin-left: 5px;
+    font-size: 20px;
 }
 
 .store_container span:hover {
@@ -292,24 +312,25 @@ header .nav-btn {
 .greeting {
     text-align: center;
     margin-bottom: 1rem;
-    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 36px;
 }
 
 .step_container {
     width: 80rem;
-    background-color: #000;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: 25px;
     margin-top: 20px;
     display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .step {
     display: flex;
     flex-direction: row;
-    background-color: #000;
+    background-color:rgba(0, 0, 0, 0.85);
     width: 80rem;
     padding: 10px;
     padding-left: 50px;
@@ -320,30 +341,43 @@ header .nav-btn {
 .step_cover {
     width: 7%;
     align-items: center;
-    padding: 10px;
-    border-radius: 20px;
+    border-radius: 25px;
     color: var(--textColor);
-    border: 1px solid #2aafc1;
-    border-image: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66)) 1;
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    width: 170px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+.box {
+    width: 99%;
+    padding: 9px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 1);
 }
 
 .step_healine{
     width: 90%;
     padding: 10px;
-   
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    width: 80%;
 }
 
 .step_toggle{
-   align-self: flex-end;
-   font-size: 30px;
-   background: -webkit-linear-gradient( #0cd928, #eda752, #2aafc1, #2aafc1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    cursor: pointer;
+    float: right;
+    font-size: 36px;
+    color: #12E45A;
+    cursor: pointer;    
 }
 
 .step_content {
-    background-color: rgba(24, 23, 23, 1);
+    background-color: rgba(0,0,0,0,.32);
     display: flex;
     flex-direction: row;
 }
@@ -352,7 +386,7 @@ header .nav-btn {
     width: 200px;
     height: 200px;
     border-radius: 100px;
-    background-color: var(--mainColor);
+    background-color: rgba(31, 31, 31, 1);
     align-self: center;
     margin: 4rem;
     cursor: pointer;
@@ -362,7 +396,7 @@ header .nav-btn {
     width: 200px;
     height: 200px;
     border-radius: 60px;
-    background-color: var(--mainColor);
+    background-color: rgba(31, 31, 31, 1);
     align-self: center;
     margin: 4rem;
     cursor: pointer;
@@ -372,6 +406,7 @@ header .nav-btn {
     display: flex;
     flex-direction: column;
     width: 70%;
+    margin-top: 50px;
 }
 
 .data_container form {
@@ -379,9 +414,14 @@ header .nav-btn {
     flex-direction: column;
 }
 
+.data_container2 label {
+    font-size: 16px;
+}
+
+
 .data_container form textarea,
 .data_container form input{
-   background-color: #121212;
+   background-color: rgba(31, 31, 31, 1);
    padding: 10px;
    margin-top: 10px;
    width: 100%;
@@ -415,16 +455,23 @@ header .nav-btn {
     width: 10px;
     height: 80px;
     border-radius: 10px;
-    background-color: var(--mainColor);
+    background-color: rgba(31, 31, 31, 1);
     align-self: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    color: #000;
+    font-weight: 800;
 }
 
 .review_submit_btn {
-    background: linear-gradient( #0cd928, #eda752, #2aafc1, #2aafc1);
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
     padding: 15px;
     margin: 20px;
     border-radius: 50px;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 24px;
+    width: 380px;
 }
 
 .review_submit_btn:hover {

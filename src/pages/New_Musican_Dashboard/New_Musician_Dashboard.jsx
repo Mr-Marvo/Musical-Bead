@@ -65,10 +65,10 @@ function New_Musician_Dashboard() {
         <header className='font-nunito'>
             <img src={Logo} alt="Musical Bead" className='logo'/>
             <nav ref={navRef}>
-                    <a href='/'>Home</a>
-                    <a href='/Musician_Dashboard'className='active'>Dashboard</a>
-                    <a href='/My_Profile'>My Profile</a>
-                    <a href='/Earnings'>Earnings</a>
+                    <a href='/' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
+                    <a href='/Musician_Dashboard'className='active font-nunito'  style={{fontSize:'24px'}}>Dashboard</a>
+                    <a href='/My_Profile'  style={{fontSize:'24px'}} className='font-nunito'>My Profile</a>
+                    <a href='/Earnings'  style={{fontSize:'24px'}} className='font-nunito'>Earnings</a>
             </nav>
             {/* Menu Toggle Button */}
             <button className='nav-btn' onClick={showNavbar}>
@@ -76,12 +76,12 @@ function New_Musician_Dashboard() {
             </button>
             {/* Right Side Button Container */}
             <div className='btn-container'>
-                <BiMessageAltDots style={{fontSize:46,padding:10}}/>
-                <BsBell style={{fontSize:46,padding:10}}/>
+                <BiMessageAltDots style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
+                <BsBell style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
                 <img src={Singer} alt="User Image" className='singer_image' />
                 <p className='user_tag'> {userTag} </p>
                 <div onClick={handleToggleCollapse3}>
-                    <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>} </span>
+                    <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={48} style={{marginTop:'8px'}}/> : <RiArrowDownSFill fontSize={48}/>} </span>
                     {isCollapsed3 ? null : 
                     <div className='navbar_toggle'>
                         <ul>
@@ -100,16 +100,18 @@ function New_Musician_Dashboard() {
 
         {/* Body Content */}
         <main className='font-nunito'>
-            <h2 className='greeting'>Welcome ! to the Musical Beads</h2>
+            <h2 className='greeting font-nunito'>Welcome ! to the Musical Beads</h2>
             <div className='step_container'>
                 <div>
                     <div onClick={handleToggleCollapse1}>
                         <div className='step'>
                             <div className='step_cover'>
-                                Step 01
+                                <div className='box'>
+                                    Step 01
+                                </div>
                             </div>
                             <span className='step_healine'>Complete Your Musical Profile</span>
-                            <span className='step_toggle'>{isCollapsed1 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>}</span>
+                            <span className='step_toggle'>{isCollapsed1 ? <RiArrowUpSFill fontSize={48}/> : <RiArrowDownSFill fontSize={48}/>}</span>
                         </div>
                     </div>
                     {isCollapsed1 ? null : 
@@ -118,7 +120,7 @@ function New_Musician_Dashboard() {
                                 
                             </div>
                             <div className='data_container'>
-                                <span>Oliver Ferdison</span>
+                                <span className='font-nunito' style={{fontSize:'24px'}}>Oliver Ferdison</span>
                                 <form>
                                     <input type="text" placeholder='Title'></input>
                                     <textarea>Add Bio ...</textarea>
@@ -132,11 +134,13 @@ function New_Musician_Dashboard() {
                 <div>
                     <div onClick={handleToggleCollapse2}>
                     <div className='step'>
-                            <div className='step_cover'>
-                                Step 01
+                             <div className='step_cover'>
+                                <div className='box'>
+                                    Step 02
+                                </div>
                             </div>
-                            <span className='step_healine'>Complete Your Musical Profile</span>
-                            <span className='step_toggle'>{isCollapsed2 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>}</span>
+                            <span className='step_healine'>Complete Your First Musical Bead Profile</span>
+                            <span className='step_toggle'>{isCollapsed2 ? <RiArrowUpSFill fontSize={48}/> : <RiArrowDownSFill fontSize={48}/>}</span>
                         </div>
                     </div>
                     {isCollapsed2 ? null : 
@@ -146,28 +150,31 @@ function New_Musician_Dashboard() {
                                 </div>
                                 <div className='data_container data_container2'>
                                     <form>
-                                        <label>Album Name</label>
+                                        <label className='font-nunito'>Album Name</label>
                                         <input type="text" placeholder='Album Name' className='album_name'></input>
                                         <div>
                                             <div>
-                                                <label>Category</label>
+                                                <label className='font-nunito'>Category</label>
                                                 <input type="text" placeholder='Category'></input>  
                                             </div>
                                           
                                             <div>
-                                                <label>Artist</label>
+                                                <label className='font-nunito'>Artist</label>
                                                 <input type="text" placeholder='Artist'></input>  
                                             </div>
                                         </div>
-                                        <label>Description</label>
+                                        <label className='font-nunito'>Description</label>
                                         <textarea>Description ...</textarea>
                                         <p>Add Songs <span>(0)</span></p>
                                         <div style={{overflowX:'auto'}}>
-                                            <div className='song_container'> </div>
-                                            <div className='song_container'> </div>
-                                            <div className='song_container'> </div>
-                                            <div className='song_container'> </div>
-                                            
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
+                                            <div className='song_container'>+</div>
                                         </div>
                                     </form>
                                 </div>
@@ -176,7 +183,7 @@ function New_Musician_Dashboard() {
                     }
                 </div>
             </div>
-            <button className='review_submit_btn'>Review Submit</button>
+            <button className='review_submit_btn font-nunito'>Submit For Review</button>
 
             
         </main>

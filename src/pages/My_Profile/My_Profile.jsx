@@ -86,14 +86,14 @@ function My_Profile() {
 
     return ( 
         <>
-            {/* Header Navigation Bar */}
+          {/* Header Navigation Bar */}
             <header className='font-nunito'>
                 <img src={Logo} alt="Musical Bead" className='logo'/>
                 <nav ref={navRef}>
-                    <a href='/'>Home</a>
-                    <a href='/Musician_Dashboard'>Dashboard</a>
-                    <a href='/My_Profile' className='active'>My Profile</a>
-                    <a href='/Earnings'>Earnings</a>
+                        <a href='/' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
+                        <a href='/Musician_Dashboard'className='font-nunito'  style={{fontSize:'24px'}}>Dashboard</a>
+                        <a href='/My_Profile'  style={{fontSize:'24px'}} className='active font-nunito'>My Profile</a>
+                        <a href='/Earnings'  style={{fontSize:'24px'}} className='font-nunito'>Earnings</a>
                 </nav>
                 {/* Menu Toggle Button */}
                 <button className='nav-btn' onClick={showNavbar}>
@@ -101,12 +101,12 @@ function My_Profile() {
                 </button>
                 {/* Right Side Button Container */}
                 <div className='btn-container'>
-                    <BiMessageAltDots style={{fontSize:46,padding:10}}/>
-                    <BsBell style={{fontSize:46,padding:10}}/>
+                    <BiMessageAltDots style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
+                    <BsBell style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
                     <img src={Singer} alt="User Image" className='singer_image' />
                     <p className='user_tag'> {userTag} </p>
                     <div onClick={handleToggleCollapse3}>
-                        <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>} </span>
+                        <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={48} style={{marginTop:'8px'}}/> : <RiArrowDownSFill fontSize={48}/>} </span>
                         {isCollapsed3 ? null : 
                         <div className='navbar_toggle'>
                             <ul>
@@ -121,7 +121,7 @@ function My_Profile() {
                     
                 </div>
             
-            </header> 
+            </header>
 
             {/* Body Content */}
             <main className='font-nunito'>
@@ -145,7 +145,7 @@ function My_Profile() {
                             </div>
                        </div>
                        <div className="sub_3">
-                            <ReactPlayer url='https://www.youtube.com/watch?v=sxl7xvWkR1M' width="360px" height="240px" controls={true} volume={1} muted={false} playing={true}/>
+                            <ReactPlayer url='https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy' width="360px" height="240px" controls={true} volume={1} muted={false} playing={true}/>
                        </div>
                     </div>
 
@@ -214,58 +214,58 @@ function My_Profile() {
                 </div>
             </main>
 
-            {/* Footer Content */}
+             {/* Footer Content */}
             <footer className='footer font-nunito'>
-            <div className='footer_container'>
-                <div className='footer_content1'>
-                    <p>For More Info Contacts:</p>
+                <div className='footer_container'>
+                    <div className='footer_content1'>
+                        <p>For More Info Contacts:</p>
 
-                    <nav>
-                        <pre className='font-nunito'>MusicalBead@gmail.com</pre>
-                    </nav>
+                        <nav>
+                            <pre className='font-nunito'>MusicalBead@gmail.com</pre>
+                        </nav>
 
-                    <div className="flex flex-row mt-8 gap-4">
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={Facebook} alt='Facebook' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
-                            <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={Instergram} alt='Instergram' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
-                            <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={Twitter} alt='Twitter' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
-                            <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={Tiktok} alt='Tiktok' className="w-10" style={{background:'white',borderRadius:'25px'}} /></a>
+                        <div className="flex flex-row mt-8 gap-4">
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={Facebook} alt='Facebook' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                                <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={Instergram} alt='Instergram' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={Twitter} alt='Twitter' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={Tiktok} alt='Tiktok' className="w-10" style={{background:'white',borderRadius:'25px'}} /></a>
+                        </div>
+                    </div>
+                    <div className='footer_content2'>
+                        <ul>
+                            <li><pre  className='font-nunito'>Site Map</pre></li>
+                            <li><pre  className='font-nunito'>Company Info</pre></li>
+                            <li><pre  className='font-nunito'>How it's work</pre></li>
+                            <li><pre  className='font-nunito'>Privacy Policy</pre></li>
+                        </ul>
+                    </div>
+
+                    <div className='footer_content3'>
+                        <p>Presented By:</p>
+                        
+                        <pre  className='font-nunito'>Musical Beads is patented by Bruce Quarto </pre>
+                        <pre  className='font-nunito'>from Quarto Valley Record and Chi HuynH </pre>
+                        <pre  className='font-nunito'>from Galatea / Momento NFC technology</pre>
+                    
+                    </div>
+
+                    <div className='footer_content4'>
+                        <p>Musical Bead App:</p>
+                        
+                        <pre  className='font-nunito'>Available in iTunes & Google Play Store. </pre>
+                        <div className='store_wrap'>
+                            <div className='store_container font-nunito'><RiAppleLine/><span>App Store</span></div>
+                            <div className='store_container font-nunito'><FaGooglePlay/><span>Play Store</span></div>
+                        </div>
+                        
                     </div>
                 </div>
-                <div className='footer_content2'>
-                    <ul>
-                        <li><pre  className='font-nunito'>Site Map</pre></li>
-                        <li><pre  className='font-nunito'>Company Info</pre></li>
-                        <li><pre  className='font-nunito'>How it's work</pre></li>
-                        <li><pre  className='font-nunito'>Privacy Policy</pre></li>
-                    </ul>
+            
+                <div className='copyright_container font-nunito'>
+                    <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
+                    <span > Copyright &copy; Musical Beads International Ltd. 2023</span>
+                    <span>EN <span>USA</span></span>
                 </div>
-
-                <div className='footer_content3'>
-                    <p>Presented By:</p>
-                    
-                    <pre  className='font-nunito'>Musical Beads is patented by Bruce Quarto </pre>
-                    <pre  className='font-nunito'>from Quarto Valley Record and Chi HuynH </pre>
-                    <pre  className='font-nunito'>from Galatea / Momento NFC technology</pre>
-                   
-                </div>
-
-                <div className='footer_content4'>
-                    <p>Musical Bead App:</p>
-                    
-                    <pre  className='font-nunito'>Available in iTunes & Google Play Store. </pre>
-                    <div className='store_wrap'>
-                        <div className='store_container font-nunito'><RiAppleLine/><span>App Store</span></div>
-                        <div className='store_container font-nunito'><FaGooglePlay/><span>Play Store</span></div>
-                    </div>
-                    
-                </div>
-            </div>
-           
-            <div className='copyright_container font-nunito'>
-                <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
-                <span > Copyright &copy; Musical Beads International Ltd. 2023</span>
-                <span>EN <span>USA</span></span>
-            </div>
             </footer>
         </>
      );
