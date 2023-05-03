@@ -3,7 +3,7 @@ import { AppStore, Facebook, Instagram, Logo, Tiktok, Twitter } from "../../asse
 
 const Footer = () => {
   return (
-    <div className="flex flex-col w-full h-fit md:px-16 px-4 py-2 font-nunito text-[20px]">
+    <div className="flex flex-col w-full h-fit md:px-16 px-4 py-2 font-nunito text-[20px] bg-black">
       <div className="flex lg:flex-row flex-col pb-4 border-b-2 border-[#383838]">
         <div className="flex flex-col gap-4 lg:w-1/4 px-4">
           <div className="text-white">For more info Contact:</div>
