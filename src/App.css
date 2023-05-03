@@ -791,7 +791,54 @@ header .nav-btn {
     width: 80rem;
     justify-content: center;
     border: 1px solid black;
+    margin-top: 0;
+    margin-bottom: 0;
     
+}
+
+.headline_wrap_container {
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    margin: 2rem;
+    padding: 2rem;
+    padding-left: 4rem;
+    width: 80rem;
+    justify-content: center;
+    border: 1px solid black;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.album_wrap_container {
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    margin: 2rem;
+    padding: 4rem;
+    padding-top: 1rem;
+    width: 80rem;
+    justify-content: center;
+    border: 1px solid black;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.album_sub_wrap{
+    display:grid;
+    grid-template-columns:auto auto auto auto;
+    gap:10;
+}
+
+.album_sub_wrap2 {
+    display:grid;
+    grid-template-columns:auto auto auto;
+}
+
+
+.album_sub_wrap3 {
+    display:grid;
+    grid-template-columns:auto auto auto auto auto auto;
 }
 
 .musician_dashboard_sub_container3>div:nth-child(2)>div div{
@@ -830,6 +877,18 @@ header .nav-btn {
     .sub_container1_right>div> div {
         grid-template-columns: auto auto;
     }
+
+    .headline_wrap_container {
+        width: 70rem;
+    }
+
+    .album_wrap_container {
+        width: 70rem;
+    }
+
+    .album_sub_wrap {
+        grid-template-columns: auto auto auto;
+    }
 }
 
 @media only screen and (max-width: 1160px){
@@ -850,6 +909,18 @@ header .nav-btn {
     }
 
     .musician_dashboard_sub_container3>div:nth-child(3)>div div{
+        grid-template-columns: auto auto auto;
+    }
+
+    .headline_wrap_container {
+        width: 60rem;
+    }
+
+    .album_wrap_container {
+        width: 60rem;
+    }
+
+    .album_sub_wrap {
         grid-template-columns: auto auto auto;
     }
 }
@@ -897,6 +968,18 @@ header .nav-btn {
     .musician_dashboard_sub_container3>div:nth-child(3)>div div{
         grid-template-columns: auto auto;
     }
+
+    .headline_wrap_container {
+        width: 50rem;
+    }
+
+    .album_wrap_container {
+        width: 50rem;
+    }
+
+    .album_sub_wrap {
+        grid-template-columns: auto auto ;
+    }
 }
 
 @media only screen and (max-width: 810px){
@@ -910,6 +993,18 @@ header .nav-btn {
 
     .musician_dashboard_sub_container3{
         width: 40rem;
+    }
+
+    .headline_wrap_container {
+        width: 40rem;
+    }
+
+    .album_wrap_container {
+        width: 40rem;
+    }
+
+    .album_sub_wrap {
+        grid-template-columns: auto auto ;
     }
 }
 
@@ -929,6 +1024,18 @@ header .nav-btn {
     .musician_dashboard_sub_container3{
         width: 35rem;
     }
+
+    .headline_wrap_container {
+        width: 35rem;
+    }
+
+    .album_wrap_container {
+        width: 35rem;
+    }
+
+    .album_sub_wrap {
+        grid-template-columns: auto auto ;
+    }
 }
 
 @media only screen and (max-width: 580px){
@@ -942,6 +1049,21 @@ header .nav-btn {
 
     .musician_dashboard_sub_container3{
         width: 30rem;
+    }
+
+    .headline_wrap_container {
+        width: 30rem;
+    }
+
+    .album_wrap_container {
+        width: 30rem;
+    }
+
+    .album_sub_wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -957,6 +1079,15 @@ header .nav-btn {
     .musician_dashboard_sub_container3{
         width: 25rem;
     }
+
+    .headline_wrap_container {
+        width: 25rem;
+    }
+
+    .album_wrap_container {
+        width: 25rem;
+    }
+
 }
 
 @media only screen and (max-width: 400px){

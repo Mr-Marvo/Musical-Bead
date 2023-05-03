@@ -8,9 +8,10 @@ import '../../App.css';
 /* Images */
 import Logo from '../../assets/images/common/logo.png';
 import Singer from '../../assets/images/common/singer.png';
-import {LFacebook, LTwitter } from "../../assets";
-import instagram from "../../assets/images/common/instagram.png";
-import tiktok from "../../assets/images/common/tiktok.png";
+import Facebook from '../../assets/images/system/facebook.png';
+import Instergram from '../../assets/images/system/instagram.png';
+import Twitter from '../../assets/images/system/twitter.png';
+import Tiktok from '../../assets/images/system/tiktok.png';
 
 /* Icons */
 import { FaBars } from 'react-icons/fa';
@@ -54,13 +55,13 @@ function Earnings() {
     return ( 
         <>
              {/* Header Navigation Bar */}
-             <header>
+             <header className='font-nunito'>
                 <img src={Logo} alt="Musical Bead" className='logo'/>
                 <nav ref={navRef}>
-                    <a href='/#'>Home</a>
-                    <a href='/#'>Dashboard</a>
-                    <a href='/#'>My Profile</a>
-                    <a href='/#' className='active'>Earnings</a>
+                    <a href='/'>Home</a>
+                    <a href='/Musician_Dashboard'>Dashboard</a>
+                    <a href='/My_Profile'>My Profile</a>
+                    <a href='/Earnings' className='active'>Earnings</a>
                 </nav>
                 {/* Menu Toggle Button */}
                 <button className='nav-btn' onClick={showNavbar}>
@@ -91,7 +92,7 @@ function Earnings() {
             </header>
 
              {/* Body Content */}
-             <main>
+             <main className='font-nunito'>
                 <div className="earning_container1">
                     <div className="earning_container1_sub1">
                         <pre>{day}</pre>
@@ -200,57 +201,57 @@ function Earnings() {
              </main>
 
              {/* Footer Content */}
-             <footer className='footer'>
-                <div className='footer_container'>
-                    <div className='footer_content1'>
-                        <p>For More Info Contacts:</p>
+             <footer className='footer font-nunito'>
+            <div className='footer_container'>
+                <div className='footer_content1'>
+                    <p>For More Info Contacts:</p>
 
-                        <nav>
-                            <pre>MusicalBead@gmail.com</pre>
-                        </nav>
+                    <nav>
+                        <pre className='font-nunito'>MusicalBead@gmail.com</pre>
+                    </nav>
 
-                        <div className="flex flex-row mt-8 gap-4">
-                            <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                            <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={instagram} alt='Instergram' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                            <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                            <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={tiktok} alt='Tiktok' className="w-10" style={{background:'#2AAEC0',borderRadius:17}} /></a>
-                        </div>
+                    <div className="flex flex-row mt-8 gap-4">
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={Facebook} alt='Facebook' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                            <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={Instergram} alt='Instergram' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                            <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={Twitter} alt='Twitter' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                            <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={Tiktok} alt='Tiktok' className="w-10" style={{background:'white',borderRadius:'25px'}} /></a>
                     </div>
-                    <div className='footer_content2'>
-                        <ul>
-                            <li><pre>Site Map</pre></li>
-                            <li><pre>Company Info</pre></li>
-                            <li><pre>How it's work</pre></li>
-                            <li><pre>Privacy Policy</pre></li>
-                        </ul>
-                    </div>
+                </div>
+                <div className='footer_content2'>
+                    <ul>
+                        <li><pre  className='font-nunito'>Site Map</pre></li>
+                        <li><pre  className='font-nunito'>Company Info</pre></li>
+                        <li><pre  className='font-nunito'>How it's work</pre></li>
+                        <li><pre  className='font-nunito'>Privacy Policy</pre></li>
+                    </ul>
+                </div>
 
-                    <div className='footer_content3'>
-                        <p>Presented By:</p>
-                        
-                        <pre>Musical Beads is patented by Bruce Quarto </pre>
-                        <pre>from Quarto Valley Record and Chi HuynH </pre>
-                        <pre>from Galatea / Momento NFC technology</pre>
+                <div className='footer_content3'>
+                    <p>Presented By:</p>
                     
-                    </div>
+                    <pre  className='font-nunito'>Musical Beads is patented by Bruce Quarto </pre>
+                    <pre  className='font-nunito'>from Quarto Valley Record and Chi HuynH </pre>
+                    <pre  className='font-nunito'>from Galatea / Momento NFC technology</pre>
+                   
+                </div>
 
-                    <div className='footer_content4'>
-                        <p>Musical Bead App:</p>
-                        
-                        <pre>Available in iTunes & Google Play Store. </pre>
-                        <div className='store_wrap'>
-                            <div className='store_container'><RiAppleLine/><span>App Store</span></div>
-                            <div className='store_container'><FaGooglePlay/><span>Play Store</span></div>
-                        </div>
-                        
+                <div className='footer_content4'>
+                    <p>Musical Bead App:</p>
+                    
+                    <pre  className='font-nunito'>Available in iTunes & Google Play Store. </pre>
+                    <div className='store_wrap'>
+                        <div className='store_container font-nunito'><RiAppleLine/><span>App Store</span></div>
+                        <div className='store_container font-nunito'><FaGooglePlay/><span>Play Store</span></div>
                     </div>
+                    
                 </div>
-            
-                <div className='copyright_container'>
-                    <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
-                    <span> Copyright &copy; Musical Beads International Ltd. 2023</span>
-                    <span>EN <span>USA</span></span>
-                </div>
+            </div>
+           
+            <div className='copyright_container font-nunito'>
+                <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
+                <span > Copyright &copy; Musical Beads International Ltd. 2023</span>
+                <span>EN <span>USA</span></span>
+            </div>
             </footer>
         </>
      );

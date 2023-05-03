@@ -4,7 +4,7 @@ import { Slide } from "react-reveal";
 
 const ArtistSignUp = () => {
   return (
-    <div className="flex flex-col w-full lg:p-16 sm:p-8 p-4 mt-72 items-center justify-center text-center">
+    <div className="flex flex-col w-full lg:p-16 sm:p-8 p-4 mt-72 items-center justify-center text-center bg-black">
       <Slide bottom>
       <div className="flex lg:flex-row flex-col font-bold 2xl:text-[48px] lg:text-[36px] text-[28px] text-teal justify-center">
         <p className="radientText">Partner with Musical Bead</p> &nbsp;

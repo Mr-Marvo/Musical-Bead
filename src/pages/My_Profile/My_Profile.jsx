@@ -8,9 +8,11 @@ import '../../App.css';
 /* Images */
 import Logo from '../../assets/images/common/logo.png';
 import Singer from '../../assets/images/common/singer.png';
-import {LFacebook, LTwitter } from "../../assets";
-import instagram from "../../assets/images/common/instagram.png";
-import tiktok from "../../assets/images/common/tiktok.png";
+import Facebook from '../../assets/images/system/facebook.png';
+import Instergram from '../../assets/images/system/instagram.png';
+import Twitter from '../../assets/images/system/twitter.png';
+import Tiktok from '../../assets/images/system/tiktok.png';
+
 
 /* Icons */
 import { FaBars } from 'react-icons/fa';
@@ -30,6 +32,7 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 /* Player */
 import ReactPlayer from 'react-player/lazy';
+import Album from '../Common/Album2';
  
   const slideImages = [
     {
@@ -84,13 +87,13 @@ function My_Profile() {
     return ( 
         <>
             {/* Header Navigation Bar */}
-            <header>
+            <header className='font-nunito'>
                 <img src={Logo} alt="Musical Bead" className='logo'/>
                 <nav ref={navRef}>
-                    <a href='/#'>Home</a>
-                    <a href='/#'>Dashboard</a>
-                    <a href='/#' className='active'>My Profile</a>
-                    <a href='/#'>Earnings</a>
+                    <a href='/'>Home</a>
+                    <a href='/Musician_Dashboard'>Dashboard</a>
+                    <a href='/My_Profile' className='active'>My Profile</a>
+                    <a href='/Earnings'>Earnings</a>
                 </nav>
                 {/* Menu Toggle Button */}
                 <button className='nav-btn' onClick={showNavbar}>
@@ -121,7 +124,7 @@ function My_Profile() {
             </header> 
 
             {/* Body Content */}
-            <main>
+            <main className='font-nunito'>
                 <div className='my_profile_container'>
                     <div className='my_profile_sub_container1'>
                        <div className="sub_1">
@@ -135,10 +138,10 @@ function My_Profile() {
                             <br/>
                             <textarea type="text" disabled={isDisabled} value={bio} onChange={(e) => setBio(e.target.value)}  />
                             <div className="flex flex-row mt-8 gap-4">
-                                <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                                <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={instagram} alt='Instergram' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                                <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={tiktok} alt='Tiktok' className="w-10" style={{background:'#2AAEC0',borderRadius:17}} /></a>
+                                <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={Facebook} alt='Facebook' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                                <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={Instergram} alt='Instergram' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={Twitter} alt='Twitter' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={Tiktok} alt='Tiktok' className="w-10" style={{background:'white',borderRadius:'25px'}} /></a>
                             </div>
                        </div>
                        <div className="sub_3">
@@ -146,22 +149,26 @@ function My_Profile() {
                        </div>
                     </div>
 
-                    <div className='my_profile_sub_container2'>
-                        <div className="slide-container" style={{width:'90%',height:'120px'}}>
-                        <Slide>
-                            {slideImages.map((slideImage, index)=> (
-                                <div key={index} >
-                                    <div style={{display:'flex',flexDirection:'row'}}>
-                                        <div className='special_container3'> <img src={Singer} alt="User Image" style={{width:'100px',height:'80px'}} />1</div>
-                                        <div className='special_container3'> <img src={Singer} alt="User Image" style={{width:'100px',height:'80px'}} />2</div>
-                                        <div className='special_container3'> <img src={Singer} alt="User Image" style={{width:'100px',height:'80px'}} />3</div>    
-                                        <div className='special_container3'> <img src={Singer} alt="User Image" style={{width:'100px',height:'80px'}} />4</div>
-                                        <div className='special_container3'> <img src={Singer} alt="User Image" style={{width:'100px',height:'80px'}} /> 5</div>
-                                        <div className='special_container3'> <img src={Singer} alt="User Image" style={{width:'100px',height:'80px'}} /> 6</div>    
+                    <div className='my_profile_sub_container2' style={{width:'90%',height:'260px',overflowY:'hidden'}}>
+                        <div className="slide-container" style={{width:'90%',height:'260px'}}>
+                            <Slide>
+                                {slideImages.map((slideImage, index)=> (
+                                    <div key={index} >
+                                        <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',height:'260px'}}>
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                            <Album/>   
+                                        </div>
                                     </div>
-                                </div>
-                            ))} 
-                        </Slide>
+                                ))} 
+                            </Slide>
                         </div>
                             
                     </div>
@@ -179,85 +186,87 @@ function My_Profile() {
                         }
                     </div>
 
-                    <div className='my_profile_sub_container4'>
+                    <div className='my_profile_sub_container4' style={{borderBottomLeftRadius:'0px',borderBottomRightRadius:'0px',borderTopLeftRadius:'25px',borderTopRightRadius:'25px'}}>
                         <pre className='headline_left'>Oliver's Albums</pre>
-                        <div className='sub_container4_grid_container'>
-                            <div className='special_container4'> </div>
-                            <div className='special_container4'> </div>
-                            <div className='special_container4'> </div>     
-                            <div className='special_container4'> </div> 
-                            <div className='special_container4'> </div>     
-                            <div className='special_container4'> </div> 
-                            <div className='special_container4'> </div>
-                            <div className='special_container4'> </div>
-                            <div className='special_container4'> </div>     
-                            <div className='special_container4'> </div> 
-                            <div className='special_container4'> </div>     
-                            <div className='special_container4'> </div> 
-                            <div className='special_container4'> </div>
-                            <div className='special_container4'> </div>
-                            <div className='special_container4'> </div>     
-                            <div className='special_container4'> </div> 
-                            <div className='special_container4'> </div>     
-                            <div className='special_container4'> </div> 
-                        </div>
                     </div>
+                    <div className='album_wrap_container' style={{borderBottomLeftRadius:'25px',borderBottomRightRadius:'25px'}}>
+                            <div className='album_sub_wrap3'>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                                <Album/>
+                            </div>
+                        </div>
                 </div>
             </main>
 
             {/* Footer Content */}
-            <footer className='footer'>
-                <div className='footer_container'>
-                    <div className='footer_content1'>
-                        <p>For More Info Contacts:</p>
+            <footer className='footer font-nunito'>
+            <div className='footer_container'>
+                <div className='footer_content1'>
+                    <p>For More Info Contacts:</p>
 
-                        <nav>
-                            <pre>MusicalBead@gmail.com</pre>
-                        </nav>
+                    <nav>
+                        <pre className='font-nunito'>MusicalBead@gmail.com</pre>
+                    </nav>
 
-                        <div className="flex flex-row mt-8 gap-4">
-                            <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" style={{background:'#3AAEC0',borderRadius:17}}/></a>
-                            <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={instagram} alt='Instergram' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                            <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" style={{background:'#2AAEC0',borderRadius:17}}/></a>
-                            <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={tiktok} alt='Tiktok' className="w-10" style={{background:'#2AAEC0',borderRadius:17}} /></a>
-                        </div>
+                    <div className="flex flex-row mt-8 gap-4">
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={Facebook} alt='Facebook' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                            <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={Instergram} alt='Instergram' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                            <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={Twitter} alt='Twitter' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
+                            <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={Tiktok} alt='Tiktok' className="w-10" style={{background:'white',borderRadius:'25px'}} /></a>
                     </div>
-                    <div className='footer_content2'>
-                        <ul>
-                            <li><pre>Site Map</pre></li>
-                            <li><pre>Company Info</pre></li>
-                            <li><pre>How it's work</pre></li>
-                            <li><pre>Privacy Policy</pre></li>
-                        </ul>
-                    </div>
+                </div>
+                <div className='footer_content2'>
+                    <ul>
+                        <li><pre  className='font-nunito'>Site Map</pre></li>
+                        <li><pre  className='font-nunito'>Company Info</pre></li>
+                        <li><pre  className='font-nunito'>How it's work</pre></li>
+                        <li><pre  className='font-nunito'>Privacy Policy</pre></li>
+                    </ul>
+                </div>
 
-                    <div className='footer_content3'>
-                        <p>Presented By:</p>
-                        
-                        <pre>Musical Beads is patented by Bruce Quarto </pre>
-                        <pre>from Quarto Valley Record and Chi HuynH </pre>
-                        <pre>from Galatea / Momento NFC technology</pre>
+                <div className='footer_content3'>
+                    <p>Presented By:</p>
                     
-                    </div>
+                    <pre  className='font-nunito'>Musical Beads is patented by Bruce Quarto </pre>
+                    <pre  className='font-nunito'>from Quarto Valley Record and Chi HuynH </pre>
+                    <pre  className='font-nunito'>from Galatea / Momento NFC technology</pre>
+                   
+                </div>
 
-                    <div className='footer_content4'>
-                        <p>Musical Bead App:</p>
-                        
-                        <pre>Available in iTunes & Google Play Store. </pre>
-                        <div className='store_wrap'>
-                            <div className='store_container'><RiAppleLine/><span>App Store</span></div>
-                            <div className='store_container'><FaGooglePlay/><span>Play Store</span></div>
-                        </div>
-                        
+                <div className='footer_content4'>
+                    <p>Musical Bead App:</p>
+                    
+                    <pre  className='font-nunito'>Available in iTunes & Google Play Store. </pre>
+                    <div className='store_wrap'>
+                        <div className='store_container font-nunito'><RiAppleLine/><span>App Store</span></div>
+                        <div className='store_container font-nunito'><FaGooglePlay/><span>Play Store</span></div>
                     </div>
+                    
                 </div>
-            
-                <div className='copyright_container'>
-                    <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
-                    <span> Copyright &copy; Musical Beads International Ltd. 2023</span>
-                    <span>EN <span>USA</span></span>
-                </div>
-            </footer> 
+            </div>
+           
+            <div className='copyright_container font-nunito'>
+                <img src={Logo} alt="Musical Bead" className='logo footer_logo'/>
+                <span > Copyright &copy; Musical Beads International Ltd. 2023</span>
+                <span>EN <span>USA</span></span>
+            </div>
+            </footer>
         </>
      );
 }
