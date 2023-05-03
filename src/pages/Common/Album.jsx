@@ -1,4 +1,3 @@
-
 import React from "react";
 import { DefaultAlbum, Equalizer, PlayButton, TagTop } from "../../assets";
 
@@ -43,6 +42,4 @@ const Album = () => {
   )
 }
   
-
-
 export default Album;

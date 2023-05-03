@@ -26,7 +26,6 @@ export { default as Instagram } from './images/system/instagram.png'
 export { default as Tiktok } from './images/system/tiktok.png'
 export { default as Twitter } from './images/system/twitter.png'
 
-
 export { default as DefaultAlbum } from './images/system/album-default.png'
 export { default as PlayButton } from './images/system/play-button.png'
 export { default as Equalizer } from './images/system/equalizer.png'

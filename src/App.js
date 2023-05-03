@@ -5,7 +5,6 @@ import Musician_Dashboard from "./pages/Musician_Dashboard/Musician_Dashboard";
 import My_Profile from "./pages/My_Profile/My_Profile";
 import Earnings from "./pages/Earnings/Earnings";
 
-
 function App() {
   return (
     <BrowserRouter>
