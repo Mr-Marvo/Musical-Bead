@@ -7,11 +7,24 @@ import '../../App.css';
 
 /* Images */
 import Logo from '../../assets/images/common/logo.png';
-import Singer from '../../assets/images/common/singer.png';
+import Singer from '../../assets/images/system/Ellipse_4.png';
 import Facebook from '../../assets/images/system/facebook.png';
 import Instergram from '../../assets/images/system/instagram.png';
 import Twitter from '../../assets/images/system/twitter.png';
 import Tiktok from '../../assets/images/system/tiktok.png';
+import WFacebook from '../../assets/images/system/Vector-3.png';
+import WInstergram from '../../assets/images/system/Inster.jpg';
+import WTwitter from '../../assets/images/system/Vector.png';
+import WTiktok from '../../assets/images/system/Vector-4.png';
+
+import Image_Slide1 from '../../assets/images/system/Rectangle 86.png';
+import Image_Slide2 from '../../assets/images/system/Rectangle 87.png';
+import Image_Slide3 from '../../assets/images/system/Rectangle 88.png';
+import Image_Slide4 from '../../assets/images/system/Rectangle 89.png';
+import Image_Slide5 from '../../assets/images/system/Rectangle 90.png';
+import Image_Slide6 from '../../assets/images/system/Rectangle 91.png';
+import Image_Slide7 from '../../assets/images/system/Rectangle 98.png';
+import Image_Slide8 from '../../assets/images/system/Rectangle 99.png';
 
 
 /* Icons */
@@ -68,8 +81,8 @@ function My_Profile() {
         setUserTag('Hi! Oliver')
     } */
    
-    const [userTag,setUserTag] = useState('Hi! Oliver');
-    const [fullnameTag,setFullnameTag] = useState('Oliver Fernadoz');
+    const [userTag,setUserTag] = useState('Hi! Olivia');
+    const [fullnameTag,setFullnameTag] = useState('Olivia Fernandez');
 
     const [isCollapsed3, setIsCollapsed3] = useState(true);
 
@@ -86,11 +99,11 @@ function My_Profile() {
 
     return ( 
         <>
-          {/* Header Navigation Bar */}
+            {/* Header Navigation Bar */}
             <header className='font-nunito'>
                 <img src={Logo} alt="Musical Bead" className='logo'/>
                 <nav ref={navRef}>
-                        <a href='/' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
+                        <a href='/Home' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
                         <a href='/Musician_Dashboard'className='font-nunito'  style={{fontSize:'24px'}}>Dashboard</a>
                         <a href='/My_Profile'  style={{fontSize:'24px'}} className='active font-nunito'>My Profile</a>
                         <a href='/Earnings'  style={{fontSize:'24px'}} className='font-nunito'>Earnings</a>
@@ -103,8 +116,8 @@ function My_Profile() {
                 <div className='btn-container'>
                     <BiMessageAltDots style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
                     <BsBell style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
-                    <img src={Singer} alt="User Image" className='singer_image' />
-                    <p className='user_tag'> {userTag} </p>
+                    <img src={Singer} alt="User Image" className='singer_image' onClick={handleToggleCollapse3}/>
+                    <p className='user_tag' onClick={handleToggleCollapse3}> {userTag} </p>
                     <div onClick={handleToggleCollapse3}>
                         <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={48} style={{marginTop:'8px'}}/> : <RiArrowDownSFill fontSize={48}/>} </span>
                         {isCollapsed3 ? null : 
@@ -128,20 +141,22 @@ function My_Profile() {
                 <div className='my_profile_container'>
                     <div className='my_profile_sub_container1'>
                        <div className="sub_1">
-                            <div className='img_container1'>
-                              <img src={Singer} alt="User Image" />
+                            <div className='img_container3'>
+                                <div>
+                                    <img src={Singer} alt="User Image" />
+                                </div>
                             </div>
                        </div>
                        <div className="sub_2">
-                            <input type="text" disabled={true} value={fullnameTag}  />
-                            <input type="text" disabled={isDisabled} value={title} onChange={(e) => setTitle(e.target.value)} />
+                            <input type="text" disabled={true} value={fullnameTag}  style={{fontSize:'24px',fontWeight:'700'}}/>
+                            <input type="text" disabled={isDisabled} value={title} onChange={(e) => setTitle(e.target.value)} style={{fontSize:'20px',fontWeight:'500'}}/>
                             <br/>
-                            <textarea type="text" disabled={isDisabled} value={bio} onChange={(e) => setBio(e.target.value)}  />
+                            <textarea type="text" disabled={isDisabled} value={bio} onChange={(e) => setBio(e.target.value)}  style={{fontSize:'16px',fontWeight:'400'}}/>
                             <div className="flex flex-row mt-8 gap-4">
-                                <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={Facebook} alt='Facebook' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
-                                <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={Instergram} alt='Instergram' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
-                                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={Twitter} alt='Twitter' className="w-10" style={{background:'white',borderRadius:'25px'}}/></a>
-                                <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={Tiktok} alt='Tiktok' className="w-10" style={{background:'white',borderRadius:'25px'}} /></a>
+                                <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={WFacebook} alt='Facebook' className="w-12" style={{background:'black',borderRadius:'15px'}}/></a>
+                                <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src={WInstergram} alt='Instergram' className="w-12" style={{background:'black',borderRadius:'15px'}}/></a>
+                                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={WTwitter} alt='Twitter' className="w-12" style={{background:'black',borderRadius:'15px'}}/></a>
+                                <a href="https://tiktok.com" target="_blank" rel="noreferrer"><img src={WTiktok} alt='Tiktok' className="w-12" style={{background:'black',borderRadius:'15px'}} /></a>
                             </div>
                        </div>
                        <div className="sub_3">
@@ -149,22 +164,20 @@ function My_Profile() {
                        </div>
                     </div>
 
-                    <div className='my_profile_sub_container2' style={{width:'90%',height:'260px',overflowY:'hidden'}}>
-                        <div className="slide-container" style={{width:'90%',height:'260px'}}>
+                    <div className='my_profile_sub_container2' style={{width:'100%',height:'200px',overflowY:'hidden'}}>
+                        <div className="slide-container" style={{width:'90%',height:'200px'}}>
                             <Slide>
                                 {slideImages.map((slideImage, index)=> (
                                     <div key={index} >
-                                        <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',height:'260px'}}>
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
-                                            <Album/>   
+                                        <div style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center',height:'200px'}}>
+                                            <img src={Image_Slide1} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide2} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide3} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide4} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide5} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide6} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide7} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
+                                            <img src={Image_Slide8} alt='Facebook' className="w-25" style={{margin:'5px'}}/>  
                                         </div>
                                     </div>
                                 ))} 
@@ -187,7 +200,7 @@ function My_Profile() {
                     </div>
 
                     <div className='my_profile_sub_container4' style={{borderBottomLeftRadius:'0px',borderBottomRightRadius:'0px',borderTopLeftRadius:'25px',borderTopRightRadius:'25px'}}>
-                        <pre className='headline_left'>Oliver's Albums</pre>
+                        <pre className='headline_left'>Olivia's Albums</pre>
                     </div>
                     <div className='album_wrap_container' style={{borderBottomLeftRadius:'25px',borderBottomRightRadius:'25px'}}>
                             <div className='album_sub_wrap3'>

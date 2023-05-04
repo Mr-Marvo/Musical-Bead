@@ -54,14 +54,14 @@ function Earnings() {
 
     return ( 
         <>
-             {/* Header Navigation Bar */}
-             <header className='font-nunito'>
+            {/* Header Navigation Bar */}
+            <header className='font-nunito'>
                 <img src={Logo} alt="Musical Bead" className='logo'/>
                 <nav ref={navRef}>
-                    <a href='/'>Home</a>
-                    <a href='/Musician_Dashboard'>Dashboard</a>
-                    <a href='/My_Profile'>My Profile</a>
-                    <a href='/Earnings' className='active'>Earnings</a>
+                        <a href='/Home' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
+                        <a href='/Musician_Dashboard'className='font-nunito'  style={{fontSize:'24px'}}>Dashboard</a>
+                        <a href='/My_Profile'  style={{fontSize:'24px'}} className='font-nunito'>My Profile</a>
+                        <a href='/Earnings'  style={{fontSize:'24px'}} className='active font-nunito'>Earnings</a>
                 </nav>
                 {/* Menu Toggle Button */}
                 <button className='nav-btn' onClick={showNavbar}>
@@ -69,12 +69,12 @@ function Earnings() {
                 </button>
                 {/* Right Side Button Container */}
                 <div className='btn-container'>
-                    <BiMessageAltDots style={{fontSize:46,padding:10}}/>
-                    <BsBell style={{fontSize:46,padding:10}}/>
-                    <img src={Singer} alt="User Image" className='singer_image' />
-                    <p className='user_tag'> {userTag} </p>
+                    <BiMessageAltDots style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
+                    <BsBell style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
+                    <img src={Singer} alt="User Image" className='singer_image' onClick={handleToggleCollapse3}/>
+                    <p className='user_tag' onClick={handleToggleCollapse3}> {userTag} </p>
                     <div onClick={handleToggleCollapse3}>
-                        <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>} </span>
+                        <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={48} style={{marginTop:'8px'}}/> : <RiArrowDownSFill fontSize={48}/>} </span>
                         {isCollapsed3 ? null : 
                         <div className='navbar_toggle'>
                             <ul>
@@ -140,7 +140,7 @@ function Earnings() {
                         <pre className='headline_left'>Order History</pre>
                         <pre>Last 3 Months</pre>
                     </div>
-                    <div className='tbl_container' style={{overflowX: 'auto'}}>
+                    <div className='tbl_container' style={{overflowX: 'auto',width:'100%'}}>
                         <table>
                             <thead>
                                 <tr>

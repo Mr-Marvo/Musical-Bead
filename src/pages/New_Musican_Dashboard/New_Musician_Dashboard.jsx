@@ -7,7 +7,7 @@ import '../../App.css';
 
 /* Images */
 import Logo from '../../assets/images/common/logo.png';
-import Singer from '../../assets/images/common/singer.png';
+import Singer from '../../assets/images/system/Ellipse_4.png';
 import Facebook from '../../assets/images/system/facebook.png';
 import Instergram from '../../assets/images/system/instagram.png';
 import Twitter from '../../assets/images/system/twitter.png';
@@ -65,7 +65,7 @@ function New_Musician_Dashboard() {
         <header className='font-nunito'>
             <img src={Logo} alt="Musical Bead" className='logo'/>
             <nav ref={navRef}>
-                    <a href='/' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
+                    <a href='/Home' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
                     <a href='/Musician_Dashboard'className='active font-nunito'  style={{fontSize:'24px'}}>Dashboard</a>
                     <a href='/My_Profile'  style={{fontSize:'24px'}} className='font-nunito'>My Profile</a>
                     <a href='/Earnings'  style={{fontSize:'24px'}} className='font-nunito'>Earnings</a>
@@ -78,8 +78,8 @@ function New_Musician_Dashboard() {
             <div className='btn-container'>
                 <BiMessageAltDots style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
                 <BsBell style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
-                <img src={Singer} alt="User Image" className='singer_image' />
-                <p className='user_tag'> {userTag} </p>
+                <img src={Singer} alt="User Image" className='singer_image' onClick={handleToggleCollapse3}/>
+                <p className='user_tag' onClick={handleToggleCollapse3}> {userTag} </p>
                 <div onClick={handleToggleCollapse3}>
                     <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={48} style={{marginTop:'8px'}}/> : <RiArrowDownSFill fontSize={48}/>} </span>
                     {isCollapsed3 ? null : 

@@ -57,10 +57,10 @@ function Musician_Dashboard() {
             <header className='font-nunito'>
                 <img src={Logo} alt="Musical Bead" className='logo'/>
                 <nav ref={navRef}>
-                    <a href='/'>Home</a>
-                    <a href='/Musician_Dashboard'className='active'>Dashboard</a>
-                    <a href='/My_Profile'>My Profile</a>
-                    <a href='/Earnings'>Earnings</a>
+                        <a href='/Home' style={{fontSize:'24px'}} className='font-nunito'>Home</a>
+                        <a href='/Musician_Dashboard'className='active font-nunito'  style={{fontSize:'24px'}}>Dashboard</a>
+                        <a href='/My_Profile'  style={{fontSize:'24px'}} className='font-nunito'>My Profile</a>
+                        <a href='/Earnings'  style={{fontSize:'24px'}} className='font-nunito'>Earnings</a>
                 </nav>
                 {/* Menu Toggle Button */}
                 <button className='nav-btn' onClick={showNavbar}>
@@ -68,12 +68,12 @@ function Musician_Dashboard() {
                 </button>
                 {/* Right Side Button Container */}
                 <div className='btn-container'>
-                    <BiMessageAltDots style={{fontSize:46,padding:10}}/>
-                    <BsBell style={{fontSize:46,padding:10}}/>
-                    <img src={Singer} alt="User Image" className='singer_image' />
-                    <p className='user_tag'> {userTag} </p>
+                    <BiMessageAltDots style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
+                    <BsBell style={{fontSize:46,padding:10,alignSelf:'center',justifySelf:'center'}}/>
+                    <img src={Singer} alt="User Image" className='singer_image' onClick={handleToggleCollapse3}/>
+                    <p className='user_tag' onClick={handleToggleCollapse3}> {userTag} </p>
                     <div onClick={handleToggleCollapse3}>
-                        <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={28}/> : <RiArrowDownSFill fontSize={28}/>} </span>
+                        <span>{isCollapsed3 ? <RiArrowUpSFill fontSize={48} style={{marginTop:'8px'}}/> : <RiArrowDownSFill fontSize={48}/>} </span>
                         {isCollapsed3 ? null : 
                         <div className='navbar_toggle'>
                             <ul>
@@ -116,22 +116,22 @@ function Musician_Dashboard() {
                                         </div>
                                         <label>Description</label>
                                         <textarea>Description ...</textarea>
-                                        <p>Add Songs <span>(0)</span></p>
-                                        <div style={{overflowX:'auto'}}>
-                                            <div className='song_container'> </div>
-                                            <div className='song_container'> </div>
-                                            <div className='song_container'> </div>
-                                            <div className='song_container'> </div>
-                                            
-                                        </div>
+                                      
                                     </form>
                                     <div style={{display:'flex',justifyContent:'center'}}>
                                         <button className='submit_btn'> Submit </button>
                                     </div>
                                 </div>
                             </div>
-                            <div></div>
-                            
+                            <p>Add Songs <span>(0)</span></p>
+                            <div>
+                                    <div className='song_container2'>+</div>
+                                    <div className='song_container2'>+</div>
+                                    <div className='song_container2'>+</div>
+                                    <div className='song_container2'>+</div>  
+                                    <div className='song_container2'>+</div>
+                                    <div className='song_container2'>+</div>    
+                            </div>   
                         </div>
                         <div  className='sub_container1_right'>
                             <pre className='headline'>Pending Albums</pre>
@@ -145,24 +145,26 @@ function Musician_Dashboard() {
                                     <Album2/>
                                 </div>
                             </div>
-                            
+                            <div style={{display:'flex',justifyContent:'center'}}>
+                                <button className='submit_btn'> Visit Profile </button>
+                            </div>
                            
                         </div>
                     </div>
 
                     <div className='musician_dashboard_sub_container2'>
                         <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-                            <img src={Singer} alt="User Image" className='singer_image' style={{width:'80px'}}/>
-                            <pre className='user_tag'> {fullnameTag} </pre>
+                            <img src={Singer} alt="User Image" className='singer_image' style={{width:'60px'}}/>
+                            <pre className='user_tag' style={{background:'transparent'}}> {fullnameTag} </pre>
                         </div>
                         <div>
-                            <pre>Profile Completeness:</pre>
+                            <aside className='headline font-nunito' style={{textAlign:'left'}}>Profile Completeness:</aside>
                             <div>
                                 <div></div>
                             </div>
                         </div>
                         <div style={{display:'flex',justifyContent:'center'}}>
-                            <button className='submit_btn'> Update Your Profile </button>
+                            <button className='submit_btn bar-btn'> Update Your Profile </button>
                         </div>
                     </div>
                    
