@@ -96,6 +96,15 @@ header .nav-btn {
     justify-self: center;
 }
 
+.singer_dashimage {
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-left: 40px;
+    background-color: #121212;
+    align-self: center;
+    justify-self: center;
+}
+
 .user_tag {
     font-size: 18px;
     padding: 10px;
@@ -483,12 +492,15 @@ header .nav-btn {
 }
 
 .img_container2 {
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
     border-radius: 60px;
     background-color: rgba(31, 31, 31, 1);
     align-self: center;
-    margin: 4rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     cursor: pointer;
 }
 
@@ -512,7 +524,7 @@ header .nav-btn {
 
 .data_container form textarea,
 .data_container form input {
-    background-color: rgba(31, 31, 31, 1);
+    background-color: #1F1F1F;
     padding: 10px;
     margin-top: 10px;
     width: 100%;
@@ -535,11 +547,6 @@ header .nav-btn {
     display: flex;
     flex-direction: column;
     width: 50%;
-}
-
-.data_container form textarea,
-.data_container form input:hover {
-    box-shadow: 10px 10px 5px rgba(24, 23, 23, .5);
 }
 
 .song_container {
@@ -747,9 +754,11 @@ header .nav-btn {
 .headline {
     text-align: center;
     margin-bottom: 1rem;
-    background: -webkit-linear-gradient(rgba(18, 228, 90, 1), rgba(0, 199, 226, 1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(60deg, #00C7E2, #12E45A);
+    background-clip: text;
+    color: transparent;
     font-size: 20px;
     font-weight: 500;
 }
@@ -780,12 +789,12 @@ header .nav-btn {
 }
 
 .submit_btn {
-    background: linear-gradient(#0cd928, #eda752, #2aafc1, #2aafc1);
-    padding: 10px;
+    background: linear-gradient(270deg, #00A7DC 0%, #12E45A 100%);
+    border-radius: 15px;
+    padding: 5px;
     padding-left: 60px;
     padding-right: 60px;
     margin: 20px;
-    border-radius: 50px;
     font-weight: 700;
     font-size: 20px;
 }
@@ -810,7 +819,7 @@ header .nav-btn {
     display: flex;
     flex-direction: row;
     padding: 1rem;
-    width: 80rem;
+    width: 100%;
     justify-content: center;
 
 }
@@ -818,11 +827,11 @@ header .nav-btn {
 .sub_container1_left {
     margin: 1rem;
     padding: 1rem;
-    border-radius: 50px;
-    background-color: rgba(0, 0, 0, 0.32);
     display: flex;
     flex-direction: column;
     width: 60%;
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 53px;
 }
 
 .sub_container1_left>div {
@@ -907,8 +916,10 @@ header .nav-btn {
     flex-direction: row;
     background-color: rgba(0, 0, 0, 0.32);
     padding: 1rem;
-    width: 80rem;
+    width: 100%;
     justify-content: center;
+    border-radius: 20px;
+    color: white;
 }
 
 .musician_dashboard_sub_container2>div:nth-child(1) {
@@ -941,6 +952,7 @@ header .nav-btn {
 }
 
 .musician_dashboard_sub_container2>div>div>div {
+    border-radius: 50px;
     width: 75%;
     height: 24px;
     background-image: linear-gradient(to right, #eda752, #eda752, #2aafc1, #2aafc1);
@@ -985,11 +997,11 @@ header .nav-btn {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-bottom: 2rem;
-    width: 100%;
+    width: 80rem;
     justify-content: center;
-    border: 1px solid black;
     margin-top: 0;
     margin-bottom: 0;
+    background-color: #000;
 }
 
 .album_sub_wrap {

@@ -37,3 +37,15 @@ export { default as WFacebook } from './images/system/facebook-white.png'
 export { default as WInstagram } from './images/system/instagram-white.png'
 export { default as WTiktok } from './images/system/tiktok-white.png'
 export { default as WTwitter } from './images/system/twitter-white.png'
+
+export { default as SampleSlider1 } from './images/system/sample-slider1.png'
+export { default as SampleSlider2 } from './images/system/sample-slider2.png'
+export { default as SampleSlider3 } from './images/system/sample-slider3.png'
+export { default as SampleSlider4 } from './images/system/sample-slider4.png'
+export { default as SampleSlider5 } from './images/system/sample-slider5.png'
+export { default as SampleSlider6 } from './images/system/sample-slider6.png'
+export { default as SampleSlider7 } from './images/system/sample-slider7.png'
+export { default as SampleSlider8 } from './images/system/sample-slider8.png'
+
+export { default as AddImageIcon } from './images/system/add-image-icon.png'
+

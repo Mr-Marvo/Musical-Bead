@@ -1,23 +1,22 @@
 import React from "react";
 import "../../App.css";
 
-/* Images */
-
-import Image_Slide1 from "../../assets/images/system/Rectangle 86.png";
-import Image_Slide2 from "../../assets/images/system/Rectangle 87.png";
-import Image_Slide3 from "../../assets/images/system/Rectangle 88.png";
-import Image_Slide4 from "../../assets/images/system/Rectangle 89.png";
-import Image_Slide5 from "../../assets/images/system/Rectangle 90.png";
-import Image_Slide6 from "../../assets/images/system/Rectangle 91.png";
-import Image_Slide7 from "../../assets/images/system/Rectangle 98.png";
-import Image_Slide8 from "../../assets/images/system/Rectangle 99.png";
-
 import Album2 from "../Common/Album2";
 
 /* Slider */
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { NewFooter, NewHeader } from "../../components/system";
+import {
+  SampleSlider1,
+  SampleSlider2,
+  SampleSlider3,
+  SampleSlider4,
+  SampleSlider5,
+  SampleSlider6,
+  SampleSlider7,
+  SampleSlider8,
+} from "../../assets";
 
 const slideImages = [
   {
@@ -56,7 +55,7 @@ function Home() {
               alignItems: "center",
             }}
           >
-            <aside className="headline">Trending Albums</aside>
+            <aside className="headline font-nunito">Trending Albums</aside>
           </div>
         </div>
         <div className="album_wrap_container">
@@ -83,7 +82,7 @@ function Home() {
               alignItems: "center",
             }}
           >
-            <aside className="headline">New Albums</aside>
+            <aside className="headline font-nunito">New Albums</aside>
           </div>
         </div>
         <div
@@ -131,49 +130,49 @@ function Home() {
                     }}
                   >
                     <img
-                      src={Image_Slide1}
+                      src={SampleSlider1}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide2}
+                      src={SampleSlider2}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide3}
+                      src={SampleSlider3}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide4}
+                      src={SampleSlider4}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide5}
+                      src={SampleSlider5}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide6}
+                      src={SampleSlider6}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide7}
+                      src={SampleSlider7}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide8}
+                      src={SampleSlider8}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}

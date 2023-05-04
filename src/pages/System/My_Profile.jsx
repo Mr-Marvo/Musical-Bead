@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
 
-import Image_Slide1 from "../../assets/images/system/Rectangle 86.png";
-import Image_Slide2 from "../../assets/images/system/Rectangle 87.png";
-import Image_Slide3 from "../../assets/images/system/Rectangle 88.png";
-import Image_Slide4 from "../../assets/images/system/Rectangle 89.png";
-import Image_Slide5 from "../../assets/images/system/Rectangle 90.png";
-import Image_Slide6 from "../../assets/images/system/Rectangle 91.png";
-import Image_Slide7 from "../../assets/images/system/Rectangle 98.png";
-import Image_Slide8 from "../../assets/images/system/Rectangle 99.png";
-
 /* Slider */
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
@@ -23,39 +14,47 @@ import {
   WInstagram,
   WTiktok,
   WTwitter,
+  SampleSlider1,
+  SampleSlider2,
+  SampleSlider3,
+  SampleSlider4,
+  SampleSlider5,
+  SampleSlider6,
+  SampleSlider7,
+  SampleSlider8
 } from "../../assets";
 
 const slideImages = [
   {
-    url: Image_Slide1,
+    url: SampleSlider1,
     caption: "Slide 1",
   },
   {
-    url: Image_Slide2,
+    url: SampleSlider2,
     caption: "Slide 2",
   },
   {
-    url: Image_Slide3,
+    url: SampleSlider3,
     caption: "Slide 3",
   },
   {
-    url: Image_Slide4,
+    url: SampleSlider4,
     caption: "Slide 4",
   },
   {
-    url: Image_Slide5,
+    url: SampleSlider5,
     caption: "Slide 5",
   },
   {
-    url: Image_Slide6,
+    url: SampleSlider6,
     caption: "Slide 6",
   },
   {
-    url: Image_Slide7,
+    url: SampleSlider7,
     caption: "Slide 7",
   },
   {
-    url: Image_Slide8,
+    url: SampleSlider8,
     caption: "Slide 8",
   },
 ];
@@ -80,8 +79,8 @@ function My_Profile() {
 
       {/* Body Content */}
       <main className="font-nunito text-white">
-        <div className="my_profile_container max-w-[1440px]">
-          <div className="my_profile_sub_container1">
+        <div className="my_profile_container">
+          <div className="my_profile_sub_container1 max-w-[1440px]">
             <div className="sub_1">
               <div className="img_container3">
                 <div>
@@ -158,49 +157,49 @@ function My_Profile() {
                     }}
                   >
                     <img
-                      src={Image_Slide1}
+                      src={SampleSlider1}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide2}
+                      src={SampleSlider2}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide3}
+                      src={SampleSlider3}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide4}
+                      src={SampleSlider4}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide5}
+                      src={SampleSlider5}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide6}
+                      src={SampleSlider6}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide7}
+                      src={SampleSlider7}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
                     />
                     <img
-                      src={Image_Slide8}
+                      src={SampleSlider8}
                       alt="Facebook"
                       className="w-25"
                       style={{ margin: "5px" }}
@@ -232,7 +231,7 @@ function My_Profile() {
           </div>
 
           <div
-            className="my_profile_sub_container4"
+            className="my_profile_sub_container4 max-w-[1440px]"
             style={{
               borderBottomLeftRadius: "0px",
               borderBottomRightRadius: "0px",
@@ -243,7 +242,7 @@ function My_Profile() {
             <pre className="headline_left">Olivia's Albums</pre>
           </div>
           <div
-            className="album_wrap_container"
+            className="album_wrap_container max-w-[1440px]"
             style={{
               borderBottomLeftRadius: "25px",
               borderBottomRightRadius: "25px",

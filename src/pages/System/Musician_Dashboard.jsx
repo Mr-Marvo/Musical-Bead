@@ -8,7 +8,7 @@ import "../../App.css";
 import Album from "../Common/Album";
 import Album2 from "../Common/Album2";
 import { NewFooter, NewHeader } from "../../components/system";
-import { SingerIcon } from "../../assets";
+import { AddImageIcon, SingerIcon } from "../../assets";
 
 function Musician_Dashboard() {
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
@@ -27,34 +27,34 @@ function Musician_Dashboard() {
         <div className="musician_dashboard_container">
           <div className="musician_dashboard_sub_container1">
             <div className="sub_container1_left">
-              <pre className="headline">Publish New Musical Bead Album+</pre>
+              <pre className="headline font-nunito">
+                Publish New Musical Bead Album+
+              </pre>
               <div>
-                <div className="img_container2"></div>
+                <div>
+                  <label className="text-[#555555] ml-28">Album Name</label>
+                  <div className="img_container2 flex justify-center items-center">
+                    <img src={AddImageIcon} alt="ico" />
+                  </div>
+                </div>
                 <div className="data_cotainer">
                   <form>
-                    <label>Album Name</label>
-                    <input
-                      type="text"
-                      placeholder="Album Name"
-                      className="album_name"
-                    ></input>
+                    <label className="text-[#555555]">Album Name</label>
+                    <input type="text" className="album_name"></input>
                     <div>
                       <div>
-                        <label>Category</label>
-                        <input type="text" placeholder="Category"></input>
+                        <label className="text-[#555555]">Category</label>
+                        <input type="text" className="text-white"></input>
                       </div>
 
                       <div>
-                        <label>Artist</label>
-                        <input type="text" placeholder="Artist"></input>
+                        <label className="text-[#555555]">Artist</label>
+                        <input type="text" className="text-white"></input>
                       </div>
                     </div>
-                    <label>Description</label>
-                    <textarea>Description ...</textarea>
+                    <label className="text-[#555555]">Description</label>
+                    <textarea className="text-white"></textarea>
                   </form>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="submit_btn"> Submit </button>
-                  </div>
                 </div>
               </div>
               <p>
@@ -80,9 +80,12 @@ function Musician_Dashboard() {
                   +
                 </div>
               </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button className="submit_btn">Submit</button>
+              </div>
             </div>
             <div className="sub_container1_right">
-              <pre className="headline">Pending Albums</pre>
+              <pre className="headline font-nunito">Pending Albums</pre>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div className="album_sub_wrap2">
                   <Album2 />
@@ -144,9 +147,8 @@ function Musician_Dashboard() {
             >
               <img
                 src={SingerIcon}
-                alt="User Image"
-                className="singer_image"
-                style={{ width: "60px" }}
+                alt="User"
+                className="singer_dashimage w-20 h-20"
               />
               <pre className="user_tag" style={{ background: "transparent" }}>
                 {" "}
@@ -187,11 +189,11 @@ function Musician_Dashboard() {
                 justifyContent: "center",
               }}
             >
-              <pre className="headline">My Orders</pre>
+              <pre className="headline font-nunito">My Orders</pre>
             </div>
 
             <div>
-              <pre className="headline_left">To Ship</pre>
+              <pre className="headline_left font-nunito">To Ship</pre>
             </div>
           </div>
           <div className="album_wrap_container">
@@ -208,7 +210,7 @@ function Musician_Dashboard() {
           </div>
           <div className="headline_wrap_container">
             <div>
-              <pre className="headline_left">Shipped Orders</pre>
+              <pre className="headline_left font-nunito">Shipped Orders</pre>
             </div>
           </div>
           <div className="album_wrap_container">
@@ -232,7 +234,7 @@ function Musician_Dashboard() {
             }}
           >
             <div>
-              <pre className="headline">Full Order History</pre>
+              <pre className="headline font-nunito">Full Order History</pre>
             </div>
           </div>
         </div>
