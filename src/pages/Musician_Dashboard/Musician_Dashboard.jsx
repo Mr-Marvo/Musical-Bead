@@ -51,6 +51,12 @@ function Musician_Dashboard() {
         setIsCollapsed3(!isCollapsed3);
     };
 
+    const [isPopup, setIsPopup] = useState(false);
+
+    const handleIspopup = () => {
+        setIsPopup(!isPopup);
+    };
+
     return ( 
         <>
             {/* Header Navigation Bar */}
@@ -125,12 +131,12 @@ function Musician_Dashboard() {
                             </div>
                             <p>Add Songs <span>(0)</span></p>
                             <div>
-                                    <div className='song_container2'>+</div>
-                                    <div className='song_container2'>+</div>
-                                    <div className='song_container2'>+</div>
-                                    <div className='song_container2'>+</div>  
-                                    <div className='song_container2'>+</div>
-                                    <div className='song_container2'>+</div>    
+                                    <div className='song_container2' onClick={handleIspopup}>+</div>
+                                    <div className='song_container2' onClick={handleIspopup}>+</div>
+                                    <div className='song_container2' onClick={handleIspopup}>+</div>
+                                    <div className='song_container2' onClick={handleIspopup}>+</div>  
+                                    <div className='song_container2' onClick={handleIspopup}>+</div>
+                                    <div className='song_container2' onClick={handleIspopup}>+</div>    
                             </div>   
                         </div>
                         <div  className='sub_container1_right'>
@@ -150,6 +156,30 @@ function Musician_Dashboard() {
                             </div>
                            
                         </div>
+                        {isPopup ? 
+                                 <div className="popup_container">
+                                    <div className="popup_wrap">
+                                        <div className="popup">
+                                            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                                                <p className='pop_addsong font-nunito'>Add song</p>
+                                                <span onClick={handleIspopup} style={{fontSize:'18px',fontWeight:'bold'}}>-</span>
+                                            </div>
+                                           
+                                            <input type='text' placeholder='Song Name'></input>
+                                            <div className='upload_container'>
+                                                <div className="upload_wrap"></div>
+                                                <div className="upload_wrap"></div>
+                                                <div className="upload_wrap"></div>
+                                            </div>
+                                            <div className='upload_container2'>
+                                                <div className="up_song"></div>
+                                                <button className='add_btn'>Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                : null
+                        }
                     </div>
 
                     <div className='musician_dashboard_sub_container2'>

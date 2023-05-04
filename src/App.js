@@ -20,7 +20,6 @@ function App() {
         <Route exact path="/My_Profile" element={<My_Profile />} />
         <Route path="/Earnings" element={<Earnings/>} />
         <Route path="*" element={<NotFound />} />
-       
       </Routes>
     </BrowserRouter>
   );
