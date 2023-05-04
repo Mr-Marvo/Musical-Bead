@@ -1,12 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
     box-sizing: border-box;
 }
 
 :root {
-    --mainColor : #121212;
+    --mainColor: #121212;
     --secondaryColor: #2AAEC0;
     --textColor: #eee;
 
@@ -20,7 +19,7 @@ body {
 
 main {
     padding: 4rem 2rem;
-    background-color: var(--mainColor);
+    background-color: #161616;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +36,7 @@ header {
     justify-content: space-between;
     height: 80px;
     color: var(--textColor);
-    background-color: #000;
+    background-color: #121212;
 }
 
 nav {
@@ -81,24 +80,37 @@ header .nav-btn {
 
 .logo {
     width: 200px;
-    background: black;
+    background: #121212;
     justify-self: flex-start;
     margin-left: 4rem;
 }
 
 .singer_image {
-    width: 30px;
+    width: 35px;
+    height: 35px;
     border: 2px solid white;
     border-radius: 50%;
     margin-left: 40px;
-} 
+    background-color: #121212;
+    align-self: center;
+    justify-self: center;
+}
+
+.singer_dashimage {
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-left: 40px;
+    background-color: #121212;
+    align-self: center;
+    justify-self: center;
+}
 
 .user_tag {
-    font-size: 14px;
+    font-size: 18px;
     padding: 10px;
-    background-color: black;
     display: flex;
-    margin-right: 1rem;
+    align-self: center;
+    justify-self: center;
 }
 
 .navbar_toggle {
@@ -109,7 +121,7 @@ header .nav-btn {
     width: 140px;
     padding: 5px;
     border-radius: 10px;
-    box-shadow: 0 3px 4px 0 rgba(238, 238, 238, 0.24), 0 4px 17px 0 rgba(255, 255, 255, 0.19);
+    box-shadow: 0 1px 1px 0 rgba(238, 238, 238, 0.24), 0 4px 17px 0 rgba(255, 255, 255, 0.19);
 }
 
 .navbar_toggle ul li {
@@ -132,7 +144,7 @@ header .nav-btn {
     margin-right: 3rem;
 }
 
-@media only screen and (max-width: 1240px){
+@media only screen and (max-width: 1340px) {
     header .nav-btn {
         visibility: visible;
         opacity: 1;
@@ -190,6 +202,7 @@ header .nav-btn {
 
 .footer_container p {
     padding-bottom: 20px;
+    font-size: 20px;
 }
 
 .footer_content1 {
@@ -198,6 +211,7 @@ header .nav-btn {
 
 .footer_content1 pre {
     color: #2AAEC0;
+    font-size: 20px;
 }
 
 .footer_content2 {
@@ -208,40 +222,50 @@ header .nav-btn {
     padding: 8px;
 }
 
+.footer_content2 ul li pre {
+    font-size: 20px;
+}
+
 .footer_content3 {
-    width: 35%;  
+    width: 35%;
+}
+
+.footer_content3 p {
+    font-size: 20px;
 }
 
 .footer_content3 pre {
     color: #2AAEC0;
+    font-size: 20px;
 }
 
 .footer_content4 {
-    width: 35%;  
+    width: 35%;
 }
 
 .footer_content4 pre {
     color: #2AAEC0;
+    font-size: 20px;
 }
 
 .copyright_container {
     display: flex;
     flex-direction: row;
     padding: 10px;
-    
+
     align-items: center;
     justify-content: space-between;
 }
 
 .store_wrap {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
 }
 
 .store_container {
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 5px;
     border: 2px solid #2AAEC0;
     margin: 5px;
     width: 150px;
@@ -249,24 +273,26 @@ header .nav-btn {
     justify-content: center;
     border-radius: 50px;
     color: #2AAEC0;
+    cursor: pointer;
 }
 
 .store_container span {
     margin-left: 5px;
+    font-size: 20px;
 }
 
-.store_container span:hover {
+.store_container:hover {
     font-weight: 600;
-    color: #fff;
+    border: 2px solid #FFF;
 }
 
-@media only screen and (max-width: 1240px){
+@media only screen and (max-width: 1240px) {
     .footer_container {
         display: flex;
         flex-direction: column;
         padding: 4rem;
     }
-    
+
     .footer_content1,
     .footer_content2,
     .footer_content3,
@@ -278,13 +304,106 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 540px){
+@media only screen and (max-width: 540px) {
     .footer_logo {
         display: none;
     }
 }
 
+/* ======================================================================================================================================= */
+/* Add Song Pop Up*/
+.popup_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgb(0, 0, 0, .9);
+}
 
+.popup_wrap {
+    width: 705px;
+    height: 500px;
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    width: 700px;
+    height: 495px;
+    background: rgba(18, 18, 18, 1);
+    border-radius: 25px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.pop_addsong {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.popup>input {
+    width: 97%;
+    background-color: rgba(41, 41, 41, 1);
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 10%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.upload_container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40%;
+}
+
+.upload_container2 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30%;
+}
+
+.upload_wrap {
+    width: 35%;
+    height: 80%;
+    background-color: rgba(41, 41, 41, 1);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.up_song {
+    width: 60%;
+    height: 80%;
+    background-color: rgba(41, 41, 41, 1);
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.add_btn {
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
+    padding: 10px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 24px;
+    width: 38%;
+}
 
 /* ======================================================================================================================================= */
 /* New Musican Dashboard */
@@ -292,24 +411,25 @@ header .nav-btn {
 .greeting {
     text-align: center;
     margin-bottom: 1rem;
-    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 36px;
 }
 
 .step_container {
     width: 80rem;
-    background-color: #000;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: 25px;
     margin-top: 20px;
     display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .step {
     display: flex;
     flex-direction: row;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.85);
     width: 80rem;
     padding: 10px;
     padding-left: 50px;
@@ -320,30 +440,43 @@ header .nav-btn {
 .step_cover {
     width: 7%;
     align-items: center;
-    padding: 10px;
-    border-radius: 20px;
+    border-radius: 25px;
     color: var(--textColor);
-    border: 1px solid #2aafc1;
-    border-image: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66)) 1;
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    width: 170px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
 }
 
-.step_healine{
+.box {
+    width: 99%;
+    padding: 9px;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.step_healine {
     width: 90%;
     padding: 10px;
-   
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    width: 80%;
 }
 
-.step_toggle{
-   align-self: flex-end;
-   font-size: 30px;
-   background: -webkit-linear-gradient( #0cd928, #eda752, #2aafc1, #2aafc1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.step_toggle {
+    float: right;
+    font-size: 36px;
+    color: #12E45A;
     cursor: pointer;
 }
 
 .step_content {
-    background-color: rgba(24, 23, 23, 1);
+    background-color: rgba(0, 0, 0, 0, .32);
     display: flex;
     flex-direction: row;
 }
@@ -352,19 +485,22 @@ header .nav-btn {
     width: 200px;
     height: 200px;
     border-radius: 100px;
-    background-color: var(--mainColor);
+    background-color: rgba(31, 31, 31, 1);
     align-self: center;
     margin: 4rem;
     cursor: pointer;
 }
 
 .img_container2 {
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
     border-radius: 60px;
-    background-color: var(--mainColor);
+    background-color: rgba(31, 31, 31, 1);
     align-self: center;
-    margin: 4rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     cursor: pointer;
 }
 
@@ -372,6 +508,7 @@ header .nav-btn {
     display: flex;
     flex-direction: column;
     width: 70%;
+    margin-top: 50px;
 }
 
 .data_container form {
@@ -379,16 +516,22 @@ header .nav-btn {
     flex-direction: column;
 }
 
+.data_container label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
 .data_container form textarea,
-.data_container form input{
-   background-color: #121212;
-   padding: 10px;
-   margin-top: 10px;
-   width: 100%;
-   border-radius: 10px;
-   border: none;
-   outline: none;
-   cursor: pointer;
+.data_container form input {
+    background-color: #1F1F1F;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 
@@ -406,25 +549,27 @@ header .nav-btn {
     width: 50%;
 }
 
-.data_container form textarea,
-.data_container form input:hover {
-    box-shadow: 10px 10px 5px rgba(24, 23, 23, .5);
-}
-
 .song_container {
     width: 10px;
     height: 80px;
     border-radius: 10px;
-    background-color: var(--mainColor);
+    background-color: rgba(31, 31, 31, 1);
     align-self: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    color: #000;
+    font-weight: 800;
 }
 
 .review_submit_btn {
-    background: linear-gradient( #0cd928, #eda752, #2aafc1, #2aafc1);
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
     padding: 15px;
     margin: 20px;
     border-radius: 50px;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 24px;
+    width: 380px;
 }
 
 .review_submit_btn:hover {
@@ -432,7 +577,7 @@ header .nav-btn {
     box-shadow: 0 6px 8px 0 rgba(238, 238, 238, 0.24), 0 8px 25px 0 rgba(255, 255, 255, 0.19);
 }
 
-@media only screen and (max-width: 1240px){
+@media only screen and (max-width: 1240px) {
     .step_container {
         width: 60rem;
     }
@@ -451,7 +596,7 @@ header .nav-btn {
         padding: 1rem;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 50rem;
     }
@@ -466,17 +611,17 @@ header .nav-btn {
     }
 
     .data_container form>div>div>input {
-       width: 24rem;
+        width: 24rem;
     }
-  
+
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1000px) {
     .step_container {
         width: 50rem;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 46rem;
     }
@@ -486,12 +631,12 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 813px){
+@media only screen and (max-width: 813px) {
     .step_container {
         width: 40rem;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 35rem;
     }
@@ -499,15 +644,15 @@ header .nav-btn {
     .data_container form>div>div>input {
         width: 16.5rem;
     }
-    
+
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
     .step_container {
         width: 30rem;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 28rem;
     }
@@ -517,12 +662,12 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 480px) {
     .step_container {
         width: 26rem;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 22rem;
     }
@@ -532,7 +677,7 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 370px){
+@media only screen and (max-width: 370px) {
     .step_container {
         width: 20rem;
     }
@@ -554,7 +699,7 @@ header .nav-btn {
         height: 40px;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 18rem;
     }
@@ -568,7 +713,7 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 281px){
+@media only screen and (max-width: 281px) {
     .step_container {
         width: 16rem;
     }
@@ -585,7 +730,7 @@ header .nav-btn {
         font-size: 10px;
     }
 
-    .data_container form textarea, 
+    .data_container form textarea,
     .data_container form>input {
         width: 12rem;
         font-size: 10px;
@@ -609,17 +754,26 @@ header .nav-btn {
 .headline {
     text-align: center;
     margin-bottom: 1rem;
-    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(60deg, #00C7E2, #12E45A);
+    background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .headline_left {
+    width: fit-content;
     text-align: left;
-    margin-bottom: 1rem;
-    background: -webkit-linear-gradient(60deg, #eda752, #eda752, #2aafc1, #2aafc1);
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 3rem;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(60deg, #08d851, #0caec4);
+    background-clip: text;
+    color: transparent;
 }
 
 .special_container {
@@ -635,13 +789,14 @@ header .nav-btn {
 }
 
 .submit_btn {
-    background: linear-gradient( #0cd928, #eda752, #2aafc1, #2aafc1);
-    padding: 15px;
-    padding-left: 40px;
-    padding-right: 40px;
+    background: linear-gradient(270deg, #00A7DC 0%, #12E45A 100%);
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 60px;
+    padding-right: 60px;
     margin: 20px;
-    border-radius: 50px;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .submit_btn:hover {
@@ -664,22 +819,39 @@ header .nav-btn {
     display: flex;
     flex-direction: row;
     padding: 1rem;
-    width: 80rem;
+    width: 100%;
     justify-content: center;
+
 }
 
 .sub_container1_left {
     margin: 1rem;
     padding: 1rem;
-    border-radius: 50px;
-    background-color: #000;
     display: flex;
     flex-direction: column;
+    width: 60%;
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 53px;
 }
 
 .sub_container1_left>div {
     display: flex;
     flex-direction: row;
+    width: 100%;
+}
+
+.song_container2 {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(31, 31, 31, 1);
+    margin: 10px;
+    border-radius: 20px;
+    color: #000;
+    font-weight: 700;
+    font-size: 48px;
 }
 
 .sub_container1_left>div form {
@@ -692,15 +864,15 @@ header .nav-btn {
 }
 
 .sub_container1_left>div form textarea,
-.sub_container1_left>div form input{
-   background-color: #121212;
-   padding: 10px;
-   margin-top: 10px;
-   width: 100%;
-   border-radius: 10px;
-   border: none;
-   outline: none;
-   cursor: pointer;
+.sub_container1_left>div form input {
+    background-color: #121212;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .sub_container1_left>div form>div {
@@ -726,15 +898,15 @@ header .nav-btn {
     margin: 1rem;
     padding: 1rem;
     border-radius: 50px;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.32);
 }
 
-.sub_container1_right>div> div {
+.sub_container1_right>div>div {
     display: grid;
     grid-template-columns: auto auto auto;
     align-items: center;
     justify-content: center;
-    gap:10px;
+    gap: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -742,18 +914,21 @@ header .nav-btn {
 .musician_dashboard_sub_container2 {
     display: flex;
     flex-direction: row;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.32);
     padding: 1rem;
-    width: 80rem;
+    width: 100%;
     justify-content: center;
+    border-radius: 20px;
+    color: white;
 }
 
 .musician_dashboard_sub_container2>div:nth-child(1) {
-    width: 30%;
+    width: 40%;
+    text-align: left;
 }
 
 .musician_dashboard_sub_container2>div:nth-child(2) {
-    width: 40%;
+    width: 30%;
     text-align: left;
 }
 
@@ -777,6 +952,7 @@ header .nav-btn {
 }
 
 .musician_dashboard_sub_container2>div>div>div {
+    border-radius: 50px;
     width: 75%;
     height: 24px;
     background-image: linear-gradient(to right, #eda752, #eda752, #2aafc1, #2aafc1);
@@ -793,7 +969,11 @@ header .nav-btn {
     border: 1px solid black;
     margin-top: 0;
     margin-bottom: 0;
-    
+
+}
+
+.my_profile_sub_container4 {
+    width: 100%
 }
 
 .headline_wrap_container {
@@ -813,71 +993,75 @@ header .nav-btn {
 .album_wrap_container {
     display: flex;
     flex-direction: column;
-    background-color: #000;
-    margin: 2rem;
-    padding: 4rem;
-    padding-top: 1rem;
+    margin: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
     width: 80rem;
     justify-content: center;
-    border: 1px solid black;
     margin-top: 0;
     margin-bottom: 0;
+    background-color: #000;
 }
 
-.album_sub_wrap{
-    display:grid;
-    grid-template-columns:auto auto auto auto;
-    gap:10;
+.album_sub_wrap {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10;
 }
 
 .album_sub_wrap2 {
-    display:grid;
-    grid-template-columns:auto auto auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 
 
 .album_sub_wrap3 {
-    display:grid;
-    grid-template-columns:auto auto auto auto auto auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
 }
 
-.musician_dashboard_sub_container3>div:nth-child(2)>div div{
-    display:grid;
+.musician_dashboard_sub_container3>div:nth-child(2)>div div {
+    display: grid;
     grid-template-columns: auto auto auto auto;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-bottom:10px;
-    margin-top:10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.musician_dashboard_sub_container3>div:nth-child(3)>div div{
-    display:grid;
+.musician_dashboard_sub_container3>div:nth-child(3)>div div {
+    display: grid;
     grid-template-columns: auto auto auto auto;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-bottom:10px;
-    margin-top:10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-@media only screen and (max-width: 1279px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 1279px) {
+    .musician_dashboard_sub_container1 {
         width: 70rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 70rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
         width: 70rem;
     }
 
-    .sub_container1_right>div> div {
+    .sub_container1_right>div>div {
         grid-template-columns: auto auto;
     }
 
+    .my_profile_sub_container4 {
+        width: 70rem;
+    }
+
     .headline_wrap_container {
         width: 70rem;
     }
@@ -889,27 +1073,45 @@ header .nav-btn {
     .album_sub_wrap {
         grid-template-columns: auto auto auto;
     }
+
+    .album_sub_wrap3 {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+    }
+
 }
 
-@media only screen and (max-width: 1160px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 1160px) {
+    .musician_dashboard_sub_container1 {
         width: 60rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 60rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container2>div>div {
+        width: 250px;
+    }
+
+    .musician_dashboard_sub_container3 {
         width: 60rem;
     }
 
-    .musician_dashboard_sub_container3>div:nth-child(2)>div div{
+    .musician_dashboard_sub_container4 {
+        width: 60rem;
+    }
+
+    .musician_dashboard_sub_container3>div:nth-child(2)>div div {
         grid-template-columns: auto auto auto;
     }
 
-    .musician_dashboard_sub_container3>div:nth-child(3)>div div{
+    .musician_dashboard_sub_container3>div:nth-child(3)>div div {
         grid-template-columns: auto auto auto;
+    }
+
+    .my_profile_sub_container4 {
+        width: 60rem;
     }
 
     .headline_wrap_container {
@@ -925,25 +1127,25 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 980px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 980px) {
+    .musician_dashboard_sub_container1 {
         flex-direction: column;
         width: 50rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 50rem;
     }
 
-    .musician_dashboard_sub_container2>div:nth-child(1){
+    .musician_dashboard_sub_container2>div:nth-child(1) {
         width: 100%;
         margin: 2rem;
     }
 
-    .musician_dashboard_sub_container2>div:nth-child(2){
+    .musician_dashboard_sub_container2>div:nth-child(2) {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -952,21 +1154,32 @@ header .nav-btn {
         margin: 2rem;
     }
 
-    .musician_dashboard_sub_container2>div:nth-child(3){
+    .musician_dashboard_sub_container2>div:nth-child(3) {
         width: 100%;
         margin: 2rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
         width: 50rem;
     }
 
-    .musician_dashboard_sub_container3>div:nth-child(2)>div div{
+    .musician_dashboard_sub_container3>div:nth-child(2)>div div {
         grid-template-columns: auto auto;
     }
 
-    .musician_dashboard_sub_container3>div:nth-child(3)>div div{
+    .musician_dashboard_sub_container3>div:nth-child(3)>div div {
         grid-template-columns: auto auto;
+    }
+
+    .sub_container1_left {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .my_profile_sub_container4 {
+        width: 50rem;
     }
 
     .headline_wrap_container {
@@ -978,20 +1191,30 @@ header .nav-btn {
     }
 
     .album_sub_wrap {
-        grid-template-columns: auto auto ;
+        grid-template-columns: auto auto;
     }
+
+    .album_sub_wrap3 {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
 }
 
-@media only screen and (max-width: 810px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 810px) {
+    .musician_dashboard_sub_container1 {
         width: 40rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 40rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
+        width: 40rem;
+    }
+
+    .my_profile_sub_container4 {
         width: 40rem;
     }
 
@@ -1004,24 +1227,30 @@ header .nav-btn {
     }
 
     .album_sub_wrap {
-        grid-template-columns: auto auto ;
+        grid-template-columns: auto auto;
     }
 }
 
-@media only screen and (max-width: 660px){
+@media only screen and (max-width: 660px) {
     .sub_container1_left>div {
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    .musician_dashboard_sub_container1{
+    .musician_dashboard_sub_container1 {
         width: 35rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 35rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
+        width: 35rem;
+    }
+
+    .my_profile_sub_container4 {
         width: 35rem;
     }
 
@@ -1034,20 +1263,29 @@ header .nav-btn {
     }
 
     .album_sub_wrap {
-        grid-template-columns: auto auto ;
+        grid-template-columns: auto auto;
+    }
+
+    .album_sub_wrap3 {
+        display: grid;
+        grid-template-columns: auto auto auto;
     }
 }
 
-@media only screen and (max-width: 580px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 580px) {
+    .musician_dashboard_sub_container1 {
         width: 30rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 30rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
+        width: 30rem;
+    }
+
+    .my_profile_sub_container4 {
         width: 30rem;
     }
 
@@ -1067,16 +1305,20 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 480px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 480px) {
+    .musician_dashboard_sub_container1 {
         width: 25rem;
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 25rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
+        width: 25rem;
+    }
+
+    .my_profile_sub_container4 {
         width: 25rem;
     }
 
@@ -1088,22 +1330,26 @@ header .nav-btn {
         width: 25rem;
     }
 
+    .album_sub_wrap3 {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
 }
 
-@media only screen and (max-width: 400px){
-    .musician_dashboard_sub_container1{
+@media only screen and (max-width: 400px) {
+    .musician_dashboard_sub_container1 {
         width: 23rem;
         margin: .1rem;
         padding: .5rem;
-        
+
     }
 
-    .musician_dashboard_sub_container2{
+    .musician_dashboard_sub_container2 {
         width: 24rem;
         margin: .1rem;
     }
 
-    .musician_dashboard_sub_container3{
+    .musician_dashboard_sub_container3 {
         width: 24rem;
         margin: .1rem;
     }
@@ -1111,15 +1357,77 @@ header .nav-btn {
     .musician_dashboard_sub_container2>div>div {
         width: 260px;
     }
+
+    .headline_wrap_container {
+        width: 20rem;
+    }
+
+    .my_profile_sub_container4 {
+        width: 20rem;
+    }
+
+    .album_wrap_container {
+        width: 20rem;
+    }
+
+    .album_sub_wrap3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+
+    .my_profile_sub_container4 {
+        width: 15rem;
+    }
+
+    .headline_wrap_container {
+        width: 15rem;
+    }
+
+
+    .album_wrap_container {
+        width: 15rem;
+    }
 }
 
 
 /* ======================================================================================================================================= */
 /* My Profile Dashboard */
+.img_container3 {
+    background: -webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1));
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_container3>div {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_container3>img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #000;
+}
 
 .special_container3 {
-    width: 200px ;
-    height: 120px ;
+    width: 200px;
+    height: 120px;
     background-color: #2AAEC0;
     color: #000;
     border-radius: 25px;
@@ -1127,8 +1435,8 @@ header .nav-btn {
 }
 
 .special_container4 {
-    width: 160px ;
-    height: 80px ;
+    width: 160px;
+    height: 80px;
     background-color: #2AAEC0;
     color: #000;
     border-radius: 25px;
@@ -1148,31 +1456,31 @@ header .nav-btn {
     display: flex;
     flex-direction: row;
     padding: 1rem;
-    width: 80rem;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: #000;
-    margin: 1rem;
-    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 38px;
 }
 
 .sub_1 {
-    width: 25%;
-   
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sub_2 {
-    width: 45%;
+    width: 50%;
     padding-left: 1rem;
     padding-right: 1rem;
-   
+
 }
 
 .sub_2 textarea,
 .sub_2 input {
-    background-color: #000;
-    padding: 10px;
-    margin-top: 10px;
+    background-color: transparent;
+    padding: 5px;
     width: 100%;
     border-radius: 10px;
     border: none;
@@ -1180,32 +1488,26 @@ header .nav-btn {
     cursor: pointer;
 }
 
-.sub_2 textarea{
-    height: 160px;
+.sub_2 textarea {
+    height: 100px;
 }
 
-.sub_2 textarea:hover{
+.sub_2 textarea:hover {
     background-color: #121212;
 }
 
-.sub_2 input:hover{
+.sub_2 input:hover {
     background-color: #121212;
 }
 
 .sub_3 {
     width: 30%;
-    height: 15rem;
-    box-shadow: 0 4px 8px 0 rgba(245, 245, 245, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 25px;
 }
 
 .my_profile_sub_container2 {
     display: flex;
     flex-direction: row;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.32);
     padding: 1rem;
     width: 80rem;
     height: 170px;
@@ -1227,8 +1529,10 @@ header .nav-btn {
     width: 200px;
     padding: 10px;
     background-color: #000;
-    font-weight: 100;
+    font-weight: 400;
     border-radius: 15px;
+    font-size: 22px;
+    color: rgba(61, 61, 61, 1);
 }
 
 .edit_profile_btn:hover {
@@ -1240,9 +1544,10 @@ header .nav-btn {
 .save_profile_btn {
     width: 200px;
     padding: 10px;
-    background-color: #059f3b;
-    font-weight: 100;
+    background-color: #12E45A;
+    font-weight: 400;
     border-radius: 15px;
+    font-size: 22px;
 }
 
 .save_profile_btn:hover {
@@ -1252,24 +1557,22 @@ header .nav-btn {
 
 .my_profile_sub_container4 {
     padding: 1rem;
-    width: 80rem;
     display: flex;
     flex-direction: column;
-    background-color: #000;
     border-radius: 50px;
 }
 
 .sub_container4_grid_container {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-bottom:10px;
-    margin-top:10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-@media only screen and (max-width: 1281px){
+@media only screen and (max-width: 1281px) {
     .my_profile_sub_container1 {
         width: 70rem;
     }
@@ -1282,12 +1585,9 @@ header .nav-btn {
         width: 70rem;
     }
 
-    .my_profile_sub_container4 {
-        width: 70rem;
-    }
 }
 
-@media only screen and (max-width: 1181px){
+@media only screen and (max-width: 1181px) {
     .my_profile_sub_container1 {
         width: 60rem;
         flex-direction: column;
@@ -1295,20 +1595,20 @@ header .nav-btn {
         justify-content: center;
     }
 
-    .sub_1{
+    .sub_1 {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .sub_2{
+    .sub_2 {
         width: 100%;
-       padding:5rem;
+        padding: 5rem;
     }
 
-    .sub_3{
-       
+    .sub_3 {
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1322,16 +1622,14 @@ header .nav-btn {
         width: 60rem;
     }
 
-    .my_profile_sub_container4 {
-        width: 60rem;
-    }
+
 
     .sub_container4_grid_container {
         grid-template-columns: auto auto auto auto auto;
     }
 }
 
-@media only screen and (max-width: 1046px){
+@media only screen and (max-width: 1046px) {
     .my_profile_sub_container1 {
         width: 50rem;
     }
@@ -1344,16 +1642,13 @@ header .nav-btn {
         width: 50rem;
     }
 
-    .my_profile_sub_container4 {
-        width: 50rem;
-    }
 
     .sub_container4_grid_container {
         grid-template-columns: auto auto auto auto;
     }
 }
 
-@media only screen and (max-width: 912px){
+@media only screen and (max-width: 912px) {
     .my_profile_sub_container1 {
         width: 40rem;
     }
@@ -1366,16 +1661,14 @@ header .nav-btn {
         width: 40rem;
     }
 
-    .my_profile_sub_container4 {
-        width: 40rem;
-    }
+
 
     .sub_container4_grid_container {
-        grid-template-columns: auto auto auto ;
+        grid-template-columns: auto auto auto;
     }
 }
 
-@media only screen and (max-width: 724px){
+@media only screen and (max-width: 724px) {
     .my_profile_sub_container1 {
         width: 30rem;
     }
@@ -1388,16 +1681,14 @@ header .nav-btn {
         width: 30rem;
     }
 
-    .my_profile_sub_container4 {
-        width: 30rem;
-    }
+
 
     .sub_container4_grid_container {
-        grid-template-columns: auto auto  ;
+        grid-template-columns: auto auto;
     }
 }
 
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 550px) {
     .my_profile_sub_container1 {
         width: 25rem;
     }
@@ -1410,19 +1701,18 @@ header .nav-btn {
         width: 25rem;
     }
 
-    .my_profile_sub_container4 {
-        width: 25rem;
-    }
+
 }
 
-@media only screen and (max-width: 550px){
-    main{
+@media only screen and (max-width: 550px) {
+    main {
         padding: 1rem;
     }
 
-    .my_profile_sub_container{
+    .my_profile_sub_container {
         padding: 10px;
     }
+
     .my_profile_sub_container1 {
         width: 23rem;
         margin: 10px;
@@ -1438,10 +1728,6 @@ header .nav-btn {
         margin: 10px;
     }
 
-    .my_profile_sub_container4 {
-        width: 23rem;
-        margin: 10px;
-    }
 }
 
 
@@ -1452,7 +1738,6 @@ header .nav-btn {
     width: 160px;
     padding: 10px;
     background-color: #121212;
-    border: 1px solid #2AAEC0;
     border-radius: 15px;
 }
 
@@ -1474,16 +1759,17 @@ header .nav-btn {
     border-radius: 50px;
 }
 
-.earning_container1_sub1{
-    width: 80%;
+.earning_container1_sub1 {
+    width: 90%;
 }
 
-.earning_container1_sub1>pre{
+.earning_container1_sub1>pre {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    font-size: 18px;
+    font-size: 32px;
     font-weight: 600;
+    font-family: 'Roboto', sans-serif;
 }
 
 .earning_container1_sub2 {
@@ -1500,7 +1786,7 @@ header .nav-btn {
     grid-template-columns: auto auto auto;
     padding: 1rem;
     margin: 1rem;
-} 
+}
 
 .sub2_sub1>div {
     width: 200px;
@@ -1511,14 +1797,17 @@ header .nav-btn {
     margin-bottom: 40px;
 }
 
-.sub2_sub1>div>h1 {
+.sub2_sub1>div h1 {
     color: #2AAEC0;
-    font-size: 28px;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
 }
 
 .sub2_sub1>div>span {
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .sub2_sub2 {
@@ -1529,20 +1818,29 @@ header .nav-btn {
     align-items: center;
     padding: 1rem;
     margin: 1rem;
-} 
+}
 
 .sub2_sub2>h1 {
-    color: #06803b;
-    font-size: 28px;
+    color: rgba(18, 228, 90, 1);
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.sub2_sub2>span {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .sub2_sub2 .withdraw_btn {
     width: 200px;
     padding: 10px;
-    background-color: #06803b;
-    font-weight: 500;
+    background-color: #12E45A;
+    font-weight: 700;
     border-radius: 15px;
     margin: 1rem;
+    font-size: 24px;
 }
 
 .sub2_sub2 .withdraw_btn:hover {
@@ -1559,7 +1857,7 @@ header .nav-btn {
     justify-content: center;
     background-color: #000;
     margin: 1rem;
-    border-radius: 50px; 
+    border-radius: 50px;
 }
 
 .earning_container2>div:nth-child(1) {
@@ -1567,7 +1865,7 @@ header .nav-btn {
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    
+
 }
 
 .earning_container2 table {
@@ -1587,45 +1885,45 @@ header .nav-btn {
     border-bottom: 1px solid white;
 }
 
-.earning_container2 table th{
+.earning_container2 table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     color: white;
 }
 
-@media only screen and (max-width: 1300px){
-    .earning_container1{
+@media only screen and (max-width: 1300px) {
+    .earning_container1 {
         width: 70rem;
     }
 
-    .earning_container2{
+    .earning_container2 {
         width: 70rem;
     }
 }
 
-@media only screen and (max-width: 1160px){
-    .earning_container1{
+@media only screen and (max-width: 1160px) {
+    .earning_container1 {
         width: 65rem;
     }
 
-    .earning_container2{
+    .earning_container2 {
         width: 65rem;
     }
 }
 
-@media only screen and (max-width: 1060px){
-    .earning_container1{
+@media only screen and (max-width: 1060px) {
+    .earning_container1 {
         width: 60rem;
     }
 
-    .earning_container2{
+    .earning_container2 {
         width: 60rem;
     }
 }
 
-@media only screen and (max-width: 980px){
-    .earning_container1{
+@media only screen and (max-width: 980px) {
+    .earning_container1 {
         width: 55rem;
     }
 
@@ -1643,49 +1941,49 @@ header .nav-btn {
 
     .tbl_container {
         width: 50rem;
-        overflow-x:auto;
+        overflow-x: auto;
         overflow-y: scroll;
     }
 
 
-    .earning_container2{
+    .earning_container2 {
         width: 55rem;
     }
 }
 
-@media only screen and (max-width: 920px){
-    .earning_container1{
+@media only screen and (max-width: 920px) {
+    .earning_container1 {
         width: 50rem;
     }
 
-    .earning_container2 table{
+    .earning_container2 table {
         width: 45rem;
         overflow-x: scroll;
     }
 
 
-    .earning_container2{
+    .earning_container2 {
         width: 50rem;
     }
 }
 
 
-@media only screen and (max-width: 812px){
-    .earning_container1{
+@media only screen and (max-width: 812px) {
+    .earning_container1 {
         width: 45rem;
     }
 
-    .earning_container2{
+    .earning_container2 {
         width: 45rem;
     }
 }
 
-@media only screen and (max-width: 760px){
-    .earning_container1{
+@media only screen and (max-width: 760px) {
+    .earning_container1 {
         width: 40rem;
     }
 
-    .earning_container2{
+    .earning_container2 {
         width: 40rem;
     }
 
@@ -1694,12 +1992,12 @@ header .nav-btn {
     }
 }
 
-@media only screen and (max-width: 660px){
-    .earning_container1{
+@media only screen and (max-width: 660px) {
+    .earning_container1 {
         width: 30rem;
     }
 
-    .earning_container2{
+    .earning_container2 {
         width: 30rem;
     }
 }

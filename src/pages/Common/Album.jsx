@@ -4,7 +4,7 @@ import { DefaultAlbum, Equalizer, PlayButton, TagTop } from "../../assets";
 const Album = () => {
   return (
    
-        <div className="flex flex-row gap-3 w-200 h-120 justify-center items-center" style={{width:'240px'}}>
+        <div className="flex flex-row gap-3 w-[240px] h-120 justify-center items-center my-2">
         <div className="flex flex-col bg-black w-fit h-fit rounded-xl p-4 relative">
             <div className="flex">
             <img src={DefaultAlbum} alt="default album" />
