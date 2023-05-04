@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Earnings, Home, LandingPage, MusicianDashboard, MyProfile, NewMusicianDashboard, NotFound, SignIn, SignUp,  } from "./pages";
 
-
 function App() {
   return (
     <BrowserRouter>
