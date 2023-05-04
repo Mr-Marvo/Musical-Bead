@@ -94,7 +94,7 @@ const SignUp = () => {
                 </div>
               </div>
               <div className="flex flex-col justify-center items-center">
-              <Link to="/New_Musician_Dashboard" className="flex rounded-lg bg-gradient-to-r from-[#12E45A] to-[#00A7DC] hover:bg-gradient-to-r hover:from-[#00A7DC] hover:to-[#12E45A] text-white font-nunito text-[20px] font-bold justify-center md:w-1/2 w-full">
+              <Link to="/musician/completeprofile" className="flex rounded-lg bg-gradient-to-r from-[#12E45A] to-[#00A7DC] hover:bg-gradient-to-r hover:from-[#00A7DC] hover:to-[#12E45A] text-white font-nunito text-[20px] font-bold justify-center md:w-1/2 w-full">
                 <button type="submit" >
                   Sign Up
                 </button>

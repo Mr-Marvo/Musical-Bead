@@ -89,8 +89,8 @@ header .nav-btn {
 }
 
 .singer_image {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border: 2px solid white;
     border-radius: 50%;
     margin-left: 40px;
@@ -100,9 +100,8 @@ header .nav-btn {
 } 
 
 .user_tag {
-    font-size: 24px;
+    font-size: 18px;
     padding: 10px;
-    background-color: #121212;
     display: flex;
     align-self: center;
     justify-self: center;
@@ -116,7 +115,7 @@ header .nav-btn {
     width: 140px;
     padding: 5px;
     border-radius: 10px;
-    box-shadow: 0 3px 4px 0 rgba(238, 238, 238, 0.24), 0 4px 17px 0 rgba(255, 255, 255, 0.19);
+    box-shadow: 0 1px 1px 0 rgba(238, 238, 238, 0.24), 0 4px 17px 0 rgba(255, 255, 255, 0.19);
 }
 
 .navbar_toggle ul li {
@@ -260,7 +259,7 @@ header .nav-btn {
 .store_container {
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 5px;
     border: 2px solid #2AAEC0;
     margin: 5px;
     width: 150px;
@@ -268,6 +267,7 @@ header .nav-btn {
     justify-content: center;
     border-radius: 50px;
     color: #2AAEC0;
+    cursor: pointer;
 }
 
 .store_container span {
@@ -275,9 +275,9 @@ header .nav-btn {
     font-size: 20px;
 }
 
-.store_container span:hover {
+.store_container:hover {
     font-weight: 600;
-    color: #fff;
+    border: 2px solid #FFF;
 }
 
 @media only screen and (max-width: 1240px){
