@@ -23,7 +23,7 @@ const Header = () => {
     <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="absolute w-full px-2 sm:px-12 xl:px-16 bg-transparent text-white mt-4">
+          <div className="absolute w-full px-2 sm:px-12 xl:px-16 bg-transparent text-white mt-24">
             <div className="flex h-16 items-center justify-between ">
               <div className="flex flex-1 items-start justify-start md:items-stretch md:justify-start">
                 <div className="flex flex-shrink-0 items-start">
