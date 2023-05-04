@@ -1,8 +1,4 @@
-/* 
-    ruvi@Aventure
-    ruvi.ijse@hmail.com
-*/
-import React, { useRef, useState } from "react";
+import React from "react";
 import "../../App.css";
 
 /* Images */

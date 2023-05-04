@@ -22,7 +22,7 @@ const LandingPage = () => {
   }, [userType]);
 
   return (
-    <div>
+    <div className="bg-black text-white m-0 font-montserrat">
       <Header />
       <Hero />
       <Info />

@@ -5,7 +5,7 @@ import { FaGooglePlay } from "react-icons/fa";
 
 const NewFooter = () => {
   return (
-    <footer className="footer font-nunito">
+    <footer className="footer font-nunito text-white">
       <div className="footer_container">
         <div className="footer_content1">
           <p>For More Info Contacts:</p>
