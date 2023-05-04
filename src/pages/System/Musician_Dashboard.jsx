@@ -32,7 +32,7 @@ function Musician_Dashboard() {
               </pre>
               <div>
                 <div>
-                  <label className="text-[#555555] ml-28">Album Name</label>
+                  <label className="text-[#555555] ml-28">Mixtape/Album  cover</label>
                   <div className="img_container2 flex justify-center items-center">
                     <img src={AddImageIcon} alt="ico" />
                   </div>
@@ -40,7 +40,7 @@ function Musician_Dashboard() {
                 <div className="data_cotainer">
                   <form>
                     <label className="text-[#555555]">Album Name</label>
-                    <input type="text" className="album_name"></input>
+                    <input type="text" className="album_name text-white"></input>
                     <div>
                       <div>
                         <label className="text-[#555555]">Category</label>
