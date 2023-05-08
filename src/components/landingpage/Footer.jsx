@@ -18,9 +18,15 @@ const Footer = () => {
               </nav>
 
               <div className="flex flex-row mt-8 gap-4">
-                <a href="https://twitter.com" target="_blank" rel="noreferrer"><img src={LTwitter} alt='Twitter' className="w-10" /></a>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer"><img src={LFacebook} alt='Facebook' className="w-10" /></a>
-                <a href="#" target="_blank" rel="noreferrer"><img src={LEmail} alt='Email' className="w-10" /></a>
+                <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                  <img src={LTwitter} alt="Twitter" className="w-10" />
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                  <img src={LFacebook} alt="Facebook" className="w-10" />
+                </a>
+                <a href="#" target="_blank" rel="noreferrer">
+                  <img src={LEmail} alt="Email" className="w-10" />
+                </a>
               </div>
             </div>
 
@@ -37,18 +43,18 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div className="col-span-2 sm:col-span-1">
-              <p className="font-normal text-[23px] text-white">
+            <div className="flex flex-col col-span-2 sm:col-span-1">
+              <p className="flex font-normal text-[23px] text-white">
                 Musical Bead App:
               </p>
 
-              <nav className="mt-2">
-                <p className="font-normal text-[23px] text-[#BABABA]">
+              <nav className="flex flex-col mt-2">
+                <p className="flex font-normal text-[23px] text-[#BABABA]">
                   Available on iTunes & Google Play store.
                 </p>
-                <div className="mt-12">
+                <div className="flex justify-start w-full items-start mt-6">
                   <div className="flex flex-row rounded-full text-white text-[23px] font-normal border-[1px] border-white w-max px-4 py-2 cursor-pointer">
-                    iOS and Android{" "}
+                    iOS and Android
                     <img
                       src={AppDownloadICon}
                       className="h-6 mt-1 px-2"
