@@ -32,7 +32,7 @@ function New_Musician_Dashboard() {
                 <div className="step_cover">
                   <div className="box">Step 01</div>
                 </div>
-                <span className="step_healine">
+                <span className="step_healine text-white">
                   Complete Your Musical Profile
                 </span>
                 <span className="step_toggle">
@@ -48,12 +48,12 @@ function New_Musician_Dashboard() {
               <div className="step_content">
                 <div className="img_container1"></div>
                 <div className="data_container">
-                  <span className="font-nunito" style={{ fontSize: "24px" }}>
+                  <span className="font-nunito text-white" style={{ fontSize: "24px" }}>
                     Oliver Ferdison
                   </span>
                   <form>
-                    <input type="text" placeholder="Title"></input>
-                    <textarea>Add Bio ...</textarea>
+                    <input type="text" placeholder="Title" className="text-white"></input>
+                    <textarea className="text-white">Add Bio...</textarea>
                   </form>
                 </div>
               </div>
@@ -67,7 +67,7 @@ function New_Musician_Dashboard() {
                 <div className="step_cover">
                   <div className="box">Step 02</div>
                 </div>
-                <span className="step_healine">
+                <span className="step_healine text-white">
                   Complete Your First Musical Bead Profile
                 </span>
                 <span className="step_toggle">
@@ -84,25 +84,24 @@ function New_Musician_Dashboard() {
                 <div className="img_container2"></div>
                 <div className="data_container data_container2">
                   <form>
-                    <label className="font-nunito">Album Name</label>
+                    <label className="font-nunito text-white">Album Name</label>
                     <input
                       type="text"
-                      placeholder="Album Name"
-                      className="album_name"
+                      className="album_name text-white"
                     ></input>
                     <div>
                       <div>
-                        <label className="font-nunito">Category</label>
-                        <input type="text" placeholder="Category"></input>
+                        <label className="font-nunito text-white">Category</label>
+                        <input type="text" className="text-white"></input>
                       </div>
 
                       <div>
-                        <label className="font-nunito">Artist</label>
-                        <input type="text" placeholder="Artist"></input>
+                        <label className="font-nunito text-white">Artist</label>
+                        <input type="text" className="text-white"></input>
                       </div>
                     </div>
-                    <label className="font-nunito">Description</label>
-                    <textarea>Description ...</textarea>
+                    <label className="font-nunito text-white">Description</label>
+                    <textarea className="text-white"></textarea>
                     <p>
                       Add Songs <span>(0)</span>
                     </p>
