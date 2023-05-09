@@ -818,14 +818,14 @@ header .nav-btn {
 .musician_dashboard_sub_container1 {
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-    width: 100%;
+    width: 80rem;
     justify-content: center;
 
 }
 
 .sub_container1_left {
-    margin: 1rem;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -895,10 +895,12 @@ header .nav-btn {
 }
 
 .sub_container1_right {
-    margin: 1rem;
     padding: 1rem;
     border-radius: 50px;
     background-color: rgba(0, 0, 0, 0.32);
+    width: 40%;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
 }
 
 .sub_container1_right>div>div {
@@ -916,7 +918,7 @@ header .nav-btn {
     flex-direction: row;
     background-color: rgba(0, 0, 0, 0.32);
     padding: 1rem;
-    width: 100%;
+    width: 80rem;
     justify-content: center;
     border-radius: 20px;
     color: white;
@@ -973,7 +975,7 @@ header .nav-btn {
 }
 
 .my_profile_sub_container4 {
-    width: 100%
+    width: 100%;
 }
 
 .headline_wrap_container {
@@ -1019,6 +1021,7 @@ header .nav-btn {
 .album_sub_wrap3 {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
+    gap: 1.5rem;
 }
 
 .musician_dashboard_sub_container3>div:nth-child(2)>div div {
@@ -2000,4 +2003,46 @@ header .nav-btn {
     .earning_container2 {
         width: 30rem;
     }
+}
+
+
+
+/*============================Home==================================================================*/
+.home_upper_content{
+    width: 100%;
+   
+}
+
+.image_containing_wrapper {
+    width: 100%;
+    height: 500px;
+    background-image: url('../src/assets/images/system/home_bg_img.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.upper_content_navbar {
+    background: #00A7DC;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    background: #101010;
+}
+
+.upper_content_navbar>p {
+    color: #424242;
+    cursor: pointer;
+}
+
+.upper_content_navbar>p:hover {
+  color: #fff;
+}
+
+.upper_content_navbar>p:nth-child(1) {
+    color: #121212;
+   background-image: linear-gradient(60deg, #00C7E2, #12E45A);
+   -webkit-background-clip:text;
+   -webkit-text-fill-color:transparent;
 }

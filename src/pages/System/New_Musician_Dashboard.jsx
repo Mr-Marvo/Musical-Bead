@@ -80,48 +80,58 @@ function New_Musician_Dashboard() {
               </div>
             </div>
             {isCollapsed2 ? null : (
-              <div className="step_content">
-                <div className="img_container2"></div>
-                <div className="data_container data_container2">
-                  <form>
-                    <label className="font-nunito text-white">Album Name</label>
-                    <input
-                      type="text"
-                      className="album_name text-white"
-                    ></input>
-                    <div>
+              <div style={{display:'flex',flexDirection:'column'}}>
+                <div className="step_content">
+                  <div className="img_container2" style={{marginTop:'5rem'}}></div>
+                  <div className="data_container data_container2">
+                    <form>
+                      <label className="font-nunito text-white">Album Name</label>
+                      <input
+                        type="text"
+                        className="album_name text-white"
+                      ></input>
                       <div>
-                        <label className="font-nunito text-white">Category</label>
-                        <input type="text" className="text-white"></input>
-                      </div>
+                        <div>
+                          <label className="font-nunito text-white">Category</label>
+                          <input type="text" className="text-white"></input>
+                        </div>
 
-                      <div>
-                        <label className="font-nunito text-white">Artist</label>
-                        <input type="text" className="text-white"></input>
+                        <div>
+                          <label className="font-nunito text-white">Artist</label>
+                          <input type="text" className="text-white"></input>
+                        </div>
                       </div>
-                    </div>
-                    <label className="font-nunito text-white">Description</label>
-                    <textarea className="text-white"></textarea>
-                    <p>
-                      Add Songs <span>(0)</span>
-                    </p>
-                    <div style={{ overflowX: "auto" }}>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                      <div className="song_container">+</div>
-                    </div>
-                  </form>
+                      <label className="font-nunito text-white">Description</label>
+                      <textarea className="text-white"></textarea>
+                    
+                    </form>
+                  
+                  
+                  </div>
+                </div>
+                <div style={{display:'flex',flexDirection:'column',padding:'2rem'}} >
+                        <p style={{color:'white',marginLeft:'10px'}}>
+                        Add Songs <span>(0)</span>
+                      </p>
+                      <div style={{display:'flex',flexDirection:'row'}}>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                        <div className="song_container2" >+</div>
+                      </div>
+                
                 </div>
               </div>
             )}
           </div>
         </div>
-        <button className="review_submit_btn font-nunito">
+        <button className="review_submit_btn font-nunito" style={{color:'white',fontWeight:'700'}}>
           Submit For Review
         </button>
       </main>

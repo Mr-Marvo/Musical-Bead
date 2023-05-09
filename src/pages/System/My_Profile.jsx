@@ -6,7 +6,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 /* Player */
 import ReactPlayer from "react-player/lazy";
-import Album from "../Common/Album";
+import Album from "../Common/Album3";
 import { NewFooter, NewHeader } from "../../components/system";
 import {
   ProfileImage,
@@ -23,6 +23,9 @@ import {
   SampleSlider7,
   SampleSlider8
 } from "../../assets";
+
+import { RiArrowUpSFill } from "react-icons/ri";
+import { RiArrowDownSFill } from "react-icons/ri";
 
 const slideImages = [
   {
@@ -59,6 +62,8 @@ const slideImages = [
   },
 ];
 
+
+
 function My_Profile() {
   const [title, setTitle] = useState("Singer & Song Writer");
   const [bio, setBio] = useState(
@@ -71,6 +76,19 @@ function My_Profile() {
 
   const handleClick = () => {
     setIsDisabled(!isDisabled);
+  };
+
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const handleToggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  
+  const [isCollapsed2, setIsCollapsed2] = useState(true);
+
+  const handleToggleCollapse2 = () => {
+    setIsCollapsed2(!isCollapsed2);
   };
 
   return (
@@ -230,24 +248,25 @@ function My_Profile() {
             )}
           </div>
 
-          <div
-            className="my_profile_sub_container4 max-w-[1440px]"
-            style={{
-              borderBottomLeftRadius: "0px",
-              borderBottomRightRadius: "0px",
-              borderTopLeftRadius: "25px",
-              borderTopRightRadius: "25px",
-            }}
-          >
+          <div className="my_profile_sub_container4">
+            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
             <pre className="headline_left">Olivia's Albums</pre>
-          </div>
-          <div
-            className="album_wrap_container max-w-[1440px]"
-            style={{
-              borderBottomLeftRadius: "25px",
-              borderBottomRightRadius: "25px",
-            }}
-          >
+            <div  style={{display:'flex',flexDirection:'row'}}>
+              <pre style={{color:'#5555',marginRight:'10px'}} >Sort By Popularity</pre>
+                  {isCollapsed ? (
+                    <RiArrowUpSFill fontSize={20} color="#5555" onClick={handleToggleCollapse}/>
+                  ) : (
+                    <RiArrowDownSFill fontSize={20} color="#5555" onClick={handleToggleCollapse}/>
+                  )}
+              <pre style={{color:'#5555'}}>All Albums</pre>
+                {isCollapsed2 ? (
+                    <RiArrowUpSFill fontSize={20} color="#5555" onClick={handleToggleCollapse2}/>
+                  ) : (
+                    <RiArrowDownSFill fontSize={20} color="#5555" onClick={handleToggleCollapse2}/>
+                  )}
+            </div>
+            </div>
+           
             <div className="album_sub_wrap3">
               <Album />
               <Album />
@@ -266,6 +285,9 @@ function My_Profile() {
               <Album />
             </div>
           </div>
+        
+
+         
         </div>
       </main>
 

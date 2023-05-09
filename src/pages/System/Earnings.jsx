@@ -37,33 +37,33 @@ function Earnings() {
             <div className="sub2_sub1">
               <div>
                 <h1>$2300.00</h1>
-                <span>Total Earnings</span>
+                <span style={{color:'white'}}>Total Earnings</span>
               </div>
               <div>
                 <h1>$500.00</h1>
-                <span>Total Fees</span>
+                <span style={{color:'white'}}>Total Fees</span>
               </div>
               <div>
                 <h1>$000.00</h1>
-                <span>Total Purchases</span>
+                <span style={{color:'white'}}>Total Purchases</span>
               </div>
               <div>
                 <h1>110</h1>
-                <span>Total Sales</span>
+                <span style={{color:'white'}}>Total Sales</span>
               </div>
               <div>
                 <h1>30</h1>
-                <span>Total Ships</span>
+                <span style={{color:'white'}}>Total Ships</span>
               </div>
               <div>
                 <h1>80</h1>
-                <span>Shipped</span>
+                <span style={{color:'white'}}>Shipped</span>
               </div>
             </div>
             <div className="sub2_sub2">
               <h1>$1800.00</h1>
-              <span>Available Funds</span>
-              <button type="button" className="withdraw_btn">
+              <span style={{color:'white'}}>Available Funds</span>
+              <button type="button" className="withdraw_btn" style={{color:'white'}}>
                 Withdraw
               </button>
             </div>
@@ -78,7 +78,7 @@ function Earnings() {
             className="tbl_container"
             style={{ overflowX: "auto", width: "100%" }}
           >
-            <table>
+            <table style={{color:'white'}}>
               <thead>
                 <tr>
                   <th></th>

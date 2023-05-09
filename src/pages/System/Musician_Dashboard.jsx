@@ -40,24 +40,24 @@ function Musician_Dashboard() {
                 <div className="data_cotainer">
                   <form>
                     <label className="text-[#555555]">Album Name</label>
-                    <input type="text" className="album_name text-white"></input>
+                    <input type="text" className="album_name text-white" style={{backgroundColor:'#1F1F1F'}}></input>
                     <div>
                       <div>
                         <label className="text-[#555555]">Category</label>
-                        <input type="text" className="text-white"></input>
+                        <input type="text" className="text-white" style={{backgroundColor:'#1F1F1F'}}></input>
                       </div>
 
                       <div>
                         <label className="text-[#555555]">Artist</label>
-                        <input type="text" className="text-white"></input>
+                        <input type="text" className="text-white" style={{backgroundColor:'#1F1F1F'}}></input>
                       </div>
                     </div>
                     <label className="text-[#555555]">Description</label>
-                    <textarea className="text-white"></textarea>
+                    <textarea className="text-white" style={{backgroundColor:'#1F1F1F'}}></textarea>
                   </form>
                 </div>
               </div>
-              <p>
+              <p className="text-[#555555]">
                 Add Songs <span>(0)</span>
               </p>
               <div>
@@ -81,7 +81,7 @@ function Musician_Dashboard() {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <button className="submit_btn">Submit</button>
+                <button className="submit_btn" style={{color:'white'}}>Submit</button>
               </div>
             </div>
             <div className="sub_container1_right">
@@ -97,7 +97,7 @@ function Musician_Dashboard() {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <button className="submit_btn"> Visit Profile </button>
+                <button className="submit_btn" style={{color:'white'}}> Visit Profile </button>
               </div>
             </div>
             {isPopup ? (
