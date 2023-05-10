@@ -33,7 +33,7 @@ const NewHeader = () => {
     <header className="font-nunito">
       <img src={Logo} alt="Musical Bead" className="logo" />
       <nav ref={navRef}>
-        <a href="/home" className="active text-[20px] font-nunito">
+        <a href="/home" className="text-[20px] font-nunito">
           Home
         </a>
         <a href="/musician/dashboard" className="text-[20px] font-nunito">
