@@ -2239,6 +2239,16 @@ header .nav-btn {
 }
 
 
+@media only screen and (max-width: 480px) {
+    .earning_container1 {
+        width: 25rem;
+    }
+
+    .earning_container2 {
+        width: 25rem;
+    }
+}
+
 
 /*============================Home==================================================================*/
 .home_upper_content{
