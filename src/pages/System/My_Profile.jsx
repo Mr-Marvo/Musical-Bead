@@ -157,7 +157,7 @@ function My_Profile() {
 
           <div
             className="my_profile_sub_container2"
-            style={{ width: "100%", height: "200px", overflowY: "hidden" }}
+            style={{  height: "200px", overflowY: "hidden" }}
           >
             <div
               className="slide-container"
@@ -249,22 +249,22 @@ function My_Profile() {
           </div>
 
           <div className="my_profile_sub_container4">
-            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
-            <pre className="headline_left">Olivia's Albums</pre>
-            <div  style={{display:'flex',flexDirection:'row'}}>
-              <pre style={{color:'#555555',marginRight:'10px'}} >Sort By Popularity</pre>
-                  {isCollapsed ? (
-                    <RiArrowUpSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
-                  ) : (
-                    <RiArrowDownSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
-                  )}
-              <pre style={{color:'#555555'}}>All Albums</pre>
-                {isCollapsed2 ? (
-                    <RiArrowUpSFill fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
-                  ) : (
-                    <RiArrowDownSFill fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
-                  )}
-            </div>
+            <div >
+              <pre className="headline_left">Olivia's Albums</pre>
+              <div  style={{display:'flex',flexDirection:'row'}}>
+                <pre style={{color:'#555555',marginRight:'10px'}} >Sort By Popularity</pre>
+                    {isCollapsed ? (
+                      <RiArrowUpSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
+                    ) : (
+                      <RiArrowDownSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
+                    )}
+                <pre style={{color:'#555555',}}>All Albums</pre>
+                  {isCollapsed2 ? (
+                      <RiArrowUpSFill style={{marginRight:'4rem'}}  fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
+                    ) : ( 
+                      <RiArrowDownSFill style={{marginRight:'4rem'}} fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
+                    )}
+              </div>
             </div>
            
             <div className="album_sub_wrap4">
