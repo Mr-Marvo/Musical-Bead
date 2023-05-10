@@ -98,7 +98,7 @@ function My_Profile() {
       {/* Body Content */}
       <main className="font-nunito text-white">
         <div className="my_profile_container">
-          <div className="my_profile_sub_container1 max-w-[1440px]">
+          <div className="my_profile_sub_container1">
             <div className="sub_1">
               <div className="img_container3">
                 <div>
@@ -252,22 +252,22 @@ function My_Profile() {
             <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
             <pre className="headline_left">Olivia's Albums</pre>
             <div  style={{display:'flex',flexDirection:'row'}}>
-              <pre style={{color:'#5555',marginRight:'10px'}} >Sort By Popularity</pre>
+              <pre style={{color:'#555555',marginRight:'10px'}} >Sort By Popularity</pre>
                   {isCollapsed ? (
-                    <RiArrowUpSFill fontSize={20} color="#5555" onClick={handleToggleCollapse}/>
+                    <RiArrowUpSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
                   ) : (
-                    <RiArrowDownSFill fontSize={20} color="#5555" onClick={handleToggleCollapse}/>
+                    <RiArrowDownSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
                   )}
-              <pre style={{color:'#5555'}}>All Albums</pre>
+              <pre style={{color:'#555555'}}>All Albums</pre>
                 {isCollapsed2 ? (
-                    <RiArrowUpSFill fontSize={20} color="#5555" onClick={handleToggleCollapse2}/>
+                    <RiArrowUpSFill fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
                   ) : (
-                    <RiArrowDownSFill fontSize={20} color="#5555" onClick={handleToggleCollapse2}/>
+                    <RiArrowDownSFill fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
                   )}
             </div>
             </div>
            
-            <div className="album_sub_wrap3">
+            <div className="album_sub_wrap4">
               <Album />
               <Album />
               <Album />

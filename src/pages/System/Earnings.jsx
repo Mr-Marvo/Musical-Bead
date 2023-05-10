@@ -31,7 +31,7 @@ function Earnings() {
       <main className="font-nunito">
         <div className="earning_container1">
           <div className="earning_container1_sub1">
-            <pre>{day}</pre>
+            <pre  style={{color:'white'}}>{day}</pre>
           </div>
           <div className="earning_container1_sub2">
             <div className="sub2_sub1">
@@ -71,8 +71,8 @@ function Earnings() {
         </div>
         <div className="earning_container2">
           <div>
-            <pre className="headline_left">Order History</pre>
-            <pre>Last 3 Months</pre>
+            <pre className="headline_left" style={{marginBottom:'25px'}}>Order History</pre>
+            <pre style={{color:'white'}}>Last 3 Months</pre>
           </div>
           <div
             className="tbl_container"

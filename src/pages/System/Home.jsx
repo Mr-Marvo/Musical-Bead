@@ -22,6 +22,13 @@ import {
   SampleSlider8,
 } from "../../assets";
 
+import Slide1 from '../../assets/images/system/Slide1.png';
+import Slide2 from '../../assets/images/system/Slide2.png';
+import Slide3 from '../../assets/images/system/Slide3.png';
+import Slide4 from '../../assets/images/system/Slide4.png';
+import Slide5 from '../../assets/images/system/Slide5.png';
+import Slide6 from '../../assets/images/system/Slide6.png';
+
 const slideImages = [
   {
     url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
@@ -41,7 +48,7 @@ const slideImages = [
 
 function Home() {
 
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
@@ -53,18 +60,20 @@ function Home() {
       <div className="home_upper_content">
           <div className="image_containing_wrapper" style={{display:'flex',justifyContent:'center',alignItems:'flex-end'}}>
             <div style={{display:'flex',flexDirection:'row',margin:'1rem',width:'900px',backgroundColor:'white',fontSize:20,padding:'2px',borderRadius:'25px', background: '-webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1))'}}>
-              <input type="text" style={{width:'800px',backgroundColor:'#121212',fontSize:20,padding:'5px',borderRadius:'25px 0px 0px 25px',paddingLeft:'25px'}} placeholder="Search Here.." ></input>
+              <input type="text" style={{width:'781px',backgroundColor:'#121212',fontSize:20,padding:'5px',borderRadius:'25px 0px 0px 25px',paddingLeft:'25px'}} placeholder="Search Here.." ></input>
              <div style={{display:'flex',flexDirection:'row',alignItems:'center',justifyContent:'center',backgroundColor:'#121212',borderRadius:'0px 25px 25px 0px',padding:2}}>
-                <BsSearch color="white"/>
-                <span style={{fontSize:12, backgroundImage: 'linear-gradient(60deg, #00C7E2, #12E45A)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>by Album</span>
-                <BiDownArrow color="white"/>
+                <BsSearch color="white" fontSize={16} style={{paddingRight:'3px'}}/>
+                <span style={{fontSize:16, backgroundImage: 'linear-gradient(60deg, #00C7E2, #12E45A)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',paddingLeft:5,paddingRight:5}}>by Album</span>
+                <BiDownArrow color="white" fontSize={16} style={{paddingRight:'3px'}}/>
              </div>
             </div>  
           </div>
           
-            <div className="upper_content_navbar">
-                <p>All Categories </p>
-                {isCollapsed ? (<BiDownArrow fontSize={20} color="#5555" onClick={handleToggleCollapse}/>) : (<BiUpArrow fontSize={20} color="#5555" onClick={handleToggleCollapse}/>)}
+            <div className="upper_content_navbar" >
+                <div style={{display:'flex',flexDirection:'row',alignItems:'center'}}> 
+                  <p style={{paddingRight:'10px'}}>All Categories</p> 
+                  {isCollapsed ? (<BiDownArrow fontSize={18} color="#5555"  onClick={handleToggleCollapse}/>) : (<BiUpArrow fontSize={18} color="#5555" onClick={handleToggleCollapse}/>)}
+                </div>
                 <p>Classical</p>
                 <p>Hip Pop</p>
                 <p>Reggae</p>
@@ -76,8 +85,8 @@ function Home() {
             </div>
            
             {isCollapsed ? (
-              <div style={{width:'100%',height:'10rem',background:'#101010',marginTop:'-25px',color:'white'}}>
-                  <div style={{margin:'25px 0px 25px 280px',display:'grid',gridTemplateColumns:'auto auto auto auto auto auto auto auto',gap:35}}>
+              <div className="dropdown_category_list_container">
+                  <div className="dropdown_category_list_wrapper" >
                     <p>Pop</p>
                     <p>Jazz</p>
                     <p>Blues</p>
@@ -103,7 +112,14 @@ function Home() {
                     <p>Rhythm & Blues</p>
                     <p>Country Music</p>
                   </div>
-                 
+                  <div className="sub_btn_container">
+                    <div className="sub_btn_wrapper">
+                      <div>
+                        <button >Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                  
               </div>
             ) : (
               null
@@ -111,9 +127,6 @@ function Home() {
 
             }
            
-           
-         
-         
         </div>
       {/* Main Content */}
       <main>       
@@ -166,9 +179,7 @@ function Home() {
                 className="slide-container"
                 style={{ width: "80%", height: "300px" }}
               >
-                <Slide>
-                  {slideImages.map((slideImage, index) => (
-                    <div key={index}>
+              
                       <div
                         style={{
                           display: "flex",
@@ -179,57 +190,44 @@ function Home() {
                         }}
                       >
                         <img
-                          src={SampleSlider1}
+                          src={Slide6}
                           alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
+                         
+                          style={{ margin: "18px",width:'160px'}}
                         />
                         <img
-                          src={SampleSlider2}
+                          src={Slide1}
                           alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
+                         
+                          style={{ margin: "18px",width:'160px'}}
                         />
                         <img
-                          src={SampleSlider3}
+                          src={Slide2}
                           alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
+                         
+                          style={{ margin: "18px",width:'160px'}}
                         />
                         <img
-                          src={SampleSlider4}
+                          src={Slide3}
                           alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
+                         
+                          style={{ margin: "18px",width:'160px'}}
+                        />
+                        <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+                        <img
+                          src={Slide4}
+                          alt="Facebook"
+                         
+                          style={{ margin: "18px",width:'160px'}}
                         />
                         <img
-                          src={SampleSlider5}
+                          src={Slide5}
                           alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
-                        />
-                        <img
-                          src={SampleSlider6}
-                          alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
-                        />
-                        <img
-                          src={SampleSlider7}
-                          alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
-                        />
-                        <img
-                          src={SampleSlider8}
-                          alt="Facebook"
-                          className="w-25"
-                          style={{ margin: "5px" }}
+
+                          style={{ margin: "18px",width:'160px', color:'red'}}
                         />
                       </div>
-                    </div>
-                  ))}
-                </Slide>
+                  
               </div>
             </div>
        
