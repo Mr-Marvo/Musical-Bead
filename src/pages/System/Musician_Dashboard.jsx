@@ -8,7 +8,7 @@ import "../../App.css";
 import Album from "../Common/Album";
 import Album2 from "../Common/Album2";
 import { NewFooter, NewHeader } from "../../components/system";
-import { AddImageIcon, SingerIcon } from "../../assets";
+import { AddImageIcon, ProfileImage, SingerIcon } from "../../assets";
 
 import frame1 from '../../assets/images/system/Frame (4).png';
 import frame2 from '../../assets/images/system/Frame (1).png';
@@ -16,6 +16,8 @@ import frame3 from '../../assets/images/system/Frame (2).png';
 import frame4 from '../../assets/images/system/Frame (3).png';
 
 import {RxCross2} from 'react-icons/rx';
+import OrderAlbum from "../Common/OrderAlbum";
+import ShipAlbum from "../Common/ShipAlbum";
 
 function Musician_Dashboard() {
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
@@ -169,7 +171,7 @@ function Musician_Dashboard() {
               }}
             >
               <img
-                src={SingerIcon}
+                src={ProfileImage}
                 alt="User"
                 className="singer_dashimage w-20 h-20"
               />
@@ -215,40 +217,40 @@ function Musician_Dashboard() {
                
               }}
             >
-              <pre className="headline font-nunito" >My Orders</pre>
+              <pre className="headline font-nunito" >MY ORDERS</pre>
             </div>
 
             <div>
-              <pre className="headline_left font-nunito">To Ship</pre>
+              <pre className="headline_left font-nunito">TO SHIP</pre>
             </div>
           </div>
           <div className="album_wrap_container" style={{background:'rgba(0,0,0,.3)'}}>
             <div className="album_sub_wrap"  style={{background:'transparent'}}>
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
+              <OrderAlbum />
+              <OrderAlbum />
+              <OrderAlbum />
+              <OrderAlbum />
+              <OrderAlbum />
+              <OrderAlbum />
+              <OrderAlbum />
+              <OrderAlbum />
             </div>
           </div>
           <div className="headline_wrap_container" style={{background:'rgba(0,0,0,.3)', border:'none'}}>
             <div>
-              <pre className="headline_left font-nunito" >Shipped Orders</pre>
+              <pre className="headline_left font-nunito" >SHIPPED ORDERS</pre>
             </div>
           </div>
           <div className="album_wrap_container" style={{background:'rgba(0,0,0,.3)', border:'none'}}>
             <div className="album_sub_wrap" style={{background:'transparent'}}>
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
-              <Album />
+              <ShipAlbum />
+              <ShipAlbum />
+              <ShipAlbum />
+              <ShipAlbum />
+              <ShipAlbum />
+              <ShipAlbum />
+              <ShipAlbum />
+              <ShipAlbum />
             </div>
           </div>
           <div
