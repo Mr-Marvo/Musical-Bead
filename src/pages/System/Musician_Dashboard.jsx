@@ -9,6 +9,8 @@ import Album from "../Common/Album";
 import Album2 from "../Common/Album2";
 import { NewFooter, NewHeader } from "../../components/system";
 import { AddImageIcon, ProfileImage, SingerIcon } from "../../assets";
+import { RiArrowUpSFill } from "react-icons/ri";
+import { RiArrowDownSFill } from "react-icons/ri";
 
 import frame1 from '../../assets/images/system/Frame (4).png';
 import frame2 from '../../assets/images/system/Frame (1).png';
@@ -26,6 +28,19 @@ function Musician_Dashboard() {
 
   const handleIspopup = () => {
     setIsPopup(!isPopup);
+  };
+
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const handleToggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+    
+  const [isCollapsed2, setIsCollapsed2] = useState(true);
+
+  const handleToggleCollapse2 = () => {
+    setIsCollapsed2(!isCollapsed2);
   };
 
   return (
@@ -95,7 +110,7 @@ function Musician_Dashboard() {
             </div>
             <div className="sub_container1_right">
               <pre className="headline font-nunito">Pending Albums</pre>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column",justifyContent:'space-evenly' }}>
                 <div className="album_sub_wrap2">
                   <div><Album2 /></div>
                   <div><Album2 /></div>
@@ -213,11 +228,28 @@ function Musician_Dashboard() {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "center",
+                justifyContent: "space-between",
                
               }}
+
             >
+
+              <pre className="headline font-nunito"  style={{width:'30%'}}> </pre>
               <pre className="headline font-nunito" >MY ORDERS</pre>
+              <div  style={{display:'flex',flexDirection:'row'}} className="dsb_ar">
+                <pre style={{color:'#555555'}} >Order Status:All</pre>
+                    {isCollapsed ? (
+                      <RiArrowUpSFill fontSize={20} style={{marginRight:'10px'}} color="#555555" onClick={handleToggleCollapse}/>
+                    ) : (
+                      <RiArrowDownSFill fontSize={20} style={{marginRight:'10px'}}  color="#555555" onClick={handleToggleCollapse}/>
+                    )}
+                <pre style={{color:'#555555',}}>Last 30 Days</pre>
+                  {isCollapsed2 ? (
+                      <RiArrowUpSFill  fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
+                    ) : ( 
+                      <RiArrowDownSFill  fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
+                    )}
+              </div>
             </div>
 
             <div>
@@ -264,7 +296,7 @@ function Musician_Dashboard() {
             }}
           >
             <div>
-              <pre className="headline font-nunito">Full Order History</pre>
+              <pre className=" font-nunito" style={{color:'#929292',textAlign:'center',fontSize:'20px',fontWeight:'500'}}>Full Order History</pre>
             </div>
           </div>
         </div>

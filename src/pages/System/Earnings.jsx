@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import "../../App.css";
 import { ProfileImage, SingerIcon } from "../../assets";
 import { NewFooter, NewHeader } from "../../components/system";
+import { RiArrowUpSFill } from "react-icons/ri";
+import { RiArrowDownSFill } from "react-icons/ri";
 
 function Earnings() {
   const monthNames = [
@@ -22,6 +24,12 @@ function Earnings() {
   let monthName = monthNames[monthIndex];
   let year = new Date().getFullYear();
   let day = monthName + ", " + year;
+
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const handleToggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
   return (
     <>
@@ -88,9 +96,17 @@ function Earnings() {
         <div className="earning_container2">
           <div>
             <pre className="headline_left">Order History</pre>
-            <pre className="text-[#555555] text-base font-medium">
-              Last 3 Months
-            </pre>
+            <div style={{display:'flex',flexDirection:'row'}}>
+                <pre className="text-[#555555] text-base font-medium">
+                    Last 3 Months
+                </pre>
+                {isCollapsed ? (
+                    <RiArrowUpSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
+                ) : (
+                    <RiArrowDownSFill fontSize={20} color="#555555" onClick={handleToggleCollapse}/>
+                )}
+            </div>
+           
           </div>
           <div
             className="tbl_container"
