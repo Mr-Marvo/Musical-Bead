@@ -113,7 +113,7 @@ function My_Profile() {
                 disabled={isDisabled}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="text-[20px] font-medium"
+                className="xl:text-[20px] sm:text-[16px] font-medium"
               />
               <br />
               <textarea
@@ -145,8 +145,8 @@ function My_Profile() {
             <div className="sub_3">
               <ReactPlayer
                 url="https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy"
-                width="360px"
-                height="240px"
+                width="100%"
+                height="100%"
                 controls={true}
                 volume={1}
                 muted={false}
@@ -260,9 +260,9 @@ function My_Profile() {
                     )}
                 <pre style={{color:'#555555',}}>All Albums</pre>
                   {isCollapsed2 ? (
-                      <RiArrowUpSFill style={{marginRight:'4rem'}}  fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
+                      <RiArrowUpSFill  className="RiArrowUpSFill" fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
                     ) : ( 
-                      <RiArrowDownSFill style={{marginRight:'4rem'}} fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
+                      <RiArrowDownSFill  className="RiArrowUpSFill" fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
                     )}
               </div>
             </div>

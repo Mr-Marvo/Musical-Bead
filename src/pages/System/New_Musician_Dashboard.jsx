@@ -11,14 +11,14 @@ import frame4 from '../../assets/images/system/Frame (3).png';
 import {RxCross2} from 'react-icons/rx';
 
 function New_Musician_Dashboard() {
-  const [isCollapsed1, setIsCollapsed1] = useState(true);
+  const [isCollapsed1, setIsCollapsed1] = useState(false);
 
   const handleToggleCollapse1 = () => {
     setIsCollapsed1(!isCollapsed1);
     Name();
   };
 
-  const [isCollapsed2, setIsCollapsed2] = useState(true);
+  const [isCollapsed2, setIsCollapsed2] = useState(false);
 
   const handleToggleCollapse2 = () => {
     setIsCollapsed2(!isCollapsed2);
