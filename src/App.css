@@ -1253,6 +1253,12 @@ header .nav-btn {
   margin-top: 10px;
 }
 
+.new_bead_add_container {
+  display:grid;
+  grid-template-columns:auto auto auto;
+  width:80rem;
+}
+
 @media only screen and (max-width: 1279px) {
   .musician_dashboard_sub_container1 {
     width: 70rem;
@@ -1287,6 +1293,10 @@ header .nav-btn {
     width: 70rem;
   }
 
+  .new_bead_add_container {
+    width:70rem;
+  }
+
   .album_sub_wrap {
     grid-template-columns: auto auto auto;
   }
@@ -1295,6 +1305,8 @@ header .nav-btn {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
   }
+
+  
 }
 
 @media only screen and (max-width: 1160px) {
@@ -1316,6 +1328,10 @@ header .nav-btn {
 
   .musician_dashboard_sub_container4 {
     width: 60rem;
+  }
+
+  .new_bead_add_container {
+    width:60rem;
   }
 
   .musician_dashboard_sub_container3 > div:nth-child(2) > div div {
@@ -1378,6 +1394,10 @@ header .nav-btn {
 
   .musician_dashboard_sub_container3 {
     width: 50rem;
+  }
+
+  .new_bead_add_container {
+    width:50rem;
   }
 
   .musician_dashboard_sub_container3 > div:nth-child(2) > div div {
@@ -1471,6 +1491,11 @@ header .nav-btn {
     width: 40rem;
   }
 
+  .new_bead_add_container {
+    width: 40rem;
+    grid-template-columns: auto auto;
+  }
+
   .album_sub_wrap {
     grid-template-columns: auto;
   }
@@ -1505,6 +1530,11 @@ header .nav-btn {
 
   .album_wrap_container {
     width: 35rem;
+  }
+
+  .new_bead_add_container {
+    width: 35rem;
+    grid-template-columns: auto auto;
   }
 
   .album_sub_wrap {
@@ -1550,6 +1580,11 @@ header .nav-btn {
     width: 30rem;
   }
 
+  .new_bead_add_container {
+    width: 30rem;
+    grid-template-columns: auto auto;
+  }
+
   .sub_container1_right > div > div {
     grid-template-columns: auto auto auto;
     justify-content: space-evenly;
@@ -1581,6 +1616,14 @@ header .nav-btn {
     width: 25rem;
   }
 
+  .new_bead_add_container {
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .album_sub_wrap3 {
     display: grid;
     grid-template-columns: auto auto;
@@ -1593,19 +1636,30 @@ header .nav-btn {
 
 @media only screen and (max-width: 400px) {
   .musician_dashboard_sub_container1 {
-    width: 23rem;
+    width: 22rem;
     margin: 0.1rem;
     padding: 0.5rem;
   }
 
   .musician_dashboard_sub_container2 {
-    width: 24rem;
+    width: 21rem;
     margin: 0.1rem;
   }
 
   .musician_dashboard_sub_container3 {
-    width: 24rem;
+    width: 22rem;
     margin: 0.1rem;
+  }
+
+  
+  
+
+  .new_bead_add_container {
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .musician_dashboard_sub_container2 > div > div {
@@ -1622,6 +1676,14 @@ header .nav-btn {
 
   .album_wrap_container {
     width: 20rem;
+  }
+
+  .new_bead_add_container {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .album_sub_wrap3 {
@@ -1643,6 +1705,14 @@ header .nav-btn {
 
   .album_wrap_container {
     width: 15rem;
+  }
+
+  .new_bead_add_container {
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -2720,4 +2790,5 @@ header .nav-btn {
     width: 20rem;
   }
 }
+
 

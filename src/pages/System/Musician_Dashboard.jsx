@@ -5,19 +5,15 @@
 import React, { useState } from "react";
 import "../../App.css";
 
-import Album from "../Common/Album";
 import Album2 from "../Common/Album2";
 import { NewFooter, NewHeader } from "../../components/system";
-import { AddImageIcon, ProfileImage, SingerIcon } from "../../assets";
+import { AddImageIcon, ProfileImage } from "../../assets";
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiArrowDownSFill } from "react-icons/ri";
 
-import frame1 from '../../assets/images/system/Frame (4).png';
-import frame2 from '../../assets/images/system/Frame (1).png';
-import frame3 from '../../assets/images/system/Frame (2).png';
-import frame4 from '../../assets/images/system/Frame (3).png';
+import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 
-import {RxCross2} from 'react-icons/rx';
+import { RxCross2 } from "react-icons/rx";
 import OrderAlbum from "../Common/OrderAlbum";
 import ShipAlbum from "../Common/ShipAlbum";
 
@@ -55,7 +51,9 @@ function Musician_Dashboard() {
               </pre>
               <div>
                 <div>
-                  <label className="text-[#555555] ml-28">Mixtape/Album  cover</label>
+                  <label className="text-[#555555] ml-28">
+                    Mixtape/Album cover
+                  </label>
                   <div className="img_container2 flex justify-center items-center">
                     <img src={AddImageIcon} alt="ico" />
                   </div>
@@ -63,27 +61,48 @@ function Musician_Dashboard() {
                 <div className="data_cotainer">
                   <form>
                     <label className="text-[#555555]">Album Name</label>
-                    <input type="text" className="album_name text-white" style={{backgroundColor:'#1F1F1F'}}></input>
+                    <input
+                      type="text"
+                      className="album_name text-white"
+                      style={{ backgroundColor: "#1F1F1F" }}
+                    ></input>
                     <div>
                       <div>
                         <label className="text-[#555555]">Category</label>
-                        <input type="text" className="text-white" style={{backgroundColor:'#1F1F1F'}}></input>
+                        <input
+                          type="text"
+                          className="text-white"
+                          style={{ backgroundColor: "#1F1F1F" }}
+                        ></input>
                       </div>
 
                       <div>
                         <label className="text-[#555555]">Artist</label>
-                        <input type="text" className="text-white" style={{backgroundColor:'#1F1F1F'}}></input>
+                        <input
+                          type="text"
+                          className="text-white"
+                          style={{ backgroundColor: "#1F1F1F" }}
+                        ></input>
                       </div>
                     </div>
                     <label className="text-[#555555]">Description</label>
-                    <textarea className="text-white" style={{backgroundColor:'#1F1F1F'}}></textarea>
+                    <textarea
+                      className="text-white"
+                      style={{ backgroundColor: "#1F1F1F" }}
+                    ></textarea>
                   </form>
                 </div>
               </div>
               <p className="text-[#555555]">
                 Add Songs <span>(0)</span>
               </p>
-              <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                }}
+              >
                 <div className="song_container2" onClick={handleIspopup}>
                   +
                 </div>
@@ -104,23 +123,53 @@ function Musician_Dashboard() {
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <button className="submit_btn" style={{color:'white'}}>Submit</button>
+                <button className="submit_btn" style={{ color: "white" }}>
+                  Submit
+                </button>
               </div>
             </div>
             <div className="sub_container1_right">
               <pre className="headline font-nunito">Pending Albums</pre>
-              <div style={{ display: "flex", flexDirection: "column",justifyContent:'space-evenly' }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-evenly",
+                }}
+              >
                 <div className="album_sub_wrap2">
-                  <div><Album2 /></div>
-                  <div><Album2 /></div>
-                  <div><Album2 /></div>
-                  <div><Album2 /></div>
-                  <div><Album2 /></div>
-                  <div><Album2 /></div>
+                  <div>
+                    <Album2 />
+                  </div>
+                  <div>
+                    <Album2 />
+                  </div>
+                  <div>
+                    <Album2 />
+                  </div>
+                  <div>
+                    <Album2 />
+                  </div>
+                  <div>
+                    <Album2 />
+                  </div>
+                  <div>
+                    <Album2 />
+                  </div>
                 </div>
               </div>
-              <div style={{ display: "flex", justifyContent: "center",alignItems:'flex-end',marginTop:'4rem'}}>
-                <button className="submit_btn" style={{color:'white'}}> Visit Profile </button>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "flex-end",
+                  marginTop: "4rem",
+                }}
+              >
+                <button className="submit_btn" style={{ color: "white" }}>
+                  {" "}
+                  Visit Profile{" "}
+                </button>
               </div>
             </div>
             {isPopup ? (
@@ -134,40 +183,86 @@ function Musician_Dashboard() {
                         justifyContent: "space-between",
                       }}
                     >
-                      <p className="pop_addsong font-nunito" style={{color:'white'}}>Add song</p>
+                      <p
+                        className="pop_addsong font-nunito"
+                        style={{ color: "white" }}
+                      >
+                        Add song
+                      </p>
                       <span
                         onClick={handleIspopup}
-                        style={{ fontSize: "18px", fontWeight: "bold",color:'white' }}
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "bold",
+                          color: "white",
+                        }}
                       >
-                        <RxCross2/>
+                        <RxCross2 />
                       </span>
                     </div>
 
                     <input type="text" placeholder="Song Name"></input>
                     <div className="upload_container">
-                      <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                        <img src={frame1} alt=""/>
-                        <p style={{color:'#767676'}}>Upload Convert</p>
-                        <p style={{color:'#767676'}}>(JPG,PNG)</p>
+                      <div
+                        className="upload_wrap"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img src={ImageIcon} alt="" />
+                        <p style={{ color: "#767676" }}>Upload Convert</p>
+                        <p style={{ color: "#767676" }}>(JPG,PNG)</p>
                       </div>
-                      <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                        <img src={frame2} alt=""/>
-                        <p style={{color:'#767676'}}>Upload Video</p>
-                        <p style={{color:'#767676'}}>(Mp4,MVO)</p>
+                      <div
+                        className="upload_wrap"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img src={VideoIcon} alt="" />
+                        <p style={{ color: "#767676" }}>Upload Video</p>
+                        <p style={{ color: "#767676" }}>(Mp4,MVO)</p>
                       </div>
-                      <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                        <img src={frame3} alt=""/>
-                        <p style={{color:'#767676'}}>Upload Lyrics</p>
-                        <p style={{color:'#767676'}}>(PDF,JPG)</p>
+                      <div
+                        className="upload_wrap"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img src={DocumentIcon} alt="" />
+                        <p style={{ color: "#767676" }}>Upload Lyrics</p>
+                        <p style={{ color: "#767676" }}>(PDF,JPG)</p>
                       </div>
                     </div>
-                    <div className="upload_container2" >
-                      <div className="up_song" style={{display:'flex',alignItems:'center',justifyContent:'space-evenly',flexDirection:'row'}}>
-                        <p style={{color:'#767676'}}>Upload Songs  <p style={{color:'#767676'}}>(MP3,WAV)</p></p>
-                       
-                        <img src={frame4} alt=""/>
+                    <div className="upload_container2">
+                      <div
+                        className="up_song"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          flexDirection: "row",
+                        }}
+                      >
+                        <p style={{ color: "#767676" }}>
+                          Upload Songs{" "}
+                          <p style={{ color: "#767676" }}>(MP3,WAV)</p>
+                        </p>
+
+                        <img src={MusicIcon} alt="" />
                       </div>
-                      <button className="add_btn" style={{color:'white'}}>Add</button>
+                      <button className="add_btn" style={{ color: "white" }}>
+                        Add
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -214,13 +309,103 @@ function Musician_Dashboard() {
           </div>
 
           <div
+            className="new_bead_add_container"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.32)",
+              marginTop: "10px",
+              borderRadius: "25px",
+              padding: "1rem",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <div
+                className="upload_wrap"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  width: "200px",
+                  height: "200px",
+                }}
+              >
+                <img src={ImageIcon} alt="" />
+                <p style={{ color: "#767676" }}>Upload Convert</p>
+                <p style={{ color: "#767676" }}>(JPG,PNG)</p>
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label className="text-[#555555]">Special Description</label>
+              <textarea
+                type="text"
+                style={{
+                  backgroundColor: "#1F1F1F",
+                  color: "#ffff",
+                  borderRadius: "25px",
+                  height: "180px",
+                }}
+              ></textarea>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "20px",
+              }}
+            >
+              <label className="text-[#555555]">Price</label>
+              <input
+                type="text"
+                style={{
+                  backgroundColor: "#1F1F1F",
+                  color: "#ffff",
+                  borderRadius: "25px",
+                  height: "30px",
+                }}
+              ></input>
+
+              <label className="text-[#555555]">Name</label>
+              <input
+                type="text"
+                style={{
+                  backgroundColor: "#1F1F1F",
+                  color: "#ffff",
+                  borderRadius: "25px",
+                  height: "30px",
+                }}
+              ></input>
+
+              <button
+                style={{
+                  color: "white",
+                  width: "100px",
+                  height: "30px",
+                  marginTop: "10px",
+                  fontSize: "16px",
+                  background:
+                    "linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)",
+                  borderRadius: "25px",
+                }}
+              >
+                Add
+              </button>
+            </div>
+          </div>
+
+          <div
             className="headline_wrap_container"
             style={{
               marginTop: "2rem",
               borderTopLeftRadius: "50px",
               borderTopRightRadius: "50px",
-              background:'rgba(0,0,0,.3)',
-              border:'none'
+              background: "rgba(0,0,0,.3)",
+              border: "none",
             }}
           >
             <div
@@ -228,26 +413,46 @@ function Musician_Dashboard() {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-               
               }}
-
             >
-
-              <pre className="headline font-nunito"  style={{width:'30%'}}> </pre>
-              <pre className="headline font-nunito" >MY ORDERS</pre>
-              <div  style={{display:'flex',flexDirection:'row'}} className="dsb_ar">
-                <pre style={{color:'#555555'}} >Order Status:All</pre>
-                    {isCollapsed ? (
-                      <RiArrowUpSFill fontSize={20} style={{marginRight:'10px'}} color="#555555" onClick={handleToggleCollapse}/>
-                    ) : (
-                      <RiArrowDownSFill fontSize={20} style={{marginRight:'10px'}}  color="#555555" onClick={handleToggleCollapse}/>
-                    )}
-                <pre style={{color:'#555555',}}>Last 30 Days</pre>
-                  {isCollapsed2 ? (
-                      <RiArrowUpSFill  fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
-                    ) : ( 
-                      <RiArrowDownSFill  fontSize={20} color="#555555" onClick={handleToggleCollapse2}/>
-                    )}
+              <pre className="headline font-nunito" style={{ width: "30%" }}>
+                {" "}
+              </pre>
+              <pre className="headline font-nunito">MY ORDERS</pre>
+              <div
+                style={{ display: "flex", flexDirection: "row" }}
+                className="dsb_ar"
+              >
+                <pre style={{ color: "#555555" }}>Order Status:All</pre>
+                {isCollapsed ? (
+                  <RiArrowUpSFill
+                    fontSize={20}
+                    style={{ marginRight: "10px" }}
+                    color="#555555"
+                    onClick={handleToggleCollapse}
+                  />
+                ) : (
+                  <RiArrowDownSFill
+                    fontSize={20}
+                    style={{ marginRight: "10px" }}
+                    color="#555555"
+                    onClick={handleToggleCollapse}
+                  />
+                )}
+                <pre style={{ color: "#555555" }}>Last 30 Days</pre>
+                {isCollapsed2 ? (
+                  <RiArrowUpSFill
+                    fontSize={20}
+                    color="#555555"
+                    onClick={handleToggleCollapse2}
+                  />
+                ) : (
+                  <RiArrowDownSFill
+                    fontSize={20}
+                    color="#555555"
+                    onClick={handleToggleCollapse2}
+                  />
+                )}
               </div>
             </div>
 
@@ -255,8 +460,14 @@ function Musician_Dashboard() {
               <pre className="headline_left font-nunito">TO SHIP</pre>
             </div>
           </div>
-          <div className="album_wrap_container" style={{background:'rgba(0,0,0,.3)'}}>
-            <div className="album_sub_wrap"  style={{background:'transparent'}}>
+          <div
+            className="album_wrap_container"
+            style={{ background: "rgba(0,0,0,.3)" }}
+          >
+            <div
+              className="album_sub_wrap"
+              style={{ background: "transparent" }}
+            >
               <OrderAlbum />
               <OrderAlbum />
               <OrderAlbum />
@@ -267,13 +478,22 @@ function Musician_Dashboard() {
               <OrderAlbum />
             </div>
           </div>
-          <div className="headline_wrap_container" style={{background:'rgba(0,0,0,.3)', border:'none'}}>
+          <div
+            className="headline_wrap_container"
+            style={{ background: "rgba(0,0,0,.3)", border: "none" }}
+          >
             <div>
-              <pre className="headline_left font-nunito" >SHIPPED ORDERS</pre>
+              <pre className="headline_left font-nunito">SHIPPED ORDERS</pre>
             </div>
           </div>
-          <div className="album_wrap_container" style={{background:'rgba(0,0,0,.3)', border:'none'}}>
-            <div className="album_sub_wrap" style={{background:'transparent'}}>
+          <div
+            className="album_wrap_container"
+            style={{ background: "rgba(0,0,0,.3)", border: "none" }}
+          >
+            <div
+              className="album_sub_wrap"
+              style={{ background: "transparent" }}
+            >
               <ShipAlbum />
               <ShipAlbum />
               <ShipAlbum />
@@ -290,12 +510,22 @@ function Musician_Dashboard() {
               marginbottpm: "2rem",
               borderBottomLeftRadius: "50px",
               borderBottomRightRadius: "50px",
-              background:'rgba(0,0,0,.3)',
-              border:'none'
+              background: "rgba(0,0,0,.3)",
+              border: "none",
             }}
           >
             <div>
-              <pre className=" font-nunito" style={{color:'#929292',textAlign:'center',fontSize:'20px',fontWeight:'500'}}>Full Order History</pre>
+              <pre
+                className=" font-nunito"
+                style={{
+                  color: "#929292",
+                  textAlign: "center",
+                  fontSize: "20px",
+                  fontWeight: "500",
+                }}
+              >
+                Full Order History
+              </pre>
             </div>
           </div>
         </div>

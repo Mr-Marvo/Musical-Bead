@@ -47,4 +47,8 @@ export { default as SampleSlider7 } from './images/system/sample-slider7.png'
 export { default as SampleSlider8 } from './images/system/sample-slider8.png'
 
 export { default as AddImageIcon } from './images/system/add-image-icon.png'
+export { default as VideoIcon } from './images/system/video-icon.png'
+export { default as DocumentIcon } from './images/system/video-icon.png'
+export { default as MusicIcon } from './images/system/music-icon.png'
+export { default as ImageIcon } from './images/system/image-icon.png'
 

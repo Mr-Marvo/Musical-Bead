@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
+  AlbumEdit,
+  AlbumView,
+  Cart,
   Earnings,
   Home,
   LandingPage,
@@ -10,6 +13,7 @@ import {
   SignIn,
   SignUp,
 } from "./pages";
+
 
 function App() {
   return (
@@ -31,6 +35,9 @@ function App() {
         />
         <Route exact path="/profile" element={<MyProfile />} />
         <Route path="/earnings" element={<Earnings />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/album" element={<AlbumView />} />
+        <Route path="/album-edit" element={<AlbumEdit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
