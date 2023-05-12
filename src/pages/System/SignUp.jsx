@@ -12,7 +12,7 @@ const SignUp = () => {
     <div>
       <div className="flex w-full h-screen bg-signup-back bg-cover justify-center items-center">
         <Header />
-        <div className="flex flex-col bg-black xl:w-1/4 lg:w-1/2 sl:w-3/4 w-full mx-4 sl:mx-0 h-fit gap-12 py-12 rounded-xl shadow-xl shadow-black">
+        <div className="flex flex-col bg-black xl:w-1/4 lg:w-1/2 lg:mt-6 sl:w-3/4 w-full mx-4 sl:mx-0 h-fit gap-12 py-12 rounded-xl shadow-xl shadow-black">
           <div className="flex font-nunito text-2xl text-white justify-center">
             Sign Up
           </div>
