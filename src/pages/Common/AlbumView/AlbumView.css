@@ -1,6 +1,26 @@
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #313131; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #5799A3; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #5799A3; 
+  }
+
 .album_view_main_container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto auto auto;
     width: 100%;
     height: 100%;
 }
@@ -19,6 +39,7 @@
     width: 116px;
     height: 35px;
     border-radius: 15px;
+    margin-left: 2rem;
 }
 
 .album_view_container{
@@ -27,8 +48,9 @@
     background-color: rgba(0,0,0,0.41);
     display: flex;
     flex-direction: column;
-   
     padding: 3rem;
+    border-radius: 25px;
+    margin: 1rem;
 }
 
 .songs_list{
@@ -46,6 +68,7 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 10px;
+    padding-top: 10px;
     border-bottom: 2px solid #1C1C1C;
 }
 
@@ -56,6 +79,244 @@
     margin: 20px;
 }
 
+.album_view_middle_container{
+    width: 100%;
+    padding: 3rem;
+    color: #ffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.album_heading {
+    color: #2AAEC0;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.album_sub_heading {
+    color: #ffff;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.color_container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    height: 100px;
+   
+}
+
+.add_cart_btn {
+    background-color: #2AAEC0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 15px;
+    width: 240px;
+}
+
 .album_view_right_container{
-    width: 60%;
+    width: 40%;
+    padding-top: 50px;
+}
+
+.meet_musician_container {
+    width: 320px;
+    height: 500px;
+    background-color: rgba(0,0,0,0.41);
+    border-radius: 25px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.meet_singer_btn {
+    width: 200px;
+    background: linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%);
+    margin: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 5px solid white;
+    padding: 10px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    border:4px solid #2AAEC0;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    border:4px solid #2AAEC0;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .container input ~ .checkmark:after {
+    border: 1px solid red;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      
+  }
+
+  
+  /*----------------------------*/
+input[type="number"] {
+    -webkit-appearance: textfield !important;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+}
+  
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+}
+  
+.wrapper {
+    display: flex;
+    border-radius: 25px;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.plusminus {
+    height: 100%px;
+    width:50%;
+    background: rgba(0, 0, 0,.52);
+    border: none;
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.num {
+    height: 100%;
+    width: 20px;
+    border: none;
+    font-size: 30px;
+    color: #ffff;
+    background: rgba(0, 0, 0,.52);
+}
+
+
+
+
+/* --------------------Responsive------------------------------------- */
+
+@media only screen and (max-width: 1240px) {
+    .album_view_main_container {
+        grid-template-columns: auto auto ;
+        justify-content: center;
+    }
+
+    .album_view_left_container {
+        width: 100%;
+        padding: 0;
+    }
+
+    .album_view_middle_container {
+        width: 100%;
+    }
+
+    .album_view_right_container{
+       margin-left: 30vw;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .album_view_main_container {
+       display: flex;
+       flex-direction: column;
+       width: 100%;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .album_view_left_container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .album_view_middle_container{
+        display: flex;
+        width: 100%;
+    }
+
+
+    .album_view_right_container{
+        width: 100%;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media only screen and (max-width: 540px) {
+
+    .album_view_container{
+        width: 400px;
+
+    }
+}
+
+@media only screen and (max-width: px) {
+
+    .album_view_container{
+        width: 350px;
+        
+    }
 }
