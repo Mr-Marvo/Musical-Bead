@@ -11,13 +11,14 @@ import {
   SignUp,
 } from "./pages";
 import AlbumEdit from "./pages/Common/AlbumEdit/AlbumEdit";
+import Cart from "./pages/Common/Cart/Cart";
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MusicianDashboard/>} />
+        <Route path="/" element={<Cart/>} />
        {/*} <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/home" element={<Home />} />
