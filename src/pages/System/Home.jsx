@@ -29,6 +29,8 @@ import Slide4 from "../../assets/images/system/Slide4.png";
 import Slide5 from "../../assets/images/system/Slide5.png";
 import Slide6 from "../../assets/images/system/Slide6.png";
 
+import { Carousel } from "@trendyol-js/react-carousel";
+
 const slideImages = [
   {
     url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
@@ -63,14 +65,8 @@ function Home() {
             alignItems: "flex-end",
           }}
         >
-          <div
-           
-          >
-            <input
-              type="text"
-              
-              placeholder="Search Here.."
-            ></input>
+          <div>
+            <input type="text" placeholder="Search Here.."></input>
             <div
               style={{
                 display: "flex",
@@ -181,20 +177,27 @@ function Home() {
       </div>
       {/* Main Content */}
       <main>
+        <div
+          className="headline_wrap_container"
+          style={{ background: "#161616", border: "none" }}
+        >
           <div
-            className="headline_wrap_container"
-            style={{background:'#161616',border:'none'}}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
           >
-         
-          <div style={{display: "flex",flexDirection: "row",justifyContent: "space-between", }}>
-            <pre className="headline font-nunito"  style={{width:'4%'}}> </pre>
-              <pre className="headline font-nunito" >TRENDING ALBUMS</pre>
-              <div  style={{display:'flex',flexDirection:'row'}} className="dsb_ar">
-                
-                  
-                <pre style={{color:'#555555',}}>SEE ALL</pre>
-                
-              </div>
+            <pre className="headline font-nunito" style={{ width: "4%" }}>
+              {" "}
+            </pre>
+            <pre className="headline font-nunito">TRENDING ALBUMS</pre>
+            <div
+              style={{ display: "flex", flexDirection: "row" }}
+              className="dsb_ar"
+            >
+              <pre style={{ color: "#555555" }}>SEE ALL</pre>
+            </div>
           </div>
         </div>
         <div>
@@ -212,19 +215,26 @@ function Home() {
           </div>
         </div>
         <div
-            className="headline_wrap_container"
-            style={{background:'#161616',border:'none'}}
+          className="headline_wrap_container"
+          style={{ background: "#161616", border: "none" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
           >
-         
-          <div style={{display: "flex",flexDirection: "row",justifyContent: "space-between", }}>
-            <pre className="headline font-nunito"  style={{width:'4%'}}> </pre>
-              <pre className="headline font-nunito" >NEW ALBUMS</pre>
-              <div  style={{display:'flex',flexDirection:'row'}} className="dsb_ar">
-                
-                  
-                <pre style={{color:'#555555',}}>SEE ALL</pre>
-                
-              </div>
+            <pre className="headline font-nunito" style={{ width: "4%" }}>
+              {" "}
+            </pre>
+            <pre className="headline font-nunito">NEW ALBUMS</pre>
+            <div
+              style={{ display: "flex", flexDirection: "row" }}
+              className="dsb_ar"
+            >
+              <pre style={{ color: "#555555" }}>SEE ALL</pre>
+            </div>
           </div>
         </div>
         <div style={{ marginBottom: "2rem" }}>
@@ -254,60 +264,53 @@ function Home() {
             <aside className="headline font-nunito">TRENDING MUSICIANS</aside>
           </div>
         </div>
-        <div
-          className="singers_slide"
-          
-        >
-          <div
-            className="singers_slide-container"
-           
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "300px",
-              }}
-            >
-              <div className="flex flex-col m-[18px] w-[160px] relative">
-                <img src={Slide6} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col m-[18px] w-[160px] relative">
-                <img src={Slide1} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col m-[18px] w-[160px] relative">
-                <img src={Slide2} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col m-[18px] w-[160px] relative">
-                <img src={Slide3} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col m-[18px] w-[160px] relative">
+
+        <div className="singers_slide">
+          <div className="singers_slide-container p-2">
+            <Carousel show={6} slide={2} swiping={true}>
+              <div className="flex flex-col relative m-2">
                 <img src={Slide4} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
-              <div className="flex flex-col m-[18px] w-[160px] relative">
-                <img src={Slide5} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
+              <div className="flex flex-col relative m-2">
+                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
-            </div>
+              <div className="flex flex-col relative m-2">
+                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
+                  Lorem ipsum
+                </div>
+              </div>
+              <div className="flex flex-col relative m-2">
+                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
+                  Lorem ipsum
+                </div>
+              </div>
+              <div className="flex flex-col relative m-2">
+                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
+                  Lorem ipsum
+                </div>
+              </div>
+              <div className="flex flex-col relative m-2">
+                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
+                  Lorem ipsum
+                </div>
+              </div>
+              <div className="flex flex-col relative m-2">
+                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
+                  Lorem ipsum
+                </div>
+              </div>
+            </Carousel>
           </div>
         </div>
       </main>
