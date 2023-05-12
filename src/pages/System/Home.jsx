@@ -64,29 +64,11 @@ function Home() {
           }}
         >
           <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              margin: "1rem",
-              width: "900px",
-              backgroundColor: "white",
-              fontSize: 20,
-              padding: "2px",
-              borderRadius: "25px",
-              background:
-                "-webkit-linear-gradient(60deg, rgba(18, 228, 90, 1), rgba(42, 174, 192, 1))",
-            }}
+           
           >
             <input
               type="text"
-              style={{
-                width: "781px",
-                backgroundColor: "#121212",
-                fontSize: 20,
-                padding: "5px",
-                borderRadius: "25px 0px 0px 25px",
-                paddingLeft: "25px",
-              }}
+              
               placeholder="Search Here.."
             ></input>
             <div
@@ -199,25 +181,24 @@ function Home() {
       </div>
       {/* Main Content */}
       <main>
-        <div>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            className="headline_wrap_container"
+            style={{background:'#161616',border:'none'}}
           >
-            <aside className="headline font-nunito">TRENDING ALBUMS</aside>
+         
+          <div style={{display: "flex",flexDirection: "row",justifyContent: "space-between", }}>
+            <pre className="headline font-nunito"  style={{width:'4%'}}> </pre>
+              <pre className="headline font-nunito" >TRENDING ALBUMS</pre>
+              <div  style={{display:'flex',flexDirection:'row'}} className="dsb_ar">
+                
+                  
+                <pre style={{color:'#555555',}}>SEE ALL</pre>
+                
+              </div>
           </div>
         </div>
         <div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "auto auto auto auto auto",
-              gap: 25,
-            }}
-          >
+          <div className="home_grid">
             <Album />
             <Album />
             <Album />
@@ -230,26 +211,24 @@ function Home() {
             <Album />
           </div>
         </div>
-        <div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingTop: "4rem",
-            }}
+        <div
+            className="headline_wrap_container"
+            style={{background:'#161616',border:'none'}}
           >
-            <aside className="headline font-nunito">NEW ALBUMS</aside>
+         
+          <div style={{display: "flex",flexDirection: "row",justifyContent: "space-between", }}>
+            <pre className="headline font-nunito"  style={{width:'4%'}}> </pre>
+              <pre className="headline font-nunito" >NEW ALBUMS</pre>
+              <div  style={{display:'flex',flexDirection:'row'}} className="dsb_ar">
+                
+                  
+                <pre style={{color:'#555555',}}>SEE ALL</pre>
+                
+              </div>
           </div>
         </div>
         <div style={{ marginBottom: "2rem" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "auto auto auto auto auto",
-              gap: 25,
-            }}
-          >
+          <div className="home_grid">
             <Album />
             <Album />
             <Album />
@@ -276,12 +255,12 @@ function Home() {
           </div>
         </div>
         <div
-          className="my_profile_sub_container2"
-          style={{ width: "86%", height: "300px", overflowY: "hidden" }}
+          className="singers_slide"
+          
         >
           <div
-            className="slide-container"
-            style={{ width: "80%", height: "300px" }}
+            className="singers_slide-container"
+           
           >
             <div
               style={{
@@ -294,37 +273,37 @@ function Home() {
             >
               <div className="flex flex-col m-[18px] w-[160px] relative">
                 <img src={Slide6} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 text-[20px] font-semibold">
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col m-[18px] w-[160px] relative">
                 <img src={Slide1} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 text-[20px] font-semibold">
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col m-[18px] w-[160px] relative">
                 <img src={Slide2} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 text-[20px] font-semibold">
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col m-[18px] w-[160px] relative">
                 <img src={Slide3} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 text-[20px] font-semibold">
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col m-[18px] w-[160px] relative">
                 <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 text-[20px] font-semibold">
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col m-[18px] w-[160px] relative">
                 <img src={Slide5} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 text-[20px] font-semibold">
+                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
