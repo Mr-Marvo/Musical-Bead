@@ -10,13 +10,15 @@ import {
   SignIn,
   SignUp,
 } from "./pages";
+import AlbumEdit from "./pages/Common/AlbumEdit/AlbumEdit";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/" element={<AlbumEdit/>} />
+       {/*} <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/home" element={<Home />} />
         <Route
@@ -31,7 +33,7 @@ function App() {
         />
         <Route exact path="/profile" element={<MyProfile />} />
         <Route path="/earnings" element={<Earnings />} />
-        <Route path="*" element={<NotFound />} />
+  <Route path="*" element={<NotFound />} />*/}
       </Routes>
     </BrowserRouter>
   );
