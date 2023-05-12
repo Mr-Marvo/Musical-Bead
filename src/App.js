@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Earnings, Home, LandingPage, MusicianDashboard, MyProfile, NewMusicianDashboard, NotFound, SignIn, SignUp,  } from "./pages";
-
+import AlbumView from "./pages/Common/AlbumView/AlbumView";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route exact path="/profile" element={<MyProfile />} />
         <Route path="/earnings" element={<Earnings/>} />
         <Route path="*" element={<NotFound />} /> 
+        <Route path="/album4" element={<AlbumView />} /> 
       </Routes>
     </BrowserRouter>
   );
