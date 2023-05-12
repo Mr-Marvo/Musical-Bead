@@ -176,19 +176,8 @@ function Musician_Dashboard() {
           </div>
 
           <div className="musician_dashboard_sub_container2">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img
-                src={ProfileImage}
-                alt="User"
-                className="singer_dashimage w-20 h-20"
-              />
+            <div style={{display: "flex",flexDirection: "row",alignItems: "center",justifyContent: "center",}}>
+              <img src={ProfileImage} alt="User" className="singer_dashimage w-20 h-20"/>
               <pre className="user_tag" style={{ background: "transparent" }}>
                 {" "}
                 {fullnameTag}{" "}
@@ -211,6 +200,32 @@ function Musician_Dashboard() {
                 Update Your Profile{" "}
               </button>
             </div>
+          </div>
+
+          <div className="new_bead_add_container" style={{backgroundColor:'rgba(0,0,0,0.32)',marginTop:'10px',borderRadius:'25px',padding:'1rem'}}>
+              
+                <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+                    <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',width:'200px',height:'200px'}}>
+                        <img src={frame1} alt=""/>
+                        <p style={{color:'#767676'}}>Upload Convert</p>
+                        <p style={{color:'#767676'}}>(JPG,PNG)</p>
+                    </div>
+                </div>
+                <div style={{display:'flex',flexDirection:'column'}}>
+                    <label className="text-[#555555]">Special Description</label>
+                    <textarea type="text" style={{backgroundColor:'#1F1F1F',color:'#ffff',borderRadius:'25px',height:'180px'}}></textarea>
+                </div>
+                <div style={{display:'flex',flexDirection:'column',margin:'20px'}}>
+                    
+                        <label className="text-[#555555]">Price</label>
+                        <input type="text" style={{backgroundColor:'#1F1F1F',color:'#ffff',borderRadius:'25px',height:'30px'}}></input>
+                   
+                        <label className="text-[#555555]">Name</label>
+                        <input type="text" style={{backgroundColor:'#1F1F1F',color:'#ffff',borderRadius:'25px',height:'30px'}}></input>
+                   
+                        <button style={{color:'white',width:'100px',height:'30px',marginTop:'10px',fontSize:'16px',background:'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',borderRadius:'25px'}}>Add</button>
+                </div>
+
           </div>
 
           <div

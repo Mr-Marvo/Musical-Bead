@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AlbumEdit/>} />
+        <Route path="/" element={<MusicianDashboard/>} />
        {/*} <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/home" element={<Home />} />
