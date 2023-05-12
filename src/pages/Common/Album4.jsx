@@ -7,7 +7,7 @@ const Album4 = () => {
       <div className="flex flex-col bg-black w-fit h-fit rounded-xl p-4 relative">
         <div className="flex">
           <img src={DefaultAlbum} alt="default album" className="w-[350px]" />
-          <div className="absolute right-4 bottom-4 z-10">
+          <div className="absolute right-4 bottom-4">
             <div className="flex flex-col">
               <img
                 src={TagTop}
