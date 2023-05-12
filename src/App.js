@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
+  AlbumEdit,
+  AlbumView,
+  Cart,
   Earnings,
   Home,
   LandingPage,
@@ -10,16 +13,14 @@ import {
   SignIn,
   SignUp,
 } from "./pages";
-import AlbumEdit from "./pages/Common/AlbumEdit/AlbumEdit";
-import Cart from "./pages/Common/Cart/Cart";
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Cart/>} />
-       {/*} <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/home" element={<Home />} />
         <Route
@@ -34,7 +35,10 @@ function App() {
         />
         <Route exact path="/profile" element={<MyProfile />} />
         <Route path="/earnings" element={<Earnings />} />
-  <Route path="*" element={<NotFound />} />*/}
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/album" element={<AlbumView />} />
+        <Route path="/album-edit" element={<AlbumEdit />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

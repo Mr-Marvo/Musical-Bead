@@ -4,11 +4,8 @@ import "../../App.css";
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiArrowDownSFill } from "react-icons/ri";
 import { NewFooter, NewHeader } from "../../components/system";
-import frame1 from '../../assets/images/system/Frame (4).png';
-import frame2 from '../../assets/images/system/Frame (1).png';
-import frame3 from '../../assets/images/system/Frame (2).png';
-import frame4 from '../../assets/images/system/Frame (3).png';
-import {RxCross2} from 'react-icons/rx';
+import { RxCross2 } from "react-icons/rx";
+import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 
 function New_Musician_Dashboard() {
   const [isCollapsed1, setIsCollapsed1] = useState(false);
@@ -24,11 +21,11 @@ function New_Musician_Dashboard() {
     setIsCollapsed2(!isCollapsed2);
   };
 
-  const [fullname,setFullname] = useState('Oliver Ferdison');
+  const [fullname, setFullname] = useState("Oliver Ferdison");
 
   const Name = () => {
-    setFullname('Oliver Ferdison');
-  }
+    setFullname("Oliver Ferdison");
+  };
 
   const [isPopup, setIsPopup] = useState(false);
 
@@ -37,8 +34,6 @@ function New_Musician_Dashboard() {
   };
 
   return (
-
-    
     <>
       <NewHeader />
 
@@ -66,19 +61,32 @@ function New_Musician_Dashboard() {
             </div>
             {isCollapsed1 ? null : (
               <div className="step_content">
-                <div className="img_container1" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                     
-                        <img src={frame1}/>
-                        <p style={{color:'#767676'}}>Upload</p>
-                        <p style={{color:'#767676'}}>Profile Picture</p>
-                      
+                <div
+                  className="img_container1"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <img src={VideoIcon} alt='icon'/>
+                  <p style={{ color: "#767676" }}>Upload</p>
+                  <p style={{ color: "#767676" }}>Profile Picture</p>
                 </div>
                 <div className="data_container">
-                  <span className="font-nunito text-white" style={{ fontSize: "24px" }}>
+                  <span
+                    className="font-nunito text-white"
+                    style={{ fontSize: "24px" }}
+                  >
                     {fullname}
                   </span>
                   <form>
-                    <input type="text" placeholder="Title" className="text-white"></input>
+                    <input
+                      type="text"
+                      placeholder="Title"
+                      className="text-white"
+                    ></input>
                     <textarea className="text-white">Add Bio...</textarea>
                   </form>
                 </div>
@@ -106,50 +114,92 @@ function New_Musician_Dashboard() {
               </div>
             </div>
             {isCollapsed2 ? null : (
-              <div style={{display:'flex',flexDirection:'column'}}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 <div className="step_content">
-                  <div className="img_container2" style={{marginTop:'5rem',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                      <img src={frame1}/>
+                  <div
+                    className="img_container2"
+                    style={{
+                      marginTop: "5rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <img src={VideoIcon} alt='icon' />
                   </div>
                   <div className="data_container data_container2">
                     <form>
-                      <label className="font-nunito text-white">Album Name</label>
+                      <label className="font-nunito text-white">
+                        Album Name
+                      </label>
                       <input
                         type="text"
                         className="album_name text-white"
                       ></input>
                       <div>
                         <div>
-                          <label className="font-nunito text-white">Category</label>
+                          <label className="font-nunito text-white">
+                            Category
+                          </label>
                           <input type="text" className="text-white"></input>
                         </div>
 
                         <div>
-                          <label className="font-nunito text-white">Artist</label>
-                          <input type="text" className="text-white" value={fullname}></input>
+                          <label className="font-nunito text-white">
+                            Artist
+                          </label>
+                          <input
+                            type="text"
+                            className="text-white"
+                            value={fullname}
+                          ></input>
                         </div>
                       </div>
-                      <label className="font-nunito text-white">Description</label>
+                      <label className="font-nunito text-white">
+                        Description
+                      </label>
                       <textarea className="text-white"></textarea>
-                    
                     </form>
-                  
-                  
                   </div>
                 </div>
-                <div style={{display:'flex',flexDirection:'column',padding:'2rem'}} className="song_wrap">
-                        <p style={{color:'white',marginLeft:'10px'}}>
-                        Add Songs <span>(0)</span>
-                      </p>
-                      <div style={{display:'flex',flexDirection:'row',justifyContent:'space-evenly'}}>
-                        <div className="song_container2" onClick={handleIspopup}>+</div>
-                        <div className="song_container2" onClick={handleIspopup}>+</div>
-                        <div className="song_container2" onClick={handleIspopup}>+</div>
-                        <div className="song_container2" onClick={handleIspopup}>+</div>
-                        <div className="song_container2" onClick={handleIspopup}>+</div>
-                        <div className="song_container2" onClick={handleIspopup}>+</div> 
-                      </div>
-                
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "2rem",
+                  }}
+                  className="song_wrap"
+                >
+                  <p style={{ color: "white", marginLeft: "10px" }}>
+                    Add Songs <span>(0)</span>
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    <div className="song_container2" onClick={handleIspopup}>
+                      +
+                    </div>
+                    <div className="song_container2" onClick={handleIspopup}>
+                      +
+                    </div>
+                    <div className="song_container2" onClick={handleIspopup}>
+                      +
+                    </div>
+                    <div className="song_container2" onClick={handleIspopup}>
+                      +
+                    </div>
+                    <div className="song_container2" onClick={handleIspopup}>
+                      +
+                    </div>
+                    <div className="song_container2" onClick={handleIspopup}>
+                      +
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -164,40 +214,86 @@ function New_Musician_Dashboard() {
                         justifyContent: "space-between",
                       }}
                     >
-                      <p className="pop_addsong font-nunito" style={{color:'white'}}>Add song</p>
+                      <p
+                        className="pop_addsong font-nunito"
+                        style={{ color: "white" }}
+                      >
+                        Add song
+                      </p>
                       <span
                         onClick={handleIspopup}
-                        style={{ fontSize: "18px", fontWeight: "bold",color:'white' }}
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "bold",
+                          color: "white",
+                        }}
                       >
-                        <RxCross2/>
+                        <RxCross2 />
                       </span>
                     </div>
 
                     <input type="text" placeholder="Song Name"></input>
                     <div className="upload_container">
-                      <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                        <img src={frame1} alt=""/>
-                        <p style={{color:'#767676'}}>Upload Convert</p>
-                        <p style={{color:'#767676'}}>(JPG,PNG)</p>
+                      <div
+                        className="upload_wrap"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img src={VideoIcon} alt="" />
+                        <p style={{ color: "#767676" }}>Upload Convert</p>
+                        <p style={{ color: "#767676" }}>(JPG,PNG)</p>
                       </div>
-                      <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                        <img src={frame2} alt=""/>
-                        <p style={{color:'#767676'}}>Upload Video</p>
-                        <p style={{color:'#767676'}}>(Mp4,MVO)</p>
+                      <div
+                        className="upload_wrap"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img src={DocumentIcon} alt="" />
+                        <p style={{ color: "#767676" }}>Upload Video</p>
+                        <p style={{ color: "#767676" }}>(Mp4,MVO)</p>
                       </div>
-                      <div className="upload_wrap" style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-                        <img src={frame3} alt=""/>
-                        <p style={{color:'#767676'}}>Upload Lyrics</p>
-                        <p style={{color:'#767676'}}>(PDF,JPG)</p>
+                      <div
+                        className="upload_wrap"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img src={MusicIcon} alt="" />
+                        <p style={{ color: "#767676" }}>Upload Lyrics</p>
+                        <p style={{ color: "#767676" }}>(PDF,JPG)</p>
                       </div>
                     </div>
-                    <div className="upload_container2" >
-                      <div className="up_song" style={{display:'flex',alignItems:'center',justifyContent:'space-evenly',flexDirection:'row'}}>
-                        <p style={{color:'#767676'}}>Upload Songs  <p style={{color:'#767676'}}>(MP3,WAV)</p></p>
-                       
-                        <img src={frame4} alt=""/>
+                    <div className="upload_container2">
+                      <div
+                        className="up_song"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-evenly",
+                          flexDirection: "row",
+                        }}
+                      >
+                        <p style={{ color: "#767676" }}>
+                          Upload Songs{" "}
+                          <p style={{ color: "#767676" }}>(MP3,WAV)</p>
+                        </p>
+
+                        <img src={ImageIcon} alt="" />
                       </div>
-                      <button className="add_btn" style={{color:'white'}}>Add</button>
+                      <button className="add_btn" style={{ color: "white" }}>
+                        Add
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -205,7 +301,10 @@ function New_Musician_Dashboard() {
             ) : null}
           </div>
         </div>
-        <button className="review_submit_btn font-nunito" style={{color:'white',fontWeight:'700'}}>
+        <button
+          className="review_submit_btn font-nunito"
+          style={{ color: "white", fontWeight: "700" }}
+        >
           Submit For Review
         </button>
       </main>
