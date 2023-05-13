@@ -3,14 +3,10 @@ import { createContext, useContext, useState } from "react";
 const ContentContext = createContext(undefined);
 
 export const ContentProvider = ({ children }) => {
-  const [userType, setUser] = useState(1);
-
-  const setUserType = (id) => {
-    setUser(id);
-  };
+  const url = 'https://api.musicalbead.com/api'
 
   return (
-    <ContentContext.Provider value={{ userType, setUserType }}>
+    <ContentContext.Provider value={{ url }}>
       {children}
     </ContentContext.Provider>
   );

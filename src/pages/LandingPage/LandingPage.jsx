@@ -19,6 +19,9 @@ const LandingPage = () => {
   let { userType } = useContentContext();
 
   useEffect(() => {
+    if(localStorage.getItem('user') === null){
+      localStorage.setItem('user', 'FAN');
+    }
   }, [userType]);
 
   return (

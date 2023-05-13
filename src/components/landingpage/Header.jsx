@@ -1,7 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Logo } from "../../assets";
-import { useContentContext } from "../../providers/ContentContext";
+import { useEffect, useState } from "react";
 
 const navigation = [
   { name: "Home", href: "#", current: true },
@@ -13,10 +13,22 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Header = () => {
-  const { setUserType } = useContentContext();
+  const [userType, setUserType] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem("user") === "FAN") {
+      setUserType(true);
+    } else {
+      setUserType(false);
+    }
+  }, []);
 
   const action = (id) => {
-    setUserType(id);
+    if (id === '1') {
+      localStorage.setItem("user", "FAN");
+    } else {
+      localStorage.setItem("user", "ARTIST");
+    }
   };
 
   return (
@@ -62,8 +74,8 @@ const Header = () => {
                         action(e.target.value);
                       }}
                     >
-                      <option value={1}>FAN</option>
-                      <option value={2}>ARTIST</option>
+                      <option value={1} selected={userType}>FAN</option>
+                      <option value={2} selected={!userType}>ARTIST</option>
                     </select>
                   </div>
                 </div>
