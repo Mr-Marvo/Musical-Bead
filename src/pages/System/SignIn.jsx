@@ -3,9 +3,12 @@ import { Footer, Header } from "../../components/system";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
+import { useEffect } from "react";
 
 const SignIn = () => {
-  let { url } = useContentContext();
+  let { url, getAuthUser } = useContentContext();
+  const userType = localStorage.getItem("user");
+
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -16,7 +19,7 @@ const SignIn = () => {
       email_address: email,
       password: password,
       login_type: "1",
-      os_type: "1",
+      os_type: "4",
       device_id: "",
       push_id: "",
     };
@@ -24,12 +27,23 @@ const SignIn = () => {
     axios
       .post(url + "/login", data)
       .then((response) => {
-        console.log(response);
+        if (response.data.success) {
+          localStorage.setItem("token", response.data.output);
+          getAuthUser(response.data.output);
+        } else {
+          console.log(response);
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      getAuthUser(localStorage.getItem("token"));
+    }
+  }, []);
 
   return (
     <div>
@@ -37,7 +51,7 @@ const SignIn = () => {
         <Header />
         <div className="flex flex-col bg-black xl:w-1/4 lg:w-1/2 sl:w-3/4 w-full mx-4 sl:mx-0 h-fit gap-12 py-12 rounded-xl shadow-xl shadow-black">
           <div className="flex font-nunito text-2xl text-white justify-center">
-            Sign In
+            Sign In {userType === "FAN" ? "as Fan" : "as Artist"}
           </div>
           <div>
             <form

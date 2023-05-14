@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Footer, Header } from "../../components/system";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useContentContext } from "../../providers/ContentContext";
 
 const SignUp = () => {
+  let { url, getAuthUser } = useContentContext();
+
   const userType = localStorage.getItem("user");
   const [fName, setFName] = useState();
   const [lName, setLName] = useState();
@@ -20,6 +24,12 @@ const SignUp = () => {
     };
     console.log(data);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      getAuthUser(localStorage.getItem("token"));
+    }
+  }, []);
 
   return (
     <div>

@@ -21,7 +21,6 @@ const NewHeader = () => {
     } */
 
   const [userTag, setUserTag] = useState("Hi! Oliver");
-  const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
 
   const [isCollapsed3, setIsCollapsed3] = useState(true);
 
@@ -70,7 +69,7 @@ const NewHeader = () => {
         />
         <img
           src={Singer}
-          alt="User Image"
+          alt="User"
           className="singer_image cursor-pointer"
           onClick={handleToggleCollapse3}
         />
