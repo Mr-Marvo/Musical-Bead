@@ -127,8 +127,8 @@ const Header = () => {
                 }}
                 aria-hidden="true"
               >
-                <option value={1}>FAN</option>
-                <option value={2}>ARTIST</option>
+                <option value={1} selected={userType}>FAN</option>
+                <option value={2} selected={!userType}>ARTIST</option>
               </select>
             </div>
           </Disclosure.Panel>

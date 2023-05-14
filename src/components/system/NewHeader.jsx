@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Singer from "../../assets/images/common/singer.png";
 
 import { FaBars } from "react-icons/fa";
@@ -8,21 +8,20 @@ import { RiArrowUpSFill, RiArrowDownSFill } from "react-icons/ri";
 import { AiTwotoneSetting, AiFillDollarCircle } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { Logo } from "../../assets";
+import { useContentContext } from "../../providers/ContentContext";
 
 const NewHeader = () => {
   const navRef = useRef();
 
+  let { userName } = useContentContext();
+  const userTag = useState(`Hi! ${userName}`);
+  const location = window.location.pathname;
+
+  const [isCollapsed3, setIsCollapsed3] = useState(true);
+
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
-
-  /* const find_user_tag = () => {
-        setUserTag('Hi! Oliver')
-    } */
-
-  const [userTag, setUserTag] = useState("Hi! Oliver");
-
-  const [isCollapsed3, setIsCollapsed3] = useState(true);
 
   const handleToggleCollapse3 = () => {
     setIsCollapsed3(!isCollapsed3);
@@ -32,16 +31,36 @@ const NewHeader = () => {
     <header className="font-nunito">
       <img src={Logo} alt="Musical Bead" className="logo" />
       <nav ref={navRef}>
-        <a href="/home" className="text-[20px] font-nunito">
+        <a
+          href="/home"
+          className={`text-[20px] font-nunito ${
+            location === "/home" ? "text-[#2aafc1]" : ""
+          }`}
+        >
           Home
         </a>
-        <a href="/musician/dashboard" className="text-[20px] font-nunito">
+        <a
+          href="/dashboard"
+          className={`text-[20px] font-nunito ${
+            location === "/dashboard" ? "text-[#2aafc1]" : ""
+          }`}
+        >
           Dashboard
         </a>
-        <a href="/profile" className="font-nunito text-[20px]">
+        <a
+          href="/profile"
+          className={`text-[20px] font-nunito ${
+            location === "/profile" ? "text-[#2aafc1]" : ""
+          }`}
+        >
           My Profile
         </a>
-        <a href="/earnings" className="font-nunito text-[20px]">
+        <a
+          href="/earnings"
+          className={`text-[20px] font-nunito ${
+            location === "/earnings" ? "text-[#2aafc1]" : ""
+          }`}
+        >
           Earnings
         </a>
       </nav>

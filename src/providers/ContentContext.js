@@ -8,9 +8,9 @@ export const ContentProvider = ({ children }) => {
 
   const [visitor, setVisitor] = useState();
 
-  const [userName, setUserName] = useState();
-  const [userId, setUserId] = useState();
-  const [userType, setUserType] = useState();
+  const userName = localStorage.getItem('username').split(" ")[1];
+  const userId = localStorage.getItem('userid');
+  const userType = localStorage.getItem('usertype');
 
   const getAuthUser = (token) => {
     const config = {
@@ -23,10 +23,11 @@ export const ContentProvider = ({ children }) => {
     axios
       .post(url + "/auth/user", bodyParameters, config)
       .then((response) => {
+        console.log(response.data.output[0].full_name);
         if (response?.status === 200) {
-          setUserName(response.data.output[0].full_name);
-          setUserId(response.data.output[0].user_id);
-          setUserType(response.data.output[0].user_type_id);
+          localStorage.setItem('username', response.data.output[0].full_name);
+          localStorage.setItem('userid', response.data.output[0].user_id);
+          localStorage.setItem('usertype', response.data.output[0].user_type_id);
 
           if (response.data.output[0].user_type_id === 1) {
             window.location.replace("/dashboard");
@@ -45,7 +46,7 @@ export const ContentProvider = ({ children }) => {
   };
 
   return (
-    <ContentContext.Provider value={{ url, visitor, setVisitor, getAuthUser, userName, setUserName, userId, setUserId, userType, setUserType }}>
+    <ContentContext.Provider value={{ url, visitor, setVisitor, getAuthUser, userName, userId, userType }}>
       {children}
     </ContentContext.Provider>
   );
