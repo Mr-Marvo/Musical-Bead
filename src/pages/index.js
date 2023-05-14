@@ -14,3 +14,5 @@ export { default as NewMusicianDashboard } from './System/New_Musician_Dashboard
 export { default as AlbumView } from './Common/AlbumView/AlbumView'
 export { default as AlbumEdit } from './Common/AlbumEdit/AlbumEdit'
 export { default as Cart } from './Common/Cart/Cart'
+
+export { default as UnAuthorized } from './System/UnAuthorized'
