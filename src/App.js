@@ -12,32 +12,43 @@ import {
   NotFound,
   SignIn,
   SignUp,
+  UnAuthorized,
 } from "./pages";
 
-
 function App() {
+  const token = localStorage.getItem('token');
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route
-          exact
-          path="/musician/completeprofile"
-          element={<NewMusicianDashboard />}
-        />
-        <Route
-          exact
-          path="/musician/dashboard"
-          element={<MusicianDashboard />}
-        />
-        <Route exact path="/profile" element={<MyProfile />} />
-        <Route path="/earnings" element={<Earnings />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/album" element={<AlbumView />} />
-        <Route path="/album-edit" element={<AlbumEdit />} />
+        {token !== null ? (
+          <>
+            <Route exact path="/home" element={<Home />} />
+            <Route
+              exact
+              path="/completeprofile"
+              element={<NewMusicianDashboard />}
+            />
+            <Route
+              exact
+              path="/dashboard"
+              element={<MusicianDashboard />}
+            />
+            <Route exact path="/profile" element={<MyProfile />} />
+            <Route path="/earnings" element={<Earnings />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/album" element={<AlbumView />} />
+            <Route path="/album-edit" element={<AlbumEdit />} />
+          </>
+        ) : (
+          <>
+            <Route exact path="*" element={<UnAuthorized />} />
+          </>
+        )}
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

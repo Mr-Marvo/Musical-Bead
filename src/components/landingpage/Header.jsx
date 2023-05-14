@@ -1,6 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Logo } from "../../assets";
+import { useEffect, useState } from "react";
 import { useContentContext } from "../../providers/ContentContext";
 
 const navigation = [
@@ -13,10 +14,27 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Header = () => {
-  const { setUserType } = useContentContext();
+  let { setVisitor } = useContentContext();
+  const [userType, setUserType] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem("user") === "FAN") {
+      setVisitor(1);
+      setUserType(true);
+    } else {
+      setVisitor(2);
+      setUserType(false);
+    }
+  }, []);
 
   const action = (id) => {
-    setUserType(id);
+    if (id === "1") {
+      setVisitor(1);
+      localStorage.setItem("user", "FAN");
+    } else {
+      setVisitor(2);
+      localStorage.setItem("user", "ARTIST");
+    }
   };
 
   return (
@@ -62,8 +80,12 @@ const Header = () => {
                         action(e.target.value);
                       }}
                     >
-                      <option value={1}>FAN</option>
-                      <option value={2}>ARTIST</option>
+                      <option value={1} selected={userType}>
+                        FAN
+                      </option>
+                      <option value={2} selected={!userType}>
+                        ARTIST
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -105,8 +127,8 @@ const Header = () => {
                 }}
                 aria-hidden="true"
               >
-                <option value={1}>FAN</option>
-                <option value={2}>ARTIST</option>
+                <option value={1} selected={userType}>FAN</option>
+                <option value={2} selected={!userType}>ARTIST</option>
               </select>
             </div>
           </Disclosure.Panel>
