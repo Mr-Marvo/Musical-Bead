@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 const SignIn = () => {
   let { url, getAuthUser } = useContentContext();
-  const userType = localStorage.getItem("user");
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -51,7 +50,7 @@ const SignIn = () => {
         <Header />
         <div className="flex flex-col bg-black xl:w-1/4 lg:w-1/2 sl:w-3/4 w-full mx-4 sl:mx-0 h-fit gap-12 py-12 rounded-xl shadow-xl shadow-black">
           <div className="flex font-nunito text-2xl text-white justify-center">
-            Sign In {userType === "FAN" ? "as Fan" : "as Artist"}
+            Sign In
           </div>
           <div>
             <form
