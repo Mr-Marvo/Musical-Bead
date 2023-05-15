@@ -8,7 +8,7 @@ export const ContentProvider = ({ children }) => {
 
   const [visitor, setVisitor] = useState();
 
-  const userName = localStorage.getItem('username').split(" ")[1];
+  const userName = localStorage.getItem('username')?.split(" ")[1];
   const userId = localStorage.getItem('userid');
   const userType = localStorage.getItem('usertype');
 
@@ -23,7 +23,7 @@ export const ContentProvider = ({ children }) => {
     axios
       .post(url + "/auth/user", bodyParameters, config)
       .then((response) => {
-        console.log(response.data.output[0].full_name);
+        console.log(response.data.output);
         if (response?.status === 200) {
           localStorage.setItem('username', response.data.output[0].full_name);
           localStorage.setItem('userid', response.data.output[0].user_id);
@@ -41,7 +41,14 @@ export const ContentProvider = ({ children }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        if(error.response.status === 401){
+          console.log('UnAuthorized');
+          localStorage.clear();
+          window.location.replace("/signin");
+        }else{
+          console.log(error);
+        }
+        
       });
   };
 
