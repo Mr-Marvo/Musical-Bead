@@ -21,7 +21,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("user") === null) {
-      setVisitor(1);
+      setVisitor(3);
       localStorage.setItem("user", "FAN");
     }
   }, [visitor]);
@@ -38,10 +38,10 @@ const LandingPage = () => {
       <Hero />
       <Info />
       <Customize />
-      <div>{visitor === 1 ? <></> : <Benifits />}</div>
-      <div>{visitor === 1 ? <></> : <SettingsUp />}</div>
-      <div>{visitor === 1 ? <Albums /> : <Beads />}</div>
-      <div>{visitor === 1 ? <FanSignUp /> : <ArtistSignUp />}</div>
+      <div>{visitor === 3 ? <></> : <Benifits />}</div>
+      <div>{visitor === 3 ? <></> : <SettingsUp />}</div>
+      <div>{visitor === 3 ? <Albums /> : <Beads />}</div>
+      <div>{visitor === 3 ? <FanSignUp /> : <ArtistSignUp />}</div>
       <Footer />
     </div>
   );

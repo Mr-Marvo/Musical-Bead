@@ -3,9 +3,10 @@ import { Footer, Header } from "../../components/system";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useContentContext } from "../../providers/ContentContext";
+import axios from "axios";
 
 const SignUp = () => {
-  let { url, getAuthUser } = useContentContext();
+  let { url, getAuthUser, visitor } = useContentContext();
 
   const userType = localStorage.getItem("user");
   const [fName, setFName] = useState();
@@ -14,15 +15,31 @@ const SignUp = () => {
   const [password, setPassword] = useState();
   const [rePassword, setRePassword] = useState();
 
+  const [response, setResponse] = useState();
+
   const signup = (e) => {
     e.preventDefault();
-    const data = {
-      full_name: fName + " " + lName,
-      email_address: email,
-      password: password,
-      password_confirmation: rePassword,
-    };
-    console.log(data);
+
+    let data = new FormData();
+    data.append("user_type_id", visitor);
+    data.append("login_type", 1);
+    data.append("full_name", fName + " " + lName);
+    data.append("email_address", email);
+    data.append("password", password);
+    data.append("password_confirmation", rePassword);
+
+    axios
+      .post(url + "/register", data)
+      .then((response) => {
+        if (response.data.success) {
+          window.location.replace("/signin");
+        } else {
+          setResponse(response.data.message);
+        }
+      })
+      .catch((error) => {
+        setResponse(error.data.message);
+      });
   };
 
   useEffect(() => {
@@ -138,6 +155,9 @@ const SignUp = () => {
                     }}
                   />
                 </div>
+              </div>
+              <div className="flex text-red-600 text-xs font-semibold w-full justify-center text-center">
+                {response}
               </div>
               <div className="flex flex-col justify-center items-center">
                 <button

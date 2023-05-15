@@ -12,6 +12,7 @@ export const ContentProvider = ({ children }) => {
   const userId = localStorage.getItem('userid');
   const userType = localStorage.getItem('usertype');
 
+
   const getAuthUser = (token) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -29,12 +30,16 @@ export const ContentProvider = ({ children }) => {
           localStorage.setItem('userid', response.data.output[0].user_id);
           localStorage.setItem('usertype', response.data.output[0].user_type_id);
 
-          if (response.data.output[0].user_type_id === 1) {
-            window.location.replace("/dashboard");
-          } else if (response.data.output[0].user_type_id === 2) {
-            window.location.replace("/dashboard");
-          } else {
+          if (response.data.output[0].user_type_id === 3) {
             window.location.replace("/home");
+          } else if (response.data.output[0].user_type_id === 2) {
+            if(response.data.output[0].album_count === 0){
+              window.location.replace("/completeprofile");
+            }else{
+              window.location.replace("/dashboard");
+            }
+          } else {
+            window.location.replace("/dashboard");
           }
         } else {
           console.log(response);
