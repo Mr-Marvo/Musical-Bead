@@ -12,7 +12,6 @@ import {
   NotFound,
   SignIn,
   SignUp,
-  UnAuthorized,
 } from "./pages";
 
 function App() {
@@ -45,7 +44,7 @@ function App() {
           </>
         ) : (
           <>
-            <Route exact path="*" element={<UnAuthorized />} />
+            <Route exact path="*" element={<NotFound />} />
           </>
         )}
 

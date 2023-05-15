@@ -9,6 +9,7 @@ import { AiTwotoneSetting, AiFillDollarCircle } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { Logo } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
+import { Link } from "react-router-dom";
 
 const NewHeader = () => {
   const navRef = useRef();
@@ -29,7 +30,10 @@ const NewHeader = () => {
 
   return (
     <header className="font-nunito">
-      <img src={Logo} alt="Musical Bead" className="logo" />
+      <Link to="/">
+        <img src={Logo} alt="Musical Bead" className="logo" />
+      </Link>
+
       <nav ref={navRef}>
         <a
           href="/home"

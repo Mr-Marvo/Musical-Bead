@@ -19,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     if (localStorage.getItem("user") === "FAN") {
-      setVisitor(1);
+      setVisitor(3);
       setUserType(true);
     } else {
       setVisitor(2);
@@ -29,7 +29,7 @@ const Header = () => {
 
   const action = (id) => {
     if (id === "1") {
-      setVisitor(1);
+      setVisitor(3);
       localStorage.setItem("user", "FAN");
     } else {
       setVisitor(2);
