@@ -10,9 +10,12 @@ import { TbLogout } from "react-icons/tb";
 import { Logo } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const NewHeader = () => {
   const navRef = useRef();
+  let { url } = useContentContext();
+  const token = localStorage.getItem('token');
 
   let { userName } = useContentContext();
   const userTag = useState(`Hi! ${userName}`);
@@ -26,6 +29,31 @@ const NewHeader = () => {
 
   const handleToggleCollapse3 = () => {
     setIsCollapsed3(!isCollapsed3);
+  };
+
+  const logout = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const data = {
+      token: token
+    };
+
+    axios
+      .post(url + "/logout", data, config)
+      .then((response) => {
+        console.log(response);
+        if (response.data.success) {
+          localStorage.clear();
+          // window.location.replace("/signin");
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -124,7 +152,13 @@ const NewHeader = () => {
                 </li>
                 <li>
                   <TbLogout />
-                  <a href="/#">Log out</a>
+                  <a
+                    onClick={() => {
+                      logout();
+                    }}
+                  >
+                    Log out
+                  </a>
                 </li>
               </ul>
             </div>
