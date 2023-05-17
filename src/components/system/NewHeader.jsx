@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Singer from "../../assets/images/common/singer.png";
 
 import { FaBars } from "react-icons/fa";
@@ -15,7 +15,7 @@ import axios from "axios";
 const NewHeader = () => {
   const navRef = useRef();
   let { url } = useContentContext();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   let { userName } = useContentContext();
   const userTag = useState(`Hi! ${userName}`);
@@ -37,16 +37,15 @@ const NewHeader = () => {
     };
 
     const data = {
-      token: token
+      token: token,
     };
 
     axios
       .post(url + "/logout", data, config)
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           localStorage.clear();
-          // window.location.replace("/signin");
+          window.location.replace("/signin");
         } else {
           console.log(response);
         }
