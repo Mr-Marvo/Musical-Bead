@@ -70,7 +70,7 @@ function New_Musician_Dashboard() {
                     flexDirection: "column",
                   }}
                 >
-                  <img src={VideoIcon} alt='icon'/>
+                  <img src={ImageIcon} alt='icon'/>
                   <p style={{ color: "#767676" }}>Upload</p>
                   <p style={{ color: "#767676" }}>Profile Picture</p>
                 </div>
@@ -126,7 +126,7 @@ function New_Musician_Dashboard() {
                       flexDirection: "column",
                     }}
                   >
-                    <img src={VideoIcon} alt='icon' />
+                    <img src={ImageIcon} alt='icon' />
                   </div>
                   <div className="data_container data_container2">
                     <form>
