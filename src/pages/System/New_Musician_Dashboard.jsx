@@ -8,44 +8,74 @@ import { RxCross2 } from "react-icons/rx";
 import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 
 function New_Musician_Dashboard() {
+    const handleThisClick = () => {
+        addObject();
+        handleIspopup();
+    }
     const fileInputRef = useRef(null);
     const fileInputRef1 = useRef(null);
+    const [picture, setPicture] = useState(null);
+    const [imgData, setImgData] = useState(null);
+    const [picture1, setPicture1] = useState(null);
+    const [imgData1, setImgData1] = useState(null);
+
+    const onChangePicture = e => {
+        if (e.target.files[0]) {
+          console.log("picture: ", e.target.files);
+          setPicture(e.target.files[0]);
+          const reader = new FileReader();
+          reader.addEventListener("load", () => {
+            setImgData(reader.result);
+          });
+          reader.readAsDataURL(e.target.files[0]);
+        }
+      };
+    
+    const onChangePicture1 = e => {
+        if (e.target.files[0]) {
+          console.log("picture: ", e.target.files);
+          setPicture1(e.target.files[0]);
+          const reader = new FileReader();
+          reader.addEventListener("load", () => {
+            setImgData1(reader.result);
+          });
+          reader.readAsDataURL(e.target.files[0]);
+        }
+    };
 
     const handleButtonClick = () => {
-      // Trigger the hidden file input
-      fileInputRef.current.click();
+        // Trigger the hidden file input
+        fileInputRef.current.click();
     };
     const handleButtonClick1 = () => {
         // Trigger the hidden file input
         fileInputRef1.current.click();
-      };
-  const [picture, setPicture] = useState(null);
-  const [imgData, setImgData] = useState(null);
-  const [picture1, setPicture1] = useState(null);
-  const [imgData1, setImgData1] = useState(null);
-  const onChangePicture = e => {
-    if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
-      setPicture(e.target.files[0]);
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        setImgData(reader.result);
-      });
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
+    };
+   
 
-  const onChangePicture1 = e => {
-    if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
-      setPicture1(e.target.files[0]);
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        setImgData1(reader.result);
-      });
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
+
+    const [data, setData] = useState([
+        { id: 1, name: 'Item 1' },
+        { id: 2, name: 'Item 2' },
+        { id: 3, name: 'Item 3' },
+        // Existing items in the array
+      ]);
+    
+      const addObject = () => {
+        // Create a new object
+        const newObject = { id: data.length + 1, name: `Item ${data.length + 1}` };
+    
+        // Update the data array by adding the new object
+        setData([...data, newObject]);
+      };
+      
+
+      
+
+   
+
+  
+
 
 
 
@@ -174,14 +204,14 @@ function New_Musician_Dashboard() {
                             <p style={{ color: "#767676" }}>Profile Picture</p>
                         </button>
                     </div>
-                : 
+                  : 
                     <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
                          <RxCross2 style={{color:'#fff',position:'absolute',right:25,top:50}} onClick={()=> {setImgData1(null)}}/>
                         <div className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",marginTop:70}}>
                             <img className="playerProfilePic_home_tile" src={imgData1} style={{borderRadius:'60px',width:'260px',height:'260px'}}/>
                         </div>
                     </div>
-                }
+                  }
                   <div className="data_container data_container2">
                     <form>
                       <label className="font-nunito text-white">
@@ -233,26 +263,14 @@ function New_Musician_Dashboard() {
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-evenly",
+                      overflowX:'scroll',
+                      width:'1200px'
                     }}
                   >
-                    <div className="song_container2" onClick={handleIspopup}>
-                      +
-                    </div>
-                    <div className="song_container2" onClick={handleIspopup}>
-                      +
-                    </div>
-                    <div className="song_container2" onClick={handleIspopup}>
-                      +
-                    </div>
-                    <div className="song_container2" onClick={handleIspopup}>
-                      +
-                    </div>
-                    <div className="song_container2" onClick={handleIspopup}>
-                      +
-                    </div>
-                    <div className="song_container2" onClick={handleIspopup}>
-                      +
-                    </div>
+                    {data.map((item) => (
+                        <div key={item.id}  className="song_container2" style={{padding:'50px',cursor:'pointer'}} onClick={handleThisClick}>+</div>
+                    ))}
+               
                   </div>
                 </div>
               </div>
@@ -288,19 +306,25 @@ function New_Musician_Dashboard() {
 
                     <input type="text" placeholder="Song Name"></input>
                     <div className="upload_container">
-                      <div
-                        className="upload_wrap"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <img src={VideoIcon} alt="" />
-                        <p style={{ color: "#767676" }}>Upload Convert</p>
-                        <p style={{ color: "#767676" }}>(JPG,PNG)</p>
-                      </div>
+                      
+                        {imgData == null ? 
+                            <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                                <button onClick={handleButtonClick} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
+                                    <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture}  ref={fileInputRef} style={{ display: 'none' }}/>
+                                    <img src={ImageIcon} alt='icon'/>
+                                    <p style={{ color: "#767676" }}>Upload Convert</p>
+                                    <p style={{ color: "#767676" }}>(JPG,PNG)</p>
+                                </button>
+                            </div>
+                        
+                        : 
+                            <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',width:'250px'}}>
+                                <RxCross2 style={{color:'#fff',position:'absolute',right:0,top:0}} onClick={()=> {setImgData(null)}}/>
+                                <div className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
+                                    <img className="playerProfilePic_home_tile" src={imgData} style={{borderRadius:'5px',width:'200px',height:'200px'}}/>
+                                </div>
+                            </div>  
+                        }
                       <div
                         className="upload_wrap"
                         style={{
