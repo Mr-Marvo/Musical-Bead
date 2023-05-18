@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import "../../App.css";
 
 import Album from "../Common/Album";
-
 import { BsSearch } from "react-icons/bs";
 import { BiDownArrow } from "react-icons/bi";
 import { BiUpArrow } from "react-icons/bi";
-
-/* Slider */
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
 import { NewFooter, NewHeader } from "../../components/system";
 import {
   SampleSlider1,
@@ -19,32 +14,9 @@ import {
   SampleSlider5,
   SampleSlider6,
   SampleSlider7,
-  SampleSlider8,
 } from "../../assets";
 
-import Slide1 from "../../assets/images/system/Slide1.png";
-import Slide2 from "../../assets/images/system/Slide2.png";
-import Slide3 from "../../assets/images/system/Slide3.png";
-import Slide4 from "../../assets/images/system/Slide4.png";
-import Slide5 from "../../assets/images/system/Slide5.png";
-import Slide6 from "../../assets/images/system/Slide6.png";
-
 import { Carousel } from "@trendyol-js/react-carousel";
-
-const slideImages = [
-  {
-    url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    caption: "Slide 1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
-    caption: "Slide 2",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    caption: "Slide 3",
-  },
-];
 
 function Home() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -269,43 +241,43 @@ function Home() {
           <div className="singers_slide-container p-2">
             <Carousel show={6} slide={2} swiping={true}>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider1} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider2} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider3} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider4} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider5} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider6} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
               </div>
               <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
+                <img src={SampleSlider7} alt="Facebook" className="w-full h-full" />
                 <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
                   Lorem ipsum
                 </div>
