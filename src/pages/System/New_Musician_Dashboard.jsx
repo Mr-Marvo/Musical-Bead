@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import "../../App.css";
 
 import { RiArrowUpSFill } from "react-icons/ri";
@@ -8,6 +8,48 @@ import { RxCross2 } from "react-icons/rx";
 import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 
 function New_Musician_Dashboard() {
+    const fileInputRef = useRef(null);
+    const fileInputRef1 = useRef(null);
+
+    const handleButtonClick = () => {
+      // Trigger the hidden file input
+      fileInputRef.current.click();
+    };
+    const handleButtonClick1 = () => {
+        // Trigger the hidden file input
+        fileInputRef1.current.click();
+      };
+  const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
+  const [picture1, setPicture1] = useState(null);
+  const [imgData1, setImgData1] = useState(null);
+  const onChangePicture = e => {
+    if (e.target.files[0]) {
+      console.log("picture: ", e.target.files);
+      setPicture(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  const onChangePicture1 = e => {
+    if (e.target.files[0]) {
+      console.log("picture: ", e.target.files);
+      setPicture1(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData1(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+
+
+
   const [isCollapsed1, setIsCollapsed1] = useState(false);
 
   const handleToggleCollapse1 = () => {
@@ -61,19 +103,25 @@ function New_Musician_Dashboard() {
             </div>
             {isCollapsed1 ? null : (
               <div className="step_content">
-                <div
-                  className="img_container1"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: "column",
-                  }}
-                >
-                  <img src={ImageIcon} alt='icon'/>
-                  <p style={{ color: "#767676" }}>Upload</p>
-                  <p style={{ color: "#767676" }}>Profile Picture</p>
-                </div>
+                {imgData == null ? 
+                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                        <button onClick={handleButtonClick} className="img_container1" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",}}>
+                            <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture}  ref={fileInputRef} style={{ display: 'none' }}/>
+                            <img src={ImageIcon} alt='icon'/>
+                            <p style={{ color: "#767676" }}>Upload</p>
+                            <p style={{ color: "#767676" }}>Profile Picture</p>
+                        </button>
+                    </div>
+                  
+                : 
+                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                         <RxCross2 style={{color:'#fff',position:'absolute',right:50,top:50}} onClick={()=> {setImgData(null)}}/>
+                        <div className="img_container1" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",}}>
+                            <img className="playerProfilePic_home_tile" src={imgData} style={{borderRadius:'100px',width:'200px',height:'200px'}}/>
+                        </div>
+                    </div>  
+                }
+               
                 <div className="data_container">
                   <span
                     className="font-nunito text-white"
@@ -116,18 +164,24 @@ function New_Musician_Dashboard() {
             {isCollapsed2 ? null : (
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div className="step_content">
-                  <div
-                    className="img_container2"
-                    style={{
-                      marginTop: "5rem",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <img src={ImageIcon} alt='icon' />
-                  </div>
+                 
+                  {imgData1 == null ? 
+                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                        <button onClick={handleButtonClick1} className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",marginTop:70}}>
+                            <input accept="image/*" type="file" onChange={onChangePicture1}  ref={fileInputRef1} style={{ display: 'none' }}/>
+                            <img src={ImageIcon} alt='icon'/>
+                            <p style={{ color: "#767676" }}>Upload</p>
+                            <p style={{ color: "#767676" }}>Profile Picture</p>
+                        </button>
+                    </div>
+                : 
+                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                         <RxCross2 style={{color:'#fff',position:'absolute',right:25,top:50}} onClick={()=> {setImgData1(null)}}/>
+                        <div className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",marginTop:70}}>
+                            <img className="playerProfilePic_home_tile" src={imgData1} style={{borderRadius:'60px',width:'260px',height:'260px'}}/>
+                        </div>
+                    </div>
+                }
                   <div className="data_container data_container2">
                     <form>
                       <label className="font-nunito text-white">
