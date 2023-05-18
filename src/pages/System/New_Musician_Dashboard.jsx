@@ -14,10 +14,13 @@ function New_Musician_Dashboard() {
     }
     const fileInputRef = useRef(null);
     const fileInputRef1 = useRef(null);
+    const fileInputRef2 = useRef(null);
     const [picture, setPicture] = useState(null);
     const [imgData, setImgData] = useState(null);
     const [picture1, setPicture1] = useState(null);
     const [imgData1, setImgData1] = useState(null);
+    const [picture2, setPicture2] = useState(null);
+    const [imgData2, setImgData2] = useState(null);
 
     const onChangePicture = e => {
         if (e.target.files[0]) {
@@ -43,6 +46,18 @@ function New_Musician_Dashboard() {
         }
     };
 
+    const onChangePicture2 = e => {
+        if (e.target.files[0]) {
+          console.log("picture: ", e.target.files);
+          setPicture1(e.target.files[0]);
+          const reader = new FileReader();
+          reader.addEventListener("load", () => {
+            setImgData2(reader.result);
+          });
+          reader.readAsDataURL(e.target.files[0]);
+        }
+    };
+
     const handleButtonClick = () => {
         // Trigger the hidden file input
         fileInputRef.current.click();
@@ -50,6 +65,10 @@ function New_Musician_Dashboard() {
     const handleButtonClick1 = () => {
         // Trigger the hidden file input
         fileInputRef1.current.click();
+    };
+    const handleButtonClick2 = () => {
+        // Trigger the hidden file input
+        fileInputRef2.current.click();
     };
    
 
@@ -307,10 +326,10 @@ function New_Musician_Dashboard() {
                     <input type="text" placeholder="Song Name"></input>
                     <div className="upload_container">
                       
-                        {imgData == null ? 
+                        {imgData2 == null ? 
                             <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                                <button onClick={handleButtonClick} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
-                                    <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture}  ref={fileInputRef} style={{ display: 'none' }}/>
+                                <button onClick={handleButtonClick2} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
+                                    <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture2}  ref={fileInputRef2} style={{ display: 'none' }}/>
                                     <img src={ImageIcon} alt='icon'/>
                                     <p style={{ color: "#767676" }}>Upload Convert</p>
                                     <p style={{ color: "#767676" }}>(JPG,PNG)</p>
@@ -319,9 +338,9 @@ function New_Musician_Dashboard() {
                         
                         : 
                             <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',width:'250px'}}>
-                                <RxCross2 style={{color:'#fff',position:'absolute',right:0,top:0}} onClick={()=> {setImgData(null)}}/>
+                                <RxCross2 style={{color:'#fff',position:'absolute',right:0,top:0}} onClick={()=> {setImgData2(null)}}/>
                                 <div className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
-                                    <img className="playerProfilePic_home_tile" src={imgData} style={{borderRadius:'5px',width:'200px',height:'200px'}}/>
+                                    <img className="playerProfilePic_home_tile" src={imgData2} style={{borderRadius:'5px',width:'200px',height:'200px'}}/>
                                 </div>
                             </div>  
                         }
