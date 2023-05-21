@@ -2498,14 +2498,15 @@ header .nav-btn {
 
 .dropdown_category_list_container {
   width: 100%;
-  height: 15rem;
+  height: auto;
   background: #101010;
   margin-top: -25px;
-  color: white;
+  color: #424242;
+  padding-bottom: 25px;
 }
 
 .dropdown_category_list_wrapper {
-  margin: 25px 0px 25px 280px;
+  margin: 25px 0px 0 280px;
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto;
   gap: 35px;
@@ -2604,7 +2605,7 @@ header .nav-btn {
   background-color: rgba(0, 0, 0, 0.32);
   padding: 1rem;
   width: 72rem;
-  height: 370px;
+  height: auto;
   align-items: center;
   justify-content: center;
   margin: 1rem;
@@ -2613,7 +2614,7 @@ header .nav-btn {
 
 .singers_slide-container {
   width: 70rem;
-  height: 300px;
+  height: auto;
 }
 
 @media only screen and (max-width: 1200px) {
