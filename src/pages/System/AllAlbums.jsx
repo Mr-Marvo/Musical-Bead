@@ -12,6 +12,14 @@ function AllAlbums() {
   const token = localStorage.getItem("token");
   const [albums, setAlbums] = useState([]);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredObjects = albums.filter((obj) => {
+    const searchableText =
+      `${obj.name} ${obj.title} ${obj.description} ${obj.slogan}`.toLowerCase();
+    return searchableText.includes(searchQuery.toLowerCase());
+  });
+
   const [currentAlbumId, setCurrentAlbumId] = useState(null);
 
   const handleAlbumClick = (albumId) => {
@@ -60,7 +68,13 @@ function AllAlbums() {
           }}
         >
           <div>
-            <input type="text" placeholder="Search Here.."></input>
+            <input
+              type="text"
+              placeholder="Search Here.."
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+              }}
+            ></input>
             <div
               style={{
                 display: "flex",
@@ -83,9 +97,7 @@ function AllAlbums() {
       </div>
       {/* Main Content */}
       <main>
-        {albums.length === 0 ? (
-          <></>
-        ) : (
+        {searchQuery !== "" ? (
           <>
             <div
               className="headline_wrap_container"
@@ -98,11 +110,13 @@ function AllAlbums() {
                   justifyContent: "center",
                 }}
               >
-                <pre className="headline font-nunito">ALL ALBUMS</pre>
+                <pre className="headline font-nunito">
+                  SEARCH RESULTS FOR “{searchQuery}’’{" "}
+                </pre>
               </div>
             </div>
             <div>
-              {albums.map((album) => {
+              {filteredObjects.map((album) => {
                 return (
                   <div className="home_grid gap-4">
                     <Album
@@ -119,6 +133,47 @@ function AllAlbums() {
                 );
               })}
             </div>
+          </>
+        ) : (
+          <>
+            {albums.length === 0 ? (
+              <></>
+            ) : (
+              <>
+                <div
+                  className="headline_wrap_container"
+                  style={{ background: "#161616", border: "none" }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <pre className="headline font-nunito">ALL ALBUMS</pre>
+                  </div>
+                </div>
+                <div>
+                  {albums.map((album) => {
+                    return (
+                      <div className="home_grid gap-4">
+                        <Album
+                          key={album.id}
+                          id={album.id}
+                          cover={album.cover_image_path}
+                          name={album.title}
+                          slogan={album.slogan}
+                          audio={album.sample_url}
+                          isPlaying={currentAlbumId === album.id}
+                          onAlbumClick={handleAlbumClick}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
           </>
         )}
       </main>
