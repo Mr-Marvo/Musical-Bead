@@ -20,6 +20,8 @@ function Home() {
   const [newAlbums, setNewAlbums] = useState([]);
   const [musicians, setMusicians] = useState([]);
 
+  const [search, setSearch] = useState(null);
+
   const [currentAlbumId, setCurrentAlbumId] = useState(null);
 
   const handleAlbumClick = (albumId) => {
@@ -32,7 +34,7 @@ function Home() {
 
   useEffect(() => {
     loadCategories();
-    loadAlbums(0);
+    loadAlbums(0, null);
     loadMusicians();
   }, []);
 
@@ -61,13 +63,13 @@ function Home() {
       });
   };
 
-  const loadAlbums = (category) => {
+  const loadAlbums = (category, text) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const bodyParameters = {
       user_id: localStorage.getItem("userid"),
-      search_data: "",
+      search_data: text,
       search_type_id: 1,
       category_id: category,
     };
@@ -110,6 +112,12 @@ function Home() {
       });
   };
 
+  const searchAlbum = (text) => {
+    setSearch(text);
+
+    loadAlbums(0, text);
+  }
+
   return (
     <>
       <NewHeader />
@@ -123,7 +131,14 @@ function Home() {
           }}
         >
           <div>
-            <input type="text" placeholder="Search Here.."></input>
+            <input
+              type="text"
+              placeholder="Search Here.."
+              onChange={(e) => {
+                searchAlbum(e.target.value);
+              }}
+              className="text-white"
+            ></input>
             <div
               style={{
                 display: "flex",
@@ -133,26 +148,10 @@ function Home() {
                 backgroundColor: "#121212",
                 borderRadius: "0px 25px 25px 0px",
                 padding: 2,
+                paddingRight: '5px'
               }}
             >
               <BsSearch
-                color="white"
-                fontSize={16}
-                style={{ paddingRight: "3px" }}
-              />
-              <span
-                style={{
-                  fontSize: 16,
-                  backgroundImage: "linear-gradient(60deg, #00C7E2, #12E45A)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  paddingLeft: 5,
-                  paddingRight: 5,
-                }}
-              >
-                by Album
-              </span>
-              <BiDownArrow
                 color="white"
                 fontSize={16}
                 style={{ paddingRight: "3px" }}
@@ -169,7 +168,14 @@ function Home() {
               alignItems: "center",
             }}
           >
-            <p style={{ paddingRight: "10px" }}>All Categories</p>
+            <p
+              style={{ paddingRight: "10px" }}
+              onClick={() => {
+                loadAlbums(0, null);
+              }}
+            >
+              All Categories
+            </p>
             {isCollapsed ? (
               <BiDownArrow
                 fontSize={18}
@@ -186,56 +192,56 @@ function Home() {
           </div>
           <p
             onClick={() => {
-              loadAlbums(categories[0]?.id);
+              loadAlbums(categories[0]?.id, search);
             }}
           >
             {categories[0]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[1]?.id);
+              loadAlbums(categories[1]?.id, search);
             }}
           >
             {categories[1]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[2]?.id);
+              loadAlbums(categories[2]?.id, search);
             }}
           >
             {categories[2]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[3]?.id);
+              loadAlbums(categories[3]?.id, search);
             }}
           >
             {categories[3]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[4]?.id);
+              loadAlbums(categories[4]?.id, search);
             }}
           >
             {categories[4]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[5]?.id);
+              loadAlbums(categories[5]?.id, search);
             }}
           >
             {categories[5]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[6]?.id);
+              loadAlbums(categories[6]?.id, search);
             }}
           >
             {categories[6]?.title}
           </p>
           <p
             onClick={() => {
-              loadAlbums(categories[7]?.id);
+              loadAlbums(categories[7]?.id, search);
             }}
           >
             {categories[7]?.title}
@@ -250,7 +256,7 @@ function Home() {
                   <>
                     <p
                       onClick={() => {
-                        loadAlbums(categories.id);
+                        loadAlbums(categories.id, search);
                       }}
                     >
                       {category.title}
@@ -271,6 +277,29 @@ function Home() {
       </div>
       {/* Main Content */}
       <main>
+        {(search !== null) & (search !== "") ? (
+          <>
+            <div
+              className="headline_wrap_container"
+              style={{ background: "#161616", border: "none" }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <pre className="headline font-nunito">
+                  SEARCH RESULTS FOR “{search}’’{" "}
+                </pre>
+              </div>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+
         {trendingAlbums.length === 0 ? (
           <></>
         ) : (

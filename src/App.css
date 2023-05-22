@@ -2591,7 +2591,7 @@ header .nav-btn {
 }
 
 .image_containing_wrapper > div > input {
-  width: 781px;
+  width: 100%;
   background-color: #121212;
   font-size: 20px;
   padding: 5px;
