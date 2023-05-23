@@ -9,19 +9,15 @@ import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 import FlatList from "../../components/Common/FlatList";
 
 function New_Musician_Dashboard() {
-    const handleThisClick = () => {
-        addObject();
-        handleIspopup();
-    }
+  
     const fileInputRef = useRef(null);
     const fileInputRef1 = useRef(null);
-    const fileInputRef2 = useRef(null);
+   
     const [picture, setPicture] = useState(null);
     const [imgData, setImgData] = useState(null);
     const [picture1, setPicture1] = useState(null);
     const [imgData1, setImgData1] = useState(null);
-    const [picture2, setPicture2] = useState(null);
-    const [imgData2, setImgData2] = useState(null);
+   
 
     const onChangePicture = e => {
         if (e.target.files[0]) {
@@ -47,18 +43,7 @@ function New_Musician_Dashboard() {
         }
     };
 
-    const onChangePicture2 = e => {
-        if (e.target.files[0]) {
-          console.log("picture: ", e.target.files);
-          setPicture1(e.target.files[0]);
-          const reader = new FileReader();
-          reader.addEventListener("load", () => {
-            setImgData2(reader.result);
-          });
-          reader.readAsDataURL(e.target.files[0]);
-        }
-    };
-
+  
     const handleButtonClick = () => {
         // Trigger the hidden file input
         fileInputRef.current.click();
@@ -67,63 +52,26 @@ function New_Musician_Dashboard() {
         // Trigger the hidden file input
         fileInputRef1.current.click();
     };
-    const handleButtonClick2 = () => {
-        // Trigger the hidden file input
-        fileInputRef2.current.click();
+   
+   
+
+    const [isCollapsed1, setIsCollapsed1] = useState(false);
+    const handleToggleCollapse1 = () => {
+        setIsCollapsed1(!isCollapsed1);
+        Name();
     };
-   
+
+    const [isCollapsed2, setIsCollapsed2] = useState(false);
+    const handleToggleCollapse2 = () => {
+        setIsCollapsed2(!isCollapsed2);
+    };
+
+    const [fullname, setFullname] = useState("Oliver Ferdison");
+    const Name = () => {
+        setFullname("Oliver Ferdison");
+    };
 
 
-    const [data, setData] = useState([
-        { id: 1, name: 'Item 1' },
-        { id: 2, name: 'Item 2' },
-        { id: 3, name: 'Item 3' },
-        // Existing items in the array
-      ]);
-    
-      const addObject = () => {
-        // Create a new object
-        const newObject = { id: data.length + 1, name: `Item ${data.length + 1}` };
-    
-        // Update the data array by adding the new object
-        setData([...data, newObject]);
-      };
-      
-
-      
-
-   
-
-  
-
-
-
-
-
-  const [isCollapsed1, setIsCollapsed1] = useState(false);
-
-  const handleToggleCollapse1 = () => {
-    setIsCollapsed1(!isCollapsed1);
-    Name();
-  };
-
-  const [isCollapsed2, setIsCollapsed2] = useState(false);
-
-  const handleToggleCollapse2 = () => {
-    setIsCollapsed2(!isCollapsed2);
-  };
-
-  const [fullname, setFullname] = useState("Oliver Ferdison");
-
-  const Name = () => {
-    setFullname("Oliver Ferdison");
-  };
-
-  const [isPopup, setIsPopup] = useState(false);
-
-  const handleIspopup = () => {
-    setIsPopup(!isPopup);
-  };
 
   return (
     <>
@@ -267,31 +215,16 @@ function New_Musician_Dashboard() {
                     </form>
                   </div>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    padding: "2rem",
-                  }}
-                  className="song_wrap"
-                >
-                  <p style={{ color: "white", marginLeft: "10px" }}>
-                    Add Songs <span>(0)</span>
-                  </p>
-                  <div
-                    
-                    style={{
-                      display:'flex',
-                      flex:1,
-                      maxWidth:'1000px',
-                      overflowX:'scroll',
-                    }}
-                  >
-                   <FlatList/>
                
+                    <p style={{ color: "white"}} className="add_song_heading_wrap">
+                        Add Songs <span>(0)</span>
+                    </p>
+                  <div className="Flatlist_container1" >
+                      
+                      <FlatList/>
                   </div>
                 </div>
-              </div>
+             
             )}
            
           </div>

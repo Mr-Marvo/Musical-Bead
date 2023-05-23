@@ -1,25 +1,27 @@
 .flat-list-container {
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
-  }
+   
+    width: 5000px;
+}
   
-  .item-container {
+.item-container {
     display: flex;
-  }
+}
   
-
-  
-  .icon {
-    font-size: 24px;
+.icon {
+    font-size: 48px;
+    font-weight: 600;
     cursor: pointer;
-  }
+}
   
-  .icon:hover {
-    background-color: #ccc;
-  }
+.icon:hover {
+  font-weight: 800;
+  font-size: 60px;
+  color: rgba(0,0,0,0.7);
+}
   
-  .item {
+.item {
     position: relative; /* Add position: relative */
     width: 100px;
     height: 100px;
@@ -27,17 +29,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #363535;
-    border-radius: 4px;
+    background:#1f1f1f;
+    border-radius: 10px;
     overflow: hidden; /* Add overflow: hidden */
-  }
+}
   
-  .item img {
+.item img {
     position: absolute; /* Add position: absolute */
     top: 0;
     left: 0;
     width: 100%; /* Set width to 100% */
     height: 100%; /* Set height to 100% */
     object-fit: cover; /* Use object-fit: cover */
-  }
+}
 

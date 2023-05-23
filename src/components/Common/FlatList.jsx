@@ -5,7 +5,7 @@ import Popup from './Popup';
 import './FlatList.css'; // Import the CSS file for FlatList component
 
 const FlatList = () => {
-  const [items, setItems] = useState([{}, {}, {}, {}]);
+  const [items, setItems] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]);
   const [popupOpen, setPopupOpen] = useState(false);
   const [currentItemIndex, setCurrentItemIndex] = useState(null);
 
@@ -29,7 +29,7 @@ const FlatList = () => {
   };
 
   return (
-    <div className="flat-list-container">
+    <div className="flat-list-container" >
       <div className="item-container">
         {items.map((item, index) => (
           <div key={index} className="item">
@@ -39,7 +39,9 @@ const FlatList = () => {
                 onClick={() => {
                   setCurrentItemIndex(index);
                   setPopupOpen(true);
+                  
                 }}
+               
               >
                 +
               </div>
@@ -49,7 +51,7 @@ const FlatList = () => {
         ))}
       </div>
       <div className="item">
-        <div className="icon" onClick={handleAddItem}>
+        <div className="icon" onClick={handleAddItem} >
           +
         </div>
       </div>
