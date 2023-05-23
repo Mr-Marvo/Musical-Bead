@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   AlbumEdit,
   AlbumView,
+  AllAlbums,
   Cart,
   Earnings,
   Home,
@@ -26,6 +27,7 @@ function App() {
         {token !== null ? (
           <>
             <Route exact path="/home" element={<Home />} />
+            <Route exact path="/all" element={<AllAlbums />} />
             <Route
               exact
               path="/completeprofile"

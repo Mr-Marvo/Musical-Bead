@@ -1,57 +1,122 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../App.css";
 
 import Album from "../Common/Album";
-
 import { BsSearch } from "react-icons/bs";
 import { BiDownArrow } from "react-icons/bi";
 import { BiUpArrow } from "react-icons/bi";
-
-/* Slider */
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
 import { NewFooter, NewHeader } from "../../components/system";
-import {
-  SampleSlider1,
-  SampleSlider2,
-  SampleSlider3,
-  SampleSlider4,
-  SampleSlider5,
-  SampleSlider6,
-  SampleSlider7,
-  SampleSlider8,
-} from "../../assets";
-
-import Slide1 from "../../assets/images/system/Slide1.png";
-import Slide2 from "../../assets/images/system/Slide2.png";
-import Slide3 from "../../assets/images/system/Slide3.png";
-import Slide4 from "../../assets/images/system/Slide4.png";
-import Slide5 from "../../assets/images/system/Slide5.png";
-import Slide6 from "../../assets/images/system/Slide6.png";
 
 import { Carousel } from "@trendyol-js/react-carousel";
-
-const slideImages = [
-  {
-    url: "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    caption: "Slide 1",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
-    caption: "Slide 2",
-  },
-  {
-    url: "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-    caption: "Slide 3",
-  },
-];
+import axios from "axios";
+import { useContentContext } from "../../providers/ContentContext";
 
 function Home() {
+  let { url } = useContentContext();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const token = localStorage.getItem("token");
+  const [categories, setCategories] = useState([]);
+  const [trendingAlbums, setTrendingAlbums] = useState([]);
+  const [newAlbums, setNewAlbums] = useState([]);
+  const [musicians, setMusicians] = useState([]);
+
+  const [search, setSearch] = useState(null);
+
+  const [currentAlbumId, setCurrentAlbumId] = useState(null);
+
+  const handleAlbumClick = (albumId) => {
+    setCurrentAlbumId(albumId);
+  };
 
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+
+  useEffect(() => {
+    loadCategories();
+    loadAlbums(0, null);
+    loadMusicians();
+  }, []);
+
+  const loadMusicians = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const bodyParameters = {
+      user_id: null,
+      user_type_id: 2,
+      status: 0,
+    };
+
+    axios
+      .post(url + "/musician/all", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setMusicians(response.data.output);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const loadAlbums = (category, text) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      user_id: localStorage.getItem("userid"),
+      search_data: text,
+      search_type_id: 1,
+      category_id: category,
+    };
+
+    axios
+      .post(url + "/customer/dashboard", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setTrendingAlbums(response.data.output.trending);
+          setNewAlbums(response.data.output.whats_new);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const loadCategories = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      status: "1",
+    };
+
+    axios
+      .post(url + "/category/all", bodyParameters, config)
+      .then((response) => {
+        console.log(response);
+        if (response?.status === 200) {
+          setCategories(response.data.output);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const searchAlbum = (text) => {
+    setSearch(text);
+
+    loadAlbums(0, text);
+  }
 
   return (
     <>
@@ -66,7 +131,14 @@ function Home() {
           }}
         >
           <div>
-            <input type="text" placeholder="Search Here.."></input>
+            <input
+              type="text"
+              placeholder="Search Here.."
+              onChange={(e) => {
+                searchAlbum(e.target.value);
+              }}
+              className="text-white"
+            ></input>
             <div
               style={{
                 display: "flex",
@@ -76,26 +148,10 @@ function Home() {
                 backgroundColor: "#121212",
                 borderRadius: "0px 25px 25px 0px",
                 padding: 2,
+                paddingRight: '5px'
               }}
             >
               <BsSearch
-                color="white"
-                fontSize={16}
-                style={{ paddingRight: "3px" }}
-              />
-              <span
-                style={{
-                  fontSize: 16,
-                  backgroundImage: "linear-gradient(60deg, #00C7E2, #12E45A)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  paddingLeft: 5,
-                  paddingRight: 5,
-                }}
-              >
-                by Album
-              </span>
-              <BiDownArrow
                 color="white"
                 fontSize={16}
                 style={{ paddingRight: "3px" }}
@@ -112,7 +168,14 @@ function Home() {
               alignItems: "center",
             }}
           >
-            <p style={{ paddingRight: "10px" }}>All Categories</p>
+            <p
+              style={{ paddingRight: "10px" }}
+              onClick={() => {
+                loadAlbums(0, null);
+              }}
+            >
+              All Categories
+            </p>
             {isCollapsed ? (
               <BiDownArrow
                 fontSize={18}
@@ -127,192 +190,266 @@ function Home() {
               />
             )}
           </div>
-          <p>Classical</p>
-          <p>Hip Pop</p>
-          <p>Reggae</p>
-          <p>K-pop</p>
-          <p>Heavy Metal</p>
-          <p>EDM</p>
-          <p>Rhythm & Blues</p>
-          <p>Country Music</p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[0]?.id, search);
+            }}
+          >
+            {categories[0]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[1]?.id, search);
+            }}
+          >
+            {categories[1]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[2]?.id, search);
+            }}
+          >
+            {categories[2]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[3]?.id, search);
+            }}
+          >
+            {categories[3]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[4]?.id, search);
+            }}
+          >
+            {categories[4]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[5]?.id, search);
+            }}
+          >
+            {categories[5]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[6]?.id, search);
+            }}
+          >
+            {categories[6]?.title}
+          </p>
+          <p
+            onClick={() => {
+              loadAlbums(categories[7]?.id, search);
+            }}
+          >
+            {categories[7]?.title}
+          </p>
         </div>
 
         {isCollapsed ? (
           <div className="dropdown_category_list_container">
             <div className="dropdown_category_list_wrapper">
-              <p>Pop</p>
-              <p>Jazz</p>
-              <p>Blues</p>
-              <p>Folk</p>
-              <p>Funk</p>
-              <p>Soul</p>
-              <p>Indian</p>
-              <p>Latin</p>
-              <p>World</p>
-              <p>New-Age</p>
-              <p>Opera</p>
-              <p>J-pop</p>
-              <p>Experiment</p>
-              <p>Ambient</p>
-              <p>House</p>
-              <p>Alternative</p>
-              <p>Classical</p>
-              <p>Hip Pop</p>
-              <p>Reggae</p>
-              <p>K-pop</p>
-              <p>Heavy Metal</p>
-              <p>EDM</p>
-              <p>Rhythm & Blues</p>
-              <p>Country Music</p>
+              {categories.forEach((category) => {
+                return (
+                  <>
+                    <p
+                      onClick={() => {
+                        loadAlbums(categories.id, search);
+                      }}
+                    >
+                      {category.title}
+                    </p>
+                  </>
+                );
+              })}
             </div>
-            <div className="sub_btn_container">
+            {/* <div className="sub_btn_container">
               <div className="sub_btn_wrapper">
                 <div>
                   <button>Submit</button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         ) : null}
       </div>
       {/* Main Content */}
       <main>
-        <div
-          className="headline_wrap_container"
-          style={{ background: "#161616", border: "none" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <pre className="headline font-nunito" style={{ width: "4%" }}>
-              {" "}
-            </pre>
-            <pre className="headline font-nunito">TRENDING ALBUMS</pre>
+        {(search !== null) & (search !== "") ? (
+          <>
             <div
-              style={{ display: "flex", flexDirection: "row" }}
-              className="dsb_ar"
+              className="headline_wrap_container"
+              style={{ background: "#161616", border: "none" }}
             >
-              <pre style={{ color: "#555555" }}>SEE ALL</pre>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
+                <pre className="headline font-nunito">
+                  SEARCH RESULTS FOR “{search}’’{" "}
+                </pre>
+              </div>
             </div>
-          </div>
-        </div>
-        <div>
-          <div className="home_grid">
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-          </div>
-        </div>
-        <div
-          className="headline_wrap_container"
-          style={{ background: "#161616", border: "none" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <pre className="headline font-nunito" style={{ width: "4%" }}>
-              {" "}
-            </pre>
-            <pre className="headline font-nunito">NEW ALBUMS</pre>
+          </>
+        ) : (
+          <></>
+        )}
+
+        {trendingAlbums.length === 0 ? (
+          <></>
+        ) : (
+          <>
             <div
-              style={{ display: "flex", flexDirection: "row" }}
-              className="dsb_ar"
+              className="headline_wrap_container"
+              style={{ background: "#161616", border: "none" }}
             >
-              <pre style={{ color: "#555555" }}>SEE ALL</pre>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <pre className="headline font-nunito" style={{ width: "4%" }}>
+                  {" "}
+                </pre>
+                <pre className="headline font-nunito">TRENDING ALBUMS</pre>
+                <div
+                  style={{ display: "flex", flexDirection: "row" }}
+                  className="dsb_ar"
+                >
+                  <pre
+                    className="text-[#555555] cursor-pointer"
+                    onClick={() => window.location.replace("/all")}
+                  >
+                    SEE ALL
+                  </pre>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div style={{ marginBottom: "2rem" }}>
-          <div className="home_grid">
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-            <Album />
-          </div>
-        </div>
+            <div>
+              {trendingAlbums.map((album) => {
+                return (
+                  <div className="home_grid gap-4">
+                    <Album
+                      key={album.id}
+                      id={album.id}
+                      cover={album.cover_image_path}
+                      name={album.title}
+                      slogan={album.slogan}
+                      audio={album.sample_url}
+                      isPlaying={currentAlbumId === album.id}
+                      onAlbumClick={handleAlbumClick}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
 
-        <div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              paddingTop: "4rem",
-            }}
-          >
-            <aside className="headline font-nunito">TRENDING MUSICIANS</aside>
-          </div>
-        </div>
+        {newAlbums.length === 0 ? (
+          <></>
+        ) : (
+          <>
+            <div
+              className="headline_wrap_container"
+              style={{ background: "#161616", border: "none" }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <pre className="headline font-nunito" style={{ width: "4%" }}>
+                  {" "}
+                </pre>
+                <pre className="headline font-nunito">NEW ALBUMS</pre>
+                <div
+                  style={{ display: "flex", flexDirection: "row" }}
+                  className="dsb_ar"
+                >
+                  <pre
+                    className="text-[#555555] cursor-pointer"
+                    onClick={() => window.location.replace("/all")}
+                  >
+                    SEE ALL
+                  </pre>
+                </div>
+              </div>
+            </div>
+            <div style={{ marginBottom: "2rem" }}>
+              <div>
+                {newAlbums.map((album) => {
+                  return (
+                    <div className="home_grid gap-4">
+                      <Album
+                        key={album.id}
+                        id={album.id}
+                        cover={album.cover_image_path}
+                        name={album.title}
+                        slogan={album.slogan}
+                        audio={album.sample_url}
+                        isPlaying={currentAlbumId === album.id}
+                        onAlbumClick={handleAlbumClick}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
 
-        <div className="singers_slide">
-          <div className="singers_slide-container p-2">
-            <Carousel show={6} slide={2} swiping={true}>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
-                  Lorem ipsum
-                </div>
+        {musicians.length === 0 ? (
+          <></>
+        ) : (
+          <>
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  paddingTop: "4rem",
+                }}
+              >
+                <aside className="headline font-nunito">MUSICIANS</aside>
               </div>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
-                  Lorem ipsum
-                </div>
+            </div>
+
+            <div className="singers_slide">
+              <div className="singers_slide-container p-2">
+                <Carousel show={6} slide={2} swiping={true}>
+                  {musicians.map((musician) => {
+                    return (
+                      <div
+                        className="flex flex-col relative m-2"
+                        key={musician.user_id}
+                      >
+                        <img
+                          src={musician.profile_picture}
+                          alt="Facebook"
+                          className="w-full h-full"
+                        />
+                        <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
+                          {musician.full_name}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </Carousel>
               </div>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-              <div className="flex flex-col relative m-2">
-                <img src={Slide4} alt="Facebook" className="w-full h-full" />
-                <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] text-[14px] font-semibold">
-                  Lorem ipsum
-                </div>
-              </div>
-            </Carousel>
-          </div>
-        </div>
+            </div>
+          </>
+        )}
       </main>
 
       <NewFooter />

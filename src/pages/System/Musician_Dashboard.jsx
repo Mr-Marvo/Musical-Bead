@@ -58,6 +58,7 @@ const onChangePicture1 = e => {
 };
 
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
+  const usertype = localStorage.getItem("usertype");
 
   const [isPopup, setIsPopup] = useState(false);
 
@@ -362,20 +363,14 @@ const onChangePicture1 = e => {
             </div>
           </div>
 
-          <div
-            className="new_bead_add_container"
-            style={{
-              backgroundColor: "rgba(0,0,0,0.32)",
-              marginTop: "10px",
-              borderRadius: "25px",
-              padding: "1rem",
-            }}
-          >
+          {usertype === 1 ? (
             <div
+              className="new_bead_add_container"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                backgroundColor: "rgba(0,0,0,0.32)",
+                marginTop: "10px",
+                borderRadius: "25px",
+                padding: "1rem",
               }}
             >
               {imgData == null ? 
@@ -420,40 +415,52 @@ const onChangePicture1 = e => {
               <input
                 type="text"
                 style={{
-                  backgroundColor: "#1F1F1F",
-                  color: "#ffff",
-                  borderRadius: "25px",
-                  height: "30px",
-                }}
-              ></input>
-
-              <label className="text-[#555555]">Name</label>
-              <input
-                type="text"
-                style={{
-                  backgroundColor: "#1F1F1F",
-                  color: "#ffff",
-                  borderRadius: "25px",
-                  height: "30px",
-                }}
-              ></input>
-
-              <button
-                style={{
-                  color: "white",
-                  width: "100px",
-                  height: "30px",
-                  marginTop: "10px",
-                  fontSize: "16px",
-                  background:
-                    "linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)",
-                  borderRadius: "25px",
+                  display: "flex",
+                  flexDirection: "column",
+                  margin: "20px",
                 }}
               >
-                Add
-              </button>
+                <label className="text-[#555555]">Price</label>
+                <input
+                  type="text"
+                  style={{
+                    backgroundColor: "#1F1F1F",
+                    color: "#ffff",
+                    borderRadius: "25px",
+                    height: "30px",
+                  }}
+                ></input>
+
+                <label className="text-[#555555]">Name</label>
+                <input
+                  type="text"
+                  style={{
+                    backgroundColor: "#1F1F1F",
+                    color: "#ffff",
+                    borderRadius: "25px",
+                    height: "30px",
+                  }}
+                ></input>
+
+                <button
+                  style={{
+                    color: "white",
+                    width: "100px",
+                    height: "30px",
+                    marginTop: "10px",
+                    fontSize: "16px",
+                    background:
+                      "linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)",
+                    borderRadius: "25px",
+                  }}
+                >
+                  Add
+                </button>
+              </div>
             </div>
-          </div>
+          ) : (
+            <></>
+          )}
 
           <div
             className="headline_wrap_container"
