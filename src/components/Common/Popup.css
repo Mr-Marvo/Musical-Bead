@@ -80,11 +80,43 @@
     color: #ffffff;
     cursor: pointer;
   }
-  
-  @media (max-width: 768px) {
+  .upload_wrap{
+    width: 175px;
+    height: 175px;
+    border-radius: 10px;
+  }
+
+  @media only screen and (max-width: 560px) {
     .popup-box {
-      width: 90%;
-      height: 90%;
+      width: 400px;
+      height: 700px;
+    }
+    .upload_wrap{
+      width: 360px;
+      height: 120px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .popup-box {
+      width: 360px;
+      height: 700px;
+    }
+    .upload_wrap{
+      width: 340px;
+      height: 120px;
+    }
+  }
+  
+
+  @media only screen and (max-width: 360px) {
+    .popup-box {
+      width: 340px;
+      height: 700px;
+    }
+    .upload_wrap{
+      width: 320px;
+      height: 120px;
     }
   }
   

@@ -107,7 +107,7 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                 <div className="upload_container">
                     {imagePreview == null ? 
                         <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                        <button onClick={handleButtonClickImage} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'175px',height:'175px',borderRadius:'10px'}}>
+                        <button onClick={handleButtonClickImage} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px'}}>
                             <input accept="image/*"  type="file" onChange={handleImageChange}  ref={fileInput} style={{ display: 'none' }}/>
                             <img src={ImageIcon} alt='icon'/>
                             <p style={{ color: "#767676" }}>Upload Convert</p>
@@ -118,14 +118,14 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                         <div onClick={handleButtonClickImage} style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
                             <input accept="image/*"  type="file" onChange={handleImageChange}  ref={fileInput} style={{ display: 'none' }}/>
                             <div style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px',width:'175px',height:'175px'}}>
-                                <img className="playerProfilePic_home_tile" src={imagePreview} style={{borderRadius:'10px',width:'175px',height:'175px'}}/>
+                                <img className="playerProfilePic_home_tile upload_wrap" src={imagePreview} style={{borderRadius:'10px'}}/>
                             </div>
                         </div>
                     }
 
                     {videoPreview == null ? 
                         <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                            <button onClick={handleButtonClickVideo} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'175px',height:'175px',borderRadius:'10px'}}>
+                            <button onClick={handleButtonClickVideo} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px'}}>
                                 <input accept="video/mp4, video/WAV"  type="file" ref={fileInput1} onChange={handleVideoChange} style={{ display: 'none' }}/>
                                 <img src={VideoIcon} alt="" />
                                 <p style={{ color: "#767676" }}>Upload Video</p>
@@ -134,9 +134,9 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                         </div>
                     :
                         <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                            <div onClick={handleButtonClickVideo} style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px',width:'175px',height:'175px'}}>
+                            <div onClick={handleButtonClickVideo} style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px'}}>
                             <input accept="video/mp4, video/WAV"  type="file" ref={fileInput1} onChange={handleVideoChange} style={{ display: 'none' }}/>
-                            <video controls style={{borderRadius:'10px',width:'175px',height:'175px'}}>
+                            <video controls style={{borderRadius:'10px'}} className="upload_wrap">
                                 <source src={videoPreview} type="video/mp4" />
                                 <source src={videoPreview} type="video/quicktime" />
                                 Your browser does not support the video tag.
@@ -147,7 +147,7 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
 
                     {lyricsPreview == null ? 
                         <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                            <button onClick={handleButtonClickLyrics} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'175px',height:'175px',borderRadius:'10px'}}>
+                            <button onClick={handleButtonClickLyrics} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column"}}>
                                 <input accept="PDF,image/*"  type="file" ref={fileInput2} onChange={handleLyricsChange} style={{ display: 'none' }}/>
                                 <img src={DocumentIcon} alt="" />
                                 <p style={{ color: "#767676" }}>Upload Lyrics</p>
@@ -156,9 +156,9 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                         </div>
                     :
                         <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                            <div onClick={handleButtonClickLyrics} style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px',width:'175px',height:'175px'}}>
+                            <div onClick={handleButtonClickLyrics} style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px'}}>
                                 <input accept="PDF,image/*"  type="file" ref={fileInput2} onChange={handleLyricsChange} style={{ display: 'none' }}/>
-                                <img src={lyricsPreview} alt="Lyrics Preview" style={{borderRadius:'10px',width:'175px',height:'175px'}}/>
+                                <img src={lyricsPreview} alt="Lyrics Preview" className="upload_wrap"/>
                             </div>
                         </div>
                     }
