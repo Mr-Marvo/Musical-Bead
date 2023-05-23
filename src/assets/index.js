@@ -26,7 +26,29 @@ export { default as Instagram } from './images/system/instagram.png'
 export { default as Tiktok } from './images/system/tiktok.png'
 export { default as Twitter } from './images/system/twitter.png'
 
-
 export { default as DefaultAlbum } from './images/system/album-default.png'
 export { default as PlayButton } from './images/system/play-button.png'
 export { default as Equalizer } from './images/system/equalizer.png'
+export { default as SingerIcon } from './images/system/singer.png'
+export { default as ProfileImage } from './images/system/profile.png'
+
+export { default as WFacebook } from './images/system/facebook-white.png'
+export { default as WInstagram } from './images/system/instagram-white.png'
+export { default as WTiktok } from './images/system/tiktok-white.png'
+export { default as WTwitter } from './images/system/twitter-white.png'
+
+export { default as SampleSlider1 } from './images/system/sample-slider1.png'
+export { default as SampleSlider2 } from './images/system/sample-slider2.png'
+export { default as SampleSlider3 } from './images/system/sample-slider3.png'
+export { default as SampleSlider4 } from './images/system/sample-slider4.png'
+export { default as SampleSlider5 } from './images/system/sample-slider5.png'
+export { default as SampleSlider6 } from './images/system/sample-slider6.png'
+export { default as SampleSlider7 } from './images/system/sample-slider7.png'
+export { default as SampleSlider8 } from './images/system/sample-slider8.png'
+
+export { default as AddImageIcon } from './images/system/add-image-icon.png'
+export { default as VideoIcon } from './images/system/video-icon.png'
+export { default as DocumentIcon } from './images/system/document-icon.png'
+export { default as MusicIcon } from './images/system/music-icon.png'
+export { default as ImageIcon } from './images/system/image-icon.png'
+

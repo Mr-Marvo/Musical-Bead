@@ -1,26 +1,56 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { LandingPage, NotFound, SignIn, SignUp,  } from "./pages";
-import New_Musician_Dashboard from "./pages/New_Musican_Dashboard/New_Musician_Dashboard";
-import Musician_Dashboard from "./pages/Musician_Dashboard/Musician_Dashboard";
-import My_Profile from "./pages/My_Profile/My_Profile";
-import Earnings from "./pages/Earnings/Earnings";
-import Home from "./pages/Home/Home";
-
+import {
+  AlbumEdit,
+  AlbumView,
+  AllAlbums,
+  Cart,
+  Earnings,
+  Home,
+  LandingPage,
+  MusicianDashboard,
+  MyProfile,
+  NewMusicianDashboard,
+  NotFound,
+  SignIn,
+  SignUp,
+} from "./pages";
 
 function App() {
+  const token = localStorage.getItem('token');
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} /> 
+        <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="/Home" element={<Home />} />
-        <Route exact path="/New_Musician_Dashboard" element={<New_Musician_Dashboard />} />
-        <Route exact path="/Musician_Dashboard" element={<Musician_Dashboard />} />
-        <Route exact path="/My_Profile" element={<My_Profile />} />
-        <Route path="/Earnings" element={<Earnings/>} />
+        {token !== null ? (
+          <>
+            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/all" element={<AllAlbums />} />
+            <Route
+              exact
+              path="/completeprofile"
+              element={<NewMusicianDashboard />}
+            />
+            <Route
+              exact
+              path="/dashboard"
+              element={<MusicianDashboard />}
+            />
+            <Route exact path="/profile" element={<MyProfile />} />
+            <Route path="/earnings" element={<Earnings />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/album" element={<AlbumView />} />
+            <Route path="/album-edit" element={<AlbumEdit />} />
+          </>
+        ) : (
+          <>
+            <Route exact path="*" element={<NotFound />} />
+          </>
+        )}
+
         <Route path="*" element={<NotFound />} />
-       
       </Routes>
     </BrowserRouter>
   );

@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Footer, Header } from "../../components/system";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useContentContext } from "../../providers/ContentContext";
+import { useEffect } from "react";
 
 const SignIn = () => {
-  const signin = () => {};
+  let { url, getAuthUser } = useContentContext();
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const signin = (e) => {
+    e.preventDefault();
+
+    const data = {
+      email_address: email,
+      password: password,
+      login_type: "1",
+      os_type: "4",
+      device_id: "",
+      push_id: "",
+    };
+
+    axios
+      .post(url + "/login", data)
+      .then((response) => {
+        if (response.data.success) {
+          localStorage.setItem("token", response.data.output);
+          getAuthUser(response.data.output);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      getAuthUser(localStorage.getItem("token"));
+    }
+  }, []);
 
   return (
     <div>
@@ -30,6 +69,10 @@ const SignIn = () => {
                     class="p-1 w-full bg-[#101010] rounded-lg focus:outline-none text-white font-nunito"
                     type="email"
                     id="email"
+                    required
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   />
                 </div>
               </div>
@@ -45,18 +88,20 @@ const SignIn = () => {
                     class="p-1 w-full bg-[#101010] rounded-lg focus:outline-none text-white font-nunito"
                     type="password"
                     id="password"
+                    required
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                   />
                 </div>
               </div>
               <div className="flex flex-col justify-center items-center">
-              <Link to="/Musician_Dashboard" className="flex rounded-lg bg-gradient-to-r from-[#12E45A] to-[#00A7DC] hover:bg-gradient-to-r hover:from-[#00A7DC] hover:to-[#12E45A] text-white font-nunito text-[20px] font-bold justify-center md:w-1/2 w-full">
                 <button
                   type="submit"
-                  
+                  className="flex rounded-lg bg-gradient-to-r from-[#12E45A] to-[#00A7DC] hover:bg-gradient-to-r hover:from-[#00A7DC] hover:to-[#12E45A] text-white font-nunito text-[20px] font-bold justify-center md:w-1/2 w-full"
                 >
                   Sign In
                 </button>
-                </Link>
               </div>
               <div className="flex font-nunito text-base text-[#7D7D7D] w-full justify-center underline">
                 <Link to="#">Forgot Password</Link>

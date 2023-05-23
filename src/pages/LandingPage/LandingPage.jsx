@@ -16,21 +16,32 @@ import "./landingpage.css";
 import { useContentContext } from "../../providers/ContentContext";
 
 const LandingPage = () => {
-  let { userType } = useContentContext();
+  let { getAuthUser, visitor, setVisitor } = useContentContext();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-  }, [userType]);
+    if (localStorage.getItem("user") === null) {
+      setVisitor(3);
+      localStorage.setItem("user", "FAN");
+    }
+  }, [visitor]);
+
+  useEffect(() => {
+    if (token !== null) {
+      getAuthUser(token);
+    }
+  }, []);
 
   return (
-    <div>
+    <div className="bg-black text-white m-0 font-montserrat">
       <Header />
       <Hero />
       <Info />
       <Customize />
-      <div>{userType === 1 ? <></> : <Benifits />}</div>
-      <div>{userType === 1 ? <></> : <SettingsUp />}</div>
-      <div>{userType === 1 ? <Albums /> : <Beads />}</div>
-      <div>{userType === 1 ? <FanSignUp /> : <ArtistSignUp />}</div>
+      <div>{visitor === 3 ? <></> : <Benifits />}</div>
+      <div>{visitor === 3 ? <></> : <SettingsUp />}</div>
+      <div>{visitor === 3 ? <Albums /> : <Beads />}</div>
+      <div>{visitor === 3 ? <FanSignUp /> : <ArtistSignUp />}</div>
       <Footer />
     </div>
   );
