@@ -6,6 +6,7 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { NewFooter, NewHeader } from "../../components/system";
 import { RxCross2 } from "react-icons/rx";
 import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
+import FlatList from "../../components/Common/FlatList";
 
 function New_Musician_Dashboard() {
     const handleThisClick = () => {
@@ -278,124 +279,21 @@ function New_Musician_Dashboard() {
                     Add Songs <span>(0)</span>
                   </p>
                   <div
+                    
                     style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-evenly",
+                      display:'flex',
+                      flex:1,
+                      maxWidth:'1000px',
                       overflowX:'scroll',
-                      width:'1200px'
                     }}
                   >
-                    {data.map((item) => (
-                        <div key={item.id}  className="song_container2" style={{padding:'50px',cursor:'pointer'}} onClick={handleThisClick}>+</div>
-                    ))}
+                   <FlatList/>
                
                   </div>
                 </div>
               </div>
             )}
-            {isPopup ? (
-              <div className="popup_container">
-                <div className="popup_wrap">
-                  <div className="popup">
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <p
-                        className="pop_addsong font-nunito"
-                        style={{ color: "white" }}
-                      >
-                        Add song
-                      </p>
-                      <span
-                        onClick={handleIspopup}
-                        style={{
-                          fontSize: "18px",
-                          fontWeight: "bold",
-                          color: "white",
-                        }}
-                      >
-                        <RxCross2 />
-                      </span>
-                    </div>
-
-                    <input type="text" placeholder="Song Name"></input>
-                    <div className="upload_container">
-                      
-                        {imgData2 == null ? 
-                            <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                                <button onClick={handleButtonClick2} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
-                                    <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture2}  ref={fileInputRef2} style={{ display: 'none' }}/>
-                                    <img src={ImageIcon} alt='icon'/>
-                                    <p style={{ color: "#767676" }}>Upload Convert</p>
-                                    <p style={{ color: "#767676" }}>(JPG,PNG)</p>
-                                </button>
-                            </div>
-                        
-                        : 
-                            <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',width:'250px'}}>
-                                <RxCross2 style={{color:'#fff',position:'absolute',right:0,top:0}} onClick={()=> {setImgData2(null)}}/>
-                                <div className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
-                                    <img className="playerProfilePic_home_tile" src={imgData2} style={{borderRadius:'5px',width:'200px',height:'200px'}}/>
-                                </div>
-                            </div>  
-                        }
-                      <div
-                        className="upload_wrap"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <img src={DocumentIcon} alt="" />
-                        <p style={{ color: "#767676" }}>Upload Video</p>
-                        <p style={{ color: "#767676" }}>(Mp4,MVO)</p>
-                      </div>
-                      <div
-                        className="upload_wrap"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexDirection: "column",
-                        }}
-                      >
-                        <img src={MusicIcon} alt="" />
-                        <p style={{ color: "#767676" }}>Upload Lyrics</p>
-                        <p style={{ color: "#767676" }}>(PDF,JPG)</p>
-                      </div>
-                    </div>
-                    <div className="upload_container2">
-                      <div
-                        className="up_song"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-evenly",
-                          flexDirection: "row",
-                        }}
-                      >
-                        <p style={{ color: "#767676" }}>
-                          Upload Songs{" "}
-                          <p style={{ color: "#767676" }}>(MP3,WAV)</p>
-                        </p>
-
-                        <img src={ImageIcon} alt="" />
-                      </div>
-                      <button className="add_btn" style={{ color: "white" }}>
-                        Add
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : null}
+           
           </div>
         </div>
         <button
@@ -405,7 +303,7 @@ function New_Musician_Dashboard() {
           Submit For Review
         </button>
       </main>
-
+      
       <NewFooter />
     </>
   );
