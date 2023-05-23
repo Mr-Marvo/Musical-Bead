@@ -2,7 +2,7 @@
     ruvi@Aventure
     ruvi.ijse@hmail.com
 */
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../../App.css";
 
 import Album2 from "../Common/Album2";
@@ -18,6 +18,45 @@ import OrderAlbum from "../Common/OrderAlbum";
 import ShipAlbum from "../Common/ShipAlbum";
 
 function Musician_Dashboard() {
+  const fileInputRef = useRef(null);
+  const fileInputRef1 = useRef(null);
+
+  const handleButtonClick = () => {
+    // Trigger the hidden file input
+    fileInputRef.current.click();
+  };
+  const handleButtonClick1 = () => {
+      // Trigger the hidden file input
+      fileInputRef1.current.click();
+    };
+const [picture, setPicture] = useState(null);
+const [imgData, setImgData] = useState(null);
+const [picture1, setPicture1] = useState(null);
+const [imgData1, setImgData1] = useState(null);
+const onChangePicture = e => {
+  if (e.target.files[0]) {
+    console.log("picture: ", e.target.files);
+    setPicture(e.target.files[0]);
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setImgData(reader.result);
+    });
+    reader.readAsDataURL(e.target.files[0]);
+  }
+};
+
+const onChangePicture1 = e => {
+  if (e.target.files[0]) {
+    console.log("picture: ", e.target.files);
+    setPicture1(e.target.files[0]);
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setImgData1(reader.result);
+    });
+    reader.readAsDataURL(e.target.files[0]);
+  }
+};
+
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
 
   const [isPopup, setIsPopup] = useState(false);
@@ -54,9 +93,24 @@ function Musician_Dashboard() {
                   <label className="text-[#555555] ml-28">
                     Mixtape/Album cover
                   </label>
-                  <div className="img_container2 flex justify-center items-center">
-                    <img src={AddImageIcon} alt="ico" />
-                  </div>
+                  
+                  {imgData1 == null ? 
+                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                        <button onClick={handleButtonClick1} className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column"}}>
+                            <input accept="image/*" type="file" onChange={onChangePicture1}  ref={fileInputRef1} style={{ display: 'none' }}/>
+                            <img src={ImageIcon} alt='icon'/>
+                            <p style={{ color: "#767676" }}>Upload</p>
+                            <p style={{ color: "#767676" }}>Profile Picture</p>
+                        </button>
+                    </div>
+                  : 
+                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                         <RxCross2 style={{color:'#fff',position:'absolute',right:20,top:0}} onClick={()=> {setImgData1(null)}}/>
+                        <div className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column"}}>
+                            <img className="playerProfilePic_home_tile" src={imgData1} style={{borderRadius:'60px',width:'260px',height:'260px'}}/>
+                        </div>
+                    </div>
+                  }
                 </div>
                 <div className="data_cotainer">
                   <form>
@@ -324,21 +378,24 @@ function Musician_Dashboard() {
                 alignItems: "center",
               }}
             >
-              <div
-                className="upload_wrap"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  width: "200px",
-                  height: "200px",
-                }}
-              >
-                <img src={ImageIcon} alt="" />
-                <p style={{ color: "#767676" }}>Upload Convert</p>
-                <p style={{ color: "#767676" }}>(JPG,PNG)</p>
-              </div>
+              {imgData == null ? 
+                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                        <button onClick={handleButtonClick} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
+                            <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture}  ref={fileInputRef} style={{ display: 'none' }}/>
+                            <img src={ImageIcon} alt='icon'/>
+                            <p style={{ color: "#767676" }}>Upload Convert</p>
+                            <p style={{ color: "#767676" }}>(JPG,PNG)</p>
+                        </button>
+                    </div>
+                  
+                : 
+                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',width:'250px'}}>
+                         <RxCross2 style={{color:'#fff',position:'absolute',right:0,top:0}} onClick={()=> {setImgData(null)}}/>
+                        <div className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
+                            <img className="playerProfilePic_home_tile" src={imgData} style={{borderRadius:'5px',width:'200px',height:'200px'}}/>
+                        </div>
+                    </div>  
+                }
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <label className="text-[#555555]">Special Description</label>

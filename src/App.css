@@ -23,6 +23,11 @@ main {
   align-items: center;
 }
 
+.error{
+  font-size: 12px;
+  color: firebrick;
+}
+
 /* ====================================================================================================================================== */
 /* Top Navigation Styles */
 header {
@@ -474,12 +479,12 @@ header .nav-btn {
 @media only screen and (max-width: 560px) {
   .popup_wrap {
     width: 305px;
-    height: 700px;
+    height: 800px;
   }
 
   .popup {
     width: 300px;
-    height: 695px;
+    height: 795px;
     padding-bottom: 0;
   }
 
@@ -680,6 +685,18 @@ header .nav-btn {
     0 8px 25px 0 rgba(255, 255, 255, 0.19);
 }
 
+
+.Flatlist_container1 {
+  width: 1180px;
+  overflow-x: auto;
+  margin-left: 2.2rem;
+  margin-bottom: 4rem;
+}
+
+.add_song_heading_wrap{
+  margin-left: 2.2rem;
+}
+
 @media only screen and (max-width: 1300px) {
   .step_container {
     width: 70rem;
@@ -687,6 +704,12 @@ header .nav-btn {
 
   .step {
     width: 70rem;
+  }
+
+  .Flatlist_container1 {
+    width: 1060px;
+    overflow-x: auto;
+   
   }
 }
 
@@ -730,6 +753,16 @@ header .nav-btn {
   .data_container form > div > div > input {
     width: 24rem;
   }
+
+  .Flatlist_container1 {
+    width: 50rem;
+    overflow-x: auto;
+    margin-left: 5rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left: 5rem;
+  }
 }
 
 @media only screen and (max-width: 1060px) {
@@ -758,6 +791,16 @@ header .nav-btn {
     width: 4rem !important;
     height: 4rem !important;
   }
+
+  .Flatlist_container1 {
+    width: 38rem;
+    overflow-x: auto;
+    margin-left: 6rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left: 6rem;
+  }
 }
 
 @media only screen and (max-width: 813px) {
@@ -784,6 +827,16 @@ header .nav-btn {
 
   .data_container form > div > div > input {
     width: 14rem;
+  }
+
+  .Flatlist_container1 {
+    width: 30rem;
+    overflow-x: auto;
+    margin-left: 5rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left: 5rem;
   }
 }
 
@@ -824,9 +877,19 @@ header .nav-btn {
   .song_wrap > div > div:nth-child(1) {
     display: none;
   }
+
+  .Flatlist_container1 {
+    width: 28rem;
+    overflow-x: auto;
+    margin-left: 1rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left: 1rem;
+  }
 }
 
-@media only screen and (max-width: 510px) {
+@media only screen and (max-width: 520px) {
   .step_container {
     width: 26rem;
   }
@@ -858,6 +921,16 @@ header .nav-btn {
 
   .review_submit_btn {
     width: 300px;
+  }
+
+  .Flatlist_container1 {
+    width: 22rem;
+    overflow-x: auto;
+    margin-left: 2rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left: 2rem;
   }
 }
 
@@ -917,6 +990,16 @@ header .nav-btn {
     width: 200px;
     font-size: 14px;
   }
+
+  .Flatlist_container1 {
+    width: 18rem;
+    overflow-x: auto;
+    margin-left: 1rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left:1rem;
+  }
 }
 
 @media only screen and (max-width: 281px) {
@@ -949,6 +1032,16 @@ header .nav-btn {
 
   .data_container form label {
     font-size: 10px;
+  }
+
+  .Flatlist_container1 {
+    width: 12rem;
+    overflow-x: auto;
+    margin-left: 1rem;
+  }
+
+  .add_song_heading_wrap{
+    margin-left: 1rem;
   }
 }
 
