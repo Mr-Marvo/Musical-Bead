@@ -93,7 +93,12 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
     <div className="popup-background">
         <div className="popup-box">
             <div className="popup-header" style={{position:'relative'}}>
-                <h4>Add Photo</h4>
+                     <p
+                        className="pop_addsong font-nunito"
+                        style={{ color: "white" }}
+                      >
+                        Add song
+                      </p>
                 <button className="close-button" onClick={onClose} style={{position:'absolute',top:'0',right:'0'}}>
                     <RxCross2 />
                 </button>
