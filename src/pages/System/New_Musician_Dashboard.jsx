@@ -13,6 +13,7 @@ function New_Musician_Dashboard() {
     useEffect(() => {
         /* This method is called until we get the musician name from signin or login screen */
         Name();
+        
     });
 
     /* UseRefs ... this is to hide photo inputs and give that ability to respective buttons */
@@ -73,15 +74,21 @@ function New_Musician_Dashboard() {
     /* UseStates to handle input data */
     const [fullname, setFullname] = useState('');
     const [title, setTitle] = useState('');
+    const [titleE, setTitleE] = useState('');
     const [bio, setBio] = useState('');
+    const [bioE, setBioE] = useState('');
     const [albumName, setAlbumName] = useState('');
+    const [albumNameE, setAlbumNameE] = useState('');
     const [category, setCategory] = useState('');
+    const [categoryE, setCategoryE] = useState('');
     const [description, setDescription] = useState('');
+    const [descriptionE, setDescriptionE] = useState('');
 
     /* This is to handle the musician name  */
     const Name = () => {
         /* this should be passed from login screen or signin screen.. from useEffect we should get the value.. This temp till do so */
         setFullname("Oliver Ferdison");
+        
     };
 
     /* This method handle all inputs adn save them in DB */
@@ -92,6 +99,67 @@ function New_Musician_Dashboard() {
         console.log("FIRST Music Bead Profile Data")
         console.log("Album Name: "+albumName+"Category: "+category+"Description: "+description);
         console.log("Bead Profile Image: "+imgData1)
+        validate();
+        
+    }
+
+    const validate = () => {
+        if (title === '') {
+            setTitleE("* required");
+        }else{
+            setTitleE("");
+        }
+        if (!/^[a-z A-Z]*$/.test(title)){
+            setTitleE("* Please Enter Only Letters");
+        }
+
+
+        if (bio === '') {
+            setBioE("* required");
+           
+        }else{
+            setBioE("");
+        }
+        if (!/^[a-z A-Z]*$/.test(bio)){
+            setBioE("* Please Enter Only Letters");
+        }
+
+
+        if (albumName === '') {
+            setAlbumNameE("* required");
+           
+        }else{
+            setAlbumNameE("");
+        }
+        if (!/^[a-z A-Z]*$/.test(albumName)){
+            setAlbumNameE("* Please Enter Only Letters");
+        }
+
+
+
+        if (category === '') {
+            setCategoryE("* required");
+           
+        }else{
+            setCategoryE("");
+        }
+        if (!/^[a-z A-Z]*$/.test(category)){
+            setCategoryE("* Please Enter Only Letters");
+        }
+
+
+        if (description === '') {
+            setDescriptionE("* required");
+           
+        }else{
+            setDescriptionE("");
+        }
+        if (!/^[a-z A-Z]*$/.test(description)){
+            setDescriptionE("* Please Enter Only Letters");
+        }
+
+
+
     }
 
 
@@ -156,8 +224,10 @@ function New_Musician_Dashboard() {
                     {fullname}
                   </span>
                   <form>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" className="text-white"></input>
-                    <textarea className="text-white" value={bio} onChange={(e) => setBio(e.target.value)}>Add Bio...</textarea>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} onKeyUp={validate} placeholder="Title" className="text-white"></input>
+                    {titleE && <div className="error">{titleE}</div>}
+                    <textarea className="text-white" value={bio} onChange={(e) => setBio(e.target.value) } onKeyUp={validate}>Add Bio...</textarea>
+                    {bioE && <div className="error">{bioE}</div>}
                   </form>
                 </div>
               </div>
@@ -212,14 +282,16 @@ function New_Musician_Dashboard() {
                       <input
                         type="text"
                         className="album_name text-white"
-                        value={albumName} onChange={(e) => setAlbumName(e.target.value)}
+                        value={albumName} onChange={(e) => setAlbumName(e.target.value)} onKeyUp={validate}
                       ></input>
+                      {albumNameE && <div className="error">{albumNameE}</div>}
                       <div>
                         <div>
                           <label className="font-nunito text-white">
                             Category
                           </label>
-                          <input type="text" className="text-white" value={category} onChange={(e) => setCategory(e.target.value)}></input>
+                          <input type="text" className="text-white" value={category} onChange={(e) => setCategory(e.target.value)} onKeyUp={validate}></input>
+                          {categoryE && <div className="error">{categoryE}</div>}
                         </div>
 
                         <div>
@@ -236,7 +308,8 @@ function New_Musician_Dashboard() {
                       <label className="font-nunito text-white">
                         Description
                       </label>
-                      <textarea className="text-white"  value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                      <textarea className="text-white"  value={description} onChange={(e) => setDescription(e.target.value)} onKeyUp={validate}></textarea>
+                      {descriptionE && <div className="error">{descriptionE}</div>}
                     </form>
                   </div>
                 </div>
