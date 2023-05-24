@@ -26,36 +26,36 @@ function Musician_Dashboard() {
     fileInputRef.current.click();
   };
   const handleButtonClick1 = () => {
-      // Trigger the hidden file input
-      fileInputRef1.current.click();
-    };
-const [picture, setPicture] = useState(null);
-const [imgData, setImgData] = useState(null);
-const [picture1, setPicture1] = useState(null);
-const [imgData1, setImgData1] = useState(null);
-const onChangePicture = e => {
-  if (e.target.files[0]) {
-    console.log("picture: ", e.target.files);
-    setPicture(e.target.files[0]);
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      setImgData(reader.result);
-    });
-    reader.readAsDataURL(e.target.files[0]);
-  }
-};
+    // Trigger the hidden file input
+    fileInputRef1.current.click();
+  };
+  const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
+  const [picture1, setPicture1] = useState(null);
+  const [imgData1, setImgData1] = useState(null);
+  const onChangePicture = (e) => {
+    if (e.target.files[0]) {
+      console.log("picture: ", e.target.files);
+      setPicture(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
-const onChangePicture1 = e => {
-  if (e.target.files[0]) {
-    console.log("picture: ", e.target.files);
-    setPicture1(e.target.files[0]);
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      setImgData1(reader.result);
-    });
-    reader.readAsDataURL(e.target.files[0]);
-  }
-};
+  const onChangePicture1 = (e) => {
+    if (e.target.files[0]) {
+      console.log("picture: ", e.target.files);
+      setPicture1(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData1(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
   const usertype = localStorage.getItem("usertype");
@@ -94,24 +94,79 @@ const onChangePicture1 = e => {
                   <label className="text-[#555555] ml-28">
                     Mixtape/Album cover
                   </label>
-                  
-                  {imgData1 == null ? 
-                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                        <button onClick={handleButtonClick1} className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column"}}>
-                            <input accept="image/*" type="file" onChange={onChangePicture1}  ref={fileInputRef1} style={{ display: 'none' }}/>
-                            <img src={ImageIcon} alt='icon'/>
-                            <p style={{ color: "#767676" }}>Upload</p>
-                            <p style={{ color: "#767676" }}>Profile Picture</p>
-                        </button>
+
+                  {imgData1 == null ? (
+                    <div
+                      style={{
+                        position: "relative",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <button
+                        onClick={handleButtonClick1}
+                        className="img_container2"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <input
+                          accept="image/*"
+                          type="file"
+                          onChange={onChangePicture1}
+                          ref={fileInputRef1}
+                          style={{ display: "none" }}
+                        />
+                        <img src={ImageIcon} alt="icon" />
+                        <p style={{ color: "#767676" }}>Upload</p>
+                        <p style={{ color: "#767676" }}>Profile Picture</p>
+                      </button>
                     </div>
-                  : 
-                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                         <RxCross2 style={{color:'#fff',position:'absolute',right:20,top:0}} onClick={()=> {setImgData1(null)}}/>
-                        <div className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column"}}>
-                            <img className="playerProfilePic_home_tile" src={imgData1} style={{borderRadius:'60px',width:'260px',height:'260px'}}/>
-                        </div>
+                  ) : (
+                    <div
+                      style={{
+                        position: "relative",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <RxCross2
+                        style={{
+                          color: "#fff",
+                          position: "absolute",
+                          right: 20,
+                          top: 0,
+                        }}
+                        onClick={() => {
+                          setImgData1(null);
+                        }}
+                      />
+                      <div
+                        className="img_container2"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <img
+                          className="playerProfilePic_home_tile"
+                          src={imgData1}
+                          style={{
+                            borderRadius: "60px",
+                            width: "260px",
+                            height: "260px",
+                          }}
+                        />
+                      </div>
                     </div>
-                  }
+                  )}
                 </div>
                 <div className="data_cotainer">
                   <form>
@@ -364,62 +419,123 @@ const onChangePicture1 = e => {
           </div>
 
           {usertype === 1 ? (
-            <div
-              className="new_bead_add_container"
-              style={{
-                backgroundColor: "rgba(0,0,0,0.32)",
-                marginTop: "10px",
-                borderRadius: "25px",
-                padding: "1rem",
-              }}
-            >
-              {imgData == null ? 
-                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
-                        <button onClick={handleButtonClick} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
-                            <input accept="image/*" id="profilePic" type="file" onChange={onChangePicture}  ref={fileInputRef} style={{ display: 'none' }}/>
-                            <img src={ImageIcon} alt='icon'/>
-                            <p style={{ color: "#767676" }}>Upload Convert</p>
-                            <p style={{ color: "#767676" }}>(JPG,PNG)</p>
-                        </button>
-                    </div>
-                  
-                : 
-                    <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',width:'250px'}}>
-                         <RxCross2 style={{color:'#fff',position:'absolute',right:0,top:0}} onClick={()=> {setImgData(null)}}/>
-                        <div className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",width:'200px',height:'200px'}}>
-                            <img className="playerProfilePic_home_tile" src={imgData} style={{borderRadius:'5px',width:'200px',height:'200px'}}/>
-                        </div>
-                    </div>  
-                }
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <label className="text-[#555555]">Special Description</label>
-              <textarea
-                type="text"
+            <>
+              <div
+                className="new_bead_add_container"
                 style={{
-                  backgroundColor: "#1F1F1F",
-                  color: "#ffff",
+                  backgroundColor: "rgba(0,0,0,0.32)",
+                  marginTop: "10px",
                   borderRadius: "25px",
-                  height: "180px",
+                  padding: "1rem",
                 }}
-              ></textarea>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                margin: "20px",
-              }}
-            >
-              <label className="text-[#555555]">Price</label>
-              <input
-                type="text"
+              >
+                {imgData == null ? (
+                  <div
+                    style={{
+                      position: "relative",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <button
+                      onClick={handleButtonClick}
+                      className="upload_wrap"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        width: "200px",
+                        height: "200px",
+                      }}
+                    >
+                      <input
+                        accept="image/*"
+                        id="profilePic"
+                        type="file"
+                        onChange={onChangePicture}
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                      />
+                      <img src={ImageIcon} alt="icon" />
+                      <p style={{ color: "#767676" }}>Upload Convert</p>
+                      <p style={{ color: "#767676" }}>(JPG,PNG)</p>
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      position: "relative",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "250px",
+                    }}
+                  >
+                    <RxCross2
+                      style={{
+                        color: "#fff",
+                        position: "absolute",
+                        right: 0,
+                        top: 0,
+                      }}
+                      onClick={() => {
+                        setImgData(null);
+                      }}
+                    />
+                    <div
+                      className="upload_wrap"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        width: "200px",
+                        height: "200px",
+                      }}
+                    >
+                      <img
+                        className="playerProfilePic_home_tile"
+                        src={imgData}
+                        style={{
+                          borderRadius: "5px",
+                          width: "200px",
+                          height: "200px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label className="text-[#555555]">Special Description</label>
+                <textarea
+                  type="text"
+                  style={{
+                    backgroundColor: "#1F1F1F",
+                    color: "#ffff",
+                    borderRadius: "25px",
+                    height: "180px",
+                  }}
+                ></textarea>
+              </div>
+              <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   margin: "20px",
                 }}
               >
+                <label className="text-[#555555]">Price</label>
+                <input
+                  type="text"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    margin: "20px",
+                  }}
+                />
                 <label className="text-[#555555]">Price</label>
                 <input
                   type="text"
@@ -457,7 +573,7 @@ const onChangePicture1 = e => {
                   Add
                 </button>
               </div>
-            </div>
+            </>
           ) : (
             <></>
           )}

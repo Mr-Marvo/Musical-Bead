@@ -10,6 +10,7 @@ import { NewFooter, NewHeader } from "../../components/system";
 import { Carousel } from "@trendyol-js/react-carousel";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
+import { useNavigate } from "react-router";
 
 function Home() {
   let { url } = useContentContext();
@@ -19,6 +20,8 @@ function Home() {
   const [trendingAlbums, setTrendingAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
   const [musicians, setMusicians] = useState([]);
+
+  const navigate = useNavigate();
 
   const [search, setSearch] = useState(null);
 
@@ -116,7 +119,11 @@ function Home() {
     setSearch(text);
 
     loadAlbums(0, text);
-  }
+  };
+
+  const viewProfile = (id) => {
+    navigate("/profile-view", { state: { id: id } });
+  };
 
   return (
     <>
@@ -148,7 +155,7 @@ function Home() {
                 backgroundColor: "#121212",
                 borderRadius: "0px 25px 25px 0px",
                 padding: 2,
-                paddingRight: '5px'
+                paddingRight: "5px",
               }}
             >
               <BsSearch
@@ -433,6 +440,9 @@ function Home() {
                       <div
                         className="flex flex-col relative m-2"
                         key={musician.user_id}
+                        onClick={() => {
+                          viewProfile(musician.user_id);
+                        }}
                       >
                         <img
                           src={musician.profile_picture}
