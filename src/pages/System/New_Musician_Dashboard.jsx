@@ -19,12 +19,17 @@ function New_Musician_Dashboard() {
     /* UseRefs ... this is to hide photo inputs and give that ability to respective buttons */
     const fileInputRef = useRef(null);
     const fileInputRef1 = useRef(null);
+    const fileInputRef2 = useRef(null);
+    const [selectedSong, setSelectedSong] = useState(null);
     /* This is to handle photo upload hidden function */
     const handleButtonClick = () => {
         fileInputRef.current.click();
     };
     const handleButtonClick1 = () => {
         fileInputRef1.current.click();
+    };
+    const handleButtonClickSong = () => {
+      fileInputRef2.current.click();
     };
 
 
@@ -33,6 +38,7 @@ function New_Musician_Dashboard() {
     const [imgData, setImgData] = useState(null);
     const [picture1, setPicture1] = useState(null);
     const [imgData1, setImgData1] = useState(null);
+   
    
     /* This is to handle photo upload again again */
     const onChangePicture = e => {
@@ -59,6 +65,10 @@ function New_Musician_Dashboard() {
         }
     };
    
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      setSelectedSong(file);
+    };
    
     /* This is to handle open and close 2 steps  */
     const [isCollapsed1, setIsCollapsed1] = useState(false);
@@ -70,6 +80,9 @@ function New_Musician_Dashboard() {
     const handleToggleCollapse2 = () => {
         setIsCollapsed2(!isCollapsed2);
     };
+
+
+   
 
     /* UseStates to handle input data */
     const [fullname, setFullname] = useState('');
@@ -91,8 +104,12 @@ function New_Musician_Dashboard() {
         
     };
 
+
+    /* This is to open add song after sumbit button clicked */
+    const [isSubmit, setIsSubmit] = useState(false);
     /* This method handle all inputs adn save them in DB */
     const submitNewMusicianForReview = () => {
+        setIsSubmit(!isSubmit);
         console.log("FIRST Music Profile Data")
         console.log("Title: "+title+"Bio: "+bio);
         console.log("Profile Image: "+imgData)
@@ -228,6 +245,20 @@ function New_Musician_Dashboard() {
                     {titleE && <div className="error">{titleE}</div>}
                     <textarea className="text-white" value={bio} onChange={(e) => setBio(e.target.value) } onKeyUp={validate}>Add Bio...</textarea>
                     {bioE && <div className="error">{bioE}</div>}
+                    <button onClick={handleButtonClickSong} style ={{height:'40px',width:'200px',borderRadius:'10px',background:'#313131',color:'#fff',marginTop:'20px'}}>
+                      Choose You Music
+                        <input 
+                           type="file"
+                           accept="audio/mp3"
+                           ref={fileInputRef2}
+                           style={{ display: 'none' }}
+                           onChange={handleFileChange}
+                        />
+                    </button>
+                    {selectedSong && (
+                        <span>a{selectedSong.name}</span>
+                    )}
+                    
                   </form>
                 </div>
               </div>
@@ -258,12 +289,11 @@ function New_Musician_Dashboard() {
                 <div className="step_content">
                  
                   {imgData1 == null ? 
-                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
+                    <p style={{ color: "#ffff",marginBottom:'-70px',marginTop:'50px' }}>Mixtape/Album Cover</p>
                         <button onClick={handleButtonClick1} className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",marginTop:70}}>
                             <input accept="image/*" type="file" onChange={onChangePicture1}  ref={fileInputRef1} style={{ display: 'none' }}/>
                             <img src={ImageIcon} alt='icon'/>
-                            <p style={{ color: "#767676" }}>Upload</p>
-                            <p style={{ color: "#767676" }}>Profile Picture</p>
                         </button>
                     </div>
                   : 
@@ -314,12 +344,19 @@ function New_Musician_Dashboard() {
                   </div>
                 </div>
                
-                    <p style={{ color: "white"}} className="add_song_heading_wrap">
+                   
+                  {isSubmit &&
+                    (
+                    <div>
+                      <p style={{ color: "white"}} className="add_song_heading_wrap">
                         Add Songs <span>(0)</span>
-                    </p>
-                  <div className="Flatlist_container1" >
-                      <FlatList/>
-                  </div>
+                      </p>
+                      <div className="Flatlist_container1" >
+                        <FlatList/>
+                      </div>
+                    </div>
+                    )
+                  }
                 </div>
              
             )}
