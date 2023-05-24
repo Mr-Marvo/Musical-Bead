@@ -9,81 +9,35 @@ import ReactPlayer from "react-player/lazy";
 import Album from "../Common/Album3";
 import { NewFooter, NewHeader } from "../../components/system";
 import {
-  ProfileImage,
-  WFacebook,
-  WInstagram,
-  WTiktok,
-  WTwitter,
-  SampleSlider1,
-  SampleSlider2,
-  SampleSlider3,
-  SampleSlider4,
-  SampleSlider5,
-  SampleSlider6,
-  SampleSlider7,
-  SampleSlider8,
+  ProfileImage
 } from "../../assets";
-
-import { RiArrowUpSFill } from "react-icons/ri";
-import { RiArrowDownSFill } from "react-icons/ri";
 import { useContentContext } from "../../providers/ContentContext";
 import axios from "axios";
+import { useLocation } from "react-router";
 
-const slideImages = [
-  {
-    url: SampleSlider1,
-    caption: "Slide 1",
-  },
-  {
-    url: SampleSlider2,
-    caption: "Slide 2",
-  },
-  {
-    url: SampleSlider3,
-    caption: "Slide 3",
-  },
-  {
-    url: SampleSlider4,
-    caption: "Slide 4",
-  },
-  {
-    url: SampleSlider5,
-    caption: "Slide 5",
-  },
-  {
-    url: SampleSlider6,
-    caption: "Slide 6",
-  },
-  {
-    url: SampleSlider7,
-    caption: "Slide 7",
-  },
-  {
-    url: SampleSlider8,
-    caption: "Slide 8",
-  },
-];
-
-function My_Profile() {
+function ProfileView() {
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
+
   const [title, setTitle] = useState("Singer & Song Writer");
   const [bio, setBio] = useState(
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora atque nihil, dignissimos facilis laboriosam cum placeat ipsum eveniet quo iure, cupiditate accusantium, iusto quisquam aliquid aut amet quos magni adipisci!"
   );
+  const [fullnameTag, setFullnameTag] = useState("Olivia Fernandez");
+  const [profile, setProfile] = useState(null);
+  const [video, setVideo] = useState(
+    "https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy"
+  );
+  const [featured, setFeatured] = useState([]);
+
+  const { state } = useLocation();
+  const { id } = state;
 
   const [albums, setAlbums] = useState([]);
-  const [fullnameTag, setFullnameTag] = useState("Olivia Fernandez");
-  const [isDisabled, setIsDisabled] = useState(true);
-
   const [currentAlbumId, setCurrentAlbumId] = useState(null);
 
   const handleAlbumClick = (albumId) => {
     setCurrentAlbumId(albumId);
-  };
-
-  const handleClick = () => {
-    setIsDisabled(!isDisabled);
   };
 
   useEffect(() => {
@@ -96,7 +50,7 @@ function My_Profile() {
       headers: { Authorization: `Bearer ${token}` },
     };
     const bodyParameters = {
-      user_id: localStorage.getItem("userid"),
+      user_id: id,
       user_type_id: 2,
       status: 0,
     };
@@ -104,8 +58,14 @@ function My_Profile() {
     axios
       .post(url + "/musician/all", bodyParameters, config)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.output[0]);
         if (response?.status === 200) {
+          setFullnameTag(response.data.output[0].full_name);
+          setTitle(response.data.output[0].short_description);
+          setBio(response.data.output[0].description);
+          setProfile(response.data.output[0].profile_picture);
+          setVideo(response.data.output[0].videos[0].featured_video);
+          setFeatured(response.data.output[0].images);
         } else {
           console.log(response);
         }
@@ -121,13 +81,14 @@ function My_Profile() {
     };
     const bodyParameters = {
       user_id: localStorage.getItem("userid"),
-      musician_user_id: localStorage.getItem("userid"),
+      musician_user_id: id,
       status: 2,
     };
 
     axios
       .post(url + "/album/all", bodyParameters, config)
       .then((response) => {
+        console.log(response);
         if (response?.status === 200) {
           setAlbums(response.data.output.albums);
         } else {
@@ -150,7 +111,11 @@ function My_Profile() {
             <div className="sub_1">
               <div className="img_container3">
                 <div>
-                  <img src={ProfileImage} alt="User" />
+                  <img
+                    src={profile === null ? ProfileImage : profile}
+                    alt="User"
+                    className="rounded-full"
+                  />
                 </div>
               </div>
             </div>
@@ -158,7 +123,7 @@ function My_Profile() {
               <div className="text-[24px] font-bold ml-1">{fullnameTag}</div>
               <input
                 type="text"
-                disabled={isDisabled}
+                disabled={true}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="xl:text-[20px] sm:text-[16px] font-medium"
@@ -166,33 +131,15 @@ function My_Profile() {
               <br />
               <textarea
                 type="text"
-                disabled={isDisabled}
+                disabled={true}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 className="text-[16px] font-normal mt-4"
               />
-              {/* <div className="flex flex-row mt-4 gap-4">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                  <img src={WFacebook} alt="Facebook" className="w-6" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={WInstagram} alt="Instergram" className="w-6" />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                  <img src={WTwitter} alt="Twitter" className="w-6" />
-                </a>
-                <a href="https://tiktok.com" target="_blank" rel="noreferrer">
-                  <img src={WTiktok} alt="Tiktok" className="w-6" />
-                </a>
-              </div> */}
             </div>
             <div className="sub_3">
               <ReactPlayer
-                url="https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy"
+                url={video}
                 width="100%"
                 height="100%"
                 controls={true}
@@ -222,78 +169,26 @@ function My_Profile() {
                       height: "200px",
                     }}
                   >
-                    <img
-                      src={SampleSlider1}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider2}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider3}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider4}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider5}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider6}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider7}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider8}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
+                    {featured.length === 0 ? (
+                      <></>
+                    ) : (
+                      <>
+                        {featured.map((image, x) => {
+                          return (
+                            <img
+                              src={image.featured_image}
+                              alt={x + 1}
+                              className="w-25"
+                              style={{ margin: "5px" }}
+                            />
+                          );
+                        })}
+                      </>
+                    )}
                   </div>
                 </div>
               </Slide>
             </div>
-          </div>
-
-          <div className="my_profile_sub_container3">
-            {isDisabled ? (
-              <button
-                type="button"
-                onClick={handleClick}
-                className="edit_profile_btn"
-              >
-                Edit Profile
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={handleClick}
-                className="save_profile_btn"
-              >
-                Save Profile
-              </button>
-            )}
           </div>
 
           <div className="my_profile_sub_container4">
@@ -341,16 +236,20 @@ function My_Profile() {
               <>
                 <div className="album_sub_wrap4">
                   {albums.map((album) => {
-                    <Album
-                      key={album.id}
-                      id={album.id}
-                      cover={album.cover_image_path}
-                      name={album.title}
-                      slogan={album.slogan}
-                      audio={album.sample_url}
-                      isPlaying={currentAlbumId === album.id}
-                      onAlbumClick={handleAlbumClick}
-                    />;
+                    return (
+                      <>
+                        <Album
+                          key={album.id}
+                          id={album.id}
+                          cover={album.cover_image_path}
+                          name={album.title}
+                          slogan={album.slogan}
+                          audio={album.sample_url}
+                          isPlaying={currentAlbumId === album.id}
+                          onAlbumClick={handleAlbumClick}
+                        />
+                      </>
+                    );
                   })}
                 </div>
               </>
@@ -364,4 +263,4 @@ function My_Profile() {
   );
 }
 
-export default My_Profile;
+export default ProfileView;

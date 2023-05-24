@@ -11,6 +11,7 @@ import {
   MyProfile,
   NewMusicianDashboard,
   NotFound,
+  ProfileView,
   SignIn,
   SignUp,
 } from "./pages";
@@ -39,6 +40,7 @@ function App() {
               element={<MusicianDashboard />}
             />
             <Route exact path="/profile" element={<MyProfile />} />
+            <Route exact path="/profile-view" element={<ProfileView />} />
             <Route path="/earnings" element={<Earnings />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/album" element={<AlbumView />} />
