@@ -81,6 +81,9 @@ function New_Musician_Dashboard() {
         setIsCollapsed2(!isCollapsed2);
     };
 
+
+   
+
     /* UseStates to handle input data */
     const [fullname, setFullname] = useState('');
     const [title, setTitle] = useState('');
@@ -101,8 +104,12 @@ function New_Musician_Dashboard() {
         
     };
 
+
+    /* This is to open add song after sumbit button clicked */
+    const [isSubmit, setIsSubmit] = useState(false);
     /* This method handle all inputs adn save them in DB */
     const submitNewMusicianForReview = () => {
+        setIsSubmit(!isSubmit);
         console.log("FIRST Music Profile Data")
         console.log("Title: "+title+"Bio: "+bio);
         console.log("Profile Image: "+imgData)
@@ -337,12 +344,19 @@ function New_Musician_Dashboard() {
                   </div>
                 </div>
                
-                    <p style={{ color: "white"}} className="add_song_heading_wrap">
+                   
+                  {isSubmit &&
+                    (
+                    <div>
+                      <p style={{ color: "white"}} className="add_song_heading_wrap">
                         Add Songs <span>(0)</span>
-                    </p>
-                  <div className="Flatlist_container1" >
-                      <FlatList/>
-                  </div>
+                      </p>
+                      <div className="Flatlist_container1" >
+                        <FlatList/>
+                      </div>
+                    </div>
+                    )
+                  }
                 </div>
              
             )}
