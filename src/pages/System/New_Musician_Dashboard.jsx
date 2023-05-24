@@ -258,12 +258,11 @@ function New_Musician_Dashboard() {
                 <div className="step_content">
                  
                   {imgData1 == null ? 
-                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                   <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
+                    <p style={{ color: "#ffff",marginBottom:'-70px',marginTop:'50px' }}>Mixtape/Album Cover</p>
                         <button onClick={handleButtonClick1} className="img_container2" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",marginTop:70}}>
                             <input accept="image/*" type="file" onChange={onChangePicture1}  ref={fileInputRef1} style={{ display: 'none' }}/>
                             <img src={ImageIcon} alt='icon'/>
-                            <p style={{ color: "#767676" }}>Upload</p>
-                            <p style={{ color: "#767676" }}>Profile Picture</p>
                         </button>
                     </div>
                   : 
