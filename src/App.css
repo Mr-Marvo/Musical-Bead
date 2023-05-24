@@ -415,92 +415,8 @@ header .nav-btn {
   width: 38%;
 }
 
-@media only screen and (max-width: 800px) {
-  .popup_wrap {
-    width: 605px;
-    height: 400px;
-  }
 
-  .popup {
-    width: 600px;
-    height: 395px;
-  }
-}
 
-@media only screen and (max-width: 670px) {
-  .popup_wrap {
-    width: 505px;
-    height: 600px;
-  }
-
-  .popup {
-    width: 500px;
-    height: 595px;
-  }
-}
-
-@media only screen and (max-width: 560px) {
-  .popup_wrap {
-    width: 405px;
-    height: 700px;
-  }
-
-  .popup {
-    width: 400px;
-    height: 695px;
-    padding-bottom: 0;
-  }
-
-  .upload_container {
-    flex-direction: column;
-  }
-
-  .upload_wrap {
-    width: 90%;
-    justify-content: center;
-  }
-
-  .popup > input {
-    margin-left: 16px;
-    width: 90%;
-    height: 40px;
-    margin-bottom: 40px;
-  }
-
-  .up_song {
-    height: 100px;
-  }
-
-  .upload_container2 {
-    height: 30%;
-  }
-}
-
-@media only screen and (max-width: 560px) {
-  .popup_wrap {
-    width: 305px;
-    height: 800px;
-  }
-
-  .popup {
-    width: 300px;
-    height: 795px;
-    padding-bottom: 0;
-  }
-
-  .upload_container2 {
-    margin-top: 20px;
-    flex-direction: column;
-  }
-
-  .up_song {
-    width: 90%;
-  }
-
-  .add_btn {
-    width: 60%;
-  }
-}
 
 /* ======================================================================================================================================= */
 /* New Musican Dashboard */
@@ -691,6 +607,7 @@ header .nav-btn {
   overflow-x: auto;
   margin-left: 2.2rem;
   margin-bottom: 4rem;
+  padding-bottom: 10px;
 }
 
 .add_song_heading_wrap{
