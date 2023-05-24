@@ -7,8 +7,10 @@ export { default as SignIn } from './System/SignIn'
 
 export { default as Earnings } from './System/Earnings'
 export { default as Home } from './System/Home'
+export { default as AllAlbums } from './System/AllAlbums'
 export { default as MusicianDashboard } from './System/Musician_Dashboard'
 export { default as MyProfile } from './System/My_Profile'
+export { default as ProfileView } from './System/ProfileView'
 export { default as NewMusicianDashboard } from './System/New_Musician_Dashboard'
 
 export { default as AlbumView } from './Common/AlbumView/AlbumView'

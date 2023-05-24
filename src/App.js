@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   AlbumEdit,
   AlbumView,
+  AllAlbums,
   Cart,
   Earnings,
   Home,
@@ -10,6 +11,7 @@ import {
   MyProfile,
   NewMusicianDashboard,
   NotFound,
+  ProfileView,
   SignIn,
   SignUp,
 } from "./pages";
@@ -26,6 +28,7 @@ function App() {
         {token !== null ? (
           <>
             <Route exact path="/home" element={<Home />} />
+            <Route exact path="/all" element={<AllAlbums />} />
             <Route
               exact
               path="/completeprofile"
@@ -37,6 +40,7 @@ function App() {
               element={<MusicianDashboard />}
             />
             <Route exact path="/profile" element={<MyProfile />} />
+            <Route exact path="/profile-view" element={<ProfileView />} />
             <Route path="/earnings" element={<Earnings />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/album" element={<AlbumView />} />
