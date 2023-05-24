@@ -91,7 +91,8 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
 
   return (
     <div className="popup-background">
-        <div className="popup-box">
+      <div className="popup-box-wrap"  >
+        <div className="popup-box" >
             <div className="popup-header" style={{position:'relative'}}>
                      <p
                         className="pop_addsong font-nunito"
@@ -104,7 +105,9 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                 </button>
             </div>
             <div className="popup-content">
+            <input type="text" placeholder="Song Name" className='song_name_in' style={{background:'#313131',borderRadius:'10px',padding:'5px',marginTop:'10px'}}></input>
                 <div className="upload_container">
+                 
                     {imagePreview == null ? 
                         <div style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
                         <button onClick={handleButtonClickImage} className="upload_wrap" style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px'}}>
@@ -115,12 +118,13 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                         </button>
                         </div>
                     :
-                        <div onClick={handleButtonClickImage} style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                        <div className="upload_wrap" style={{position:'relative',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                            <div onClick={handleButtonClickImage}  style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px'}}>
                             <input accept="image/*"  type="file" onChange={handleImageChange}  ref={fileInput} style={{ display: 'none' }}/>
-                            <div style={{display: "flex",alignItems: "center",justifyContent: "center",flexDirection: "column",borderRadius:'10px',width:'175px',height:'175px'}}>
-                                <img className="playerProfilePic_home_tile upload_wrap" src={imagePreview} style={{borderRadius:'10px'}}/>
+                            <img className="upload_wrap" src={imagePreview}  />
                             </div>
                         </div>
+                       
                     }
 
                     {videoPreview == null ? 
@@ -165,7 +169,7 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                 
                 </div>
 
-                <div className="upload_container2" style={{width:'90%'}}>
+                <div className="upload_container2" >
                     <div className="up_song" style={{display: "flex",alignItems: "center",justifyContent: "space-evenly",flexDirection: "row",height:'84px'}} onClick={handleButtonClickAudio}>
                         <input
                             type="file"
@@ -183,6 +187,7 @@ const Popup = ({ onClose, onPhotoUpload, onSongUpload }) => {
                 </div>
             </div>
         </div>
+      </div>
     </div>
     
   );
