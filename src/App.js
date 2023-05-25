@@ -43,7 +43,7 @@ function App() {
             <Route exact path="/profile-view" element={<ProfileView />} />
             <Route path="/earnings" element={<Earnings />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/album" element={<AlbumView />} />
+            <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />} />
           </>
         ) : (

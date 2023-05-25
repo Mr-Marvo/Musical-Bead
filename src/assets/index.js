@@ -28,7 +28,9 @@ export { default as Twitter } from './images/system/twitter.png'
 
 export { default as DefaultAlbum } from './images/system/album-default.png'
 export { default as PlayButton } from './images/system/play-button.png'
+export { default as PlayButtonLarge } from './images/system/play-large.png'
 export { default as Equalizer } from './images/system/equalizer.png'
+export { default as EqualizerLarge } from './images/system/equalizer-large.png'
 export { default as SingerIcon } from './images/system/singer.png'
 export { default as ProfileImage } from './images/system/profile.png'
 
