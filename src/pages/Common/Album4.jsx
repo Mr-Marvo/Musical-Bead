@@ -32,7 +32,7 @@ const Album4 = () => {
             <img src={Equalizer} alt="equalizer" className="w-10" />
           </div>
           <div className="flex">
-            <img src={PlayButton} alt="playbutton" className="w-10" />
+            <img src={PlayButton} alt="playbutton" className="w-10 cursor-pointer" />
           </div>
         </div>
       </div>

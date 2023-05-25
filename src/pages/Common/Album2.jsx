@@ -71,7 +71,11 @@ const Album = ({ id, cover, name, slogan, audio, isPlaying, onAlbumClick }) => {
               src={PlayButton}
               alt="playbutton"
               style={{ width: "15px" }}
-              onClick={handlePlay}
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePlay();
+              }}
+              className="cursor-pointer"
             />
           </div>
         </div>

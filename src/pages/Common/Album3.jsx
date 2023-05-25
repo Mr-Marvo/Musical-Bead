@@ -33,7 +33,7 @@ const Album3 = () => {
                 <img src={Equalizer} alt="equalizer" />
             </div>
             <div className="flex">
-                <img src={PlayButton} alt="playbutton" />
+                <img src={PlayButton} alt="playbutton"  className="cursor-pointer" />
             </div>
             </div>
         </div>

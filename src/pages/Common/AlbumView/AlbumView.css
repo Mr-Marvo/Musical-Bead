@@ -21,7 +21,7 @@
 .album_view_main_container {
     display: grid;
     grid-template-columns: auto auto auto;
-    width: 80%;
+    width: 90%;
     height: 100%;
 }
 
