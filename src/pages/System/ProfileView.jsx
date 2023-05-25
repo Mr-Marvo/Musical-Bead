@@ -6,7 +6,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 /* Player */
 import ReactPlayer from "react-player/lazy";
-import Album from "../Common/Album3";
+import Album from "../Common/Album";
 import { NewFooter, NewHeader } from "../../components/system";
 import {
   ProfileImage

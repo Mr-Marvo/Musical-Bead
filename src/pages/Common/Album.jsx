@@ -33,12 +33,7 @@ const Album = ({ id, cover, name, slogan, audio, isPlaying, onAlbumClick }) => {
     <div className="flex flex-row gap-3 w-[240px] h-120 justify-center items-center my-2">
       <div className="flex flex-col bg-black w-fit h-fit rounded-xl p-4 relative">
         <div className="flex">
-          <div className="relative">
             <img src={cover} alt="default album" className="rounded-xl" />
-            <div className="absolute text-white bottom-1 left-2 w-1/2 overflow-hidden h-6">
-              <LongText text={name} maxLength={20} />
-            </div>
-          </div>
           <div className="absolute right-4 bottom-4">
             <div className="flex flex-col">
               <img src={TagTop} className="3xl:w-[120px] w-[60px]" alt="Bead" />
@@ -53,8 +48,8 @@ const Album = ({ id, cover, name, slogan, audio, isPlaying, onAlbumClick }) => {
           </div>
         </div>
         <audio ref={audioRef} src={audio} />
-        <div className="flex text-[12px] font-normal text-[#BA55C2] mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
-          <LongText text={slogan} maxLength={20} />
+        <div className="flex text-[16px] font-normal text-[#BA55C2] mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
+          <LongText text={name} maxLength={20} />
         </div>
         <div className="flex flex-row gap-4 mt-2">
           <div className="flex">

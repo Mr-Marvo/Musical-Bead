@@ -4,7 +4,7 @@ import Popup from './Popup';
 
 import './FlatList.css'; // Import the CSS file for FlatList component
 
-const FlatList = () => {
+const FlatList = ({albumID}) => {
   const [items, setItems] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]);
   const [popupOpen, setPopupOpen] = useState(false);
   const [currentItemIndex, setCurrentItemIndex] = useState(null);
@@ -21,6 +21,7 @@ const FlatList = () => {
   };
 
   const handlePhotoUpload = (photo) => {
+    console.log(photo);
     if (currentItemIndex !== null) {
       const updatedItems = [...items];
       updatedItems[currentItemIndex] = { ...updatedItems[currentItemIndex], photo };
@@ -56,7 +57,7 @@ const FlatList = () => {
         </div>
       </div>
       {popupOpen && (
-        <Popup onClose={handleClosePopup} onPhotoUpload={handlePhotoUpload} />
+        <Popup onClose={handleClosePopup} onPhotoUpload={handlePhotoUpload} albumID={albumID} />
       )}
     </div>
   );
