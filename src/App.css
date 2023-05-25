@@ -537,13 +537,31 @@ header .nav-btn {
   flex-direction: column;
 }
 
+.data_container div {
+  display: flex;
+  flex-direction: column;
+}
+
 .data_container label {
   font-size: 16px;
   font-weight: 500;
 }
 
 .data_container form textarea,
+.data_container div select,
 .data_container form input {
+  background-color: #1f1f1f;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.data_container div textarea,
+.data_container div input {
   background-color: #1f1f1f;
   padding: 10px;
   margin-top: 10px;
@@ -562,11 +580,26 @@ header .nav-btn {
   margin-bottom: 10px;
 }
 
+.data_container div > div {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .data_container form > div > div {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
+
+.data_container div > div > div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
 
 .song_container {
   width: 10px;
@@ -654,6 +687,7 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 50rem;
   }
@@ -668,6 +702,24 @@ header .nav-btn {
   }
 
   .data_container form > div > div > input {
+    width: 24rem;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 50rem;
+  }
+
+  .data_container div {
+    padding: 1rem;
+    margin: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .data_container div > div > div > input {
     width: 24rem;
   }
 
@@ -696,11 +748,21 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 38rem;
   }
 
   .data_container form > div > div > input {
+    width: 18rem;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 38rem;
+  }
+
+  .data_container div > div > div > input {
     width: 18rem;
   }
 
@@ -738,11 +800,21 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 30rem;
   }
 
   .data_container form > div > div > input {
+    width: 14rem;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 30rem;
+  }
+
+  .data_container div > div > div > input {
     width: 14rem;
   }
 
@@ -771,11 +843,21 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 28rem;
   }
 
   .data_container form > div > div > input {
+    width: 13rem;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 28rem;
+  }
+
+  .data_container div > div > div > input {
     width: 13rem;
   }
 
@@ -824,11 +906,21 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 22rem;
   }
 
   .data_container form > div > div > input {
+    width: 10rem;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 22rem;
+  }
+
+  .data_container div > div > div > input {
     width: 10rem;
   }
 
@@ -874,11 +966,21 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 18rem;
   }
 
   .data_container form > div > div > input {
+    width: 8rem;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 18rem;
+  }
+
+  .data_container div > div > div > input {
     width: 8rem;
   }
 
@@ -937,6 +1039,7 @@ header .nav-btn {
   }
 
   .data_container form textarea,
+  .data_container div select,
   .data_container form > input {
     width: 12rem;
     font-size: 10px;
@@ -948,6 +1051,21 @@ header .nav-btn {
   }
 
   .data_container form label {
+    font-size: 10px;
+  }
+
+  .data_container div textarea,
+  .data_container div > input {
+    width: 12rem;
+    font-size: 10px;
+  }
+
+  .data_container div > div > div > input {
+    width: 5rem;
+    font-size: 10px;
+  }
+
+  .data_container div label {
     font-size: 10px;
   }
 
@@ -1118,7 +1236,7 @@ header .nav-btn {
 }
 
 .sub_container1_right {
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 50px;
   background-color: rgba(0, 0, 0, 0.32);
   width: 40%;

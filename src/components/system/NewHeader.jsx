@@ -23,6 +23,8 @@ const NewHeader = () => {
 
   const [isCollapsed3, setIsCollapsed3] = useState(true);
 
+  const usertype = localStorage.getItem("usertype");
+
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
@@ -78,22 +80,30 @@ const NewHeader = () => {
         >
           Dashboard
         </a>
-        <a
-          href="/profile"
-          className={`text-[20px] font-nunito ${
-            location === "/profile" ? "text-[#2aafc1]" : ""
-          }`}
-        >
-          My Profile
-        </a>
-        <a
-          href="/earnings"
-          className={`text-[20px] font-nunito ${
-            location === "/earnings" ? "text-[#2aafc1]" : ""
-          }`}
-        >
-          Earnings
-        </a>
+        {usertype === '2' ? (
+          <a
+            href="/profile"
+            className={`text-[20px] font-nunito ${
+              location === "/profile" ? "text-[#2aafc1]" : ""
+            }`}
+          >
+            My Profile
+          </a>
+        ) : (
+          <></>
+        )}
+        {usertype !== '1' ? (
+          <a
+            href="/earnings"
+            className={`text-[20px] font-nunito ${
+              location === "/earnings" ? "text-[#2aafc1]" : ""
+            }`}
+          >
+            Earnings
+          </a>
+        ) : (
+          <></>
+        )}
       </nav>
       {/* Menu Toggle Button */}
       <button className="nav-btn" onClick={showNavbar}>
