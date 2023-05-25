@@ -396,14 +396,12 @@ function Home() {
               <div>
                 {newAlbums.map((album) => {
                   return (
-                    <div className="home_grid gap-4">
+                    <div
+                      className="home_grid gap-4 cursor-pointer"
+                    >
                       <Album
                         key={album.id}
-                        id={album.id}
-                        cover={album.cover_image_path}
-                        name={album.title}
-                        slogan={album.slogan}
-                        audio={album.sample_url}
+                        album={album}
                         isPlaying={currentAlbumId === album.id}
                         onAlbumClick={handleAlbumClick}
                       />
