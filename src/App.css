@@ -643,6 +643,14 @@ header .nav-btn {
   padding-bottom: 10px;
 }
 
+.Flatlist_container2 {
+  width: 700px;
+  overflow-x: auto;
+  margin-left: 2.2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 10px;
+}
+
 .add_song_heading_wrap{
   margin-left: 2.2rem;
 }
@@ -660,6 +668,16 @@ header .nav-btn {
     width: 1060px;
     overflow-x: auto;
    
+  }
+
+  .Flatlist_container2 {
+    width: 670px;
+  }
+}
+
+@media only screen and (max-width: 1279px) {
+  .Flatlist_container2 {
+    width: 600px;
   }
 }
 
@@ -734,6 +752,12 @@ header .nav-btn {
   }
 }
 
+@media only screen and (max-width: 1160px) {
+  .Flatlist_container2 {
+    width: 500px;
+  }
+}
+
 @media only screen and (max-width: 1060px) {
   .step_container {
     width: 50rem;
@@ -780,6 +804,8 @@ header .nav-btn {
   .add_song_heading_wrap{
     margin-left: 6rem;
   }
+
+ 
 }
 
 @media only screen and (max-width: 813px) {
@@ -1604,6 +1630,10 @@ header .nav-btn {
     grid-template-columns: auto auto auto;
     justify-content: space-evenly;
   }
+
+  .Flatlist_container2 {
+    width: 720px;
+  }
 }
 
 @media only screen and (max-width: 810px) {
@@ -1638,6 +1668,10 @@ header .nav-btn {
 
   .album_sub_wrap {
     grid-template-columns: auto;
+  }
+
+  .Flatlist_container2 {
+    width: 570px;
   }
 }
 
@@ -1692,6 +1726,12 @@ header .nav-btn {
   .sub_container1_right > div > div {
     grid-template-columns: auto auto auto;
     justify-content: space-evenly;
+  }
+
+  .Flatlist_container2 {
+    width: 420px;
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 
@@ -1772,6 +1812,10 @@ header .nav-btn {
   .sub_container1_right > div > div {
     grid-template-columns: auto auto;
   }
+
+  .Flatlist_container2 {
+    width: 360px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -1831,6 +1875,10 @@ header .nav-btn {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .Flatlist_container2 {
+    width: 300px;
   }
 }
 

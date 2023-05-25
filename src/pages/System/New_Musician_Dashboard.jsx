@@ -539,7 +539,7 @@ function New_Musician_Dashboard() {
                       {albumNameE && <div className="error">{albumNameE}</div>}
                       <div>
                         <div>
-                          <label className="font-nunito text-white">
+                          <label className="font-nunito text-white" >
                             Category
                           </label>
                           <select
@@ -549,6 +549,7 @@ function New_Musician_Dashboard() {
                               console.log(e.target.value);
                               setCategory(e.target.value);
                             }}
+                            style={{marginTop:'-10px'}}
                           >
                             {categories.map((category) => {
                               return (
@@ -571,6 +572,8 @@ function New_Musician_Dashboard() {
                             type="text"
                             className="text-white"
                             value={fullname}
+                            style={{marginTop:'-10px'}}
+                            disabled
                           ></input>
                         </div>
                       </div>
