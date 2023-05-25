@@ -2,7 +2,7 @@
     ruvi@Aventure
     ruvi.ijse@hmail.com
 */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../../App.css";
 
 import Album2 from "../Common/Album2";
@@ -16,10 +16,21 @@ import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 import { RxCross2 } from "react-icons/rx";
 import OrderAlbum from "../Common/OrderAlbum";
 import ShipAlbum from "../Common/ShipAlbum";
+import { useContentContext } from "../../providers/ContentContext";
+import axios from "axios";
 
 function Musician_Dashboard() {
   const fileInputRef = useRef(null);
   const fileInputRef1 = useRef(null);
+  let { url } = useContentContext();
+  const token = localStorage.getItem("token");
+
+  const [pendingAlbums, setPendingAlbums] = useState([]);
+  const [currentAlbumId, setCurrentAlbumId] = useState(null);
+
+  const handleAlbumClick = (albumId) => {
+    setCurrentAlbumId(albumId);
+  };
 
   const handleButtonClick = () => {
     // Trigger the hidden file input
@@ -55,6 +66,34 @@ function Musician_Dashboard() {
       });
       reader.readAsDataURL(e.target.files[0]);
     }
+  };
+
+  useEffect(() => {
+    loadPendingAlbums();
+  }, []);
+
+  const loadPendingAlbums = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      user_id: localStorage.getItem("userid"),
+      musician_user_id: localStorage.getItem("userid"),
+      status: 0,
+    };
+
+    axios
+      .post(url + "/album/all", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setPendingAlbums(response.data.output.albums);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
@@ -248,24 +287,22 @@ function Musician_Dashboard() {
                 }}
               >
                 <div className="album_sub_wrap2">
-                  <div>
-                    <Album2 />
-                  </div>
-                  <div>
-                    <Album2 />
-                  </div>
-                  <div>
-                    <Album2 />
-                  </div>
-                  <div>
-                    <Album2 />
-                  </div>
-                  <div>
-                    <Album2 />
-                  </div>
-                  <div>
-                    <Album2 />
-                  </div>
+                  {pendingAlbums.map((album) => {
+                    return (
+                      <div>
+                        <Album2
+                          key={album.id}
+                          id={album.id}
+                          cover={album.cover_image_path}
+                          name={album.title}
+                          slogan={album.slogan}
+                          audio={album.sample_url}
+                          isPlaying={currentAlbumId === album.id}
+                          onAlbumClick={handleAlbumClick}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <div
@@ -276,9 +313,14 @@ function Musician_Dashboard() {
                   marginTop: "4rem",
                 }}
               >
-                <button className="submit_btn" style={{ color: "white" }}>
-                  {" "}
-                  Visit Profile{" "}
+                <button
+                  className="submit_btn"
+                  style={{ color: "white" }}
+                  onClick={() => {
+                    window.location.replace("/profile");
+                  }}
+                >
+                  Visit Profile
                 </button>
               </div>
             </div>
