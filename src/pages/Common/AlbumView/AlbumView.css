@@ -21,7 +21,7 @@
 .album_view_main_container {
     display: grid;
     grid-template-columns: auto auto auto;
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 
@@ -255,6 +255,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media only screen and (max-width: 1240px) {
     .album_view_main_container {
+        width: 100%;
         grid-template-columns: auto auto ;
         justify-content: center;
     }

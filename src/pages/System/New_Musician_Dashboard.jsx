@@ -144,11 +144,15 @@ function New_Musician_Dashboard() {
   const [description, setDescription] = useState("");
   const [descriptionE, setDescriptionE] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   /* This is to open add song after sumbit button clicked */
   const [isSubmit, setIsSubmit] = useState(false);
   /* This method handle all inputs adn save them in DB */
 
   const submitNewMusicianForReview = () => {
+    setLoading(true);
+
     if (state === 0) {
       const config = {
         headers: { Authorization: `Bearer ${token}` },
@@ -221,6 +225,7 @@ function New_Musician_Dashboard() {
             setAlbumID(response.data.output.id);
             setIsSubmit(!isSubmit);
             setState(1);
+            setLoading(false);
           } else {
             console.log(response);
           }
