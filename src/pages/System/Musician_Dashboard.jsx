@@ -223,7 +223,7 @@ function Musician_Dashboard() {
                   )}
                 </div>
                 <div className="data_cotainer">
-                  <form>
+                  <div className="form_div">
                     <label className="text-[#555555]">Album Name</label>
                     <input
                       type="text"
@@ -271,7 +271,7 @@ function Musician_Dashboard() {
                       className="text-white"
                       style={{ backgroundColor: "#1F1F1F" }}
                     ></textarea>
-                  </form>
+                  </div >
                 </div>
               </div>
                   <div style={{display:'flex',flexDirection:'column'}}>

@@ -1108,7 +1108,7 @@ header .nav-btn {
 
 /* ======================================================================================================================================= */
 /* Musican Dashboard */
-
+form
 .headline {
   text-align: center;
   margin-bottom: 1rem;
@@ -1221,17 +1221,17 @@ header .nav-btn {
   font-size: 48px;
 }
 
-.sub_container1_left > div form {
+.sub_container1_left .data_cotainer .form_div {
   display: flex;
   flex-direction: column;
 }
 
-.sub_container1_left > div form p {
+.sub_container1_left .data_cotainer .form_div p {
   margin-top: 15px;
 }
 
-.sub_container1_left > div form textarea,
-.sub_container1_left > div form input {
+.sub_container1_left .data_cotainer .form_div textarea,
+.sub_container1_left .data_cotainer .form_div input {
   background-color: #121212;
   padding: 10px;
   margin-top: 10px;
@@ -1242,7 +1242,7 @@ header .nav-btn {
   cursor: pointer;
 }
 
-.sub_container1_left > div form > div {
+.sub_container1_left .data_cotainer .form_div > div {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
@@ -1250,14 +1250,14 @@ header .nav-btn {
   margin-bottom: 10px;
 }
 
-.sub_container1_left > div form > div > div {
+.sub_container1_left .data_cotainer .form_div > div > div {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.sub_container1_left > div form textarea,
-.sub_container1_left > div form input:hover {
+.sub_container1_left .data_cotainer .form_div textarea,
+.sub_container1_left .data_cotainer .form_div input:hover {
   box-shadow: 10px 10px 5px rgba(24, 23, 23, 0.5);
 }
 
