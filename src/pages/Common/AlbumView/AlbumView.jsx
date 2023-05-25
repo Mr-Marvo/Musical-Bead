@@ -54,7 +54,7 @@ function AlbumView() {
         <>
             <NewHeader/>
             <main>
-                <div className="album_view_main_container">
+                <div className="album_view_main_container  w-[1440px]">
                     <div className="album_view_left_container">
                         <button className='hippop_btn font-nunito'>
                             Hip hop
