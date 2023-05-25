@@ -273,9 +273,7 @@ function New_Musician_Dashboard() {
     } else {
       setCategoryE("");
     }
-    if (!/^[a-z A-Z]*$/.test(category)) {
-      setCategoryE("* Please Enter Only Letters");
-    }
+   
 
     if (description === "") {
       setDescriptionE("* required");
@@ -637,6 +635,7 @@ function New_Musician_Dashboard() {
           className="review_submit_btn font-nunito"
           style={{ color: "white", fontWeight: "700" }}
           onClick={submitNewMusicianForReview}
+          disabled={false}
         >
           {state === 0 ? "Submit For Review" : "Go to Dashboard"}
         </button>
