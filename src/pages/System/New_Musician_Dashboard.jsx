@@ -539,7 +539,7 @@ function New_Musician_Dashboard() {
                       ></input>
                       {albumNameE && <div className="error">{albumNameE}</div>}
                       <div>
-                        <div>
+                        <div style={{display:'flex',flexDirection:'column'}}  className="new_2by2">
                           <label className="font-nunito text-white">
                             Category
                           </label>
@@ -550,7 +550,7 @@ function New_Musician_Dashboard() {
                               console.log(e.target.value);
                               setCategory(e.target.value);
                             }}
-                            style={{ marginTop: "-10px" }}
+                            style={{ marginTop: "-10px"}}
                           >
                             {categories.map((category) => {
                               return (
@@ -565,7 +565,7 @@ function New_Musician_Dashboard() {
                           )}
                         </div>
 
-                        <div>
+                        <div style={{display:'flex',flexDirection:'column'}}  className="new_2by2">
                           <label className="font-nunito text-white">
                             Artist
                           </label>
@@ -592,7 +592,7 @@ function New_Musician_Dashboard() {
                       )}
 
                       <div>
-                        <div>
+                        <div style={{display:'flex',flexDirection:'column'}} className="new_2by2">
                           <label className="font-nunito text-white">
                             Price $
                           </label>
@@ -607,7 +607,7 @@ function New_Musician_Dashboard() {
                           />
                         </div>
 
-                        <div>
+                        <div style={{display:'flex',flexDirection:'column'}}  className="new_2by2">
                           <label className="font-nunito text-white">
                             Sample Audio
                           </label>
@@ -615,7 +615,6 @@ function New_Musician_Dashboard() {
                             onClick={handleButtonClickSong}
                             style={{
                               height: "40px",
-                              width: "200px",
                               borderRadius: "10px",
                               background: "#313131",
                               color: "#fff",
