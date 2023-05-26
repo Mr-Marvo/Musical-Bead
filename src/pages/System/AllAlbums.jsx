@@ -116,18 +116,18 @@ function AllAlbums() {
               </div>
             </div>
             <div>
-              {filteredObjects.map((album) => {
-                return (
-                  <div className="home_grid gap-4">
+              <div className="home_grid gap-4">
+                {filteredObjects.map((album) => {
+                  return (
                     <Album
                       key={album.id}
                       album={album}
                       isPlaying={currentAlbumId === album.id}
                       onAlbumClick={handleAlbumClick}
                     />
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </>
         ) : (
@@ -151,18 +151,18 @@ function AllAlbums() {
                   </div>
                 </div>
                 <div>
-                  {albums.map((album) => {
-                    return (
-                      <div className="home_grid gap-4">
+                  <div className="home_grid gap-4">
+                    {albums.map((album) => {
+                      return (
                         <Album
                           key={album.id}
                           album={album}
                           isPlaying={currentAlbumId === album.id}
                           onAlbumClick={handleAlbumClick}
                         />
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </>
             )}
