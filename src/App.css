@@ -532,7 +532,7 @@ header .nav-btn {
   margin-top: 50px;
 }
 
-.data_container form {
+.data_container .form_div {
   display: flex;
   flex-direction: column;
 }
@@ -547,19 +547,20 @@ header .nav-btn {
   font-weight: 500;
 }
 
-.data_container form textarea,
+.data_container .form_div textarea,
 .data_container div select,
-.data_container form input {
+.data_container .form_div input {
   background-color: #1f1f1f;
   padding: 10px;
   margin-top: 10px;
-  width: 100%;
+ 
   border-radius: 10px;
   border: none;
   outline: none;
   cursor: pointer;
 }
 
+.data_container div select,
 .data_container div textarea,
 .data_container div input {
   background-color: #1f1f1f;
@@ -589,12 +590,6 @@ header .nav-btn {
 }
 
 .data_container form > div > div {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-
-.data_container div > div > div {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -655,6 +650,9 @@ header .nav-btn {
   margin-left: 2.2rem;
 }
 
+.new_2by2 {
+  width: 50%;
+}
 @media only screen and (max-width: 1300px) {
   .step_container {
     width: 70rem;
@@ -704,6 +702,10 @@ header .nav-btn {
     padding: 1rem;
   }
 
+  .data_container div > div{
+    flex-direction: column;
+  }
+
   .data_container form textarea,
   .data_container div select,
   .data_container form > input {
@@ -738,7 +740,11 @@ header .nav-btn {
   }
 
   .data_container div > div > div > input {
-    width: 24rem;
+    width: 50rem;
+  }
+
+  .data_container div > div > div > button {
+    width: 50rem;
   }
 
   .Flatlist_container1 {
@@ -750,6 +756,8 @@ header .nav-btn {
   .add_song_heading_wrap{
     margin-left: 5rem;
   }
+
+  
 }
 
 @media only screen and (max-width: 1160px) {
@@ -777,8 +785,8 @@ header .nav-btn {
     width: 38rem;
   }
 
-  .data_container form > div > div > input {
-    width: 18rem;
+  .data_container  .form_div> div > div > input {
+    width: 38rem;
   }
 
   .data_container div textarea,
@@ -786,8 +794,12 @@ header .nav-btn {
     width: 38rem;
   }
 
-  .data_container div > div > div > input {
-    width: 18rem;
+  .data_container div > div > div > input  {
+    width: 38rem;
+  }
+
+  .data_container div > div > div > button {
+    width: 38rem;
   }
 
   .song_container2 {
@@ -840,8 +852,12 @@ header .nav-btn {
     width: 30rem;
   }
 
-  .data_container div > div > div > input {
-    width: 14rem;
+  .data_container div > div > div > input  {
+    width: 30rem;
+  }
+
+  .data_container div > div > div > button {
+    width: 30rem;
   }
 
   .Flatlist_container1 {
@@ -883,8 +899,12 @@ header .nav-btn {
     width: 28rem;
   }
 
-  .data_container div > div > div > input {
-    width: 13rem;
+  .data_container div > div > div > input  {
+    width: 28rem;
+  }
+
+  .data_container div > div > div > button {
+    width: 28rem;
   }
 
   .step_cover {
@@ -946,8 +966,12 @@ header .nav-btn {
     width: 22rem;
   }
 
-  .data_container div > div > div > input {
-    width: 10rem;
+  .data_container div > div > div > input  {
+    width: 22rem;
+  }
+
+  .data_container div > div > div > button {
+    width: 22rem;
   }
 
   .song_wrap > div > div:nth-child(2) {
@@ -1006,8 +1030,12 @@ header .nav-btn {
     width: 18rem;
   }
 
-  .data_container div > div > div > input {
-    width: 8rem;
+  .data_container div > div > div > input  {
+    width: 18rem;
+  }
+
+  .data_container div > div > div > button {
+    width: 18rem;
   }
 
   .logo {

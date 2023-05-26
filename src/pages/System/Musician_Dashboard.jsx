@@ -15,8 +15,18 @@ import ShipAlbum from "../Common/ShipAlbum";
 import { useContentContext } from "../../providers/ContentContext";
 import axios from "axios";
 import FlatList from "../../components/Common/FlatList";
+import LoadingCircle from "../../components/Common/LoadingCircle";
+import ErrorAlertBox from "../../components/Common/ErrorAlertBox";
 
 function Musician_Dashboard() {
+    const [isLoadingClircle,setIsLoadingCircle] = useState(false);
+   
+
+  /* Error Handling useStates */
+  const [albumNameE,setAlbumNameE] = useState('');
+  const [priceE,setPriceE] = useState('');
+  const [descriptionE,setDescriptionE] = useState('');
+
   const fileInputRef = useRef(null);
   const fileInputRef1 = useRef(null);
   const fileInputRef2 = useRef(null);
@@ -56,7 +66,7 @@ function Musician_Dashboard() {
 
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  const [price, setPrice] = useState(0.0);
+  const [price, setPrice] = useState('');
 
   const [state, setState] = useState(0);
 
@@ -160,47 +170,89 @@ function Musician_Dashboard() {
 
   const submitAlbum = () => {
     if (state === 0) {
-      const config = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
+        if ((title !== "") && (/^[a-z A-Z]*$/.test(title)) && (price !== "") && (/^[0-9]*$/.test(price)) && (description !== "") && (/^[a-z A-Z]*$/.test(description)) && selectedSong){
+          
+            setIsLoadingCircle(true);
+            const config = {
+            headers: { Authorization: `Bearer ${token}` },
+            };
 
-      let data3 = new FormData();
-      data3.append("musician_user_id", localStorage.getItem("userid"));
-      data3.append("category_id", category);
-      data3.append("title", title);
-      data3.append("album_amount", price);
-      data3.append("slogan", null);
-      data3.append("description", description);
-      data3.append("image_extension", picture1?.name.split(".")[1]);
-      data3.append("created_by", localStorage.getItem("userid"));
-      data3.append("cover_image", picture1);
-      data3.append("sample_audio", selectedSong);
-      data3.append("file_extension", selectedSong?.name.split(".")[1]);
+            let data3 = new FormData();
+            data3.append("musician_user_id", localStorage.getItem("userid"));
+            data3.append("category_id", category);
+            data3.append("title", title);
+            data3.append("album_amount", price);
+            data3.append("slogan", null);
+            data3.append("description", description);
+            data3.append("image_extension", picture1?.name.split(".")[1]);
+            data3.append("created_by", localStorage.getItem("userid"));
+            data3.append("cover_image", picture1);
+            data3.append("sample_audio", selectedSong);
+            data3.append("file_extension", selectedSong?.name.split(".")[1]);
 
-      axios
-        .post(url + "/album/add", data3, config)
-        .then((response) => {
-          console.log(response);
-          if (response?.status === 200) {
-            setAlbumID(response.data.output.id);
-            setIsSubmit(!isSubmit);
-            setState(1);
-            if (usertype === "1") {
-              loadPendingAlbums(0);
-            } else {
-              loadPendingAlbums(localStorage.getItem("userid"));
-            }
-          } else {
-            console.log(response);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+            axios.post(url + "/album/add", data3, config)
+                .then((response) => {
+                console.log(response);
+                if (response?.status === 200) {
+                    setAlbumID(response.data.output.id);
+                    setIsSubmit(!isSubmit);
+                  
+                    setIsLoadingCircle(false);
+                    setState(1);
+                   
+                    if (usertype === "1") {
+                    loadPendingAlbums(0);
+                    } else {
+                    loadPendingAlbums(localStorage.getItem("userid"));
+                    }
+                } else {
+                    console.log(response);
+                    
+                }
+                })
+                .catch((error) => {
+                console.log(error);
+                });
+           
+        }else {
+           
+            alert("Not Verified!" )
+            validate();
+            
+        }
     } else {
       window.location.reload();
     }
   };
+
+  const validate = () => {
+    if (title === "") {
+      setAlbumNameE("* required");
+    } else {
+      setAlbumNameE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(title)) {
+      setAlbumNameE("* Please Enter Only Letters");
+    }
+
+    if (price === "") {
+      setPriceE("* required");
+    } else {
+      setPriceE("");
+    }
+    if (!/^[0-9]*$/.test(price)) {
+      setPriceE("* Please Enter Only Numberss");
+    }
+
+    if (description === "") {
+      setDescriptionE("* required");
+    } else {
+      setDescriptionE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(description)) {
+      setDescriptionE("* Please Enter Only Letters");
+    }
+  }
 
   return (
     <>
@@ -301,7 +353,9 @@ function Musician_Dashboard() {
                       className="album_name text-white"
                       style={{ backgroundColor: "#1F1F1F" }}
                       onChange={(e) => setTitle(e.target.value)}
+                      onKeyUp={validate}
                     ></input>
+                     {albumNameE && <div className="error">{albumNameE}</div>}
                     <div>
                       <div>
                         <label className="text-[#555555]">Category</label>
@@ -321,6 +375,7 @@ function Musician_Dashboard() {
                             );
                           })}
                         </select>
+                       
                       </div>
 
                       <div>
@@ -335,17 +390,23 @@ function Musician_Dashboard() {
                           onFocus={() => {
                             setPrice("");
                           }}
+                          onKeyUp={validate}
+                          style={{background:'rgb(31,31,31)'}}
                         />
+                        {priceE && <div className="error">{priceE}</div>}
                       </div>
                     </div>
                     <label className="text-[#555555]">Description</label>
                     <textarea
                       className="text-white"
                       style={{ backgroundColor: "#1F1F1F" }}
+                      value={description}
                       onChange={(e) => {
                         setDescription(e.target.value);
                       }}
+                      onKeyUp={validate}
                     />
+                    {descriptionE && <div className="error">{descriptionE}</div>}
                     <label className="text-[#555555] mt-4">Sample Audio</label>
                     <button
                       onClick={handleButtonClickSong}
@@ -776,6 +837,8 @@ function Musician_Dashboard() {
       </main>
 
       <NewFooter />
+      <LoadingCircle show={isLoadingClircle}/>
+      
     </>
   );
 }
