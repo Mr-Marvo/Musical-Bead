@@ -1,17 +1,13 @@
-/* 
-    ruvi@Aventure
-    ruvi.ijse@hmail.com
-*/
 import React, { useState, useRef, useEffect } from "react";
 import "../../App.css";
 
 import Album2 from "../Common/Album2";
 import { NewFooter, NewHeader } from "../../components/system";
-import { AddImageIcon, ProfileImage } from "../../assets";
+import { ProfileImage } from "../../assets";
 import { RiArrowUpSFill } from "react-icons/ri";
 import { RiArrowDownSFill } from "react-icons/ri";
 
-import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
+import { ImageIcon } from "../../assets";
 
 import { RxCross2 } from "react-icons/rx";
 import OrderAlbum from "../Common/OrderAlbum";
@@ -25,12 +21,17 @@ function Musician_Dashboard() {
   const fileInputRef1 = useRef(null);
   const fileInputRef2 = useRef(null);
   const [selectedSong, setSelectedSong] = useState(null);
+
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
   const [albumID, setAlbumID] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState(1);
 
   const [pendingAlbums, setPendingAlbums] = useState([]);
   const [currentAlbumId, setCurrentAlbumId] = useState(null);
+
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleAlbumClick = (albumId) => {
     setCurrentAlbumId(albumId);
@@ -48,14 +49,19 @@ function Musician_Dashboard() {
     fileInputRef2.current.click();
   };
 
-
   const [picture, setPicture] = useState(null);
   const [imgData, setImgData] = useState(null);
   const [picture1, setPicture1] = useState(null);
   const [imgData1, setImgData1] = useState(null);
+
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+  const [price, setPrice] = useState(0.0);
+
+  const [state, setState] = useState(0);
+
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
       setPicture(e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
@@ -67,7 +73,6 @@ function Musician_Dashboard() {
 
   const onChangePicture1 = (e) => {
     if (e.target.files[0]) {
-      console.log("picture: ", e.target.files);
       setPicture1(e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
@@ -77,7 +82,6 @@ function Musician_Dashboard() {
     }
   };
 
-  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedSong(file);
@@ -85,6 +89,7 @@ function Musician_Dashboard() {
 
   useEffect(() => {
     loadPendingAlbums();
+    loadCategories();
   }, []);
 
   const loadPendingAlbums = () => {
@@ -114,12 +119,6 @@ function Musician_Dashboard() {
   const [fullnameTag, setFullnameTag] = useState("Oliver Fernadoz");
   const usertype = localStorage.getItem("usertype");
 
-  const [isPopup, setIsPopup] = useState(false);
-
-  const handleIspopup = () => {
-    setIsPopup(!isPopup);
-  };
-
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const handleToggleCollapse = () => {
@@ -130,6 +129,67 @@ function Musician_Dashboard() {
 
   const handleToggleCollapse2 = () => {
     setIsCollapsed2(!isCollapsed2);
+  };
+
+  const loadCategories = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      status: "1",
+    };
+
+    axios
+      .post(url + "/category/all", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setCategories(response.data.output);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const submitAlbum = () => {
+    if(state === 0){
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+  
+      let data3 = new FormData();
+      data3.append("musician_user_id", localStorage.getItem("userid"));
+      data3.append("category_id", category);
+      data3.append("title", title);
+      data3.append("album_amount", price);
+      data3.append("slogan", null);
+      data3.append("description", description);
+      data3.append("image_extension", picture1?.name.split(".")[1]);
+      data3.append("created_by", localStorage.getItem("userid"));
+      data3.append("cover_image", picture1);
+      data3.append("sample_audio", selectedSong);
+      data3.append("file_extension", selectedSong?.name.split(".")[1]);
+  
+      axios
+        .post(url + "/album/add", data3, config)
+        .then((response) => {
+          console.log(response);
+          if (response?.status === 200) {
+            setAlbumID(response.data.output.id);
+            setIsSubmit(!isSubmit);
+            setState(1);
+          } else {
+            console.log(response);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }else{
+      window.location.reload();
+    }
   };
 
   return (
@@ -217,6 +277,7 @@ function Musician_Dashboard() {
                             width: "260px",
                             height: "260px",
                           }}
+                          alt="profile pick"
                         />
                       </div>
                     </div>
@@ -229,65 +290,100 @@ function Musician_Dashboard() {
                       type="text"
                       className="album_name text-white"
                       style={{ backgroundColor: "#1F1F1F" }}
+                      onChange={(e) => setTitle(e.target.value)}
                     ></input>
                     <div>
                       <div>
                         <label className="text-[#555555]">Category</label>
-                        <input
+                        <select
                           type="text"
                           className="text-white"
+                          onChange={(e) => {
+                            setCategory(e.target.value);
+                          }}
                           style={{ backgroundColor: "#1F1F1F" }}
-                        ></input>
+                        >
+                          {categories.map((category) => {
+                            return (
+                              <option id={category.id} value={category.id}>
+                                {category.title}
+                              </option>
+                            );
+                          })}
+                        </select>
                       </div>
 
                       <div>
-                      <button
-                        onClick={handleButtonClickSong}
-                        style={{
-                          height: "44px",
-                        
-                          borderRadius: "10px",
-                          background: "rgb(31,31,31)",
-                          color: "#555555",
-                          marginTop: "36px",
-                        }}
-                      >
-                        Choose You Music
+                        <label className="text-[#555555]">Price $</label>
                         <input
-                          type="file"
-                          accept="audio/mp3"
-                          ref={fileInputRef2}
-                          style={{ display: "none" }}
-                          onChange={handleFileChange}
+                          type="number"
+                          className="text-white"
+                          value={price}
+                          onChange={(e) => {
+                            setPrice(e.target.value);
+                          }}
+                          onFocus={() => {
+                            setPrice("");
+                          }}
                         />
-                      </button>
-                      {selectedSong && (
-                        <span className="text-white">{selectedSong.name}</span>
-                      )}
                       </div>
                     </div>
                     <label className="text-[#555555]">Description</label>
                     <textarea
                       className="text-white"
                       style={{ backgroundColor: "#1F1F1F" }}
-                    ></textarea>
-                  </div >
+                      onChange={(e) => {
+                        setDescription(e.target.value);
+                      }}
+                    />
+                    <label className="text-[#555555] mt-4">Sample Audio</label>
+                    <button
+                      onClick={handleButtonClickSong}
+                      style={{
+                        height: "44px",
+                        borderRadius: "10px",
+                        background: "rgb(31,31,31)",
+                        color: "#555555",
+                        marginTop: "10px",
+                      }}
+                    >
+                      Choose You Music
+                      <input
+                        type="file"
+                        accept="audio/mp3"
+                        ref={fileInputRef2}
+                        style={{ display: "none" }}
+                        onChange={handleFileChange}
+                      />
+                    </button>
+                    {selectedSong && (
+                      <span className="text-white">{selectedSong.name}</span>
+                    )}
+                  </div>
                 </div>
               </div>
-                  <div style={{display:'flex',flexDirection:'column'}}>
-                    <p
-                      style={{ color: "#555555" }}
-                      className="add_song_heading_wrap"
-                    >
-                      Add Songs <span style={{ color: "#555555" }}>(0)</span>
-                    </p>
-                    <div className="Flatlist_container2">
-                      <FlatList albumID={albumID} />
-                    </div>
+
+              {isSubmit && (
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <p
+                    style={{ color: "#555555" }}
+                    className="add_song_heading_wrap"
+                  >
+                    Add Songs <span style={{ color: "#555555" }}>(0)</span>
+                  </p>
+                  <div className="Flatlist_container2">
+                    <FlatList albumID={albumID} />
                   </div>
+                </div>
+              )}
+
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <button className="submit_btn" style={{ color: "white" }}>
-                  Submit
+                <button
+                  className="submit_btn"
+                  style={{ color: "white" }}
+                  onClick={submitAlbum}
+                >
+                   {state === 0 ? "SUBMIT" : "Create New Album"}
                 </button>
               </div>
             </div>
@@ -338,7 +434,6 @@ function Musician_Dashboard() {
                 </button>
               </div>
             </div>
-           
           </div>
 
           <div className="musician_dashboard_sub_container2">
