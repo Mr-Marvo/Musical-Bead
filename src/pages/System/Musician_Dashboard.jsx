@@ -216,7 +216,6 @@ function Musician_Dashboard() {
            
         }else {
            
-            alert("Not Verified!" )
             validate();
             
         }
