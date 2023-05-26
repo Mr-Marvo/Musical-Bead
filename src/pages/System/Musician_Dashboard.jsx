@@ -66,7 +66,7 @@ function Musician_Dashboard() {
 
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  const [price, setPrice] = useState(0.0);
+  const [price, setPrice] = useState('');
 
   const [state, setState] = useState(0);
 
@@ -170,7 +170,7 @@ function Musician_Dashboard() {
 
   const submitAlbum = () => {
     if (state === 0) {
-        if ((title != "") && (/^[a-z A-Z]*$/.test(title)) && (price != "") && (/^[0-9]*$/.test(price)) && (description != "") && (/^[a-z A-Z]*$/.test(description))){
+        if ((title !== "") && (/^[a-z A-Z]*$/.test(title)) && (price !== "") && (/^[0-9]*$/.test(price)) && (description !== "") && (/^[a-z A-Z]*$/.test(description)) && selectedSong){
           
             setIsLoadingCircle(true);
             const config = {
@@ -391,6 +391,7 @@ function Musician_Dashboard() {
                             setPrice("");
                           }}
                           onKeyUp={validate}
+                          style={{background:'rgb(31,31,31)'}}
                         />
                         {priceE && <div className="error">{priceE}</div>}
                       </div>
