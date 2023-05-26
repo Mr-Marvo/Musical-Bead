@@ -12,6 +12,7 @@ export { default as MusicianDashboard } from './System/Musician_Dashboard'
 export { default as MyProfile } from './System/My_Profile'
 export { default as ProfileView } from './System/ProfileView'
 export { default as NewMusicianDashboard } from './System/New_Musician_Dashboard'
+export { default as PendingAlbums } from './System/PendingAlbums'
 
 export { default as AlbumView } from './Common/AlbumView/AlbumView'
 export { default as AlbumEdit } from './Common/AlbumEdit/AlbumEdit'

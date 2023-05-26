@@ -115,6 +115,54 @@ function AlbumView() {
     navigate("/profile-view", { state: { id: album.musician_user_id } });
   };
 
+  const approve = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const data = {
+      updated_by: album.musician_user_id,
+      album_id: album.id,
+      status: 2,
+    };
+
+    axios
+      .post(url + "/album/status", data, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          window.location.replace('/pending');
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const reject = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const data = {
+      updated_by: album.musician_user_id,
+      album_id: album.id,
+      status: -1,
+    };
+
+    axios
+      .post(url + "/album/status", data, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          window.location.replace('/pending');
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <NewHeader />
@@ -208,7 +256,7 @@ function AlbumView() {
             <span className="album_heading font-nunito">Album</span>
             <p className="album_sub_heading font-nunito">{album.title}</p>
             <p>{album.description}</p>
-            {usertype !== 1 ? (
+            {usertype !== "3" ? (
               <></>
             ) : (
               <>
@@ -309,9 +357,34 @@ function AlbumView() {
               US ${album.price}
             </span>
 
-            <button className="add_cart_btn">
-              <img src={btn_img} alt="btn-img" width="200px" />
-            </button>
+            {usertype !== "3" ? (
+              <></>
+            ) : (
+              <>
+                <button className="add_cart_btn">
+                  <img src={btn_img} alt="btn-img" width="200px" />
+                </button>
+              </>
+            )}
+
+            {usertype === "1" ? (
+              <div className="flex flex-row gap-4">
+                <button
+                  className="p-1 px-4 bg-blue-400 rounded-lg"
+                  onClick={approve}
+                >
+                  Approve
+                </button>
+                <button
+                  className="p-1 px-4 bg-red-400 rounded-lg"
+                  onClick={reject}
+                >
+                  Reject
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
           <div className="album_view_right_container">
             <div className="meet_musician_container">
