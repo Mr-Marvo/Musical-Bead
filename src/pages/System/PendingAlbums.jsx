@@ -7,7 +7,7 @@ import { NewFooter, NewHeader } from "../../components/system";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
 
-function AllAlbums() {
+function PendingAlbums() {
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
   const [albums, setAlbums] = useState([]);
@@ -37,13 +37,12 @@ function AllAlbums() {
     const bodyParameters = {
       user_id: localStorage.getItem("userid"),
       musician_user_id: 0,
-      status: 2,
+      status: 0,
     };
 
     axios
       .post(url + "/album/all", bodyParameters, config)
       .then((response) => {
-        console.log(response);
         if (response?.status === 200) {
           setAlbums(response.data.output.albums);
         } else {
@@ -151,18 +150,18 @@ function AllAlbums() {
                   </div>
                 </div>
                 <div>
-                  {albums.map((album) => {
-                    return (
-                      <div className="home_grid gap-4">
+                  <div className="home_grid gap-4">
+                    {albums.map((album) => {
+                      return (
                         <Album
                           key={album.id}
                           album={album}
                           isPlaying={currentAlbumId === album.id}
                           onAlbumClick={handleAlbumClick}
                         />
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </>
             )}
@@ -175,4 +174,4 @@ function AllAlbums() {
   );
 }
 
-export default AllAlbums;
+export default PendingAlbums;
