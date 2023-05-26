@@ -17,10 +17,10 @@ import img6 from "../../../assets/images/system/Rectangle 144.png";
 import btn_img from "../../../assets/images/system/Group 72.png";
 import SingerImage from "../../../assets/images/system/profile.png";
 
-import { BsArrowDownCircle } from "react-icons/bs";
-import { BsArrowUpCircle } from "react-icons/bs";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { useRef } from "react";
+import axios from "axios";
+import { useContentContext } from "../../../providers/ContentContext";
 
 const LongText = ({ text, maxLength }) => {
   const truncatedText =
@@ -34,14 +34,47 @@ function AlbumView() {
   const audioRef = useRef(null);
   const [fullnameTag, setFullnameTag] = useState("Olivia Fernandez");
   const [isPlaying, setIsPlaying] = useState(false);
+
   const usertype = localStorage.getItem("usertype");
+  let { url } = useContentContext();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  const [profileImage, setProfileImage] = useState();
 
   const { state } = useLocation();
   const { album } = state;
 
   useEffect(() => {
+    getMusician();
     viewAlbum(params.album_id);
   });
+
+  const getMusician = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const data = {
+      user_id: album.musician_user_id,
+      user_type_id: 2,
+      status: 0,
+    };
+
+    axios
+      .post(url + "/musician/all", data, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          console.log(response.data.output[0]);
+          setFullnameTag(response.data.output[0].full_name);
+          setProfileImage(response.data.output[0].profile_picture);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     if (isPlaying) {
@@ -70,24 +103,16 @@ function AlbumView() {
     }
   };
 
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const handleToggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  const [isCollapsed2, setIsCollapsed2] = useState(false);
-
-  const handleToggleCollapse2 = () => {
-    setIsCollapsed2(!isCollapsed2);
-  };
-
   const handlePlay = () => {
     if (isPlaying) {
       setIsPlaying(false);
     } else {
       setIsPlaying(true);
     }
+  };
+
+  const gotProfile = () => {
+    navigate("/profile-view", { state: { id: album.musician_user_id } });
   };
 
   return (
@@ -302,17 +327,27 @@ function AlbumView() {
               </span>
               <div className="img_container3">
                 <div>
-                  <img src={SingerImage} alt="Singer" />
+                  <img
+                    src={profileImage}
+                    alt="Singer"
+                    className="rounded-full"
+                  />
                 </div>
               </div>
               <div className="text-[24px] font-bold ml-1 text-white mt-5">
                 {fullnameTag}
               </div>
 
-              <button className="meet_singer_btn font-nunito">
+              <button
+                className="meet_singer_btn font-nunito"
+                onClick={gotProfile}
+              >
                 See All Albums
               </button>
-              <button className="meet_singer_btn font-nunito">
+              <button
+                className="meet_singer_btn font-nunito"
+                onClick={gotProfile}
+              >
                 Visit Profile
               </button>
             </div>

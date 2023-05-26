@@ -1231,6 +1231,7 @@ form
 }
 
 .sub_container1_left .data_cotainer .form_div textarea,
+.sub_container1_left .data_cotainer .form_div select,
 .sub_container1_left .data_cotainer .form_div input {
   background-color: #121212;
   padding: 10px;
@@ -1257,6 +1258,7 @@ form
 }
 
 .sub_container1_left .data_cotainer .form_div textarea,
+.sub_container1_left .data_cotainer .form_div select,
 .sub_container1_left .data_cotainer .form_div input:hover {
   box-shadow: 10px 10px 5px rgba(24, 23, 23, 0.5);
 }
