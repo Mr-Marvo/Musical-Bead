@@ -143,7 +143,7 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
             <input
               type="text"
               placeholder="Song Name"
-              className="song_name_in"
+              className="song_name_in text-white"
               style={{
                 background: "#313131",
                 borderRadius: "10px",

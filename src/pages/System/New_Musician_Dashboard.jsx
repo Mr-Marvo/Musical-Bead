@@ -144,6 +144,8 @@ function New_Musician_Dashboard() {
   const [description, setDescription] = useState("");
   const [descriptionE, setDescriptionE] = useState("");
 
+  const [price, setPrice] = useState(0);
+
   const [loading, setLoading] = useState(false);
 
   /* This is to open add song after sumbit button clicked */
@@ -208,7 +210,7 @@ function New_Musician_Dashboard() {
       data3.append("musician_user_id", localStorage.getItem("userid"));
       data3.append("category_id", category);
       data3.append("title", albumName);
-      data3.append("album_amount", 2);
+      data3.append("album_amount", price);
       data3.append("slogan", null);
       data3.append("description", description);
       data3.append("image_extension", picture1?.name.split(".")[1]);
@@ -273,7 +275,6 @@ function New_Musician_Dashboard() {
     } else {
       setCategoryE("");
     }
-   
 
     if (description === "") {
       setDescriptionE("* required");
@@ -382,6 +383,7 @@ function New_Musician_Dashboard() {
                           width: "200px",
                           height: "200px",
                         }}
+                        alt="profile pic"
                       />
                     </div>
                   </div>
@@ -518,6 +520,7 @@ function New_Musician_Dashboard() {
                             width: "260px",
                             height: "260px",
                           }}
+                          alt="alubm cover"
                         />
                       </div>
                     </div>
@@ -537,7 +540,7 @@ function New_Musician_Dashboard() {
                       {albumNameE && <div className="error">{albumNameE}</div>}
                       <div>
                         <div>
-                          <label className="font-nunito text-white" >
+                          <label className="font-nunito text-white">
                             Category
                           </label>
                           <select
@@ -547,7 +550,7 @@ function New_Musician_Dashboard() {
                               console.log(e.target.value);
                               setCategory(e.target.value);
                             }}
-                            style={{marginTop:'-10px'}}
+                            style={{ marginTop: "-10px" }}
                           >
                             {categories.map((category) => {
                               return (
@@ -570,7 +573,7 @@ function New_Musician_Dashboard() {
                             type="text"
                             className="text-white"
                             value={fullname}
-                            style={{marginTop:'-10px'}}
+                            style={{ marginTop: "-10px" }}
                             disabled
                           ></input>
                         </div>
@@ -587,29 +590,54 @@ function New_Musician_Dashboard() {
                       {descriptionE && (
                         <div className="error">{descriptionE}</div>
                       )}
-                      <button
-                        onClick={handleButtonClickSong}
-                        style={{
-                          height: "40px",
-                          width: "200px",
-                          borderRadius: "10px",
-                          background: "#313131",
-                          color: "#fff",
-                          marginTop: "20px",
-                        }}
-                      >
-                        Choose You Music
-                        <input
-                          type="file"
-                          accept="audio/mp3"
-                          ref={fileInputRef2}
-                          style={{ display: "none" }}
-                          onChange={handleFileChange}
-                        />
-                      </button>
-                      {selectedSong && (
-                        <span className="text-white">{selectedSong.name}</span>
-                      )}
+
+                      <div>
+                        <div>
+                          <label className="font-nunito text-white">
+                            Price $
+                          </label>
+                          <input
+                            type="number"
+                            className="text-white"
+                            value={price}
+                            style={{ marginTop: "-10px" }}
+                            onChange={(e) => {
+                              setPrice(e.target.value);
+                            }}
+                          />
+                        </div>
+
+                        <div>
+                          <label className="font-nunito text-white">
+                            Sample Audio
+                          </label>
+                          <button
+                            onClick={handleButtonClickSong}
+                            style={{
+                              height: "40px",
+                              width: "200px",
+                              borderRadius: "10px",
+                              background: "#313131",
+                              color: "#fff",
+                              marginTop: "-10px",
+                            }}
+                          >
+                            Choose You Music
+                            <input
+                              type="file"
+                              accept="audio/mp3"
+                              ref={fileInputRef2}
+                              style={{ display: "none" }}
+                              onChange={handleFileChange}
+                            />
+                          </button>
+                          {selectedSong && (
+                            <span className="text-white">
+                              {selectedSong.name}
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
