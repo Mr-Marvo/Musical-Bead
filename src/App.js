@@ -11,6 +11,7 @@ import {
   MyProfile,
   NewMusicianDashboard,
   NotFound,
+  PendingAlbums,
   ProfileView,
   SignIn,
   SignUp,
@@ -29,6 +30,7 @@ function App() {
           <>
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/all" element={<AllAlbums />} />
+            <Route exact path="/pending" element={<PendingAlbums />} />
             <Route
               exact
               path="/completeprofile"

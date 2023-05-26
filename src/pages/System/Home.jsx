@@ -340,18 +340,18 @@ function Home() {
               </div>
             </div>
             <div>
-              {trendingAlbums.map((album) => {
-                return (
-                  <div className="home_grid gap-4">
+              <div className="home_grid gap-4">
+                {trendingAlbums.map((album) => {
+                  return (
                     <Album
                       key={album.id}
                       album={album}
                       isPlaying={currentAlbumId === album.id}
                       onAlbumClick={handleAlbumClick}
                     />
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </>
         )}
@@ -390,18 +390,18 @@ function Home() {
             </div>
             <div style={{ marginBottom: "2rem" }}>
               <div>
-                {newAlbums.map((album) => {
-                  return (
-                    <div className="home_grid gap-4 cursor-pointer">
+                <div className="home_grid gap-4 cursor-pointer">
+                  {newAlbums.map((album) => {
+                    return (
                       <Album
                         key={album.id}
                         album={album}
                         isPlaying={currentAlbumId === album.id}
                         onAlbumClick={handleAlbumClick}
                       />
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </>

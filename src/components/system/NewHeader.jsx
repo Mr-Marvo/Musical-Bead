@@ -92,7 +92,7 @@ const NewHeader = () => {
         ) : (
           <></>
         )}
-        {usertype !== '1' ? (
+        {usertype !== '3' ? (
           <a
             href="/earnings"
             className={`text-[20px] font-nunito ${
