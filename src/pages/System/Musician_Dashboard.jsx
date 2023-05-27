@@ -104,7 +104,6 @@ function Musician_Dashboard() {
   };
 
   useEffect(() => {
-    loadPendingAlbums();
     loadCategories();
     if (usertype === "1") {
       loadPendingAlbums(0);
