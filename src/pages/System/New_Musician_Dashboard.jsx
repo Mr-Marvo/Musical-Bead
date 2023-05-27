@@ -251,8 +251,7 @@ function New_Musician_Dashboard() {
 
             validate();
         }else {
-            alert("Not Verified!"+"-"+(title != "")+"-"+(/^[a-z A-Z]*$/.test(title))+"-"+(bio != "")+"-"+(/^[a-z A-Z]*$/.test(bio))+"-"+(albumName != "")+"-"+(/^[a-z A-Z]*$/.test(albumName))+"-"+(description != "")+"-"+(/^[a-z A-Z]*$/.test(description)) )
-            validate();
+             validate();
         }
     } else {
       window.location.replace("/dashboard");
