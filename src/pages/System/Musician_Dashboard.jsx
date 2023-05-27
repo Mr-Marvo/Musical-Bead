@@ -19,13 +19,12 @@ import LoadingCircle from "../../components/Common/LoadingCircle";
 import ErrorAlertBox from "../../components/Common/ErrorAlertBox";
 
 function Musician_Dashboard() {
-    const [isLoadingClircle,setIsLoadingCircle] = useState(false);
-   
+  const [isLoadingClircle, setIsLoadingCircle] = useState(false);
 
   /* Error Handling useStates */
-  const [albumNameE,setAlbumNameE] = useState('');
-  const [priceE,setPriceE] = useState('');
-  const [descriptionE,setDescriptionE] = useState('');
+  const [albumNameE, setAlbumNameE] = useState("");
+  const [priceE, setPriceE] = useState("");
+  const [descriptionE, setDescriptionE] = useState("");
 
   const fileInputRef = useRef(null);
   const fileInputRef1 = useRef(null);
@@ -64,9 +63,16 @@ function Musician_Dashboard() {
   const [picture1, setPicture1] = useState(null);
   const [imgData1, setImgData1] = useState(null);
 
+  const [beadDescription, setBeadDescription] = useState();
+  const [beadPrice, setBeadPrice] = useState();
+  const [beadName, setBeadName] = useState();
+  const [beadModel, setBeadModel] = useState();
+  const [beadDimension, setBeadDimension] = useState();
+  const [beadKeyRing, setBeadKeyRing] = useState();
+
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-  const [price, setPrice] = useState('');
+  const [price, setPrice] = useState("");
 
   const [state, setState] = useState(0);
 
@@ -170,55 +176,59 @@ function Musician_Dashboard() {
 
   const submitAlbum = () => {
     if (state === 0) {
-        if ((title !== "") && (/^[a-z A-Z]*$/.test(title)) && (price !== "") && (/^[0-9]*$/.test(price)) && (description !== "") && (/^[a-z A-Z]*$/.test(description)) && selectedSong){
-          
-            setIsLoadingCircle(true);
-            const config = {
-            headers: { Authorization: `Bearer ${token}` },
-            };
+      if (
+        title !== "" &&
+        /^[a-z A-Z]*$/.test(title) &&
+        price !== "" &&
+        /^[0-9]*$/.test(price) &&
+        description !== "" &&
+        /^[a-z A-Z]*$/.test(description) &&
+        selectedSong
+      ) {
+        setIsLoadingCircle(true);
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
 
-            let data3 = new FormData();
-            data3.append("musician_user_id", localStorage.getItem("userid"));
-            data3.append("category_id", category);
-            data3.append("title", title);
-            data3.append("album_amount", price);
-            data3.append("slogan", null);
-            data3.append("description", description);
-            data3.append("image_extension", picture1?.name.split(".")[1]);
-            data3.append("created_by", localStorage.getItem("userid"));
-            data3.append("cover_image", picture1);
-            data3.append("sample_audio", selectedSong);
-            data3.append("file_extension", selectedSong?.name.split(".")[1]);
+        let data3 = new FormData();
+        data3.append("musician_user_id", localStorage.getItem("userid"));
+        data3.append("category_id", category);
+        data3.append("title", title);
+        data3.append("album_amount", price);
+        data3.append("slogan", null);
+        data3.append("description", description);
+        data3.append("image_extension", picture1?.name.split(".")[1]);
+        data3.append("created_by", localStorage.getItem("userid"));
+        data3.append("cover_image", picture1);
+        data3.append("sample_audio", selectedSong);
+        data3.append("file_extension", selectedSong?.name.split(".")[1]);
 
-            axios.post(url + "/album/add", data3, config)
-                .then((response) => {
-                console.log(response);
-                if (response?.status === 200) {
-                    setAlbumID(response.data.output.id);
-                    setIsSubmit(!isSubmit);
-                  
-                    setIsLoadingCircle(false);
-                    setState(1);
-                   
-                    if (usertype === "1") {
-                    loadPendingAlbums(0);
-                    } else {
-                    loadPendingAlbums(localStorage.getItem("userid"));
-                    }
-                } else {
-                    console.log(response);
-                    
-                }
-                })
-                .catch((error) => {
-                console.log(error);
-                });
-           
-        }else {
-           
-            validate();
-            
-        }
+        axios
+          .post(url + "/album/add", data3, config)
+          .then((response) => {
+            console.log(response);
+            if (response?.status === 200) {
+              setAlbumID(response.data.output.id);
+              setIsSubmit(!isSubmit);
+
+              setIsLoadingCircle(false);
+              setState(1);
+
+              if (usertype === "1") {
+                loadPendingAlbums(0);
+              } else {
+                loadPendingAlbums(localStorage.getItem("userid"));
+              }
+            } else {
+              console.log(response);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        validate();
+      }
     } else {
       window.location.reload();
     }
@@ -251,7 +261,48 @@ function Musician_Dashboard() {
     if (!/^[a-z A-Z]*$/.test(description)) {
       setDescriptionE("* Please Enter Only Letters");
     }
-  }
+  };
+
+  const addBead = () => {
+    console.log("hii");
+
+    console.log(picture);
+    console.log(beadDescription);
+    console.log(beadName);
+    console.log(beadPrice);
+    console.log(beadModel);
+    console.log(beadDimension);
+    console.log(beadKeyRing);
+
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    let data3 = new FormData();
+    data3.append("user_id", localStorage.getItem("userid"));
+    data3.append("title", beadName);
+    data3.append("model_number", beadModel);
+    data3.append("features", beadDescription);
+    data3.append("dimension", beadDimension);
+    data3.append("key_ring", beadKeyRing);
+    data3.append("price", beadPrice);
+    data3.append("bead_image", picture);
+    data3.append("file_extension", picture?.name.split(".")[1]);
+
+    axios
+      .post(url + "/bead/add", data3, config)
+      .then((response) => {
+        console.log(response);
+        if (response?.status === 200) {
+          
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -354,7 +405,7 @@ function Musician_Dashboard() {
                       onChange={(e) => setTitle(e.target.value)}
                       onKeyUp={validate}
                     ></input>
-                     {albumNameE && <div className="error">{albumNameE}</div>}
+                    {albumNameE && <div className="error">{albumNameE}</div>}
                     <div>
                       <div>
                         <label className="text-[#555555]">Category</label>
@@ -374,7 +425,6 @@ function Musician_Dashboard() {
                             );
                           })}
                         </select>
-                       
                       </div>
 
                       <div>
@@ -390,7 +440,7 @@ function Musician_Dashboard() {
                             setPrice("");
                           }}
                           onKeyUp={validate}
-                          style={{background:'rgb(31,31,31)'}}
+                          style={{ background: "rgb(31,31,31)" }}
                         />
                         {priceE && <div className="error">{priceE}</div>}
                       </div>
@@ -405,7 +455,9 @@ function Musician_Dashboard() {
                       }}
                       onKeyUp={validate}
                     />
-                    {descriptionE && <div className="error">{descriptionE}</div>}
+                    {descriptionE && (
+                      <div className="error">{descriptionE}</div>
+                    )}
                     <label className="text-[#555555] mt-4">Sample Audio</label>
                     <button
                       onClick={handleButtonClickSong}
@@ -602,14 +654,30 @@ function Musician_Dashboard() {
                   </div>
                 )}
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <label className="text-[#555555]">Special Description</label>
+                  <label className="text-[#555555]">Features</label>
                   <textarea
                     type="text"
                     style={{
                       backgroundColor: "#1F1F1F",
                       color: "#ffff",
                       borderRadius: "25px",
-                      height: "180px",
+                      height: "100px",
+                    }}
+                    onChange={(e) => {
+                      setBeadDescription(e.target.value);
+                    }}
+                  ></textarea>
+                  <label className="text-[#555555]">Dimensions</label>
+                  <textarea
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "100px",
+                    }}
+                    onChange={(e) => {
+                      setBeadDimension(e.target.value);
                     }}
                   ></textarea>
                 </div>
@@ -620,6 +688,47 @@ function Musician_Dashboard() {
                     margin: "20px",
                   }}
                 >
+                  <label className="text-[#555555]">Name</label>
+                  <input
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                    }}
+                    onChange={(e) => {
+                      setBeadName(e.target.value);
+                    }}
+                  ></input>
+                  <label className="text-[#555555]">Model Number</label>
+                  <input
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                    }}
+                    onChange={(e) => {
+                      setBeadModel(e.target.value);
+                    }}
+                  ></input>
+
+                  <label className="text-[#555555]">Key Ring</label>
+                  <input
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                    }}
+                    onChange={(e) => {
+                      setBeadKeyRing(e.target.value);
+                    }}
+                  ></input>
+
                   <label className="text-[#555555]">Price</label>
                   <input
                     type="text"
@@ -629,16 +738,8 @@ function Musician_Dashboard() {
                       borderRadius: "25px",
                       height: "30px",
                     }}
-                  ></input>
-
-                  <label className="text-[#555555]">Name</label>
-                  <input
-                    type="text"
-                    style={{
-                      backgroundColor: "#1F1F1F",
-                      color: "#ffff",
-                      borderRadius: "25px",
-                      height: "30px",
+                    onChange={(e) => {
+                      setBeadPrice(e.target.value);
                     }}
                   ></input>
 
@@ -653,6 +754,7 @@ function Musician_Dashboard() {
                         "linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)",
                       borderRadius: "25px",
                     }}
+                    onClick={addBead}
                   >
                     Add
                   </button>
@@ -836,8 +938,7 @@ function Musician_Dashboard() {
       </main>
 
       <NewFooter />
-      <LoadingCircle show={isLoadingClircle}/>
-      
+      <LoadingCircle show={isLoadingClircle} />
     </>
   );
 }
