@@ -483,6 +483,7 @@ function Musician_Dashboard() {
                       type="text"
                       className="album_name text-white"
                       style={{ backgroundColor: "#1F1F1F" }}
+                      value={title}
                       onChange={(e) => setTitle(e.target.value)}
                       onKeyUp={validate}
                     ></input>
