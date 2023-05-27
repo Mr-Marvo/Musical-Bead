@@ -70,6 +70,13 @@ function Musician_Dashboard() {
   const [beadDimension, setBeadDimension] = useState();
   const [beadKeyRing, setBeadKeyRing] = useState();
 
+  const [beadDescriptionE, setBeadDescriptionE] = useState();
+  const [beadPriceE, setBeadPriceE] = useState();
+  const [beadNameE, setBeadNameE] = useState();
+  const [beadModelE, setBeadModelE] = useState();
+  const [beadDimensionE, setBeadDimensionE] = useState();
+  const [beadKeyRingE, setBeadKeyRingE] = useState();
+
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [price, setPrice] = useState("");
@@ -263,45 +270,119 @@ function Musician_Dashboard() {
     }
   };
 
+  const validateBead = () => {
+    if (beadDescription === "") {
+      setBeadDescriptionE("* required");
+    } else {
+      setBeadDescriptionE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(beadDescription)) {
+      setBeadDescriptionE("* Please Enter Only Letters");
+    }
+
+    if (beadDimension === "") {
+      setBeadDimensionE("* required");
+    } else {
+      setBeadDimensionE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(beadDimension)) {
+      setBeadDimensionE("* Please Enter Only Letters");
+    }
+
+    if (beadName === "") {
+      setBeadNameE("* required");
+    } else {
+      setBeadNameE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(beadName)) {
+      setBeadNameE("* Please Enter Only Letters");
+    }
+
+    if (beadModel === "") {
+      setBeadModelE("* required");
+    } else {
+      setBeadModelE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(beadModel)) {
+      setBeadModelE("* Please Enter Only Letters");
+    }
+
+    if (beadKeyRing === "") {
+      setBeadKeyRingE("* required");
+    } else {
+      setBeadKeyRingE("");
+    }
+    if (!/^[a-z A-Z]*$/.test(beadKeyRing)) {
+      setBeadKeyRingE("* Please Enter Only Letters");
+    }
+
+    if (beadPrice === "") {
+      setBeadPriceE("* required");
+    } else {
+      setBeadPriceE("");
+    }
+   
+
+  }
+
   const addBead = () => {
-    console.log("hii");
+    if((beadDescription !== "") && (/^[a-z A-Z]*$/.test(beadDescription)) && (beadDimension !== "") && (/^[a-z A-Z]*$/.test(beadDimension)) && (beadName !== "") && (/^[a-z A-Z]*$/.test(beadName)) && (beadModel !== "") && (/^[a-z A-Z]*$/.test(beadModel)) && (beadKeyRing !== "") && (/^[a-z A-Z]*$/.test(beadKeyRing)) && (beadPrice !== "") ){
+        setIsLoadingCircle(true);
 
-    console.log(picture);
-    console.log(beadDescription);
-    console.log(beadName);
-    console.log(beadPrice);
-    console.log(beadModel);
-    console.log(beadDimension);
-    console.log(beadKeyRing);
+        console.log(picture);
+        console.log(beadDescription);
+        console.log(beadName);
+        console.log(beadPrice);
+        console.log(beadModel);
+        console.log(beadDimension);
+        console.log(beadKeyRing);
+    
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
+        let data3 = new FormData();
+        data3.append("user_id", localStorage.getItem("userid"));
+        data3.append("title", beadName);
+        data3.append("model_number", beadModel);
+        data3.append("features", beadDescription);
+        data3.append("dimension", beadDimension);
+        data3.append("key_ring", beadKeyRing);
+        data3.append("price", beadPrice);
+        data3.append("bead_image", picture);
+        data3.append("file_extension", picture?.name.split(".")[1]);
 
-    let data3 = new FormData();
-    data3.append("user_id", localStorage.getItem("userid"));
-    data3.append("title", beadName);
-    data3.append("model_number", beadModel);
-    data3.append("features", beadDescription);
-    data3.append("dimension", beadDimension);
-    data3.append("key_ring", beadKeyRing);
-    data3.append("price", beadPrice);
-    data3.append("bead_image", picture);
-    data3.append("file_extension", picture?.name.split(".")[1]);
-
-    axios
-      .post(url + "/bead/add", data3, config)
-      .then((response) => {
-        console.log(response);
-        if (response?.status === 200) {
-          
-        } else {
+        axios
+        .post(url + "/bead/add", data3, config)
+        .then((response) => {
           console.log(response);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          if (response?.status === 200) {
+            setIsLoadingCircle(false);
+            alert("Successfully Added!")
+            setBeadDescription('');
+            setBeadDimension('')
+            setBeadName('');
+            setBeadModel('');
+            setBeadKeyRing('');
+            setBeadPrice('');
+            setImgData(null);
+          } else {
+            console.log(response);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+    }else {
+        alert('Not Verified!');
+    }
+
+   
+
+    
+
+    
   };
 
   return (
@@ -611,15 +692,15 @@ function Musician_Dashboard() {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-                      width: "250px",
                     }}
+                    className="justify-center items-center"
                   >
                     <RxCross2
                       style={{
                         color: "#fff",
                         position: "absolute",
-                        right: 0,
-                        top: 0,
+                        right: 70,
+                        top: 20,
                       }}
                       onClick={() => {
                         setImgData(null);
@@ -633,7 +714,7 @@ function Musician_Dashboard() {
                         justifyContent: "center",
                         flexDirection: "column",
                         width: "200px",
-                        height: "200px",
+                        height: "200px"
                       }}
                     >
                       <img
@@ -662,11 +743,15 @@ function Musician_Dashboard() {
                       color: "#ffff",
                       borderRadius: "25px",
                       height: "100px",
+                      padding:'10px'
                     }}
+                    value={beadDescription}
                     onChange={(e) => {
                       setBeadDescription(e.target.value);
                     }}
+                    onKeyUp={validateBead}
                   ></textarea>
+                  {beadDescriptionE && <div className="error" style={{marginTop:'5px'}}>{beadDescriptionE}</div>}
                   <label className="text-[#555555]">Dimensions</label>
                   <textarea
                     type="text"
@@ -675,11 +760,15 @@ function Musician_Dashboard() {
                       color: "#ffff",
                       borderRadius: "25px",
                       height: "100px",
+                      padding:'10px'
                     }}
+                    value={beadDimension}
                     onChange={(e) => {
                       setBeadDimension(e.target.value);
                     }}
+                    onKeyUp={validateBead}
                   ></textarea>
+                  {beadDimensionE && <div className="error" style={{marginTop:'5px'}}>{beadDimensionE}</div>}
                 </div>
                 <div
                   style={{
@@ -696,11 +785,16 @@ function Musician_Dashboard() {
                       color: "#ffff",
                       borderRadius: "25px",
                       height: "30px",
+                      padding:'10px'
                     }}
+                    value={beadName}
                     onChange={(e) => {
                       setBeadName(e.target.value);
                     }}
+                    onKeyUp={validateBead}
                   ></input>
+                  {beadNameE && <div className="error" style={{marginTop:'5px'}}>{beadNameE}</div>}
+
                   <label className="text-[#555555]">Model Number</label>
                   <input
                     type="text"
@@ -709,11 +803,15 @@ function Musician_Dashboard() {
                       color: "#ffff",
                       borderRadius: "25px",
                       height: "30px",
+                      padding:'10px'
                     }}
+                    value={beadModel}
                     onChange={(e) => {
                       setBeadModel(e.target.value);
                     }}
+                    onKeyUp={validateBead}
                   ></input>
+                    {beadModelE && <div className="error" style={{marginTop:'5px'}}>{beadModelE}</div>}
 
                   <label className="text-[#555555]">Key Ring</label>
                   <input
@@ -723,26 +821,32 @@ function Musician_Dashboard() {
                       color: "#ffff",
                       borderRadius: "25px",
                       height: "30px",
+                      padding:'10px'
                     }}
+                    value={beadKeyRing}
                     onChange={(e) => {
                       setBeadKeyRing(e.target.value);
                     }}
+                    onKeyUp={validateBead}
                   ></input>
-
+                    {beadKeyRingE && <div className="error" style={{marginTop:'5px'}}>{beadKeyRingE}</div>}
                   <label className="text-[#555555]">Price</label>
                   <input
-                    type="text"
+                    type="number"
                     style={{
                       backgroundColor: "#1F1F1F",
                       color: "#ffff",
                       borderRadius: "25px",
                       height: "30px",
+                      padding:'10px'
                     }}
+                    value={beadPrice}
                     onChange={(e) => {
                       setBeadPrice(e.target.value);
                     }}
+                    onKeyUp={validateBead}
                   ></input>
-
+                    {beadPriceE && <div className="error" style={{marginTop:'5px'}}>{beadPriceE}</div>}  
                   <button
                     style={{
                       color: "white",
