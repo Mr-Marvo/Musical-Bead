@@ -14,7 +14,7 @@ const Beads = () => {
 
   const loadData = () => {
     axios.post(`https://api.musicalbead.com/api/beads`).then((res) => {
-      setBeads(res.data.output);
+      setBeads(res.data.output.slice(0, 4));
     });
   };
 

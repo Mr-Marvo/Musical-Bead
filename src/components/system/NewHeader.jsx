@@ -17,7 +17,7 @@ const NewHeader = () => {
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
 
-  let { userName } = useContentContext();
+  let userName = localStorage.getItem('username').split(' ')[0];
   const userTag = useState(`Hi! ${userName}`);
   const location = window.location.pathname;
 
@@ -62,25 +62,38 @@ const NewHeader = () => {
       <Link to="/">
         <img src={Logo} alt="Musical Bead" className="logo" />
       </Link>
-
       <nav ref={navRef}>
-        <a
-          href="/home"
-          className={`text-[20px] font-nunito ${
-            location === "/home" ? "text-[#2aafc1]" : ""
-          }`}
-        >
-          Home
-        </a>
-        <a
-          href="/dashboard"
-          className={`text-[20px] font-nunito ${
-            location === "/dashboard" ? "text-[#2aafc1]" : ""
-          }`}
-        >
-          Dashboard
-        </a>
-        {usertype === '2' ? (
+        {usertype !== "3" ? (
+          <>
+            <a
+              href="/home"
+              className={`text-[20px] font-nunito ${
+                location === "/home" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Home
+            </a>
+            <a
+              href="/dashboard"
+              className={`text-[20px] font-nunito ${
+                location === "/dashboard" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Dashboard
+            </a>
+            <a
+              href="/earnings"
+              className={`text-[20px] font-nunito ${
+                location === "/earnings" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Earnings
+            </a>
+          </>
+        ) : (
+          <></>
+        )}
+        {usertype === "2" ? (
           <a
             href="/profile"
             className={`text-[20px] font-nunito ${
@@ -88,18 +101,6 @@ const NewHeader = () => {
             }`}
           >
             My Profile
-          </a>
-        ) : (
-          <></>
-        )}
-        {usertype !== '3' ? (
-          <a
-            href="/earnings"
-            className={`text-[20px] font-nunito ${
-              location === "/earnings" ? "text-[#2aafc1]" : ""
-            }`}
-          >
-            Earnings
           </a>
         ) : (
           <></>
