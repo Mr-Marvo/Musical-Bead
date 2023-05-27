@@ -16,13 +16,14 @@ import {
   SignIn,
   SignUp,
 } from "./pages";
+import ProfileStore from "./pages/System/ProfileStore";
 
 function App() {
   const token = localStorage.getItem('token');
 
   return (
     <BrowserRouter>
-      <Routes>
+     {/* <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
@@ -55,7 +56,10 @@ function App() {
         )}
 
         <Route path="*" element={<NotFound />} />
-      </Routes>
+        </Routes> */}
+        <Routes>
+          <Route path="/*" element={<ProfileStore />} />
+        </Routes>
     </BrowserRouter>
   );
 }
