@@ -23,7 +23,7 @@ function App() {
 
   return (
     <BrowserRouter>
-     {/* <Routes>
+      <Routes>
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
@@ -56,10 +56,10 @@ function App() {
         )}
 
         <Route path="*" element={<NotFound />} />
-        </Routes> */}
-        <Routes>
+        </Routes> 
+      {/*  <Routes>
           <Route path="/*" element={<ProfileStore />} />
-        </Routes>
+        </Routes> */}
     </BrowserRouter>
   );
 }
