@@ -14,7 +14,7 @@
   .popup-box-wrap{
     background:-webkit-linear-gradient(left top, rgba(18, 228, 90, 1) 0%, rgba(42, 174, 192, 1) 100%);
     width: 700px;
-    height: 420px;
+    height: 440px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,7 @@
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     width: 695px;
-    height: 415px;
+    height: 435px;
     max-width: 100%;
     max-height: 100%;
     box-sizing: border-box;
@@ -100,11 +100,11 @@
   @media only screen and (max-width: 720px) {
     .popup-box-wrap{
       width: 660px;
-      height: 420px;
+      height: 440px;
     }
     .popup-box {
       width: 655px;
-      height: 415px;
+      height: 435px;
     }
 
     .upload_container2 {
@@ -119,11 +119,11 @@
   @media only screen and (max-width: 680px) {
     .popup-box-wrap{
       width: 600px;
-      height: 420px;
+      height: 440px;
     }
     .popup-box {
       width: 595px;
-      height: 415px;
+      height: 435px;
     }
 
     .upload_container2 {
@@ -151,15 +151,24 @@
 
     .popup-box-wrap{
       width: 400px;
-      height: 700px;
+      height: 720px;
     }
     .popup-box {
       width: 395px;
-      height: 695px;
+      height: 715px;
     }
 
     .song_name_in{
       width: 340px;
+    }
+
+    .lst_cont{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .up_song{
+      width: 100%;
     }
   }
 
@@ -168,12 +177,12 @@
   @media only screen and (max-width: 400px) {
     .popup-box-wrap{
       width: 360px;
-      height: 700px;
+      height: 720px;
      
     }
     .popup-box {
       width: 355px;
-      height: 695px;
+      height: 715px;
      
     }
     .upload_wrap{
@@ -198,12 +207,25 @@
      
     }
     .upload_wrap{
-      width: 320px;
-      height: 120px;
+      width: 260px;
+      height: 110px;
+    }
+
+    .up_song{
+      width: 260px;
+      height: 50px;
     }
 
     .song_name_in{
       width: 320px;
+    }
+
+    .add_btn{
+      height: 30px;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   
