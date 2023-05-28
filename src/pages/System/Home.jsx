@@ -21,6 +21,8 @@ function Home() {
   const [newAlbums, setNewAlbums] = useState([]);
   const [musicians, setMusicians] = useState([]);
 
+  const [active, setActive] = useState();
+
   const navigate = useNavigate();
 
   const [search, setSearch] = useState(null);
@@ -357,7 +359,7 @@ function Home() {
         )}
 
         {newAlbums.length === 0 ? (
-          <></>
+          <div className="text-white font-semibold text-lg ">No Albums</div>
         ) : (
           <>
             <div
