@@ -6,7 +6,7 @@ import { useContentContext } from "../../providers/ContentContext";
 import axios from "axios";
 
 const SignUp = () => {
-  let { url, getAuthUser, visitor } = useContentContext();
+  let { url, getAuthUser } = useContentContext();
 
   const userType = localStorage.getItem("user");
   const [fName, setFName] = useState();
@@ -21,12 +21,14 @@ const SignUp = () => {
     e.preventDefault();
 
     let data = new FormData();
-    data.append("user_type_id", visitor);
+    data.append("user_type_id", userType === "FAN" ? "3" : "2");
     data.append("login_type", 1);
     data.append("full_name", fName + " " + lName);
     data.append("email_address", email);
     data.append("password", password);
     data.append("password_confirmation", rePassword);
+
+    console.log(userType === "FAN" ? "3" : "2")
 
     axios
       .post(url + "/register", data)
