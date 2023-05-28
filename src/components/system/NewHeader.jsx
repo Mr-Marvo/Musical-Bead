@@ -150,7 +150,7 @@ const NewHeader = () => {
               <ul>
                 <li>
                   <AiTwotoneSetting />
-                  <a href="/#">Settings</a>
+                  <a href="/settings">Settings</a>
                 </li>
                 <li>
                   <AiFillDollarCircle />
