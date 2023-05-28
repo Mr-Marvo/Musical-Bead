@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Equalizer, PlayButton, TagTop } from "../../assets";
+import { Equalizer, PauseButton, PlayButton, TagTop } from "../../assets";
 import { useNavigate } from "react-router";
 
 const LongText = ({ text, maxLength }) => {
@@ -81,7 +81,7 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
           </div>
           <div className="flex">
             <img
-              src={PlayButton}
+              src={isPlaying ? PauseButton : PlayButton}
               alt="playbutton"
               style={{ width: "15px" }}
               onClick={(e) => {

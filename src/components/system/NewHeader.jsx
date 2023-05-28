@@ -17,7 +17,7 @@ const NewHeader = () => {
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
 
-  let userName = localStorage.getItem('username').split(' ')[0];
+  let userName = localStorage.getItem("username").split(" ")[0];
   const userTag = useState(`Hi! ${userName}`);
   const location = window.location.pathname;
 
