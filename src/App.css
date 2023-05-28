@@ -1739,7 +1739,7 @@ header .nav-btn {
 
   .new_bead_add_container {
     width: 35rem;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
   }
 
   .album_sub_wrap {
@@ -1793,7 +1793,7 @@ header .nav-btn {
 
   .new_bead_add_container {
     width: 30rem;
-    grid-template-columns: auto auto;
+    
   }
 
   .sub_container1_right > div > div {
