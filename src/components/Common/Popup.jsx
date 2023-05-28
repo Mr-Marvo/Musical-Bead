@@ -4,8 +4,12 @@ import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
+import LoadingCircle from "./LoadingCircle";
 
 const Popup = ({ onClose, onPhotoUpload,albumID }) => {
+  const [isLoadingClircle, setIsLoadingCircle] = useState(false);
+    const [errorPopup,setErrorPopup] = useState('');
+
   const [imagePreview, setImagePreview] = useState(null);
   const [image, setImage] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
@@ -14,6 +18,8 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
   const [lyrics, setLyrics] = useState(null);
   const [songFile, setSongFile] = useState(null);
   const [songName, setSongName] = useState();
+  const [audioUrl, setAudioUrl] = useState(null);
+
 
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
@@ -65,6 +71,13 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
     if (file) {
       setSongFile(file);
     }
+
+     // Read the audio file and generate a preview URL
+     const reader = new FileReader();
+     reader.onload = () => {
+       setAudioUrl(reader.result);
+     };
+     reader.readAsDataURL(file);
   };
 
   const handleSubmit = () => {
@@ -72,7 +85,8 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
       onPhotoUpload(imagePreview);
     }
     if (imagePreview && videoPreview && lyricsPreview && songFile) {
-
+        setErrorPopup('');
+      setIsLoadingCircle(true);
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
@@ -97,6 +111,7 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
           console.log(response);
           if (response?.status === 200) {
             onClose();
+            setIsLoadingCircle(false);
           } else {
             console.log(response);
           }
@@ -104,6 +119,8 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
         .catch((error) => {
           console.log(error);
         });
+    }else {
+        setErrorPopup('* All Media Are Required');
     }
   };
 
@@ -124,6 +141,7 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
   };
 
   return (
+    <>
     <div className="popup-background">
       <div className="popup-box-wrap">
         <div className="popup-box">
@@ -355,7 +373,7 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
               )}
             </div>
 
-            <div className="upload_container2">
+            <div className="upload_container2 lst_cont">
               <div
                 className="up_song"
                 style={{
@@ -374,10 +392,31 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
                   ref={fileInput3}
                   style={{ display: "none" }}
                 />
+                {!audioUrl && (
                 <p style={{ color: "#767676" }}>
                   Upload Songs <p style={{ color: "#767676" }}>(MP3,WAV)</p>
                 </p>
-                <img src={MusicIcon} alt="" />
+                )}
+                {audioUrl && (
+                  <div  className="up_song"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                      flexDirection: "row",
+                      height: "84px",
+                     
+                    }}>
+                    <div>
+                        <p style={{color:'rgb(118,118,118)'}}>{songFile.name}</p>
+                        {/*<audio controls>
+                            <source src={audioUrl} type="audio/mpeg" />
+                            Your browser does not support the audio tag.
+                        </audio>*/}
+                    </div>
+                   
+                  </div>
+                )} 
               </div>
               <button
                 className="add_btn"
@@ -386,11 +425,15 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
               >
                 Add
               </button>
+             
             </div>
+            {errorPopup && <div className="error" style={{marginTop:'5px'}}>{errorPopup}</div>}  
           </div>
         </div>
       </div>
     </div>
+    <LoadingCircle show={isLoadingClircle}/>
+    </>
   );
 };
 
