@@ -12,13 +12,11 @@ import axios from "axios";
 import LoadingCircle from "../../components/Common/LoadingCircle";
 
 function New_Musician_Dashboard() {
-  const [isLoadingClircle,setIsLoadingCircle] = useState(false);
-
+  const [isLoadingClircle, setIsLoadingCircle] = useState(false);
 
   const [categories, setCategories] = useState([]);
   const [state, setState] = useState(0);
   const [albumID, setAlbumID] = useState(null);
-
 
   useEffect(() => {
     const config = {
@@ -149,8 +147,8 @@ function New_Musician_Dashboard() {
   const [description, setDescription] = useState("");
   const [descriptionE, setDescriptionE] = useState("");
 
-  const [price, setPrice] = useState('');
-  const [priceE, setPriceE] = useState('');
+  const [price, setPrice] = useState("");
+  const [priceE, setPriceE] = useState("");
 
   const [loading, setLoading] = useState(false);
 
@@ -159,100 +157,106 @@ function New_Musician_Dashboard() {
   /* This method handle all inputs adn save them in DB */
 
   const submitNewMusicianForReview = () => {
-   
-
     if (state === 0) {
-        if ((title !== "") && (/^[a-z A-Z]*$/.test(title)) && (bio !== "") && (/^[a-z A-Z]*$/.test(bio)) && (albumName !== "") && (/^[a-z A-Z]*$/.test(albumName))  && (description !== "") && (/^[a-z A-Z]*$/.test(description)) && (price !== "") && (/^[0-9]*$/.test(price)) && selectedSong ){
-            setIsLoadingCircle(true);
-           
-            const config = {
-                headers: { Authorization: `Bearer ${token}` },
-            };
+      if (
+        title !== "" &&
+        /^[a-z A-Z]*$/.test(title) &&
+        bio !== "" &&
+        albumName !== "" &&
+        /^[a-z A-Z]*$/.test(albumName) &&
+        description !== "" &&
+        price !== "" &&
+        /^[0-9]*$/.test(price) &&
+        selectedSong
+      ) {
+        setIsLoadingCircle(true);
 
-            let data1 = new FormData();
-            data1.append("user_id", localStorage.getItem("userid"));
-            data1.append("file_extension", picture?.name.split("."[1]));
-            data1.append("updated_by", localStorage.getItem("userid"));
-            data1.append("profile_picture", picture);
-            data1.append("type", 0);
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
 
-            axios
-                .post(url + "/user/image", data1, config)
-                .then((response) => {
-                console.log(response);
-                if (response?.status === 200) {
-                   
-                } else {
-                    console.log(response);
-                }
-                })
-                .catch((error) => {
-                console.log(error);
-                });
+        let data1 = new FormData();
+        data1.append("user_id", localStorage.getItem("userid"));
+        data1.append("file_extension", picture?.name.split("."[1]));
+        data1.append("updated_by", localStorage.getItem("userid"));
+        data1.append("profile_picture", picture);
+        data1.append("type", 0);
 
-            let data2 = new FormData();
-            data2.append("user_id", localStorage.getItem("userid"));
-            data2.append("short_description", title);
-            data2.append("description", bio);
-            data2.append("title", null);
-            data2.append("file_extension1", null);
-            data2.append("file_extension2", null);
-            data2.append("file_extension3", null);
-            data2.append("created_by", localStorage.getItem("userid"));
-            data2.append("image1", null);
-            data2.append("image2", null);
-            data2.append("image3", null);
+        axios
+          .post(url + "/user/image", data1, config)
+          .then((response) => {
+            console.log(response);
+            if (response?.status === 200) {
+            } else {
+              console.log(response);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
-            axios
-                .post(url + "/musician/manage", data2, config)
-                .then((response) => {
-                console.log(response);
-                if (response?.status === 200) {
-                 
-                } else {
-                    console.log(response);
-                }
-                })
-                .catch((error) => {
-                console.log(error);
-                });
+        let data2 = new FormData();
+        data2.append("user_id", localStorage.getItem("userid"));
+        data2.append("short_description", title);
+        data2.append("description", bio);
+        data2.append("title", null);
+        data2.append("file_extension1", null);
+        data2.append("file_extension2", null);
+        data2.append("file_extension3", null);
+        data2.append("created_by", localStorage.getItem("userid"));
+        data2.append("image1", null);
+        data2.append("image2", null);
+        data2.append("image3", null);
 
-            let data3 = new FormData();
-            data3.append("musician_user_id", localStorage.getItem("userid"));
-            data3.append("category_id", category);
-            data3.append("title", albumName);
-            data3.append("album_amount", price);
-            data3.append("slogan", null);
-            data3.append("description", description);
-            data3.append("image_extension", picture1?.name.split(".")[1]);
-            data3.append("created_by", localStorage.getItem("userid"));
-            data3.append("cover_image", picture1);
-            data3.append("sample_audio", selectedSong);
-            data3.append("file_extension", selectedSong?.name.split(".")[1]);
+        axios
+          .post(url + "/musician/manage", data2, config)
+          .then((response) => {
+            console.log(response);
+            if (response?.status === 200) {
+            } else {
+              console.log(response);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
-            axios
-                .post(url + "/album/add", data3, config)
-                .then((response) => {
-                console.log(response);
-                if (response?.status === 200) {
-                    setAlbumID(response.data.output.id);
-                    setIsSubmit(!isSubmit);
-                    setState(1);
-                    setLoading(false);
-                    
-                    setIsLoadingCircle(false);
-                } else {
-                    console.log(response);
-                }
-                })
-                .catch((error) => {
-                console.log(error);
-                });
+        let data3 = new FormData();
+        data3.append("musician_user_id", localStorage.getItem("userid"));
+        data3.append("category_id", category);
+        data3.append("title", albumName);
+        data3.append("album_amount", price);
+        data3.append("slogan", null);
+        data3.append("description", description);
+        data3.append("image_extension", picture1?.name.split(".")[1]);
+        data3.append("created_by", localStorage.getItem("userid"));
+        data3.append("cover_image", picture1);
+        data3.append("sample_audio", selectedSong);
+        data3.append("file_extension", selectedSong?.name.split(".")[1]);
 
-            validate();
-        }else {
-             validate();
-        }
+        axios
+          .post(url + "/album/add", data3, config)
+          .then((response) => {
+            console.log(response);
+            if (response?.status === 200) {
+              setAlbumID(response.data.output.id);
+              setIsSubmit(!isSubmit);
+              setState(1);
+              setLoading(false);
+
+              setIsLoadingCircle(false);
+            } else {
+              console.log(response);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        validate();
+      } else {
+        validate();
+      }
     } else {
       window.location.replace("/dashboard");
     }
@@ -272,9 +276,6 @@ function New_Musician_Dashboard() {
       setBioE("* required");
     } else {
       setBioE("");
-    }
-    if (!/^[a-z A-Z]*$/.test(bio)) {
-      setBioE("* Please Enter Only Letters");
     }
 
     if (albumName === "") {
@@ -297,16 +298,12 @@ function New_Musician_Dashboard() {
     } else {
       setDescriptionE("");
     }
-    if (!/^[a-z A-Z]*$/.test(description)) {
-      setDescriptionE("* Please Enter Only Letters");
-    }
 
     if (price === "") {
-        setPriceE("* required");
-      } else {
-        setPriceE("");
-      }
-   
+      setPriceE("* required");
+    } else {
+      setPriceE("");
+    }
   };
 
   return (
@@ -434,7 +431,6 @@ function New_Musician_Dashboard() {
                       value={bio}
                       onChange={(e) => setBio(e.target.value)}
                       onKeyUp={validate}
-                      
                     ></textarea>
                     {bioE && <div className="error">{bioE}</div>}
                   </div>
@@ -562,7 +558,10 @@ function New_Musician_Dashboard() {
                       ></input>
                       {albumNameE && <div className="error">{albumNameE}</div>}
                       <div>
-                        <div style={{display:'flex',flexDirection:'column'}}  className="new_2by2">
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                          className="new_2by2"
+                        >
                           <label className="font-nunito text-white">
                             Category
                           </label>
@@ -573,7 +572,7 @@ function New_Musician_Dashboard() {
                               console.log(e.target.value);
                               setCategory(e.target.value);
                             }}
-                            style={{ marginTop: "-10px"}}
+                            style={{ marginTop: "-10px" }}
                           >
                             {categories.map((category) => {
                               return (
@@ -588,7 +587,10 @@ function New_Musician_Dashboard() {
                           )}
                         </div>
 
-                        <div style={{display:'flex',flexDirection:'column'}}  className="new_2by2">
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                          className="new_2by2"
+                        >
                           <label className="font-nunito text-white">
                             Artist
                           </label>
@@ -615,7 +617,10 @@ function New_Musician_Dashboard() {
                       )}
 
                       <div>
-                        <div style={{display:'flex',flexDirection:'column'}} className="new_2by2">
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                          className="new_2by2"
+                        >
                           <label className="font-nunito text-white">
                             Price $
                           </label>
@@ -629,13 +634,20 @@ function New_Musician_Dashboard() {
                             }}
                             onKeyUp={validate}
                           />
-                            {priceE && (
-                                <div className="error" style={{marginTop:'-10px'}}>{priceE}</div>
-                            )}
+                          {priceE && (
+                            <div
+                              className="error"
+                              style={{ marginTop: "-10px" }}
+                            >
+                              {priceE}
+                            </div>
+                          )}
                         </div>
-                        
 
-                        <div style={{display:'flex',flexDirection:'column'}}  className="new_2by2">
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                          className="new_2by2"
+                        >
                           <label className="font-nunito text-white">
                             Sample Audio
                           </label>
@@ -658,15 +670,15 @@ function New_Musician_Dashboard() {
                               onChange={handleFileChange}
                             />
                           </button>
-                            {selectedSong && (
-                                <span className="text-white">
-                                {selectedSong.name}
-                                </span>
-                            )}
+                          {selectedSong && (
+                            <span className="text-white">
+                              {selectedSong.name}
+                            </span>
+                          )}
 
-                            {!selectedSong && (
-                                <div className="error">* required</div>
-                            )}
+                          {!selectedSong && (
+                            <div className="error">* required</div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -701,7 +713,7 @@ function New_Musician_Dashboard() {
       </main>
 
       <NewFooter />
-      <LoadingCircle show={isLoadingClircle}/>
+      <LoadingCircle show={isLoadingClircle} />
     </>
   );
 }

@@ -71,6 +71,11 @@ function My_Profile() {
   const [bio, setBio] = useState(
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora atque nihil, dignissimos facilis laboriosam cum placeat ipsum eveniet quo iure, cupiditate accusantium, iusto quisquam aliquid aut amet quos magni adipisci!"
   );
+  const [profile, setProfile] = useState(null);
+  const [video, setVideo] = useState(
+    "https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy"
+  );
+  const [featured, setFeatured] = useState([]);
 
   const [albums, setAlbums] = useState([]);
   const [fullnameTag, setFullnameTag] = useState("Olivia Fernandez");
@@ -106,6 +111,12 @@ function My_Profile() {
       .then((response) => {
         console.log(response);
         if (response?.status === 200) {
+          setFullnameTag(response.data.output[0].full_name);
+          setTitle(response.data.output[0].short_description);
+          setBio(response.data.output[0].description);
+          setProfile(response.data.output[0].profile_picture);
+          setVideo(response.data.output[0].videos[0].featured_video);
+          setFeatured(response.data.output[0].images);
         } else {
           console.log(response);
         }
@@ -150,7 +161,7 @@ function My_Profile() {
             <div className="sub_1">
               <div className="img_container3">
                 <div>
-                  <img src={ProfileImage} alt="User" />
+                  <img src={profile === null ? ProfileImage : profile} alt="User" />
                 </div>
               </div>
             </div>
@@ -192,7 +203,7 @@ function My_Profile() {
             </div>
             <div className="sub_3">
               <ReactPlayer
-                url="https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy"
+                url={video}
                 width="100%"
                 height="100%"
                 controls={true}
@@ -222,54 +233,22 @@ function My_Profile() {
                       height: "200px",
                     }}
                   >
-                    <img
-                      src={SampleSlider1}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider2}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider3}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider4}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider5}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider6}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider7}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
-                    <img
-                      src={SampleSlider8}
-                      alt="Facebook"
-                      className="w-25"
-                      style={{ margin: "5px" }}
-                    />
+                    {featured.length === 0 ? (
+                      <></>
+                    ) : (
+                      <>
+                        {featured.map((image, x) => {
+                          return (
+                            <img
+                              src={image.featured_image}
+                              alt={x + 1}
+                              className="w-25"
+                              style={{ margin: "5px" }}
+                            />
+                          );
+                        })}
+                      </>
+                    )}
                   </div>
                 </div>
               </Slide>

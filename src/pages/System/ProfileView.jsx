@@ -193,7 +193,7 @@ function ProfileView() {
 
           <div className="my_profile_sub_container4">
             <div>
-              <pre className="headline_left">{} Albums</pre>
+              <pre className="headline_left">{albums.length} Albums</pre>
               {/* <div style={{ display: "flex", flexDirection: "row" }}>
                 <pre style={{ color: "#555555", marginRight: "10px" }}>
                   Sort By Popularity

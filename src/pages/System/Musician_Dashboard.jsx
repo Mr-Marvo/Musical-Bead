@@ -112,7 +112,6 @@ function Musician_Dashboard() {
   };
 
   useEffect(() => {
-    loadPendingAlbums();
     loadCategories();
     if (usertype === "1") {
       loadPendingAlbums(0);
@@ -322,50 +321,60 @@ function Musician_Dashboard() {
     } else {
       setBeadPriceE("");
     }
-   
-
-  }
+  };
 
   const addBead = () => {
-    if((beadDescription !== "") && (/^[a-z A-Z]*$/.test(beadDescription)) && (beadDimension !== "") && (/^[a-z A-Z]*$/.test(beadDimension)) && (beadName !== "") && (/^[a-z A-Z]*$/.test(beadName)) && (beadModel !== "") && (/^[a-z A-Z]*$/.test(beadModel)) && (beadKeyRing !== "") && (/^[a-z A-Z]*$/.test(beadKeyRing)) && (beadPrice !== "") ){
-        setIsLoadingCircle(true);
+    if (
+      beadDescription !== "" &&
+      /^[a-z A-Z]*$/.test(beadDescription) &&
+      beadDimension !== "" &&
+      /^[a-z A-Z]*$/.test(beadDimension) &&
+      beadName !== "" &&
+      /^[a-z A-Z]*$/.test(beadName) &&
+      beadModel !== "" &&
+      /^[a-z A-Z]*$/.test(beadModel) &&
+      beadKeyRing !== "" &&
+      /^[a-z A-Z]*$/.test(beadKeyRing) &&
+      beadPrice !== ""
+    ) {
+      setIsLoadingCircle(true);
 
-        console.log(picture);
-        console.log(beadDescription);
-        console.log(beadName);
-        console.log(beadPrice);
-        console.log(beadModel);
-        console.log(beadDimension);
-        console.log(beadKeyRing);
-    
-        const config = {
-          headers: { Authorization: `Bearer ${token}` },
-        };
+      console.log(picture);
+      console.log(beadDescription);
+      console.log(beadName);
+      console.log(beadPrice);
+      console.log(beadModel);
+      console.log(beadDimension);
+      console.log(beadKeyRing);
 
-        let data3 = new FormData();
-        data3.append("user_id", localStorage.getItem("userid"));
-        data3.append("title", beadName);
-        data3.append("model_number", beadModel);
-        data3.append("features", beadDescription);
-        data3.append("dimension", beadDimension);
-        data3.append("key_ring", beadKeyRing);
-        data3.append("price", beadPrice);
-        data3.append("bead_image", picture);
-        data3.append("file_extension", picture?.name.split(".")[1]);
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
 
-        axios
+      let data3 = new FormData();
+      data3.append("user_id", localStorage.getItem("userid"));
+      data3.append("title", beadName);
+      data3.append("model_number", beadModel);
+      data3.append("features", beadDescription);
+      data3.append("dimension", beadDimension);
+      data3.append("key_ring", beadKeyRing);
+      data3.append("price", beadPrice);
+      data3.append("bead_image", picture);
+      data3.append("file_extension", picture?.name.split(".")[1]);
+
+      axios
         .post(url + "/bead/add", data3, config)
         .then((response) => {
           console.log(response);
           if (response?.status === 200) {
             setIsLoadingCircle(false);
-            alert("Successfully Added!")
-            setBeadDescription('');
-            setBeadDimension('')
-            setBeadName('');
-            setBeadModel('');
-            setBeadKeyRing('');
-            setBeadPrice('');
+            alert("Successfully Added!");
+            setBeadDescription("");
+            setBeadDimension("");
+            setBeadName("");
+            setBeadModel("");
+            setBeadKeyRing("");
+            setBeadPrice("");
             setImgData(null);
           } else {
             console.log(response);
@@ -374,16 +383,9 @@ function Musician_Dashboard() {
         .catch((error) => {
           console.log(error);
         });
-
-    }else {
-        alert('Not Verified!');
+    } else {
+      alert("Not Verified!");
     }
-
-   
-
-    
-
-    
   };
 
   return (
@@ -394,9 +396,7 @@ function Musician_Dashboard() {
         <div className="musician_dashboard_container">
           <div className="musician_dashboard_sub_container1">
             <div className="sub_container1_left">
-              <pre className="headline font-nunito">
-                Publish New Musical Bead Album+
-              </pre>
+              <pre className="headline font-nunito">Publish New Album</pre>
               <div>
                 <div>
                   <label className="text-[#555555] ml-28">
@@ -594,55 +594,65 @@ function Musician_Dashboard() {
             </div>
             <div className="sub_container1_right">
               <pre className="headline font-nunito">Pending Albums</pre>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                <div className="album_sub_wrap2">
-                  {pendingAlbums.map((album) => {
-                    return (
-                      <div>
-                        <Album2
-                          key={album.id}
-                          album={album}
-                          isPlaying={currentAlbumId === album.id}
-                          onAlbumClick={handleAlbumClick}
-                        />
-                      </div>
-                    );
-                  })}
+
+              {pendingAlbums.length === 0 ? (
+                <div className="text-white w-full text-center">
+                  No Pending Albums
                 </div>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "flex-end",
-                  marginTop: "4rem",
-                }}
-              >
-                <button
-                  className="submit_btn"
-                  style={{ color: "white" }}
-                  onClick={() => {
-                    if (usertype === "1") {
-                      window.location.replace("/pending");
-                    } else {
-                      window.location.replace("/profile");
-                    }
-                  }}
-                >
-                  {usertype === "1" ? "View All" : "Visit Profile"}
-                </button>
-              </div>
+              ) : (
+                <>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    <div className="album_sub_wrap2">
+                      {pendingAlbums.map((album) => {
+                        return (
+                          <div>
+                            <Album2
+                              key={album.id}
+                              album={album}
+                              isPlaying={currentAlbumId === album.id}
+                              onAlbumClick={handleAlbumClick}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "flex-end",
+                      marginTop: "4rem",
+                    }}
+                  >
+                    <button
+                      className="submit_btn"
+                      style={{ color: "white" }}
+                      onClick={() => {
+                        if (usertype === "1") {
+                          window.location.replace("/pending");
+                        } else {
+                          window.location.replace("/profile");
+                        }
+                      }}
+                    >
+                      {usertype === "1" ? "View All" : "Visit Profile"}
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
           {usertype === "1" ? (
             <>
+             <pre className="headline font-nunito">Publish New Bead</pre>
               <div className="new_bead_add_container" style={{backgroundColor: "rgba(0,0,0,0.32)",marginTop: "10px",borderRadius: "25px",padding: "1rem",display:'grid',gap:'2.5rem'}}>
                     {imgData == null ? (
                         <div
@@ -853,7 +863,7 @@ function Musician_Dashboard() {
                             </button>
                         </div>
                     </div>
-                
+             
               </div>
             </>
           ) : (

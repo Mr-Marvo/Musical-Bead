@@ -48,6 +48,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />} />
+            <Route path="/settings" element={<ProfileStore />} />
           </>
         ) : (
           <>
@@ -56,9 +57,14 @@ function App() {
         )}
 
         <Route path="*" element={<NotFound />} />
+<<<<<<< HEAD
         </Routes>
       
     </BrowserRouter> 
+=======
+      </Routes>
+    </BrowserRouter>
+>>>>>>> 0a7d58e024ea7d2982b48eef45971b9892095d87
   );
 }
 
