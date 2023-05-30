@@ -67,18 +67,14 @@ const slideImages = [
 function My_Profile() {
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
-  const [title, setTitle] = useState("Singer & Song Writer");
-  const [bio, setBio] = useState(
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora atque nihil, dignissimos facilis laboriosam cum placeat ipsum eveniet quo iure, cupiditate accusantium, iusto quisquam aliquid aut amet quos magni adipisci!"
-  );
+  const [title, setTitle] = useState();
+  const [bio, setBio] = useState(null);
   const [profile, setProfile] = useState(null);
-  const [video, setVideo] = useState(
-    "https://www.youtube.com/watch?v=af0rV6dli_o&pp=ygUMZWRnYXIgd2ludGVy"
-  );
+  const [video, setVideo] = useState(null);
   const [featured, setFeatured] = useState([]);
 
   const [albums, setAlbums] = useState([]);
-  const [fullnameTag, setFullnameTag] = useState("Olivia Fernandez");
+  const [fullnameTag, setFullnameTag] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
 
   const [currentAlbumId, setCurrentAlbumId] = useState(null);

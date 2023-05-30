@@ -1,5 +1,5 @@
 import React from "react";
-import { Equalizer, PlayButton, TagTop } from "../../assets";
+import { Equalizer, PauseButton, PlayButton, TagTop } from "../../assets";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
@@ -73,7 +73,7 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
           </div>
           <div className="flex">
             <img
-              src={PlayButton}
+              src={isPlaying ? PauseButton : PlayButton}
               alt="playbutton"
               onClick={(e) => {
                 e.stopPropagation();

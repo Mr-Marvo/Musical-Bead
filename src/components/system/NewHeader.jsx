@@ -11,19 +11,24 @@ import { Logo } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 
 const NewHeader = () => {
   const navRef = useRef();
-  let { url } = useContentContext();
+  let { url, getAuthUser, profile } = useContentContext();
   const token = localStorage.getItem("token");
 
-  let userName = localStorage.getItem('username').split(' ')[0];
+  let userName = localStorage.getItem("username").split(" ")[0];
   const userTag = useState(`Hi! ${userName}`);
   const location = window.location.pathname;
 
   const [isCollapsed3, setIsCollapsed3] = useState(true);
 
   const usertype = localStorage.getItem("usertype");
+
+  useEffect(() => {
+    getAuthUser(token);
+  }, []);
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -129,7 +134,7 @@ const NewHeader = () => {
           }}
         />
         <img
-          src={Singer}
+          src={profile === null ? Singer : profile}
           alt="User"
           className="singer_image cursor-pointer"
           onClick={handleToggleCollapse3}
