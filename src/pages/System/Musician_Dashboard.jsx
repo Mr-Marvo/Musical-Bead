@@ -16,7 +16,8 @@ import { useContentContext } from "../../providers/ContentContext";
 import axios from "axios";
 import FlatList from "../../components/Common/FlatList";
 import LoadingCircle from "../../components/Common/LoadingCircle";
-import ErrorAlertBox from "../../components/Common/ErrorAlertBox";
+import SuccessAlert from '../../components/Common/SuccessAlert';
+import ErrorAlert from "../../components/Common/ErrorAlert";
 
 function Musician_Dashboard() {
   const [isLoadingClircle, setIsLoadingCircle] = useState(false);
