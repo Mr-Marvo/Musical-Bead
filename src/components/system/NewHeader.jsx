@@ -15,7 +15,7 @@ import { useEffect } from "react";
 
 const NewHeader = () => {
   const navRef = useRef();
-  let { url, getAuthUser, profile } = useContentContext();
+  let { url } = useContentContext();
   const token = localStorage.getItem("token");
 
   let userName = localStorage.getItem("username").split(" ")[0];
@@ -25,10 +25,6 @@ const NewHeader = () => {
   const [isCollapsed3, setIsCollapsed3] = useState(true);
 
   const usertype = localStorage.getItem("usertype");
-
-  useEffect(() => {
-    getAuthUser(token);
-  }, []);
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -134,7 +130,7 @@ const NewHeader = () => {
           }}
         />
         <img
-          src={profile === null ? Singer : profile}
+          src={localStorage.getItem('profile') === null ? Singer : localStorage.getItem('profile')}
           alt="User"
           className="singer_image cursor-pointer"
           onClick={handleToggleCollapse3}
