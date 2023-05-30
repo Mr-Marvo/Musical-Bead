@@ -11,7 +11,6 @@ export const ContentProvider = ({ children }) => {
   const userName = localStorage.getItem('username')?.split(" ")[1];
   const userId = localStorage.getItem('userid');
   const userType = localStorage.getItem('usertype');
-  const [profile, setProfile] = useState(null);
 
 
   const getAuthUser = (token) => {
@@ -30,7 +29,7 @@ export const ContentProvider = ({ children }) => {
           localStorage.setItem('username', response.data.output[0].full_name);
           localStorage.setItem('userid', response.data.output[0].user_id);
           localStorage.setItem('usertype', response.data.output[0].user_type_id);
-          setProfile(response.data.output[0].profile_picture);
+          localStorage.setItem('profile', response.data.output[0].profile_picture);
 
           if (response.data.output[0].user_type_id === 3) {
             window.location.replace("/home");
@@ -60,7 +59,7 @@ export const ContentProvider = ({ children }) => {
   };
 
   return (
-    <ContentContext.Provider value={{ url, visitor, setVisitor, getAuthUser, userName, userId, userType, profile }}>
+    <ContentContext.Provider value={{ url, visitor, setVisitor, getAuthUser, userName, userId, userType }}>
       {children}
     </ContentContext.Provider>
   );
