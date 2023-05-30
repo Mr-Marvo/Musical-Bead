@@ -49,7 +49,7 @@ function AlbumView() {
   useEffect(() => {
     getMusician();
     viewAlbum(params.album_id);
-  });
+  },[]);
 
   const getMusician = () => {
     const config = {

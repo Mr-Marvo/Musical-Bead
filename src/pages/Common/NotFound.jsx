@@ -19,7 +19,7 @@ const NotFound = () => {
       setText("PAGE NOT FOUND");
       setCode("404");
     }
-  });
+  },[]);
 
   return (
     <div className="flex flex-col bg-black w-full h-screen justify-center items-center">
