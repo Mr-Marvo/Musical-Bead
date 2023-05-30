@@ -4,6 +4,7 @@ import { NewHeader, NewFooter } from "../../../components/system";
 import {
   DefaultAlbum,
   EqualizerLarge,
+  PauseButtonLarge,
   PlayButtonLarge,
   TagTop,
 } from "../../../assets";
@@ -210,7 +211,7 @@ function AlbumView() {
                     </div>
                     <div className="flex">
                       <img
-                        src={PlayButtonLarge}
+                        src={isPlaying ? PauseButtonLarge : PlayButtonLarge}
                         alt="playbutton"
                         className="w-8"
                         onClick={(e) => {
@@ -385,7 +386,9 @@ function AlbumView() {
             ) : (
               <></>
             )}
+
           </div>
+          
           <div className="album_view_right_container">
             <div className="meet_musician_container">
               <span
