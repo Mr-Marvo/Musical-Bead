@@ -3,6 +3,7 @@ import {
   AlbumEdit,
   AlbumView,
   AllAlbums,
+  Beads,
   Cart,
   Earnings,
   Home,
@@ -45,6 +46,7 @@ function App() {
             <Route exact path="/profile" element={<MyProfile />} />
             <Route exact path="/profile-view" element={<ProfileView />} />
             <Route path="/earnings" element={<Earnings />} />
+            <Route path="/beads" element={<Beads />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />} />
