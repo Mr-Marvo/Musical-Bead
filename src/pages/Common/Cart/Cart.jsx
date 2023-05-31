@@ -31,174 +31,170 @@ function Cart() {
             <NewHeader/>
             <main>
                 <div className="cart_container">
-                    <div className="item_content">
-                       
-                        <div className="item_wrap">
-                            <img src={MyAlbumImg} alt="album" width="60px"/>
-                            <div>
-                                <p>Album Name : </p>
-                                <p>lorem ipsum sun</p>
+                    <div className="cart_subcontainer">
+
+                        <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',marginBottom:'50px'}}>
+                            <div style={{display:'flex',flexDirection:'row'}}>
+                                <AiOutlineShoppingCart style={{color:'#fff',fontSize:'40px',marginRight:'20px'}}/>
+                                <p style={{color:'#fff',fontSize:'24px',fontWeight:'700'}}>MY CART</p>
                             </div>
-                            <div>
-                                <p>Price : </p>
-                                <p>$31.15</p>
+                            <div style={{display:'flex',flexDirection:'row'}}>
+                                <p style={{color:'#2AAEC0',fontSize:'24px',fontWeight:'400'}}>Delete</p>
                             </div>
-                            <div>
-                                <p>Quantity : </p>
-                                <button  onClick={handleMinus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>-</button>
-                                <input type="number"  value={num} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}/>
-                                <button  onClick={handlePlus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>+</button>
+                           
+                        </div>
+                   
+                        <div className="item_content">
+
+                            <div className="item_wrap font-nunito">
+                                <div style={{width:'10%'}}>
+                                    <input type="checkbox" name="" id="" />
+                                </div>
+
+                                <div className='item_container'>
+                                    <img src={MyAlbumImg} alt="album" width="100px" height="100px"/>
+
+                                    <div>
+                                        <p style={{fontSize:'24px',fontWeight:700}}>Lorem ipsum dolor sit amet .ft <br/>  dolor sit amet</p>
+                                        <p style={{fontSize:'16px',fontWeight:700,color:'#2AAEC0',marginTop:'20px'}}>Lorem ipsum dolor sit amet</p>
+                                    </div>
+
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <button  onClick={handleMinus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderTopLeftRadius:'35px',borderBottomLeftRadius:'35px'}}>-</button>
+                                        <input type="number"  value={num} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400}}/>
+                                        <button  onClick={handlePlus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderBottomRightRadius:'35px',borderTopRightRadius:'35px'}}>+</button>
+                                    </div>
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <p style={{fontSize:'32px',fontWeight:500}}>US $31.15</p>
+                                    </div>
+                                </div>
+                               
                             </div>
-                            <div>
-                                <p>Total: </p>
-                                <p>$31.15</p>
+
+                            <div className="item_wrap font-nunito">
+                                <div style={{width:'10%'}}>
+                                    <input type="checkbox" name="" id="" />
+                                </div>
+
+                                <div className='item_container'>
+                                    <img src={MyAlbumImg} alt="album" width="100px" height="100px"/>
+
+                                    <div>
+                                        <p style={{fontSize:'24px',fontWeight:700}}>Lorem ipsum dolor sit amet .ft <br/>  dolor sit amet</p>
+                                        <p style={{fontSize:'16px',fontWeight:700,color:'#2AAEC0',marginTop:'20px'}}>Lorem ipsum dolor sit amet</p>
+                                    </div>
+
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <button  onClick={handleMinus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderTopLeftRadius:'35px',borderBottomLeftRadius:'35px'}}>-</button>
+                                        <input type="number"  value={num} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400}}/>
+                                        <button  onClick={handlePlus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderBottomRightRadius:'35px',borderTopRightRadius:'35px'}}>+</button>
+                                    </div>
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <p style={{fontSize:'32px',fontWeight:500}}>US $31.15</p>
+                                    </div>
+                                </div>
+                               
                             </div>
-                            <div >
-                                <button style={{marginTop:'20px'}}>
-                                  <RiDeleteBin6Line fontSize={30}/>
-                                </button>
+
+                            <div className="item_wrap font-nunito">
+                                <div style={{width:'10%'}}>
+                                    <input type="checkbox" name="" id="" />
+                                </div>
+
+                                <div className='item_container'>
+                                    <img src={MyAlbumImg} alt="album" width="100px" height="100px"/>
+
+                                    <div>
+                                        <p style={{fontSize:'24px',fontWeight:700}}>Lorem ipsum dolor sit amet .ft <br/>  dolor sit amet</p>
+                                        <p style={{fontSize:'16px',fontWeight:700,color:'#2AAEC0',marginTop:'20px'}}>Lorem ipsum dolor sit amet</p>
+                                    </div>
+
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <button  onClick={handleMinus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderTopLeftRadius:'35px',borderBottomLeftRadius:'35px'}}>-</button>
+                                        <input type="number"  value={num} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400}}/>
+                                        <button  onClick={handlePlus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderBottomRightRadius:'35px',borderTopRightRadius:'35px'}}>+</button>
+                                    </div>
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <p style={{fontSize:'32px',fontWeight:500}}>US $31.15</p>
+                                    </div>
+                                </div>
+                               
                             </div>
-                            <div >
-                                <button style={{marginTop:'20px',color:'white',width:'100px',height:'30px',fontSize:'16px',background:'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',borderRadius:'25px'}}>
-                                    Buy Now
-                                </button>
+
+                            <div className="item_wrap font-nunito">
+                                <div style={{width:'10%'}}>
+                                    <input type="checkbox" name="" id="" />
+                                </div>
+
+                                <div className='item_container'>
+                                    <img src={MyAlbumImg} alt="album" width="100px" height="100px"/>
+
+                                    <div>
+                                        <p style={{fontSize:'24px',fontWeight:700}}>Lorem ipsum dolor sit amet .ft <br/>  dolor sit amet</p>
+                                        <p style={{fontSize:'16px',fontWeight:700,color:'#2AAEC0',marginTop:'20px'}}>Lorem ipsum dolor sit amet</p>
+                                    </div>
+
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <button  onClick={handleMinus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderTopLeftRadius:'35px',borderBottomLeftRadius:'35px'}}>-</button>
+                                        <input type="number"  value={num} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400}}/>
+                                        <button  onClick={handlePlus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderBottomRightRadius:'35px',borderTopRightRadius:'35px'}}>+</button>
+                                    </div>
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <p style={{fontSize:'32px',fontWeight:500}}>US $31.15</p>
+                                    </div>
+                                </div>
+                               
                             </div>
-                          
+
+                            <div className="item_wrap font-nunito">
+                                <div style={{width:'10%'}}>
+                                    <input type="checkbox" name="" id="" />
+                                </div>
+
+                                <div className='item_container'>
+                                    <img src={MyAlbumImg} alt="album" width="100px" height="100px"/>
+
+                                    <div>
+                                        <p style={{fontSize:'24px',fontWeight:700}}>Lorem ipsum dolor sit amet .ft <br/>  dolor sit amet</p>
+                                        <p style={{fontSize:'16px',fontWeight:700,color:'#2AAEC0',marginTop:'20px'}}>Lorem ipsum dolor sit amet</p>
+                                    </div>
+
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <button  onClick={handleMinus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderTopLeftRadius:'35px',borderBottomLeftRadius:'35px'}}>-</button>
+                                        <input type="number"  value={num} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400}}/>
+                                        <button  onClick={handlePlus} style={{width:'60px',backgroundColor:'rgba(0,0,0,.52)',padding:'7px',textAlign:'center',fontSize:'32px',fontWeight:400,borderBottomRightRadius:'35px',borderTopRightRadius:'35px'}}>+</button>
+                                    </div>
+                                    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                                        <p style={{fontSize:'32px',fontWeight:500}}>US $31.15</p>
+                                    </div>
+                                </div>
+                               
+                            </div>
+
                         </div>
 
-                        <div className="item_wrap">
-                            <img src={MyAlbumImg} alt="album" width="60px"/>
-                            <div>
-                                <p>Album Name : </p>
-                                <p>lorem ipsum sun</p>
+                        <div className='detail_container'>
+                            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                                <p style={{fontSize:'28px',fontWeight:400}}>Sub Total</p>
+                                <p style={{fontSize:'28px',fontWeight:400}}>US $31.15</p>
                             </div>
-                            <div>
-                                <p>Price : </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div>
-                                <p>Quantity : </p>
-                                <button  onClick={handleMinus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>-</button>
-                                <input type="number"  value={num} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}/>
-                                <button  onClick={handlePlus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>+</button>
-                            </div>
-                            <div>
-                                <p>Total: </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px'}}>
-                                  <RiDeleteBin6Line fontSize={30}/>
-                                </button>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px',color:'white',width:'100px',height:'30px',fontSize:'16px',background:'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',borderRadius:'25px'}}>
-                                    Buy Now
-                                </button>
-                            </div>
-                          
-                        </div>
 
-                        <div className="item_wrap">
-                            <img src={MyAlbumImg} alt="album" width="60px"/>
-                            <div>
-                                <p>Album Name : </p>
-                                <p>lorem ipsum sun</p>
+                            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                                <p style={{fontSize:'28px',fontWeight:400}}>Shipping</p>
+                                <p style={{fontSize:'28px',fontWeight:400}}>US $31.15</p>
                             </div>
-                            <div>
-                                <p>Price : </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div>
-                                <p>Quantity : </p>
-                                <button  onClick={handleMinus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>-</button>
-                                <input type="number"  value={num} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}/>
-                                <button  onClick={handlePlus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>+</button>
-                            </div>
-                            <div>
-                                <p>Total: </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px'}}>
-                                  <RiDeleteBin6Line fontSize={30}/>
-                                </button>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px',color:'white',width:'100px',height:'30px',fontSize:'16px',background:'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',borderRadius:'25px'}}>
-                                    Buy Now
-                                </button>
-                            </div>
-                          
-                        </div>
 
-                        <div className="item_wrap">
-                            <img src={MyAlbumImg} alt="album" width="60px"/>
-                            <div>
-                                <p>Album Name : </p>
-                                <p>lorem ipsum sun</p>
+                            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                                <p style={{fontSize:'28px',fontWeight:400,color:'#2AAEC0'}}>Total</p>
+                                <p style={{fontSize:'28px',fontWeight:400,color:'#2AAEC0'}}>US $31.15</p>
                             </div>
-                            <div>
-                                <p>Price : </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div>
-                                <p>Quantity : </p>
-                                <button  onClick={handleMinus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>-</button>
-                                <input type="number"  value={num} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}/>
-                                <button  onClick={handlePlus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>+</button>
-                            </div>
-                            <div>
-                                <p>Total: </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px'}}>
-                                  <RiDeleteBin6Line fontSize={30}/>
-                                </button>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px',color:'white',width:'100px',height:'30px',fontSize:'16px',background:'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',borderRadius:'25px'}}>
-                                    Buy Now
-                                </button>
-                            </div>
-                          
-                        </div>
 
-                        <div className="item_wrap">
-                            <img src={MyAlbumImg} alt="album" width="60px"/>
-                            <div>
-                                <p>Album Name : </p>
-                                <p>lorem ipsum sun</p>
+                            <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:'40px'}}>
+                                <button style={{fontSize:'32px',fontWeight:'500',color:'#514F4F'}}>Countinue Shopping</button>
+                                <button style={{fontSize:'32px',fontWeight:'700',background: 'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',display:'flex',alignItems:'center',justifyContent:'center',height:'60px',borderRadius:'20px',width:'350px'}}>Proceed to Checkout</button>
                             </div>
-                            <div>
-                                <p>Price : </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div>
-                                <p>Quantity : </p>
-                                <button  onClick={handleMinus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>-</button>
-                                <input type="number"  value={num} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}/>
-                                <button  onClick={handlePlus} style={{width:'30px',backgroundColor:'rgba(31,31,31,1)',padding:'7px',textAlign:'center'}}>+</button>
-                            </div>
-                            <div>
-                                <p>Total: </p>
-                                <p>$31.15</p>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px'}}>
-                                  <RiDeleteBin6Line fontSize={30}/>
-                                </button>
-                            </div>
-                            <div >
-                                <button style={{marginTop:'20px',color:'white',width:'100px',height:'30px',fontSize:'16px',background:'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',borderRadius:'25px'}}>
-                                    Buy Now
-                                </button>
-                            </div>
-                          
                         </div>
                     </div>
-                    
                 </div>
             </main>
             <NewFooter/>
