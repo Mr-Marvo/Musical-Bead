@@ -13,7 +13,6 @@
 .item_content {
     width: 100%;
     height: 580px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -31,7 +30,7 @@
 .item_container {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    gap:50px;
+    gap:10px;
     padding: 15px;
     color: #fff;
     margin-bottom: 10px;
@@ -49,21 +48,94 @@
     color: #fff;
 }
 
-@media only screen and (max-width: 1160px) {
-    .cart_container {
-        width: 100%;
+.fs24 {
+    font-size: 24px;
+}
+
+.fs16 {
+    font-size: 16px;
+}
+
+.fs32 {
+    font-size: 32px;  
+}
+
+.w60 {
+    width: 60px;
+}
+
+.fs28 {
+    font-size: 28px;
+}
+
+@media only screen and (max-width: 1230px) {
+    .fs24 {
+        font-size: 20px;
+    }
+    
+    .fs16 {
+        font-size: 12px;
+    }
+    
+    .fs32 {
+        font-size: 24px;  
+    }
+
+    .w60 {
+        width: 40px;
     }
 }
 
-@media only screen and (max-width: 930px) {
-  
+@media only screen and (max-width: 1000px) {
+    .fs24 {
+        font-size: 18px;
+    }
+    
+    .fs16 {
+        font-size: 12px;
+    }
+    
+    .fs32 {
+        font-size: 20px;  
+    }
+
+    .w60 {
+        width: 30px;
+    }
 }
 
-@media only screen and (max-width: 680px) {
-   
+@media only screen and (max-width: 916px) {
+   .item_container {
+        grid-template-columns: auto auto;
+   }
 }
 
-@media only screen and (max-width: 460px) {
-   
+@media only screen and (max-width: 600px) {
+    .item_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+   }
+   .cart_container {
+        padding: 10px;
+   }
 }
 
+@media only screen and (max-width: 420px) {
+    .fs24 {
+        font-size: 16px;
+    }
+    
+    .fs16 {
+        font-size: 12px;
+    }
+    
+    .fs32 {
+        font-size: 14px;  
+    }
+
+    .fs28 {
+        font-size: 20px;
+    }
+}
