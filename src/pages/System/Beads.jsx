@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 
-import Album from "../Common/Album";
 import { BsSearch } from "react-icons/bs";
 import { NewFooter, NewHeader } from "../../components/system";
 import axios from "axios";
@@ -20,12 +19,6 @@ function Beads() {
       `${obj.name} ${obj.title} ${obj.description} ${obj.slogan}`.toLowerCase();
     return searchableText.includes(searchQuery.toLowerCase());
   });
-
-  const [currentAlbumId, setCurrentAlbumId] = useState(null);
-
-  const handleAlbumClick = (albumId) => {
-    setCurrentAlbumId(albumId);
-  };
 
   useEffect(() => {
     loadBeads();
@@ -98,9 +91,7 @@ function Beads() {
       </div>
       {/* Main Content */}
       <main>
-        {beads.length === 0 ? (
-          <></>
-        ) : (
+        {searchQuery !== "" ? (
           <>
             <div
               className="headline_wrap_container"
@@ -113,16 +104,48 @@ function Beads() {
                   justifyContent: "center",
                 }}
               >
-                <pre className="headline font-nunito">ALL BEADS</pre>
+                <pre className="headline font-nunito">
+                  SEARCH RESULTS FOR “{searchQuery}’’{" "}
+                </pre>
               </div>
             </div>
             <div>
               <div className="home_grid gap-4">
-                {beads.map((album) => {
-                  return <Bead />;
+                {filteredObjects.map((bead) => {
+                  return <Bead bead={bead} />;
                 })}
               </div>
             </div>
+          </>
+        ) : (
+          <>
+            {beads.length === 0 ? (
+              <></>
+            ) : (
+              <>
+                <div
+                  className="headline_wrap_container"
+                  style={{ background: "#161616", border: "none" }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <pre className="headline font-nunito">ALL BEADS</pre>
+                  </div>
+                </div>
+                <div>
+                  <div className="home_grid gap-4">
+                    {beads.map((bead) => {
+                      return <Bead bead={bead} />;
+                    })}
+                  </div>
+                </div>
+              </>
+            )}
           </>
         )}
       </main>
