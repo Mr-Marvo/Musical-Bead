@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
 import "./Popup.css"; // Import the CSS file for Popup component
+import "./Popup2.css"; // Import the CSS file for Popup component
 import { DocumentIcon, ImageIcon, MusicIcon, VideoIcon } from "../../assets";
 import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
 import LoadingCircle from "./LoadingCircle";
+import AlbumImg from '../../assets/images/system/Rectangle 140.png';
 
 const Popup = ({ onClose, onPhotoUpload,albumID }) => {
   const [isLoadingClircle, setIsLoadingCircle] = useState(false);
@@ -151,15 +153,62 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
                     <RxCross2 />
                 </button>
             </div>
-            <div style={{display:'flex',flexDirection:'row',width:'100%',padding:'2rem'}}>
-                <div style={{width:'25%',borderRight:'1px solid #4E4E4E'}}>
-
+            <div style={{display:'flex',flexDirection:'row',width:'100%',padding:'.5rem'}}>
+                <div style={{width:'28%',height:'100%',display:'flex',flexDirection:'column'}}>
+                    <p style={{fontWeight:700,fontSize:'16px',color:'#fff',marginBottom:'30px'}}></p>
+                    <img src={AlbumImg} alt="" style={{width:'120px'}}/>
+                    <p style={{fontWeight:700,fontSize:'16px',color:'#fff'}}>Album Name Lorem ipsum dolor sit amet</p>
+                    <p style={{fontWeight:700,color:'#2AAEC0',marginTop:'20px',fontSize:'12px'}}>Lorem ipsum dolor sit </p>
                 </div>
-                <div style={{width:'50%',borderRight:'1px solid #4E4E4E'}}>
 
+                <div style={{width:'48%',height:'100%',borderLeft:'1px solid #4E4E4E',borderRight:'1px solid #4E4E4E',display:'flex',flexDirection:'column',paddingLeft:'8px'}}>
+                    <p style={{fontWeight:700,fontSize:'16px',color:'#fff',marginBottom:'20px'}}>ORDER NUMBER : MB23QR456E </p>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Color:</p>
+                        <label className="container2">
+                            <span className="checkmark2" style={{ backgroundColor: "#BD8A4E" }}></span>
+                        </label>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Quantity:</p>
+                        <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'50%'}}>2 beads</p>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Customer Name :</p>
+                        <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'50%'}}>Lorem ipsum dolor</p>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Shipping Address : </p>
+                        <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'50%'}}>
+                            Lorem ips um dolor sit amet,
+                            conse ctetur adipi sc ing,
+                          
+                        </p>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Phone number : </p>
+                        <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'50%'}}>+1 123 456 789</p>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Total amount :</p>
+                        <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'50%'}}>US $ 31.50 </p>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',width:'90%',marginBottom:'5px'}}>
+                        <p style={{fontWeight:400,fontSize:'16px',color:'#888585',width:'50%'}}>Payment status :</p>
+                        <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'40%'}}>Completed</p>
+                    </div>
                 </div>
-                <div style={{width:'25%'}}>
-                    
+                <div style={{width:'25%',height:'100%',position:'relative',height:'100%'}}>
+                    <p style={{fontWeight:700,fontSize:'16px',color:'#fff',marginBottom:'30px',marginLeft:'5px'}}>SHIP ORDER</p>
+                    <p style={{fontWeight:600,fontSize:'14px',color:'#fff',width:'100%',marginLeft:'5px'}}>Carrier</p>
+                    <input type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'170px',marginBottom:'10px'}}/>
+                    <p style={{fontWeight:600,fontSize:'14px',color:'#fff',width:'100%',marginLeft:'5px'}}>Enter Tracking Number</p>
+                    <input type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'170px',marginBottom:'10px'}}/>
+                    <p style={{fontWeight:600,fontSize:'14px',color:'#fff',width:'100%',marginLeft:'5px'}}>Note (Optional)</p>
+                    <textarea type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'170px',marginBottom:'10px'}}/>
+                    <button style={{color:'#fff',background:'#2AAEC0',padding:'5px',borderRadius:'15px',marginTop:'60px',marginLeft:'15px'}}>
+                        MARK AS SHIPPED
+                    </button>
                 </div>
             </div>
         </div>

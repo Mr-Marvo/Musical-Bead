@@ -17,6 +17,7 @@ import {
   SignUp,
 } from "./pages";
 import ProfileStore from "./pages/System/ProfileStore";
+import Popup2 from "./components/Common/Popup2";
 
 function App() {
   const token = localStorage.getItem('token');
@@ -56,6 +57,7 @@ function App() {
         )}
 
         <Route path="*" element={<NotFound />} />
+        <Route exact path="/popup2" element={<Popup2 />} />
       </Routes>
 
     </BrowserRouter>
