@@ -219,7 +219,7 @@ function Cart() {
 
                             <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',marginTop:'40px'}}>
                                 <button style={{fontWeight:'500',color:'#514F4F'}} className='fs32'>Countinue Shopping</button>
-                                <button style={{fontWeight:'700',background: 'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',display:'flex',alignItems:'center',justifyContent:'center',height:'60px',borderRadius:'20px',width:'350px'}} className='fs32'>Proceed to Checkout</button>
+                                <button style={{fontWeight:'700',background: 'linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)',display:'flex',alignItems:'center',justifyContent:'center',height:'60px',borderRadius:'20px',width:'350px',color:'black'}} className='fs32'>Proceed to Checkout</button>
                             </div>
                         </div>
                     </div>
