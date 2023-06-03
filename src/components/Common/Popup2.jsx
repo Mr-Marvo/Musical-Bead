@@ -145,15 +145,15 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
   return (
     <>
     <div className="popup-background">
-      <div className="popup-box-wrap">
-        <div className="popup-box">
+      <div className="popup-box-wrap2">
+        <div className="popup-box2">
             <div className="popup-header" style={{ position: "relative" }}>
                 <p className="pop_addsong font-nunito" style={{ color: "white" ,fontSize:'15px', fontWeight:400 }}>ORDER DETAILS</p>
                 <button className="close-button" onClick={onClose} style={{ position: "absolute", top: "0", right: "0" }}>
                     <RxCross2 />
                 </button>
             </div>
-            <div style={{display:'flex',flexDirection:'row',width:'100%',padding:'.5rem'}}>
+            <div className="detal_wrap">
                 <div style={{width:'28%',height:'100%',display:'flex',flexDirection:'column'}}>
                     <p style={{fontWeight:700,fontSize:'16px',color:'#fff',marginBottom:'30px'}}></p>
                     <img src={AlbumImg} alt="" style={{width:'120px'}}/>
@@ -198,15 +198,15 @@ const Popup = ({ onClose, onPhotoUpload,albumID }) => {
                         <p style={{fontWeight:600,fontSize:'16px',color:'#fff',width:'40%'}}>Completed</p>
                     </div>
                 </div>
-                <div style={{width:'25%',height:'100%',position:'relative',height:'100%'}}>
+                <div style={{width:'25%',height:'100%',position:'relative'}}>
                     <p style={{fontWeight:700,fontSize:'16px',color:'#fff',marginBottom:'30px',marginLeft:'5px'}}>SHIP ORDER</p>
                     <p style={{fontWeight:600,fontSize:'14px',color:'#fff',width:'100%',marginLeft:'5px'}}>Carrier</p>
-                    <input type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'170px',marginBottom:'10px'}}/>
+                    <input type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'100%',marginBottom:'10px'}}/>
                     <p style={{fontWeight:600,fontSize:'14px',color:'#fff',width:'100%',marginLeft:'5px'}}>Enter Tracking Number</p>
-                    <input type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'170px',marginBottom:'10px'}}/>
+                    <input type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'100%',marginBottom:'10px'}}/>
                     <p style={{fontWeight:600,fontSize:'14px',color:'#fff',width:'100%',marginLeft:'5px'}}>Note (Optional)</p>
-                    <textarea type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'170px',marginBottom:'10px'}}/>
-                    <button style={{color:'#fff',background:'#2AAEC0',padding:'5px',borderRadius:'15px',marginTop:'60px',marginLeft:'15px'}}>
+                    <textarea type="text" style={{background:'#484848',marginLeft:'5px',borderRadius:'7px',width:'100%',marginBottom:'10px'}}/>
+                    <button style={{color:'#fff',background:'#2AAEC0',padding:'5px',borderRadius:'15px',marginTop:'40%',marginLeft:'15px'}}>
                         MARK AS SHIPPED
                     </button>
                 </div>
