@@ -17,8 +17,8 @@ const NewHeader = () => {
   const navRef = useRef();
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
-
-  let userName = localStorage.getItem("username").split(" ")[0];
+/* There is a problem in below line when using chrome browser... Please check */
+  let userName = localStorage.getItem("username").split('')[0];
   const userTag = useState(`Hi! ${userName}`);
   const location = window.location.pathname;
 

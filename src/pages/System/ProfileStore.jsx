@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NewHeader } from '../../components/system';
 import {NewFooter} from '../../components/system';
+import {FaCcMastercard} from 'react-icons/fa';
+import {FaCcVisa} from 'react-icons/fa';
+import {SiAmericanexpress} from 'react-icons/si'
+import {TbBrandTelegram} from 'react-icons/tb';
+import {MdOutlineSupportAgent} from 'react-icons/md';
+import {FiPhoneCall} from 'react-icons/fi';
 
 const ProfileStore = () => {
   const [activeTab, setActiveTab] = useState('settings');
@@ -21,7 +27,7 @@ const ProfileStore = () => {
                 <div className='profilestore_sidebar'>
                     <ul>
                         <li>
-                            <button onClick={() => changeContent('settings')} style={{color:'#fff',padding:'10px',fontWeight:'700',fontSize:'24px'}}>Settings</button>
+                            <button onClick={() => changeContent('settings')} style={{color:'#fff',padding:'10px',fontWeight:'700',fontSize:'24px'}} className=''>Settings</button>
                         </li>
                         <li>
                             <button onClick={() => changeContent('billing')} style={{color:'#fff',padding:'10px',fontWeight:'700',fontSize:'24px'}}>Billings</button>
@@ -98,7 +104,7 @@ const Settings = () => {
         @media (max-width: 768px) {
           
         }
-        `;
+    `;
 
     return (
         <div style={{background:'#0B0B0B',width:'100%',height:'100%',borderRadius:'10px',color:'#fff',fontWeight:'500',fontSize:'24px'}} className='font-nunito'>
@@ -169,17 +175,190 @@ const Settings = () => {
 };
 
 const Billing = () => {
+    const [cardNo,setCardNo] = useState('');
+
+    const validate = () => {
+
+    }
+
+    const Container = styled.button`
+        display:flex;
+        width:100%;
+        flex-direction:column;
+        padding:3rem;
+
+        @media (max-width: 768px) {
+          
+        }
+    `;
     return (
-        <div style={{background:'#0B0B0B',width:'100%',height:'100%'}}>
-            <h1>Billing Content</h1>
+        <div style={{background:'#0B0B0B',width:'100%',height:'100%',borderRadius:'10px',color:'#fff',fontWeight:'500',fontSize:'24px'}} className='font-nunito'>
+            <Container>
+                <h1 style={{fontSize:'20px',fontWeight:'700',color:'#12E4A5',marginBottom:'20px'}}>ADD / EDIT  CARD</h1>
+                <div style={{width:'100%'}}>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Card Number</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500',paddingTop:'15px'}}>Card Type</div>
+                        <div style={{display:'flex',flexDirection:'row',fontSize:'56px',width:'75%'}}>
+                            <span style={{width:'20%'}}><FaCcVisa/></span>
+                            <span style={{width:'20%'}}><FaCcMastercard/></span>
+                            <span style={{width:'20%',}}><FaCcVisa/></span>
+                            <span style={{width:'20%'}}><FaCcMastercard/></span>
+                        </div>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Expire Date</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                        <div style={{width:'24%',fontSize:'20px',fontWeight:'500',textAlign:'center'}}>CVC</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div>
+                        <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                            <span style={{fontSize:'16px',color:'#000',fontWeight:'700'}}>ADD CARD</span> 
+                        </button>
+                    </div>
+                </div>   
+            </Container>
+            <Container>
+                 <h1 style={{fontSize:'20px',fontWeight:'700',color:'#12E4A5',marginBottom:'20px'}}>OTHER PAYMENT METHODS</h1>
+                <div style={{width:'100%'}}>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>PAYONEER</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>PAYPAL</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div>
+                        <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                            <span style={{fontSize:'16px',color:'#000',fontWeight:'700'}}>ADD</span> 
+                        </button>
+                    </div>
+                </div>   
+            </Container>
+            <Container>
+                 <h1 style={{fontSize:'20px',fontWeight:'700',color:'#12E4A5',marginBottom:'20px'}}>BILLING ADDRESS</h1>
+                <div style={{width:'100%'}}>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Address Line 1</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Address Line 2</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>City / Town</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                        <div style={{width:'24%',fontSize:'20px',fontWeight:'500',textAlign:'center'}}>Postal Code</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
+                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Country</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    </div>
+                    <div>
+                        <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                            <span style={{fontSize:'16px',color:'#000',fontWeight:'700'}}>ADD</span> 
+                        </button>
+                    </div>
+                </div>   
+            </Container>
         </div>
     )
 };
 
 const Support = () => {
+    const validate = () => {
+
+    }
+
+    const Container = styled.button`
+        display:flex;
+        width:100%;
+        flex-direction:column;
+        padding:3rem;
+
+        @media (max-width: 768px) {
+          
+        }
+    `;
     return (
-        <div style={{background:'#0B0B0B',width:'100%',height:'100%'}}>
-            <h1>Support Content</h1>
+        <div style={{background:'#0B0B0B',width:'100%',height:'100%',borderRadius:'10px',color:'#fff',fontWeight:'500',fontSize:'24px'}} className='font-nunito'>
+            <Container>
+                <h1 style={{fontSize:'28px',fontWeight:'500',color:'#2AAEC0',marginBottom:'20px'}}>Hello, How can we help you?</h1>
+                <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <div style={{display:'flex',flexDirection:'row',fontSize:'56px',width:'90%',justifyContent:'space-between'}}>
+                        <div style={{width:'175px',height:'175px',background:'#161616',border:'1px solid #12E4A5',borderRadius:'20px',alignItems:'center',justifyContent:'center',display:'flex',fontSize:'75px'}}><MdOutlineSupportAgent/></div>
+                        <div style={{width:'175px',height:'175px',background:'#161616',border:'1px solid #12E4A5',borderRadius:'20px',alignItems:'center',justifyContent:'center',display:'flex',fontSize:'75px'}}><FiPhoneCall/></div>
+                        <div style={{width:'175px',height:'175px',background:'#161616',border:'1px solid #12E4A5',borderRadius:'20px',alignItems:'center',justifyContent:'center',display:'flex',fontSize:'75px'}}><TbBrandTelegram/></div>
+                    </div>
+                </div>
+            </Container>
+            <Container>
+                <h1 style={{fontSize:'28px',fontWeight:'500',color:'#2AAEC0',marginBottom:'20px'}}>My Support Requsts</h1>
+                <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                    <div style={{display:'flex',flexDirection:'column',fontSize:'56px',width:'90%'}}>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
+                            <p>MBRQ22548-248-22</p>
+                            <div style={{display:'flex',flexDirection:'row'}}>
+                                <button style={{width:'220px',marginRight:'2%'}}>
+                                    <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
+                                </button>
+                                <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                    <span style={{fontSize:'16px',color:'#000',fontWeight:'700'}}>Pending</span> 
+                                </button>
+                            </div>
+                        </div>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
+                            <p>MBRQ22548-248-22</p>
+                            <div style={{display:'flex',flexDirection:'row'}}>
+                                <button style={{width:'220px',marginRight:'2%',}}>
+                                    <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
+                                </button>
+                                <button style={{background:'#262626',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                    <span style={{fontSize:'16px',color:'#828282',fontWeight:'700'}}>Solved</span> 
+                                </button>
+                            </div>
+                        </div>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
+                            <p>MBRQ22548-248-22</p>
+                            <div style={{display:'flex',flexDirection:'row'}}>
+                                <button style={{width:'220px',marginRight:'2%',}}>
+                                    <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
+                                </button>
+                                <button style={{background:'#262626',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                    <span style={{fontSize:'16px',color:'#828282',fontWeight:'700'}}>Solved</span> 
+                                </button>
+                            </div>
+                        </div>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
+                            <p>MBRQ22548-248-22</p>
+                            <div style={{display:'flex',flexDirection:'row'}}>
+                                <button style={{width:'220px',marginRight:'2%',}}>
+                                    <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
+                                </button>
+                                <button style={{background:'#262626',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                    <span style={{fontSize:'16px',color:'#828282',fontWeight:'700'}}>Solved</span> 
+                                </button>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </Container>
+            <Container>
+                <div style={{width:'100%'}}>
+                    <div style={{display:'flex',flexDirection:'column',fontSize:'56px',width:'95%',justifyContent:'flex-end',alignItems:'flex-end'}}>
+                        <p style={{fontSize:'20px',fontWeight:'500'}}>Standards & Our Terms of Service</p>
+                    </div>
+                </div>
+            </Container>
+
         </div>
     )
 };
