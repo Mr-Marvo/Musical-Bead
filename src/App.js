@@ -19,6 +19,7 @@ import {
 } from "./pages";
 import ProfileStore from "./pages/System/ProfileStore";
 
+
 function App() {
   const token = localStorage.getItem('token');
 
@@ -58,6 +59,7 @@ function App() {
         )}
 
         <Route path="*" element={<NotFound />} />
+       
       </Routes>
 
     </BrowserRouter>
