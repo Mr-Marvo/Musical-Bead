@@ -14,6 +14,7 @@ import {
   NotFound,
   PendingAlbums,
   ProfileView,
+  Settings,
   SignIn,
   SignUp,
 } from "./pages";
@@ -51,6 +52,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />} />
+            <Route path="/settings" element={<Settings />} />
           </>
         ) : (
           <>
