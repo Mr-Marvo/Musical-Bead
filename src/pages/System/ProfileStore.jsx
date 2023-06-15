@@ -54,16 +54,15 @@ const Settings = () => {
     const [nameS,setNameS] = useState('');
     const [emailS,setEmailS] = useState('');
     const [numberS,setNumberS] = useState('+01');
+    const [cpwS,setCpwS] = useState('');
+    const [npwS,setNpwS] = useState('');
+    const [okpwS,setOkpwS] = useState('');
 
     const [isOn, setIsOn] = useState(false);
 
     const handleToggle = () => {
         setIsOn(!isOn);
     };
-
-    const validate = () => {
-
-    }
 
     const switchStyle = {
         position: 'relative',
@@ -110,17 +109,17 @@ const Settings = () => {
         <div style={{background:'#0B0B0B',width:'100%',height:'100%',borderRadius:'10px',color:'#fff',fontWeight:'500',fontSize:'24px'}} className='font-nunito'>
             <Container>
                 <div style={{width:'100%'}}>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left'}}>Name</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={nameS} onChange={(e) => setNameS(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left'}}>Name</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={nameS} onChange={(e) => setNameS(e.target.value)}/>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left'}}>E-mail</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={emailS} onChange={(e) => setEmailS(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left'}}>E-mail</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={emailS} onChange={(e) => setEmailS(e.target.value)} ></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left'}}>Phone Number</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={numberS} onChange={(e) => setNumberS(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left'}}>Phone Number</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={numberS} onChange={(e) => setNumberS(e.target.value)} ></input>
                     </div>
                     <div>
                         <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
@@ -132,17 +131,17 @@ const Settings = () => {
 
             <Container>
                 <div style={{width:'100%'}}>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left'}}>Current Password</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={nameS} onChange={(e) => setNameS(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left'}}>Current Password</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={cpwS} onChange={(e) => setCpwS(e.target.value)} ></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left'}}>New Password</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={emailS} onChange={(e) => setEmailS(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left'}}>New Password</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={npwS} onChange={(e) => setNpwS(e.target.value)} ></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left'}}>Confirm Password</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={numberS} onChange={(e) => setNumberS(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left'}}>Confirm Password</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={okpwS} onChange={(e) => setOkpwS(e.target.value)} ></input>
                     </div>
                     <div>
                         <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
@@ -153,21 +152,21 @@ const Settings = () => {
             </Container>
 
             <Container>
-                <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                    <div style={{width:'24%'}}>Sequrity Question</div>
-                    <p style={{ width:'60%',paddingLeft:'10px',marginRight:'20px',fontSize:'20px' }}>
+                <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                    <div>Sequrity Question</div>
+                    <p style={{paddingLeft:'10px',marginRight:'20px',fontSize:'20px'}}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore eaque dolorem ratione voluptatibus in cupiditate nulla. Officia nisi aliquid sed ipsum minima? Id quis ipsum, porro minus odio voluptas soluta.
                     </p>
                     <div className="switch" style={switchStyle} onClick={handleToggle} >
-                    <div className="slider round" style={sliderStyle}>
-                        <span className="label" style={labelStyle}>
-                            {isOn ? 'ON' : 'OFF'}
-                        </span>
-                        <span style={{width:'5px',height:'5px',borderRadius:'2.5px'}}>
-                            {isOn ?  <div style={{width:'25px',height:'25px',borderRadius:'17px',background:'#fff',margin:'5px',marginLeft:'60px'}}></div> : <div style={{width:'25px',height:'25px',borderRadius:'17px',background:'#fff',margin:'5px',marginLeft:'5px'}}></div>}
-                        </span>
+                        <div className="slider round" style={sliderStyle}>
+                            <span className="label" style={labelStyle}>
+                                {isOn ? 'ON' : 'OFF'}
+                            </span>
+                            <span style={{width:'5px',height:'5px',borderRadius:'2.5px'}}>
+                                {isOn ?  <div style={{width:'25px',height:'25px',borderRadius:'17px',background:'#fff',margin:'5px',marginLeft:'60px'}}></div> : <div style={{width:'25px',height:'25px',borderRadius:'17px',background:'#fff',margin:'5px',marginLeft:'5px'}}></div>}
+                            </span>
+                        </div>
                     </div>
-                </div>
                 </div>
             </Container>
         </div>
@@ -176,6 +175,15 @@ const Settings = () => {
 
 const Billing = () => {
     const [cardNo,setCardNo] = useState('');
+    const [expDate,setExpDate] = useState('');
+    const [cvc,setCvc] = useState('');
+    const [payoneer,setPayoneer] = useState('');
+    const [paypal,setPaypal] = useState('');
+    const [adl1,setAdl1] = useState('');
+    const [adl2,setAdl2] = useState('');
+    const [city,setCity] = useState('');
+    const [post,setPost] = useState('');
+    const [country,setCountry] = useState('');
 
     const validate = () => {
 
@@ -196,24 +204,24 @@ const Billing = () => {
             <Container>
                 <h1 style={{fontSize:'20px',fontWeight:'700',color:'#12E4A5',marginBottom:'20px'}}>ADD / EDIT  CARD</h1>
                 <div style={{width:'100%'}}>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Card Number</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Card Number</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500',paddingTop:'15px'}}>Card Type</div>
-                        <div style={{display:'flex',flexDirection:'row',fontSize:'56px',width:'75%'}}>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500',paddingTop:'15px'}}>Card Type</div>
+                        <div style={{display:'flex',flexDirection:'row',fontSize:'56px',width:'100%',justifyContent:'space-between',marginLeft:'8%'}}>
                             <span style={{width:'20%'}}><FaCcVisa/></span>
                             <span style={{width:'20%'}}><FaCcMastercard/></span>
                             <span style={{width:'20%',}}><FaCcVisa/></span>
                             <span style={{width:'20%'}}><FaCcMastercard/></span>
                         </div>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Expire Date</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
-                        <div style={{width:'24%',fontSize:'20px',fontWeight:'500',textAlign:'center'}}>CVC</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} >
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500',width:'24%'}}>Expire Date</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px',width:'25%' }} value={expDate} onChange={(e) => setExpDate(e.target.value)} onKeyUp={validate}></input>
+                        <div style={{fontSize:'20px',fontWeight:'500',textAlign:'left',paddingLeft:'5px',width:'24%'}}>CVC</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' ,width:'25%'}} value={cvc} onChange={(e) => setCvc(e.target.value)} onKeyUp={validate}></input>
                     </div>
                     <div>
                         <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
@@ -225,13 +233,13 @@ const Billing = () => {
             <Container>
                  <h1 style={{fontSize:'20px',fontWeight:'700',color:'#12E4A5',marginBottom:'20px'}}>OTHER PAYMENT METHODS</h1>
                 <div style={{width:'100%'}}>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>PAYONEER</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500'}}>PAYONEER</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={payoneer} onChange={(e) => setPayoneer(e.target.value)} onKeyUp={validate}></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>PAYPAL</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500'}}>PAYPAL</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={paypal} onChange={(e) => setPaypal(e.target.value)} onKeyUp={validate}></input>
                     </div>
                     <div>
                         <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
@@ -243,23 +251,23 @@ const Billing = () => {
             <Container>
                  <h1 style={{fontSize:'20px',fontWeight:'700',color:'#12E4A5',marginBottom:'20px'}}>BILLING ADDRESS</h1>
                 <div style={{width:'100%'}}>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Address Line 1</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Address Line 1</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={adl1} onChange={(e) => setAdl1(e.target.value)} onKeyUp={validate}></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Address Line 2</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Address Line 2</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={adl2} onChange={(e) => setAdl2(e.target.value)} onKeyUp={validate}></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>City / Town</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
-                        <div style={{width:'24%',fontSize:'20px',fontWeight:'500',textAlign:'center'}}>Postal Code</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'25%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} >
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500',width:'24%'}}>City / Town</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px',width:'25%' }} value={city} onChange={(e) => setCity(e.target.value)} onKeyUp={validate}></input>
+                        <div style={{fontSize:'20px',fontWeight:'500',textAlign:'left',paddingLeft:'5px',width:'24%'}}>Postal Code</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' ,width:'25%'}} value={post} onChange={(e) => setPost(e.target.value)} onKeyUp={validate}></input>
                     </div>
-                    <div style={{display:'flex',flexDirection:'row',marginBottom:'25px'}}>
-                        <div style={{width:'24%',textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Country</div>
-                        <input type="text" style={{ backgroundColor: "#1F1F1F",width:'75%',borderRadius:'15px',paddingLeft:'10px' }} value={cardNo} onChange={(e) => setCardNo(e.target.value)} onKeyUp={validate}></input>
+                    <div style={{display:'flex',marginBottom:'25px'}} className='fd'>
+                        <div style={{textAlign:'left',fontSize:'20px',fontWeight:'500'}}>Country</div>
+                        <input type="text" style={{ backgroundColor: "#1F1F1F",borderRadius:'15px',paddingLeft:'10px' }} value={country} onChange={(e) => setCountry(e.target.value)} onKeyUp={validate}></input>
                     </div>
                     <div>
                         <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
@@ -273,10 +281,6 @@ const Billing = () => {
 };
 
 const Support = () => {
-    const validate = () => {
-
-    }
-
     const Container = styled.button`
         display:flex;
         width:100%;
@@ -292,7 +296,7 @@ const Support = () => {
             <Container>
                 <h1 style={{fontSize:'28px',fontWeight:'500',color:'#2AAEC0',marginBottom:'20px'}}>Hello, How can we help you?</h1>
                 <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                    <div style={{display:'flex',flexDirection:'row',fontSize:'56px',width:'90%',justifyContent:'space-between'}}>
+                    <div style={{display:'flex',flexDirection:'row',fontSize:'56px',width:'90%',justifyContent:'space-between',gap:'10px'}}>
                         <div style={{width:'175px',height:'175px',background:'#161616',border:'1px solid #12E4A5',borderRadius:'20px',alignItems:'center',justifyContent:'center',display:'flex',fontSize:'75px'}}><MdOutlineSupportAgent/></div>
                         <div style={{width:'175px',height:'175px',background:'#161616',border:'1px solid #12E4A5',borderRadius:'20px',alignItems:'center',justifyContent:'center',display:'flex',fontSize:'75px'}}><FiPhoneCall/></div>
                         <div style={{width:'175px',height:'175px',background:'#161616',border:'1px solid #12E4A5',borderRadius:'20px',alignItems:'center',justifyContent:'center',display:'flex',fontSize:'75px'}}><TbBrandTelegram/></div>
@@ -302,47 +306,47 @@ const Support = () => {
             <Container>
                 <h1 style={{fontSize:'28px',fontWeight:'500',color:'#2AAEC0',marginBottom:'20px'}}>My Support Requsts</h1>
                 <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'center'}}>
-                    <div style={{display:'flex',flexDirection:'column',fontSize:'56px',width:'90%'}}>
-                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
-                            <p>MBRQ22548-248-22</p>
-                            <div style={{display:'flex',flexDirection:'row'}}>
-                                <button style={{width:'220px',marginRight:'2%'}}>
+                    <div style={{display:'flex',flexDirection:'column',fontSize:'56px',width:'100%'}} >
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}} className='fd'>
+                            <div >MBRQ22548-248-22</div>
+                            <div style={{display:'flex',flexDirection:'row',width:'100%'}} >
+                                <button style={{width:'50%',marginRight:'2%'}}>
                                     <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
                                 </button>
-                                <button style={{background:'#12E4A5',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                <button style={{background:'#12E4A5',borderRadius:'10px',width:'50%',float:'right',marginRight:'2%'}}>
                                     <span style={{fontSize:'16px',color:'#000',fontWeight:'700'}}>Pending</span> 
                                 </button>
                             </div>
                         </div>
-                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
-                            <p>MBRQ22548-248-22</p>
-                            <div style={{display:'flex',flexDirection:'row'}}>
-                                <button style={{width:'220px',marginRight:'2%',}}>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}} className='fd'>
+                            <div>MBRQ22548-248-22</div>
+                            <div style={{display:'flex',flexDirection:'row',width:'100%'}}>
+                                <button style={{width:'50%',marginRight:'2%',}}>
                                     <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
                                 </button>
-                                <button style={{background:'#262626',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                <button style={{background:'#262626',borderRadius:'10px',width:'50%',float:'right',marginRight:'2%'}}>
                                     <span style={{fontSize:'16px',color:'#828282',fontWeight:'700'}}>Solved</span> 
                                 </button>
                             </div>
                         </div>
-                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
-                            <p>MBRQ22548-248-22</p>
-                            <div style={{display:'flex',flexDirection:'row'}}>
-                                <button style={{width:'220px',marginRight:'2%',}}>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}} className='fd'>
+                            <div>MBRQ22548-248-22</div>
+                            <div style={{display:'flex',flexDirection:'row',width:'100%'}}>
+                                <button style={{width:'50%',marginRight:'2%',}}>
                                     <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
                                 </button>
-                                <button style={{background:'#262626',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                <button style={{background:'#262626',borderRadius:'10px',width:'50%',float:'right',marginRight:'2%'}}>
                                     <span style={{fontSize:'16px',color:'#828282',fontWeight:'700'}}>Solved</span> 
                                 </button>
                             </div>
                         </div>
-                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}}>
-                            <p>MBRQ22548-248-22</p>
-                            <div style={{display:'flex',flexDirection:'row'}}>
-                                <button style={{width:'220px',marginRight:'2%',}}>
+                        <div style={{width:'100%',background:'#161616',borderRadius:'15px',alignItems:'center',justifyContent:'space-between',display:'flex',fontSize:'20px',padding:'10px',marginBottom:'10px'}} className='fd'>
+                            <div>MBRQ22548-248-22</div>
+                            <div style={{display:'flex',flexDirection:'row',width:'100%'}}>
+                                <button style={{width:'50%',marginRight:'2%',}}>
                                     <span style={{fontSize:'16px',color:'#636363',fontWeight:'700'}}>ADD CARD</span> 
                                 </button>
-                                <button style={{background:'#262626',borderRadius:'10px',width:'220px',float:'right',marginRight:'2%'}}>
+                                <button style={{background:'#262626',borderRadius:'10px',width:'50%',float:'right',marginRight:'2%'}}>
                                     <span style={{fontSize:'16px',color:'#828282',fontWeight:'700'}}>Solved</span> 
                                 </button>
                             </div>
