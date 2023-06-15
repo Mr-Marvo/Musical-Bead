@@ -49,27 +49,6 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
             alt="default album"
             className="rounded-xl"
           />
-          <div className="absolute right-4 bottom-4">
-            <div className="flex flex-col">
-              <img
-                src={TagTop}
-                className="3xl:w-[120px] w-[60px]"
-                alt="Bead"
-                style={{ width: "45px" }}
-              />
-              <div
-                className="flex bg-tag-bottom bg-cover bg-center w-[60px] h-[55px] 3xl:w-[200px] 3xl:h-[190px] justify-center items-center"
-                style={{ width: "45px", height: "42px" }}
-              >
-                <img
-                  src={album.cover_image_path}
-                  className="flex 3xl:w-[135px] w-[40px] rounded-full mb-1 3xl:mb-4 3xl:mr-1"
-                  alt="Bead"
-                  style={{ width: "20px" }}
-                />
-              </div>
-            </div>
-          </div>
         </div>
         <audio ref={audioRef} src={album.sample_url} />
         <div className="flex text-[16px] font-normal text-[#BA55C2] mt-1 overflow-hidden text-ellipsis whitespace-nowrap">
