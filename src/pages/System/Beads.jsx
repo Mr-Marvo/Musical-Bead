@@ -1,54 +1,47 @@
 import React, { useEffect, useState } from "react";
 import "../../App.css";
 
-import Album from "../Common/Album";
 import { BsSearch } from "react-icons/bs";
 import { NewFooter, NewHeader } from "../../components/system";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
+import Bead from "../Common/Bead";
 
-function AllAlbums() {
+function Beads() {
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
-  const [albums, setAlbums] = useState([]);
+  const [beads, setBeads] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredObjects = albums.filter((obj) => {
+  const filteredObjects = beads?.filter((obj) => {
     const searchableText =
       `${obj.name} ${obj.title} ${obj.description} ${obj.slogan}`.toLowerCase();
     return searchableText.includes(searchQuery.toLowerCase());
   });
 
-  const [currentAlbumId, setCurrentAlbumId] = useState(null);
-
-  const handleAlbumClick = (albumId) => {
-    setCurrentAlbumId(albumId);
-  };
-
   useEffect(() => {
-    loadAlbums();
+    loadBeads();
   }, []);
 
-  const loadAlbums = () => {
+  const loadBeads = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const bodyParameters = {
-      user_id: localStorage.getItem("userid"),
-      musician_user_id: 0,
-      status: 2,
+      user_id: 0,
+      bead_id: 0,
+      status: -2,
     };
 
     axios
-      .post(url + "/album/all", bodyParameters, config)
+      .post(url + "/bead/all", bodyParameters, config)
       .then((response) => {
         console.log(response);
         if (response?.status === 200) {
-          setAlbums(response.data.output.albums);
+          setBeads(response.data.output);
         } else {
           console.log(response);
-          
         }
       })
       .catch((error) => {
@@ -118,22 +111,15 @@ function AllAlbums() {
             </div>
             <div>
               <div className="home_grid gap-4">
-                {filteredObjects.map((album) => {
-                  return (
-                    <Album
-                      key={album.id}
-                      album={album}
-                      isPlaying={currentAlbumId === album.id}
-                      onAlbumClick={handleAlbumClick}
-                    />
-                  );
+                {filteredObjects.map((bead) => {
+                  return <Bead bead={bead} />;
                 })}
               </div>
             </div>
           </>
         ) : (
           <>
-            {albums.length === 0 ? (
+            {beads.length === 0 ? (
               <></>
             ) : (
               <>
@@ -148,20 +134,13 @@ function AllAlbums() {
                       justifyContent: "center",
                     }}
                   >
-                    <pre className="headline font-nunito">ALL ALBUMS</pre>
+                    <pre className="headline font-nunito">ALL BEADS</pre>
                   </div>
                 </div>
                 <div>
                   <div className="home_grid gap-4">
-                    {albums.map((album) => {
-                      return (
-                        <Album
-                          key={album.id}
-                          album={album}
-                          isPlaying={currentAlbumId === album.id}
-                          onAlbumClick={handleAlbumClick}
-                        />
-                      );
+                    {beads.map((bead) => {
+                      return <Bead bead={bead} />;
                     })}
                   </div>
                 </div>
@@ -176,4 +155,4 @@ function AllAlbums() {
   );
 }
 
-export default AllAlbums;
+export default Beads;

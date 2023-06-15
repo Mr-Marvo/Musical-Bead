@@ -3,12 +3,7 @@ import './SuccessAlert.css';
 import {CiCircleCheck} from 'react-icons/ci';
 import { RxCross2 } from "react-icons/rx";
 
-const SuccessAlert = ({ show, message }) => {
-    const onClose = () => {
-        /* 
-         Handle
-        */
-     }
+const SuccessAlert = ({ show, message, onClose }) => {
   return (
     <>
       {show && (
