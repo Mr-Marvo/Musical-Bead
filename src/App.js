@@ -21,12 +21,14 @@ import {
 } from "./pages";
 
 
+
 function App() {
   const token = localStorage.getItem('token');
 
   return (
     <BrowserRouter>
       <Routes>
+     
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
@@ -52,7 +54,7 @@ function App() {
             <Route path="/beadview" element={<BeadView />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
-            <Route path="/album-edit" element={<AlbumEdit />} 
+            <Route path="/album-edit" element={<AlbumEdit />}  />
             <Route path="/settings" element={<Settings />} />
           </>
         ) : (
