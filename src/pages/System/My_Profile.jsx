@@ -155,9 +155,9 @@ function My_Profile() {
         <div className="my_profile_container">
           <div className="my_profile_sub_container1">
             <div className="sub_1">
-              <div className="img_container3">
-                <div>
-                  <img src={profile === null ? ProfileImage : profile} alt="User" />
+              <div className="img_container3" style={{width:'205px',height:'205px',borderRadius:'100px'}}>
+                <div style={{width:'200px',height:'200px',borderRadius:'100px'}}>
+                  <img src={profile === null ? ProfileImage : profile} alt="User" style={{width:'200px',height:'200px',borderRadius:'100px'}} />
                 </div>
               </div>
             </div>

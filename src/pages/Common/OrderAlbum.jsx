@@ -6,10 +6,10 @@ const OrderAlbum = () => {
     <div className="flex flex-row gap-3 w-[300px] h-120 my-2 bg-black rounded-xl p-2">
       <div className="flex flex-col w-fit h-fit pl-2 pt-2 pb-2 relative">
         <div className="flex">
-          <img src={DefaultAlbum} alt="default album" />
+          <img src={DefaultAlbum} alt="default album" style={{width:'140px',height:'140px'}}/>
           <div className="absolute right-0 bottom-4">
             <div className="flex flex-col">
-              <img src={TagTop} className="3xl:w-[120px] w-[60px]" alt="Bead" />
+              <img src={TagTop} className="3xl:w-[120px] w-[60px]" alt="Bead" /> 
               <div className="flex bg-tag-bottom bg-cover bg-center w-[60px] h-[55px] 3xl:w-[200px] 3xl:h-[190px] justify-center items-center">
                 <img
                   src={DefaultAlbum}

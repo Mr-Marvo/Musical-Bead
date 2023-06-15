@@ -48,6 +48,7 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
             src={album.cover_image_path}
             alt="default album"
             className="rounded-xl"
+            style={{width:'100px',height:'140px'}}
           />
         </div>
         <audio ref={audioRef} src={album.sample_url} />
