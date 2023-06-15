@@ -48,6 +48,7 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
             src={album.cover_image_path}
             alt="default album"
             className="rounded-xl"
+            style={{width:'100px',height:'140px'}}
           />
           <div className="absolute right-4 bottom-4">
             <div className="flex flex-col">
