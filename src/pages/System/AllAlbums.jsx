@@ -48,6 +48,7 @@ function AllAlbums() {
           setAlbums(response.data.output.albums);
         } else {
           console.log(response);
+          
         }
       })
       .catch((error) => {

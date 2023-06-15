@@ -3,6 +3,7 @@ import {
   AlbumEdit,
   AlbumView,
   AllAlbums,
+  BeadView,
   Beads,
   Cart,
   Earnings,
@@ -14,10 +15,10 @@ import {
   NotFound,
   PendingAlbums,
   ProfileView,
+  Settings,
   SignIn,
   SignUp,
 } from "./pages";
-import ProfileStore from "./pages/System/ProfileStore";
 
 
 function App() {
@@ -48,10 +49,11 @@ function App() {
             <Route exact path="/profile-view" element={<ProfileView />} />
             <Route path="/earnings" element={<Earnings />} />
             <Route path="/beads" element={<Beads />} />
+            <Route path="/beadview" element={<BeadView />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
-            <Route path="/album-edit" element={<AlbumEdit />} />
-            <Route exact path="/profilestore" element={<ProfileStore />} />
+            <Route path="/album-edit" element={<AlbumEdit />} 
+            <Route path="/settings" element={<Settings />} />
           </>
         ) : (
           <>

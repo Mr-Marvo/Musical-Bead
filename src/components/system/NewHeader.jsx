@@ -2,23 +2,19 @@ import React, { useRef, useState } from "react";
 import Singer from "../../assets/images/common/singer.png";
 
 import { FaBars } from "react-icons/fa";
-import { BiMessageAltDots, BiSupport } from "react-icons/bi";
-import { BsBell } from "react-icons/bs";
 import { RiArrowUpSFill, RiArrowDownSFill } from "react-icons/ri";
-import { AiTwotoneSetting, AiFillDollarCircle } from "react-icons/ai";
+import { AiTwotoneSetting } from "react-icons/ai";
 import { TbLogout } from "react-icons/tb";
 import { Logo } from "../../assets";
 import { useContentContext } from "../../providers/ContentContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 
 const NewHeader = () => {
   const navRef = useRef();
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
-/* There is a problem in below line when using chrome browser... Please check */
-  let userName = localStorage.getItem("username").split('')[0];
+  let userName = localStorage.getItem("username").split(' ')[0];
   const userTag = useState(`Hi! ${userName}`);
   const location = window.location.pathname;
 
@@ -50,11 +46,21 @@ const NewHeader = () => {
           localStorage.clear();
           window.location.replace("/signin");
         } else {
-          console.log(response);
+          console.log(response.data.message);
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.status === 401) {
+          localStorage.clear();
+          window.location.replace("/login");
+        } else {
+          if (error.response.status === 401) {
+            localStorage.clear();
+            window.location.replace("/login");
+          } else {
+            console.log(error.response.data.message)
+          }
+        }
       });
   };
 
@@ -73,6 +79,14 @@ const NewHeader = () => {
               }`}
             >
               Home
+            </a>
+            <a
+              href="/beads"
+              className={`text-[20px] font-nunito ${
+                location === "/beads" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Beads
             </a>
             <a
               href="/dashboard"
@@ -113,24 +127,9 @@ const NewHeader = () => {
       </button>
       {/* Right Side Button Container */}
       <div className="btn-container">
-        <BiMessageAltDots
-          style={{
-            fontSize: 46,
-            padding: 10,
-            alignSelf: "center",
-            justifySelf: "center",
-          }}
-        />
-        <BsBell
-          style={{
-            fontSize: 46,
-            padding: 10,
-            alignSelf: "center",
-            justifySelf: "center",
-          }}
-        />
+       
         <img
-          src={localStorage.getItem('profile') === null ? Singer : localStorage.getItem('profile')}
+          src={localStorage.getItem('profile') === 'null' ? Singer : localStorage.getItem('profile')}
           alt="User"
           className="singer_image cursor-pointer"
           onClick={handleToggleCollapse3}
@@ -152,14 +151,6 @@ const NewHeader = () => {
                 <li>
                   <AiTwotoneSetting />
                   <a href="/settings">Settings</a>
-                </li>
-                <li>
-                  <AiFillDollarCircle />
-                  <a href="/#">Billings</a>
-                </li>
-                <li>
-                  <BiSupport />
-                  <a href="/#">Support</a>
                 </li>
                 <li>
                   <TbLogout />

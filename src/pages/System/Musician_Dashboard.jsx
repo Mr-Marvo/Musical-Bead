@@ -16,7 +16,7 @@ import { useContentContext } from "../../providers/ContentContext";
 import axios from "axios";
 import FlatList from "../../components/Common/FlatList";
 import LoadingCircle from "../../components/Common/LoadingCircle";
-import SuccessAlert from '../../components/Common/SuccessAlert';
+import SuccessAlert from "../../components/Common/SuccessAlert";
 import ErrorAlert from "../../components/Common/ErrorAlert";
 
 function Musician_Dashboard() {
@@ -83,6 +83,18 @@ function Musician_Dashboard() {
   const [price, setPrice] = useState("");
 
   const [state, setState] = useState(0);
+
+  const [successTitle, setSuccessTitle] = useState();
+  const [successShow, setSuccessShow] = useState(false);
+  const [errorTitle, setErrorTitle] = useState();
+  const [errorShow, setErrorShow] = useState(false);
+
+  const successClose = () => {
+    setSuccessShow(false);
+  };
+  const errorClose = () => {
+    setErrorShow(false);
+  };
 
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
@@ -185,11 +197,12 @@ function Musician_Dashboard() {
     if (state === 0) {
       if (
         title !== "" &&
-        /^[a-z A-Z]*$/.test(title) &&
+        title !== undefined &&
         price !== "" &&
+        price !== undefined &&
         /^[0-9]*$/.test(price) &&
         description !== "" &&
-        /^[a-z A-Z]*$/.test(description) &&
+        description !== undefined &&
         selectedSong
       ) {
         setIsLoadingCircle(true);
@@ -213,7 +226,6 @@ function Musician_Dashboard() {
         axios
           .post(url + "/album/add", data3, config)
           .then((response) => {
-            console.log(response);
             if (response?.status === 200) {
               setAlbumID(response.data.output.id);
               setIsSubmit(!isSubmit);
@@ -226,12 +238,19 @@ function Musician_Dashboard() {
               } else {
                 loadPendingAlbums(localStorage.getItem("userid"));
               }
+              setSuccessTitle("Album Added!");
+              setSuccessShow(true);
             } else {
               console.log(response);
+
+              setErrorTitle("Error");
+              setErrorShow(true);
             }
           })
           .catch((error) => {
             console.log(error);
+            setErrorTitle("Error");
+            setErrorShow(true);
           });
       } else {
         validate();
@@ -246,9 +265,6 @@ function Musician_Dashboard() {
       setAlbumNameE("* required");
     } else {
       setAlbumNameE("");
-    }
-    if (!/^[a-z A-Z]*$/.test(title)) {
-      setAlbumNameE("* Please Enter Only Letters");
     }
 
     if (price === "") {
@@ -265,9 +281,6 @@ function Musician_Dashboard() {
     } else {
       setDescriptionE("");
     }
-    if (!/^[a-z A-Z]*$/.test(description)) {
-      setDescriptionE("* Please Enter Only Letters");
-    }
   };
 
   const validateBead = () => {
@@ -276,17 +289,11 @@ function Musician_Dashboard() {
     } else {
       setBeadDescriptionE("");
     }
-    if (!/^[a-z A-Z]*$/.test(beadDescription)) {
-      setBeadDescriptionE("* Please Enter Only Letters");
-    }
 
     if (beadDimension === "") {
       setBeadDimensionE("* required");
     } else {
       setBeadDimensionE("");
-    }
-    if (!/^[a-z A-Z]*$/.test(beadDimension)) {
-      setBeadDimensionE("* Please Enter Only Letters");
     }
 
     if (beadName === "") {
@@ -294,26 +301,17 @@ function Musician_Dashboard() {
     } else {
       setBeadNameE("");
     }
-    if (!/^[a-z A-Z]*$/.test(beadName)) {
-      setBeadNameE("* Please Enter Only Letters");
-    }
 
     if (beadModel === "") {
       setBeadModelE("* required");
     } else {
       setBeadModelE("");
     }
-    if (!/^[a-z A-Z]*$/.test(beadModel)) {
-      setBeadModelE("* Please Enter Only Letters");
-    }
 
     if (beadKeyRing === "") {
       setBeadKeyRingE("* required");
     } else {
       setBeadKeyRingE("");
-    }
-    if (!/^[a-z A-Z]*$/.test(beadKeyRing)) {
-      setBeadKeyRingE("* Please Enter Only Letters");
     }
 
     if (beadPrice === "") {
@@ -324,28 +322,22 @@ function Musician_Dashboard() {
   };
 
   const addBead = () => {
+    console.log(beadDescription);
     if (
       beadDescription !== "" &&
-      /^[a-z A-Z]*$/.test(beadDescription) &&
+      beadDescription !== undefined &&
       beadDimension !== "" &&
-      /^[a-z A-Z]*$/.test(beadDimension) &&
+      beadDimension !== undefined &&
       beadName !== "" &&
-      /^[a-z A-Z]*$/.test(beadName) &&
+      beadName !== undefined &&
       beadModel !== "" &&
-      /^[a-z A-Z]*$/.test(beadModel) &&
+      beadModel !== undefined &&
       beadKeyRing !== "" &&
-      /^[a-z A-Z]*$/.test(beadKeyRing) &&
+      beadKeyRing !== undefined &&
+      beadPrice !== undefined &&
       beadPrice !== ""
     ) {
       setIsLoadingCircle(true);
-
-      console.log(picture);
-      console.log(beadDescription);
-      console.log(beadName);
-      console.log(beadPrice);
-      console.log(beadModel);
-      console.log(beadDimension);
-      console.log(beadKeyRing);
 
       const config = {
         headers: { Authorization: `Bearer ${token}` },
@@ -365,10 +357,10 @@ function Musician_Dashboard() {
       axios
         .post(url + "/bead/add", data3, config)
         .then((response) => {
-          console.log(response);
           if (response?.status === 200) {
             setIsLoadingCircle(false);
-            alert("Successfully Added!");
+            setSuccessTitle("Bead Added!");
+            setSuccessShow(true);
             setBeadDescription("");
             setBeadDimension("");
             setBeadName("");
@@ -378,13 +370,20 @@ function Musician_Dashboard() {
             setImgData(null);
           } else {
             console.log(response);
+
+            setErrorTitle("Error");
+            setErrorShow(true);
           }
         })
         .catch((error) => {
           console.log(error);
+
+          setErrorTitle("Error");
+          setErrorShow(true);
         });
     } else {
-      alert("Not Verified!");
+      setErrorTitle("All Fields Required!");
+      setErrorShow(true);
     }
   };
 
@@ -652,218 +651,258 @@ function Musician_Dashboard() {
 
           {usertype === "1" ? (
             <>
-             <pre className="headline font-nunito">Publish New Bead</pre>
-              <div className="new_bead_add_container" style={{backgroundColor: "rgba(0,0,0,0.32)",marginTop: "10px",borderRadius: "25px",padding: "1rem",display:'grid',gap:'2.5rem'}}>
-                    {imgData == null ? (
-                        <div
-                            style={{
-                            position: "relative",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            flexDirection:'column',
-                           
-                            }}
-                            className="justify-center items-center"
-                        >
-                            <label className="text-[#555555]">Upload Image</label>
-                            <button
-                            onClick={handleButtonClick}
-                            className="upload_wrap"
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "column",
-                                width: "200px",
-                                height: "200px",
-                            }}
-                            >
-                            <input
-                                accept="image/*"
-                                id="profilePic"
-                                type="file"
-                                onChange={onChangePicture}
-                                ref={fileInputRef}
-                                style={{ display: "none" }}
-                            />
-                            <img src={ImageIcon} alt="icon" />
-                            <p style={{ color: "#767676" }}>Upload Convert</p>
-                            <p style={{ color: "#767676" }}>(JPG,PNG)</p>
-                            </button>
-                        </div>
-                    ) : (
-                        <div
-                            style={{
-                            position: "relative",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            flexDirection:'column',
-                            
-                            }}
-                            className="justify-center items-center"
-                        >
-                            <label className="text-[#555555]">Upload Image</label>
-                            <RxCross2
-                            style={{
-                                color: "#fff",
-                                position: "absolute",
-                                right: 70,
-                                top: 20,
-                            }}
-                            onClick={() => {
-                                setImgData(null);
-                            }}
-                            />
-                            <div
-                            className="upload_wrap"
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "column",
-                                width: "200px",
-                                height: "200px"
-                            }}
-                            >
-                            <img
-                                className="playerProfilePic_home_tile"
-                                src={imgData}
-                                style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "column",
-                                borderRadius: "5px",
-                                width: "200px",
-                                height: "200px",
-                                }}
-                                alt="bead"
-                            />
-                            </div>
-                        </div>
-                    )}
-
-                    <div style={{display: "flex",flexDirection: "column"}}>
-                        <label className="text-[#555555]">Name</label>
-                        <input
-                            type="text"
-                            style={{
-                            backgroundColor: "#1F1F1F",
-                            color: "#ffff",
-                            borderRadius: "25px",
-                            height: "30px",
-                            padding:'10px'
-                            }}
-                            value={beadName}
-                            onChange={(e) => {
-                            setBeadName(e.target.value);
-                            }}
-                            onKeyUp={validateBead}
-                        ></input>
-                        {beadNameE && <div className="error" style={{marginTop:'5px'}}>{beadNameE}</div>}
-
-                        <label className="text-[#555555]">Model Number</label>
-                        <input
-                            type="text"
-                            style={{
-                            backgroundColor: "#1F1F1F",
-                            color: "#ffff",
-                            borderRadius: "25px",
-                            height: "30px",
-                            padding:'10px'
-                            }}
-                            value={beadModel}
-                            onChange={(e) => {
-                            setBeadModel(e.target.value);
-                            }}
-                            onKeyUp={validateBead}
-                        ></input>
-                            {beadModelE && <div className="error" style={{marginTop:'5px'}}>{beadModelE}</div>}
-
-                        <label className="text-[#555555]">Key Ring</label>
-                        <input
-                            type="text"
-                            style={{
-                            backgroundColor: "#1F1F1F",
-                            color: "#ffff",
-                            borderRadius: "25px",
-                            height: "30px",
-                            padding:'10px'
-                            }}
-                            value={beadKeyRing}
-                            onChange={(e) => {
-                            setBeadKeyRing(e.target.value);
-                            }}
-                            onKeyUp={validateBead}
-                        ></input>
-                            {beadKeyRingE && <div className="error" style={{marginTop:'5px'}}>{beadKeyRingE}</div>}
-                        <label className="text-[#555555]">Price</label>
-                        <input
-                            type="number"
-                            style={{
-                            backgroundColor: "#1F1F1F",
-                            color: "#ffff",
-                            borderRadius: "25px",
-                            height: "30px",
-                            padding:'10px'
-                            }}
-                            value={beadPrice}
-                            onChange={(e) => {
-                            setBeadPrice(e.target.value);
-                            }}
-                            onKeyUp={validateBead}
-                        ></input>
-                            {beadPriceE && <div className="error" style={{marginTop:'5px'}}>{beadPriceE}</div>}  
-                   
+              <pre className="headline font-nunito">Publish New Bead</pre>
+              <div
+                className="new_bead_add_container"
+                style={{
+                  backgroundColor: "rgba(0,0,0,0.32)",
+                  marginTop: "10px",
+                  borderRadius: "25px",
+                  padding: "1rem",
+                  display: "grid",
+                  gap: "2.5rem",
+                }}
+              >
+                {imgData == null ? (
+                  <div
+                    style={{
+                      position: "relative",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flexDirection: "column",
+                    }}
+                    className="justify-center items-center"
+                  >
+                    <label className="text-[#555555]">Upload Image</label>
+                    <button
+                      onClick={handleButtonClick}
+                      className="upload_wrap"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        width: "200px",
+                        height: "200px",
+                      }}
+                    >
+                      <input
+                        accept="image/*"
+                        id="profilePic"
+                        type="file"
+                        onChange={onChangePicture}
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                      />
+                      <img src={ImageIcon} alt="icon" />
+                      <p style={{ color: "#767676" }}>Upload Convert</p>
+                      <p style={{ color: "#767676" }}>(JPG,PNG)</p>
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      position: "relative",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flexDirection: "column",
+                    }}
+                    className="justify-center items-center"
+                  >
+                    <label className="text-[#555555]">Upload Image</label>
+                    <RxCross2
+                      style={{
+                        color: "#fff",
+                        position: "absolute",
+                        right: 70,
+                        top: 20,
+                      }}
+                      onClick={() => {
+                        setImgData(null);
+                      }}
+                    />
+                    <div
+                      className="upload_wrap"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        width: "200px",
+                        height: "200px",
+                      }}
+                    >
+                      <img
+                        className="playerProfilePic_home_tile"
+                        src={imgData}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexDirection: "column",
+                          borderRadius: "5px",
+                          width: "200px",
+                          height: "200px",
+                        }}
+                        alt="bead"
+                      />
                     </div>
+                  </div>
+                )}
 
-                    <div style={{ display: "flex", flexDirection: "column"}}>
-                        <label className="text-[#555555]">Features</label>
-                        <textarea
-                            type="text"
-                            style={{
-                            backgroundColor: "#1F1F1F",
-                            color: "#ffff",
-                            borderRadius: "25px",
-                        
-                            padding:'10px'
-                            }}
-                            value={beadDescription}
-                            onChange={(e) => {
-                            setBeadDescription(e.target.value);
-                            }}
-                            onKeyUp={validateBead}
-                        ></textarea>
-                        {beadDescriptionE && <div className="error" style={{marginTop:'5px'}}>{beadDescriptionE}</div>}
-                        <label className="text-[#555555]">Dimensions</label>
-                        <textarea
-                            type="text"
-                            style={{
-                            backgroundColor: "#1F1F1F",
-                            color: "#ffff",
-                            borderRadius: "25px",
-                        
-                            padding:'10px'
-                            }}
-                            value={beadDimension}
-                            onChange={(e) => {
-                            setBeadDimension(e.target.value);
-                            }}
-                            onKeyUp={validateBead}
-                        ></textarea>
-                        {beadDimensionE && <div className="error" style={{marginTop:'5px'}}>{beadDimensionE}</div>}
-                        <div>
-                            <button  
-                                style={{color: "white", width: "160px",height: "30px",marginTop: "30px",fontSize: "16px",background:"linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)",borderRadius: "25px",float:'right'}}
-                                onClick={addBead}
-                            >
-                                Add
-                            </button>
-                        </div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <label className="text-[#555555]">Name</label>
+                  <input
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                      padding: "10px",
+                    }}
+                    value={beadName}
+                    onChange={(e) => {
+                      setBeadName(e.target.value);
+                    }}
+                    onKeyUp={validateBead}
+                  ></input>
+                  {beadNameE && (
+                    <div className="error" style={{ marginTop: "5px" }}>
+                      {beadNameE}
                     </div>
-             
+                  )}
+
+                  <label className="text-[#555555]">Model Number</label>
+                  <input
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                      padding: "10px",
+                    }}
+                    value={beadModel}
+                    onChange={(e) => {
+                      setBeadModel(e.target.value);
+                    }}
+                    onKeyUp={validateBead}
+                  ></input>
+                  {beadModelE && (
+                    <div className="error" style={{ marginTop: "5px" }}>
+                      {beadModelE}
+                    </div>
+                  )}
+
+                  <label className="text-[#555555]">Key Ring</label>
+                  <input
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                      padding: "10px",
+                    }}
+                    value={beadKeyRing}
+                    onChange={(e) => {
+                      setBeadKeyRing(e.target.value);
+                    }}
+                    onKeyUp={validateBead}
+                  ></input>
+                  {beadKeyRingE && (
+                    <div className="error" style={{ marginTop: "5px" }}>
+                      {beadKeyRingE}
+                    </div>
+                  )}
+                  <label className="text-[#555555]">Price</label>
+                  <input
+                    type="number"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+                      height: "30px",
+                      padding: "10px",
+                    }}
+                    value={beadPrice}
+                    onChange={(e) => {
+                      setBeadPrice(e.target.value);
+                    }}
+                    onKeyUp={validateBead}
+                  ></input>
+                  {beadPriceE && (
+                    <div className="error" style={{ marginTop: "5px" }}>
+                      {beadPriceE}
+                    </div>
+                  )}
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <label className="text-[#555555]">Features</label>
+                  <textarea
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+
+                      padding: "10px",
+                    }}
+                    value={beadDescription}
+                    onChange={(e) => {
+                      setBeadDescription(e.target.value);
+                    }}
+                    onKeyUp={validateBead}
+                  ></textarea>
+                  {beadDescriptionE && (
+                    <div className="error" style={{ marginTop: "5px" }}>
+                      {beadDescriptionE}
+                    </div>
+                  )}
+                  <label className="text-[#555555]">Dimensions</label>
+                  <textarea
+                    type="text"
+                    style={{
+                      backgroundColor: "#1F1F1F",
+                      color: "#ffff",
+                      borderRadius: "25px",
+
+                      padding: "10px",
+                    }}
+                    value={beadDimension}
+                    onChange={(e) => {
+                      setBeadDimension(e.target.value);
+                    }}
+                    onKeyUp={validateBead}
+                  ></textarea>
+                  {beadDimensionE && (
+                    <div className="error" style={{ marginTop: "5px" }}>
+                      {beadDimensionE}
+                    </div>
+                  )}
+                  <div>
+                    <button
+                      style={{
+                        color: "white",
+                        width: "160px",
+                        height: "30px",
+                        marginTop: "30px",
+                        fontSize: "16px",
+                        background:
+                          "linear-gradient(270deg, #2AAEC0 0%, #12E45A 100%)",
+                        borderRadius: "25px",
+                        float: "right",
+                      }}
+                      onClick={addBead}
+                    >
+                      Add
+                    </button>
+                  </div>
+                </div>
               </div>
             </>
           ) : (
@@ -1044,6 +1083,12 @@ function Musician_Dashboard() {
 
       <NewFooter />
       <LoadingCircle show={isLoadingClircle} />
+      <SuccessAlert
+        show={successShow}
+        message={successTitle}
+        onClose={successClose}
+      />
+      <ErrorAlert show={errorShow} message={errorTitle} onClose={errorClose} />
     </>
   );
 }
