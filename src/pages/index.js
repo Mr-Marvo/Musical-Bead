@@ -17,5 +17,6 @@ export { default as Beads } from './System/Beads'
 export { default as Settings } from './System/ProfileStore'
 
 export { default as AlbumView } from './Common/AlbumView/AlbumView'
+export { default as BeadView } from './Common/BeadView/BeadView'
 export { default as AlbumEdit } from './Common/AlbumEdit/AlbumEdit'
 export { default as Cart } from './Common/Cart/Cart'

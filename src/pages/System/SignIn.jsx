@@ -11,6 +11,8 @@ const SignIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const [message, setMessage] = useState();
+
   const signin = (e) => {
     e.preventDefault();
 
@@ -31,10 +33,12 @@ const SignIn = () => {
           getAuthUser(response.data.output);
         } else {
           console.log(response);
+          setMessage(response.data.message);
         }
       })
       .catch((error) => {
         console.log(error);
+        setMessage(error.message);
       });
   };
 
@@ -102,6 +106,9 @@ const SignIn = () => {
                 >
                   Sign In
                 </button>
+              </div>
+              <div className="flex flex-col justify-center items-center text-red-600 text-sm font-medium">
+                {message}
               </div>
               <div className="flex font-nunito text-base text-[#7D7D7D] w-full justify-center underline">
                 <Link to="#">Forgot Password</Link>
