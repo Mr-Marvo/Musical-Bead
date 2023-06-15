@@ -1,5 +1,5 @@
 import React from "react";
-import { Equalizer, PauseButton, PlayButton, TagTop } from "../../assets";
+import { Equalizer, PauseButton, PlayButton } from "../../assets";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
@@ -38,7 +38,7 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
 
   return (
     <div
-      className="flex flex-row gap-3 w-[240px] h-120 justify-center items-center my-2"
+      className="flex flex-row gap-3 w-[250px] h-120 justify-center items-center my-2"
       onClick={() => {
         albumView(album.id, album);
       }}
@@ -49,7 +49,7 @@ const Album = ({ album, isPlaying, onAlbumClick }) => {
             src={album.cover_image_path}
             alt="default album"
             className="rounded-xl"
-            style={{width:'100px',height:'140px'}}
+            style={{ width: "180px", height: "200px" }}
           />
         </div>
         <audio ref={audioRef} src={album.sample_url} />
