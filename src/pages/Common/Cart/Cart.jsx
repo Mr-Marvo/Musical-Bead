@@ -10,6 +10,8 @@ import CustomCheckbox from '../../../components/Common/CustomCheckbox';
 import MyAlbumImg from '../../../assets/images/system/MyAlbumImg.png';
 
 function Cart() {
+  
+
     const [num,setNum] = useState(0);
 
     const handlePlus = () => {

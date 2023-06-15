@@ -21,12 +21,14 @@ import {
 } from "./pages";
 
 
+
 function App() {
   const token = localStorage.getItem('token');
 
   return (
     <BrowserRouter>
       <Routes>
+     
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route exact path="/" element={<LandingPage />} />
