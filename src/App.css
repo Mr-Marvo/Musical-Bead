@@ -297,7 +297,8 @@ header .nav-btn {
   .footer_content2,
   .footer_content3,
   .footer_content4 {
-    width: 100%;
+  
+    width: 80%;
     padding-bottom: 50px;
     margin-bottom: 50px;
     border-bottom: 1px solid var(--textColor);
@@ -317,7 +318,15 @@ header .nav-btn {
   .footer_content4 pre {
     font-size: 14px;
   }
+
+  .store_container span {
+    margin-left: 1px;
+    font-size: 14px;
+  }
+ 
 }
+
+
 
 /* ======================================================================================================================================= */
 /* Add Song Pop Up*/
