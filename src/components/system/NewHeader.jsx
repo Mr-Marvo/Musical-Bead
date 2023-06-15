@@ -14,7 +14,7 @@ const NewHeader = () => {
   const navRef = useRef();
   let { url } = useContentContext();
   const token = localStorage.getItem("token");
-  let userName = localStorage.getItem("username").split(' ')[0];
+  let userName = localStorage.getItem("username").split(" ")[0];
   const userTag = useState(`Hi! ${userName}`);
   const location = window.location.pathname;
 
@@ -58,7 +58,7 @@ const NewHeader = () => {
             localStorage.clear();
             window.location.replace("/login");
           } else {
-            console.log(error.response.data.message)
+            console.log(error.response.data.message);
           }
         }
       });
@@ -106,7 +106,32 @@ const NewHeader = () => {
             </a>
           </>
         ) : (
-          <></>
+          <>
+          <a
+              href="/home"
+              className={`text-[20px] font-nunito ${
+                location === "/home" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Home
+            </a>
+            <a
+              href="/beads"
+              className={`text-[20px] font-nunito ${
+                location === "/beads" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Beads
+            </a>
+            <a
+              href="/cart"
+              className={`text-[20px] font-nunito ${
+                location === "/cart" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              Cart
+            </a>
+          </>
         )}
         {usertype === "2" ? (
           <a
@@ -127,9 +152,12 @@ const NewHeader = () => {
       </button>
       {/* Right Side Button Container */}
       <div className="btn-container">
-       
         <img
-          src={localStorage.getItem('profile') === 'null' ? Singer : localStorage.getItem('profile')}
+          src={
+            localStorage.getItem("profile") === "null"
+              ? Singer
+              : localStorage.getItem("profile")
+          }
           alt="User"
           className="singer_image cursor-pointer"
           onClick={handleToggleCollapse3}

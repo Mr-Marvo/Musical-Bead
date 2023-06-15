@@ -49,7 +49,7 @@ function AlbumView() {
   useEffect(() => {
     getMusician();
     viewAlbum(params.album_id);
-  },[]);
+  }, []);
 
   const getMusician = () => {
     const config = {
@@ -130,7 +130,7 @@ function AlbumView() {
       .post(url + "/album/status", data, config)
       .then((response) => {
         if (response?.status === 200) {
-          window.location.replace('/pending');
+          window.location.replace("/pending");
         } else {
           console.log(response);
         }
@@ -154,7 +154,7 @@ function AlbumView() {
       .post(url + "/album/status", data, config)
       .then((response) => {
         if (response?.status === 200) {
-          window.location.replace('/pending');
+          window.location.replace("/pending");
         } else {
           console.log(response);
         }
@@ -180,22 +180,6 @@ function AlbumView() {
                       alt="default album"
                       className="w-[350px] rounded-3xl"
                     />
-                    <div className="absolute right-4 bottom-4 z-10">
-                      <div className="flex flex-col">
-                        <img
-                          src={TagTop}
-                          className="3xl:w-[200px] w-[120px]"
-                          alt="Bead"
-                        />
-                        <div className="flex bg-tag-bottom bg-cover bg-center w-[120px] h-[112px] 3xl:w-[200px] 3xl:h-[190px] justify-center items-center">
-                          <img
-                            src={album.cover_image_path}
-                            className="flex 3xl:w-[135px] w-[80px] h-[80px] rounded-full mb-2 mr-[2px] 3xl:mb-4 3xl:mr-1"
-                            alt="Bead"
-                          />
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   <audio ref={audioRef} src={album.sample_url} />
                   <div className="flex text-[24px] font-normal text-[#BA55C2] mt-1">
@@ -386,9 +370,8 @@ function AlbumView() {
             ) : (
               <></>
             )}
-
           </div>
-          
+
           <div className="album_view_right_container">
             <div className="meet_musician_container">
               <span

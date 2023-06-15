@@ -10,7 +10,7 @@ const Bead = ({ bead }) => {
   };
 
   return (
-    <div className="flex flex-col p-4 max-w-md rounded overflow-hidden shadow-lg border-[1px] border-teal m-4 productCard">
+    <div className="flex flex-col p-4  w-[250px] rounded overflow-hidden shadow-lg border-[1px] border-teal m-4 productCard">
       <div className="rounded-lg w-full bg-white h-full content-center justify-center items-center text-center cursor-pointer" onClick={view}>
         <div className="flex flex-col p-3 justify-center items-center">
           <img src={TagTop} className="3xl:w-[120px] w-[80px]" alt="Bead" />
@@ -34,12 +34,17 @@ const Bead = ({ bead }) => {
           </div>
         </div>
         <div className="flex content-center justify-center items-center text-center">
-          <Link
+          {bead.available_qty !== 0 ? (
+            <Link
             to="/signup"
             className="flex bg-teal rounded-full text-[22px] font-semibold text-white mt-8 px-8 py-2 w-max text-center justify-center cursor-pointer"
           >
             Add to Cart
           </Link>
+          ) : (
+            <div className="text-bold text-xl text-red-400 mt-4">SOLD OUT</div>
+          )}
+          
         </div>
       </div>
     </div>
