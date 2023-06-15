@@ -49,6 +49,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />} />
+            <Route exact path="/profilestore" element={<ProfileStore />} />
           </>
         ) : (
           <>

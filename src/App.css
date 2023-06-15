@@ -3044,6 +3044,19 @@ header .nav-btn {
     width: 80%;
 }
 
+.fd {
+  flex-direction: row;
+}
+
+
+.fd>div {
+  width: 24%;
+}
+
+.fd>input {
+    width: 75%;
+}
+
 @media only screen and (max-width:720px) {
     .profilestore_container {
         flex-direction: column;
@@ -3053,7 +3066,6 @@ header .nav-btn {
     .profilestore_sidebar {
         width: 100%;
         border-right:0px solid #3A3A3A;
-        flex-direction: row;
     }
 
     .profilestore_content {
@@ -3062,3 +3074,19 @@ header .nav-btn {
     
 }
 
+@media only screen and (max-width:720px) {
+    .fd {
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;  
+    }
+
+    .fd>div {
+         width: 100%;
+    }
+
+    .fd>input {
+        width: 100%;
+    }
+
+}
