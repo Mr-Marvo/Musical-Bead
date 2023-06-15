@@ -33,7 +33,7 @@ function AlbumView() {
     setErrorShow(false);
   };
 
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState(1);
   const handlePlus = () => {
     if (num < bead.available_qty) {
       setNum(num + 1);
