@@ -77,7 +77,7 @@ const NewFooter = () => {
         <div className="footer_content3">
           <p>Presented By:</p>
 
-          <pre className="font-nunito">
+          <pre className="font-nunito" style={{width:'240px'}}>
             Musical Beads is patented by Bruce Quarto{" "}
           </pre>
           <pre className="font-nunito">
