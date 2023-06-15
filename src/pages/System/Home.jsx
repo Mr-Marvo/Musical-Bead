@@ -424,7 +424,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="singers_slide">
+            <div className="singers_slide" >
               <div className="singers_slide-container p-2">
                 <Carousel show={6} slide={2} swiping={true}>
                   {musicians.map((musician) => {
@@ -435,11 +435,12 @@ function Home() {
                         onClick={() => {
                           viewProfile(musician.user_id);
                         }}
+                        style={{width:'160px',height:'200px'}}
                       >
                         <img
                           src={musician.profile_picture}
                           alt="Facebook"
-                          className="w-full h-full"
+                         style={{width:'160px',height:'200px'}}
                         />
                         <div className="absolute bottom-0 w-full text-center text-white mb-2 xl:text-[20px] sm:text-[10px] font-semibold">
                           {musician.full_name}

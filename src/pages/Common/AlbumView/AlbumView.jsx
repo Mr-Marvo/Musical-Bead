@@ -384,12 +384,13 @@ function AlbumView() {
               >
                 Meet the Muscian
               </span>
-              <div className="img_container3">
-                <div>
+              <div className="img_container3" style={{width:'190px',height:'190px'}}>
+                <div style={{width:'180px',height:'180px'}}>
                   <img
                     src={profileImage}
                     alt="Singer"
                     className="rounded-full"
+                    style={{width:'180px',height:'180px'}}
                   />
                 </div>
               </div>
