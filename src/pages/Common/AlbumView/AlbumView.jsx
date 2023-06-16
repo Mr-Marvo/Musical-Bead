@@ -246,30 +246,18 @@ function AlbumView() {
               <span className="songs_list font-nunito">Songs List</span>
 
               <div className="songs_container">
-                <div className="songs_wrap">
-                  <img src={img1} alt="song_icon" width="60px" />
-                  <span>Testing Audio 1</span>
-                </div>
-                <div className="songs_wrap">
-                  <img src={img2} alt="song_icon" width="60px" />
-                  <span>Testing Audio 2</span>
-                </div>
-                <div className="songs_wrap">
-                  <img src={img3} alt="song_icon" width="60px" />
-                  <span>Testing Audio 3</span>
-                </div>
-                <div className="songs_wrap">
-                  <img src={img4} alt="song_icon" width="60px" />
-                  <span>Testing Audio 4</span>
-                </div>
-                <div className="songs_wrap">
-                  <img src={img5} alt="song_icon" width="60px" />
-                  <span>Testing Audio 5</span>
-                </div>
-                <div className="songs_wrap">
-                  <img src={img6} alt="song_icon" width="60px" />
-                  <span>Testing Audio 6</span>
-                </div>
+                {album.songs?.map((music) => {
+                  return (
+                    <div className="songs_wrap">
+                      <img
+                        src={music.image_file_path}
+                        alt="song_icon"
+                        width="60px"
+                      />
+                      <span>{music.title}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -393,23 +381,29 @@ function AlbumView() {
               </>
             )}
 
-            {usertype === "1" ? (
-              <div className="flex flex-row gap-4">
-                <button
-                  className="p-1 px-4 bg-blue-400 rounded-lg"
-                  onClick={approve}
-                >
-                  Approve
-                </button>
-                <button
-                  className="p-1 px-4 bg-red-400 rounded-lg"
-                  onClick={reject}
-                >
-                  Reject
-                </button>
-              </div>
-            ) : (
+            {album.status === 2 ? (
               <></>
+            ) : (
+              <>
+                {usertype === "1" ? (
+                  <div className="flex flex-row gap-4">
+                    <button
+                      className="p-1 px-4 bg-blue-400 rounded-lg"
+                      onClick={approve}
+                    >
+                      Approve
+                    </button>
+                    <button
+                      className="p-1 px-4 bg-red-400 rounded-lg"
+                      onClick={reject}
+                    >
+                      Reject
+                    </button>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </>
             )}
           </div>
 

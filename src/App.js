@@ -10,7 +10,9 @@ import {
   Home,
   LandingPage,
   MusicianDashboard,
+  MyOrders,
   MyProfile,
+  MyPurchases,
   NewMusicianDashboard,
   NotFound,
   Payment,
@@ -55,6 +57,8 @@ function App() {
             <Route path="/beadview" element={<BeadView />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/payment" element={<Payment />} />
+            <Route path="/my-orders" element={<MyOrders />} />
+            <Route path="/my-purchases" element={<MyPurchases />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />}  />
             <Route path="/settings" element={<Settings />} />

@@ -18,6 +18,7 @@ import FlatList from "../../components/Common/FlatList";
 import LoadingCircle from "../../components/Common/LoadingCircle";
 import SuccessAlert from "../../components/Common/SuccessAlert";
 import ErrorAlert from "../../components/Common/ErrorAlert";
+import Popup from "../../components/Common/Popup2";
 
 function Musician_Dashboard() {
   const [isLoadingClircle, setIsLoadingCircle] = useState(false);
@@ -88,12 +89,23 @@ function Musician_Dashboard() {
   const [successShow, setSuccessShow] = useState(false);
   const [errorTitle, setErrorTitle] = useState();
   const [errorShow, setErrorShow] = useState(false);
+  const [viewOrder, setViewOrder] = useState(false);
 
   const successClose = () => {
     setSuccessShow(false);
   };
   const errorClose = () => {
     setErrorShow(false);
+  };
+  const closeOrder = () => {
+    setViewOrder(false);
+  };
+
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const showOrderDetails = (order) => {
+    setSelectedOrder(order);
+    setViewOrder(true);
   };
 
   const onChangePicture = (e) => {
@@ -388,21 +400,63 @@ function Musician_Dashboard() {
     }
   };
 
-  const [orders, setOrders] = useState([]);
+  const [newOrders, setNewOrders] = useState([]);
+  const [shippedOrders, setShippedOrders] = useState([]);
 
   const loadOrders = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const bodyParameters = {
-      user_id: localStorage.getItem("userid"),
+      user_id: localStorage.getItem("usertype") === '1' ? 0 : localStorage.getItem("userid"),
     };
 
     axios
       .post(url + "/order/all", bodyParameters, config)
       .then((response) => {
+        console.log(response);
+        var newOrders = [];
+        var shippedOrders = [];
         if (response?.status === 200) {
-          setOrders(response.data.output);
+          response.data.output.forEach((order) => {
+            if (order.order_status_id === 1) {
+              newOrders.push(order);
+            } else {
+              shippedOrders.push(order);
+            }
+          });
+          setNewOrders(newOrders);
+          setShippedOrders(shippedOrders);
+        } else {
+          console.log(response);
+          setErrorTitle("Error");
+          setErrorShow(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorTitle("Error");
+        setErrorShow(true);
+      });
+  };
+
+  const shipOrder = (order) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      user_id: localStorage.getItem("userid"),
+      order_id: order.order_id,
+      order_status_id: 5,
+    };
+
+    axios
+      .post(url + "/order/manage", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setSuccessTitle("Order Shipped");
+          setSuccessShow(true);
+          loadOrders();
         } else {
           console.log(response);
           setErrorTitle("Error");
@@ -1043,18 +1097,62 @@ function Musician_Dashboard() {
             className="album_wrap_container"
             style={{ background: "rgba(0,0,0,.3)" }}
           >
-            <div
-              className="album_sub_wrap"
-              style={{ background: "transparent" }}
-            >
-              {orders.map((order) => {
-                if (order.logistics.length === 1) {
-                  return <OrderAlbum order={order} />;
-                } else {
-                  return <>No Orders</>;
-                }
-              })}
-            </div>
+            <table className="bg-[#696464] rounded-lg">
+              <tr className="text-white">
+                <th>Order ID</th>
+                <th>Order Number</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+
+              {newOrders.length === 0 ? (
+                <tr className="text-white mt-2 justify-center text-center border-t-[1px]">
+                  <td colSpan={5}>No orders</td>
+                </tr>
+              ) : (
+                <>
+                  {newOrders.map((order) => {
+                    return (
+                      <tr className="text-white mt-2 justify-center text-center border-t-[1px]">
+                        <td>{order.order_id}</td>
+                        <td>{order.order_number}</td>
+                        <td>{order.order_total}</td>
+                        <td>
+                          {order.order_status_id === 1 ? (
+                            <label className="py-1 px-2 bg-[#10852d] rounded-lg">
+                              Placed
+                            </label>
+                          ) : (
+                            <label className="py-1 px-2 bg-[#838510] rounded-lg">
+                              Shipped
+                            </label>
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            className="border-[1px] border-[#12E4A5] rounded-lg px-1 py-1 text-[16px] font-medium m-2"
+                            onClick={() => {
+                              showOrderDetails(order);
+                            }}
+                          >
+                            Order Details
+                          </button>
+                          <button
+                            className="bg-[#12E4A5] rounded-lg px-1 py-1 text-[18px] font-medium m-2"
+                            onClick={() => {
+                              shipOrder(order);
+                            }}
+                          >
+                            Ship Order
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </>
+              )}
+            </table>
           </div>
           <div
             className="headline_wrap_container"
@@ -1068,24 +1166,55 @@ function Musician_Dashboard() {
             className="album_wrap_container"
             style={{ background: "rgba(0,0,0,.3)", border: "none" }}
           >
-            <div
-              className="album_sub_wrap"
-              style={{ background: "transparent" }}
-            >
-              {orders.map((order) => {
-                return (
-                  <>
-                    {order.logistics.length > 1 ? (
-                      <OrderAlbum order={order} />
-                    ) : (
-                      <>No Orders</>
-                    )}
-                  </>
-                );
-              })}
-            </div>
+            <table className="bg-[#696464] rounded-lg">
+              <tr className="text-white">
+                <th>Order ID</th>
+                <th>Order Number</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+              {shippedOrders.length === 0 ? (
+                <tr className="text-white mt-2 justify-center text-center border-t-[1px]">
+                  <td colSpan={5}>No orders</td>
+                </tr>
+              ) : (
+                <>
+                  {shippedOrders.map((order) => {
+                    return (
+                      <tr className="text-white mt-2 justify-center text-center border-t-[1px]">
+                        <td>{order.order_id}</td>
+                        <td>{order.order_number}</td>
+                        <td>{order.order_total}</td>
+                        <td>
+                          {order.order_status_id === 1 ? (
+                            <label className="py-1 px-2 bg-[#10852d] rounded-lg">
+                              Placed
+                            </label>
+                          ) : (
+                            <label className="py-1 px-2 bg-[#838510] rounded-lg">
+                              Shipped
+                            </label>
+                          )}
+                        </td>
+                        <td>
+                          <button
+                            className="border-[1px] border-[#12E4A5] rounded-lg px-1 py-1 text-[16px] font-medium m-2"
+                            onClick={() => {
+                              showOrderDetails(order);
+                            }}
+                          >
+                            Order Details
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </>
+              )}
+            </table>
           </div>
-          <div
+          {/* <div
             className="headline_wrap_container"
             style={{
               marginbottpm: "2rem",
@@ -1108,7 +1237,7 @@ function Musician_Dashboard() {
                 Full Order History
               </pre>
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
 
@@ -1120,6 +1249,7 @@ function Musician_Dashboard() {
         onClose={successClose}
       />
       <ErrorAlert show={errorShow} message={errorTitle} onClose={errorClose} />
+      <Popup show={viewOrder} order={selectedOrder} onClose={closeOrder} />
     </>
   );
 }
