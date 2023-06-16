@@ -11,6 +11,7 @@ import { useContentContext } from "../../../providers/ContentContext";
 import LoadingCircle from "../../../components/Common/LoadingCircle";
 import SuccessAlert from "../../../components/Common/SuccessAlert";
 import ErrorAlert from "../../../components/Common/ErrorAlert";
+import BeadEdit from "../../../components/Common/BeadEdit";
 
 function AlbumView() {
   const usertype = localStorage.getItem("usertype");
@@ -25,12 +26,17 @@ function AlbumView() {
   const [successShow, setSuccessShow] = useState(false);
   const [errorTitle, setErrorTitle] = useState();
   const [errorShow, setErrorShow] = useState(false);
+  const [showBeadEdit, setShowBeadEdit] = useState(false);
 
   const successClose = () => {
     setSuccessShow(false);
   };
   const errorClose = () => {
     setErrorShow(false);
+  };
+  const closeBeadEdit = () => {
+    setShowBeadEdit(false);
+    window.location.replace('/beads');
   };
 
   const [num, setNum] = useState(1);
@@ -237,6 +243,20 @@ function AlbumView() {
             )}
           </div>
         </div>
+        {usertype === "1" ? (
+          <div className="w-full flex justify-center items-center text-white mt-8">
+            <button
+              className="bg-[#14a099] px-2 py-1 text-2xl font-bold rounded-lg shadow-lg"
+              onClick={() => {
+                setShowBeadEdit(true);
+              }}
+            >
+              Edit Bead
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </main>
       <NewFooter />
       <LoadingCircle show={isLoadingClircle} />
@@ -246,6 +266,7 @@ function AlbumView() {
         onClose={successClose}
       />
       <ErrorAlert show={errorShow} message={errorTitle} onClose={errorClose} />
+      <BeadEdit bead={bead} show={showBeadEdit} onClose={closeBeadEdit} />
     </>
   );
 }

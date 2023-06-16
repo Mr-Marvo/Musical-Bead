@@ -107,7 +107,7 @@ const NewHeader = () => {
           </>
         ) : (
           <>
-          <a
+            <a
               href="/home"
               className={`text-[20px] font-nunito ${
                 location === "/home" ? "text-[#2aafc1]" : ""
@@ -130,6 +130,22 @@ const NewHeader = () => {
               }`}
             >
               Cart
+            </a>
+            <a
+              href="/my-orders"
+              className={`text-[20px] font-nunito ${
+                location === "/my-orders" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              My Orders
+            </a>
+            <a
+              href="/my-purchases"
+              className={`text-[20px] font-nunito ${
+                location === "/my-purchases" ? "text-[#2aafc1]" : ""
+              }`}
+            >
+              My Purchases
             </a>
           </>
         )}

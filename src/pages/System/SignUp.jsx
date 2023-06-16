@@ -28,8 +28,6 @@ const SignUp = () => {
     data.append("password", password);
     data.append("password_confirmation", rePassword);
 
-    console.log(userType === "FAN" ? "3" : "2")
-
     axios
       .post(url + "/register", data)
       .then((response) => {

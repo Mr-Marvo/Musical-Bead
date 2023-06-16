@@ -28,6 +28,8 @@ import { RiArrowUpSFill } from "react-icons/ri";
 import { RiArrowDownSFill } from "react-icons/ri";
 import { useContentContext } from "../../providers/ContentContext";
 import axios from "axios";
+import ProfileUpdate from "../../components/Common/ProfileUpdate";
+import BeadEdit from "../../components/Common/BeadEdit";
 
 const slideImages = [
   {
@@ -83,8 +85,15 @@ function My_Profile() {
     setCurrentAlbumId(albumId);
   };
 
+  const [shwoEditProfile, setShowEditProfile] = useState(false);
+
   const handleClick = () => {
-    setIsDisabled(!isDisabled);
+    setShowEditProfile(true);
+  };
+
+  const closeEditProfile = () => {
+    setShowEditProfile(false);
+    loadProfile();
   };
 
   useEffect(() => {
@@ -111,7 +120,7 @@ function My_Profile() {
           setTitle(response.data.output[0].short_description);
           setBio(response.data.output[0].description);
           setProfile(response.data.output[0].profile_picture);
-          setVideo(response.data.output[0].videos[0].featured_video);
+          setVideo(response.data.output[0].videos[0]?.featured_video);
           setFeatured(response.data.output[0].images);
         } else {
           console.log(response);
@@ -155,9 +164,30 @@ function My_Profile() {
         <div className="my_profile_container">
           <div className="my_profile_sub_container1">
             <div className="sub_1">
-              <div className="img_container3" style={{width:'205px',height:'205px',borderRadius:'100px'}}>
-                <div style={{width:'200px',height:'200px',borderRadius:'100px'}}>
-                  <img src={profile === null ? ProfileImage : profile} alt="User" style={{width:'200px',height:'200px',borderRadius:'100px'}} />
+              <div
+                className="img_container3"
+                style={{
+                  width: "205px",
+                  height: "205px",
+                  borderRadius: "100px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "200px",
+                    height: "200px",
+                    borderRadius: "100px",
+                  }}
+                >
+                  <img
+                    src={profile === null ? ProfileImage : profile}
+                    alt="User"
+                    style={{
+                      width: "200px",
+                      height: "200px",
+                      borderRadius: "100px",
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -165,7 +195,7 @@ function My_Profile() {
               <div className="text-[24px] font-bold ml-1">{fullnameTag}</div>
               <input
                 type="text"
-                disabled={isDisabled}
+                disabled={true}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="xl:text-[20px] sm:text-[16px] font-medium"
@@ -173,7 +203,7 @@ function My_Profile() {
               <br />
               <textarea
                 type="text"
-                disabled={isDisabled}
+                disabled={true}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
                 className="text-[16px] font-normal mt-4"
@@ -252,23 +282,13 @@ function My_Profile() {
           </div>
 
           <div className="my_profile_sub_container3">
-            {isDisabled ? (
-              <button
-                type="button"
-                onClick={handleClick}
-                className="edit_profile_btn"
-              >
-                Edit Profile
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={handleClick}
-                className="save_profile_btn"
-              >
-                Save Profile
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={handleClick}
+              className="edit_profile_btn"
+            >
+              Edit Profile
+            </button>
           </div>
 
           <div className="my_profile_sub_container4">
@@ -333,8 +353,9 @@ function My_Profile() {
           </div>
         </div>
       </main>
-
       <NewFooter />
+
+      <ProfileUpdate show={shwoEditProfile} onClose={closeEditProfile} />
     </>
   );
 }

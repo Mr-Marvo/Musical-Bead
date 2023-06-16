@@ -1415,7 +1415,6 @@ header .nav-btn {
   padding-right: 2rem;
   padding-bottom: 2rem;
   width: 80rem;
-  justify-content: center;
   margin-top: 0;
   margin-bottom: 0;
   background-color: #000;
@@ -1462,7 +1461,12 @@ header .nav-btn {
   display:grid;
   grid-template-columns:auto auto auto;
   width:80rem;
-  
+}
+
+.bead_edit_cont {
+  display:grid;
+  grid-template-columns:auto auto auto;
+  width:100%;
 }
 
 @media only screen and (max-width: 1279px) {

@@ -6,6 +6,7 @@ import { NewFooter, NewHeader } from "../../components/system";
 import axios from "axios";
 import { useContentContext } from "../../providers/ContentContext";
 import Bead from "../Common/Bead";
+import DashBead from "../Common/DashBead";
 
 function Beads() {
   let { url } = useContentContext();
@@ -120,7 +121,9 @@ function Beads() {
         ) : (
           <>
             {beads.length === 0 ? (
-              <></>
+              <label className="text-white text-xl font-semibold">
+                No Beads
+              </label>
             ) : (
               <>
                 <div
@@ -140,7 +143,7 @@ function Beads() {
                 <div>
                   <div className="home_grid2 gap-4">
                     {beads.map((bead) => {
-                      return <Bead bead={bead} />;
+                      return <DashBead bead={bead} />;
                     })}
                   </div>
                 </div>
