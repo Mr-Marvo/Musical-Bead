@@ -71,7 +71,6 @@ function Cart() {
   };
 
   const buy = () => {
-    console.log(total);
     if (total !== 0) {
       setIsLoadingCircle(true);
       const config = {
@@ -108,6 +107,38 @@ function Cart() {
     }
   };
 
+  const cartDelete = (item) => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      user_id: localStorage.getItem("userid"),
+      cart_id: item.cart_id,
+      status: 0,
+    };
+
+    axios
+      .post(url + "/cart/delete", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setSuccessTitle("Deleted!");
+          setSuccessShow(true);
+          loadCartData();
+        } else {
+          console.log(response);
+          setErrorTitle("Order Failed!");
+          setErrorShow(true);
+        }
+        setIsLoadingCircle(false);
+      })
+      .catch((error) => {
+        setIsLoadingCircle(false);
+        console.log(error);
+        setErrorTitle("Order Failed!");
+        setErrorShow(true);
+      });
+  };
+
   return (
     <>
       <NewHeader />
@@ -136,17 +167,18 @@ function Cart() {
                   MY CART
                 </p>
               </div>
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              {/* <div style={{ display: "flex", flexDirection: "row" }}>
                 <p
                   style={{
                     color: "#2AAEC0",
                     fontSize: "24px",
                     fontWeight: "400",
                   }}
+                  
                 >
                   Delete
                 </p>
-              </div>
+              </div> */}
             </div>
 
             <div className="item_content">
@@ -225,6 +257,22 @@ function Cart() {
                                   >
                                     US ${item.bead_amount * item.bead_qty}
                                   </p>
+                                </div>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                  }}
+                                >
+                                  <label
+                                    className="flex items-center justify-center bg-red-600 text-white font-bold font-lg px-2 py-1 rounded-lg cursor-pointer"
+                                    onClick={() => {
+                                      cartDelete(item);
+                                    }}
+                                  >
+                                    Delete
+                                  </label>
                                 </div>
                               </>
                             ) : (
