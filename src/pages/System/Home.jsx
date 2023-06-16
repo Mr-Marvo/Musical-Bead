@@ -80,6 +80,7 @@ function Home() {
     axios
       .post(url + "/customer/dashboard", bodyParameters, config)
       .then((response) => {
+        console.log(response)
         if (response?.status === 200) {
           setTrendingAlbums(response.data.output.trending);
           setNewAlbums(response.data.output.whats_new);

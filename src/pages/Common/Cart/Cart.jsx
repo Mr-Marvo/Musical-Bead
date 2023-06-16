@@ -216,9 +216,17 @@ function Cart() {
                                   </div>
                                 </div>
 
-                                <div>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                  }}
+                                >
                                   <p
-                                    style={{ fontWeight: 700 }}
+                                    style={{
+                                      fontWeight: 700,
+                                    }}
                                     className="fs24"
                                   >
                                     {item.bead_title}
@@ -295,9 +303,17 @@ function Cart() {
                                   </div>
                                 </div>
 
-                                <div>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                  }}
+                                >
                                   <p
-                                    style={{ fontWeight: 700 }}
+                                    style={{
+                                      fontWeight: 700,
+                                    }}
                                     className="fs24"
                                   >
                                     {item.album_title}

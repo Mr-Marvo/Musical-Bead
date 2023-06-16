@@ -15,6 +15,8 @@ export { default as NewMusicianDashboard } from './System/New_Musician_Dashboard
 export { default as PendingAlbums } from './System/PendingAlbums'
 export { default as Beads } from './System/Beads'
 export { default as Settings } from './System/ProfileStore'
+export { default as MyOrders } from './System/MyOrders'
+export { default as MyPurchases } from './System/MyPurchases'
 
 export { default as AlbumView } from './Common/AlbumView/AlbumView'
 export { default as BeadView } from './Common/BeadView/BeadView'

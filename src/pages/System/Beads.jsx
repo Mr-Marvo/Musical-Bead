@@ -121,7 +121,9 @@ function Beads() {
         ) : (
           <>
             {beads.length === 0 ? (
-              <></>
+              <label className="text-white text-xl font-semibold">
+                No Beads
+              </label>
             ) : (
               <>
                 <div

@@ -103,7 +103,7 @@ function Earnings() {
       headers: { Authorization: `Bearer ${token}` },
     };
     const bodyParameters = {
-      user_id: localStorage.getItem("userid"),
+      user_id: localStorage.getItem("usertype") === '1' ? 0 : localStorage.getItem("userid"),
     };
 
     axios
@@ -156,19 +156,19 @@ function Earnings() {
                 </span>
               </div>
               <div>
-                <h1>{data.order_summary_data.completed_orders}</h1>
+                <h1>{data.order_summary_data?.completed_orders}</h1>
                 <span className="text-white font-nunito text-[20px] font-light text-center">
                   Completed Sales
                 </span>
               </div>
               <div>
-                <h1>{data.order_summary_data.to_be_shipped_orders}</h1>
+                <h1>{data.order_summary_data?.to_be_shipped_orders}</h1>
                 <span className="text-white font-nunito text-[20px] font-light text-center">
                   To Be Shipped
                 </span>
               </div>
               <div>
-                <h1>{data.order_summary_data.new_orders}</h1>
+                <h1>{data.order_summary_data?.new_orders}</h1>
                 <span className="text-white font-nunito text-[20px] font-light text-center">
                   New Orders
                 </span>

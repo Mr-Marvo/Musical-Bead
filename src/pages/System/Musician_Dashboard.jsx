@@ -408,7 +408,7 @@ function Musician_Dashboard() {
       headers: { Authorization: `Bearer ${token}` },
     };
     const bodyParameters = {
-      user_id: localStorage.getItem("userid"),
+      user_id: localStorage.getItem("usertype") === '1' ? 0 : localStorage.getItem("userid"),
     };
 
     axios
