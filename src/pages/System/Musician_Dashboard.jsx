@@ -125,6 +125,7 @@ function Musician_Dashboard() {
 
   useEffect(() => {
     loadCategories();
+    loadOrders();
     if (usertype === "1") {
       loadPendingAlbums(0);
     } else {
@@ -385,6 +386,34 @@ function Musician_Dashboard() {
       setErrorTitle("All Fields Required!");
       setErrorShow(true);
     }
+  };
+
+  const [orders, setOrders] = useState([]);
+
+  const loadOrders = () => {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      user_id: localStorage.getItem("userid"),
+    };
+
+    axios
+      .post(url + "/order/all", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setOrders(response.data.output);
+        } else {
+          console.log(response);
+          setErrorTitle("Error");
+          setErrorShow(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorTitle("Error");
+        setErrorShow(true);
+      });
   };
 
   return (
@@ -1018,14 +1047,13 @@ function Musician_Dashboard() {
               className="album_sub_wrap"
               style={{ background: "transparent" }}
             >
-              <OrderAlbum />
-              <OrderAlbum />
-              <OrderAlbum />
-              <OrderAlbum />
-              <OrderAlbum />
-              <OrderAlbum />
-              <OrderAlbum />
-              <OrderAlbum />
+              {orders.map((order) => {
+                if (order.logistics.length === 1) {
+                  return <OrderAlbum order={order} />;
+                } else {
+                  return <>No Orders</>;
+                }
+              })}
             </div>
           </div>
           <div
@@ -1044,14 +1072,17 @@ function Musician_Dashboard() {
               className="album_sub_wrap"
               style={{ background: "transparent" }}
             >
-              <ShipAlbum />
-              <ShipAlbum />
-              <ShipAlbum />
-              <ShipAlbum />
-              <ShipAlbum />
-              <ShipAlbum />
-              <ShipAlbum />
-              <ShipAlbum />
+              {orders.map((order) => {
+                return (
+                  <>
+                    {order.logistics.length > 1 ? (
+                      <OrderAlbum order={order} />
+                    ) : (
+                      <>No Orders</>
+                    )}
+                  </>
+                );
+              })}
             </div>
           </div>
           <div
