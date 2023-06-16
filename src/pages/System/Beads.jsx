@@ -110,7 +110,7 @@ function Beads() {
               </div>
             </div>
             <div>
-              <div className="home_grid gap-4">
+              <div className="home_grid2 gap-4">
                 {filteredObjects.map((bead) => {
                   return <Bead bead={bead} />;
                 })}
@@ -138,7 +138,7 @@ function Beads() {
                   </div>
                 </div>
                 <div>
-                  <div className="home_grid gap-4">
+                  <div className="home_grid2 gap-4">
                     {beads.map((bead) => {
                       return <Bead bead={bead} />;
                     })}

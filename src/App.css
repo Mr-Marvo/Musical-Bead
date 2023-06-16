@@ -2790,6 +2790,13 @@ header .nav-btn {
   justify-content: space-evenly;
 }
 
+.home_grid2 {
+  display: grid;
+  grid-template-columns: auto auto auto auto ;
+  justify-content: space-evenly;
+}
+
+
 .image_containing_wrapper > div {
   display: flex;
   flex-direction: row;
@@ -2838,6 +2845,12 @@ header .nav-btn {
     grid-template-columns: auto auto auto auto;
   }
 
+  .home_grid2 {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    justify-content: space-evenly;
+  }
+
   .singers_slide {
     width: 58rem;
   }
@@ -2857,6 +2870,12 @@ header .nav-btn {
 @media only screen and (max-width: 980px) {
   .home_grid {
     grid-template-columns: auto auto auto;
+  }
+
+  .home_grid2 {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
   }
 
   .image_containing_wrapper > div {
@@ -2949,6 +2968,12 @@ header .nav-btn {
 }
 
 @media only screen and (max-width: 600px) {
+  .home_grid2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .dropdown_category_list_container {
     height: 24rem;
   }
