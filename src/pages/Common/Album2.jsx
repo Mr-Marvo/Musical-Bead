@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Equalizer, PauseButton, PlayButton, TagTop } from "../../assets";
+import { Equalizer, PauseButton, PlayButton } from "../../assets";
 import { useNavigate } from "react-router";
 
 const LongText = ({ text, maxLength }) => {

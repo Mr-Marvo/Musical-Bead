@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultAlbum, Equalizer, PlayButton, TagTop } from "../../assets";
+import { DefaultAlbum, Equalizer, PlayButton } from "../../assets";
 
 const Album3 = () => {
   return (

@@ -1,26 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./BeadView.css";
 import { NewHeader, NewFooter } from "../../../components/system";
-import {
-  Bead,
-  DefaultAlbum,
-  EqualizerLarge,
-  PauseButtonLarge,
-  PlayButtonLarge,
-  TagTop,
-} from "../../../assets";
+import { TagTop } from "../../../assets";
 
-import img1 from "../../../assets/images/system/Rectangle 139.png";
-import img2 from "../../../assets/images/system/Rectangle 140.png";
-import img3 from "../../../assets/images/system/Rectangle 141.png";
-import img4 from "../../../assets/images/system/Rectangle 142.png";
-import img5 from "../../../assets/images/system/Rectangle 143.png";
-import img6 from "../../../assets/images/system/Rectangle 144.png";
 import btn_img from "../../../assets/images/system/Group 72.png";
-import SingerImage from "../../../assets/images/system/profile.png";
 
-import { useLocation, useNavigate, useParams } from "react-router";
-import { useRef } from "react";
+import { useLocation } from "react-router";
 import axios from "axios";
 import { useContentContext } from "../../../providers/ContentContext";
 import LoadingCircle from "../../../components/Common/LoadingCircle";
@@ -48,7 +33,7 @@ function AlbumView() {
     setErrorShow(false);
   };
 
-  const [num, setNum] = useState(0);
+  const [num, setNum] = useState(1);
   const handlePlus = () => {
     if (num < bead.available_qty) {
       setNum(num + 1);
@@ -73,6 +58,7 @@ function AlbumView() {
 
   const addToCart = () => {
     if (num !== 0) {
+      setIsLoadingCircle(true);
       const config = {
         headers: { Authorization: `Bearer ${token}` },
       };
@@ -95,8 +81,10 @@ function AlbumView() {
             setErrorTitle("Qty not available!");
             setErrorShow(true);
           }
+          setIsLoadingCircle(false);
         })
         .catch((error) => {
+          setIsLoadingCircle(false);
           console.log(error);
           setErrorTitle("Qty not available!");
           setErrorShow(true);

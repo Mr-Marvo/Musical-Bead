@@ -13,6 +13,7 @@ import {
   MyProfile,
   NewMusicianDashboard,
   NotFound,
+  Payment,
   PendingAlbums,
   ProfileView,
   Settings,
@@ -53,6 +54,7 @@ function App() {
             <Route path="/beads" element={<Beads />} />
             <Route path="/beadview" element={<BeadView />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/album/:album_id" element={<AlbumView />} />
             <Route path="/album-edit" element={<AlbumEdit />}  />
             <Route path="/settings" element={<Settings />} />

@@ -6,7 +6,6 @@ import {
   EqualizerLarge,
   PauseButtonLarge,
   PlayButtonLarge,
-  TagTop,
 } from "../../../assets";
 
 import img1 from "../../../assets/images/system/Rectangle 139.png";
@@ -16,12 +15,13 @@ import img4 from "../../../assets/images/system/Rectangle 142.png";
 import img5 from "../../../assets/images/system/Rectangle 143.png";
 import img6 from "../../../assets/images/system/Rectangle 144.png";
 import btn_img from "../../../assets/images/system/Group 72.png";
-import SingerImage from "../../../assets/images/system/profile.png";
-
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useRef } from "react";
 import axios from "axios";
 import { useContentContext } from "../../../providers/ContentContext";
+import SuccessAlert from "../../../components/Common/SuccessAlert";
+import LoadingCircle from "../../../components/Common/LoadingCircle";
+import ErrorAlert from "../../../components/Common/ErrorAlert";
 
 const LongText = ({ text, maxLength }) => {
   const truncatedText =
@@ -45,6 +45,19 @@ function AlbumView() {
 
   const { state } = useLocation();
   const { album } = state;
+
+  const [isLoadingClircle, setIsLoadingCircle] = useState(false);
+  const [successTitle, setSuccessTitle] = useState();
+  const [successShow, setSuccessShow] = useState(false);
+  const [errorTitle, setErrorTitle] = useState();
+  const [errorShow, setErrorShow] = useState(false);
+
+  const successClose = () => {
+    setSuccessShow(false);
+  };
+  const errorClose = () => {
+    setErrorShow(false);
+  };
 
   useEffect(() => {
     getMusician();
@@ -78,6 +91,7 @@ function AlbumView() {
   };
 
   useEffect(() => {
+    console.log(album);
     if (isPlaying) {
       audioRef.current.play();
     } else {
@@ -87,22 +101,6 @@ function AlbumView() {
   }, [isPlaying]);
 
   const viewAlbum = (id) => {};
-
-  const [num, setNum] = useState(0);
-  const handlePlus = () => {
-    if (num + 1 < 11) {
-      setNum(num + 1);
-    } else {
-      setNum(10);
-    }
-  };
-  const handleMinus = () => {
-    if (num - 1 < 0) {
-      setNum(0);
-    } else {
-      setNum(num - 1);
-    }
-  };
 
   const handlePlay = () => {
     if (isPlaying) {
@@ -164,6 +162,40 @@ function AlbumView() {
       });
   };
 
+  const addToCart = () => {
+    setIsLoadingCircle(true);
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const bodyParameters = {
+      user_id: localStorage.getItem("userid"),
+      bead_id: 0,
+      album_id: album.id,
+      cart_type_id: 1,
+      qty: 1,
+    };
+
+    axios
+      .post(url + "/cart/add", bodyParameters, config)
+      .then((response) => {
+        if (response?.status === 200) {
+          setSuccessTitle("Album Added!");
+          setSuccessShow(true);
+        } else {
+          console.log(response);
+          setErrorTitle("Qty not available!");
+          setErrorShow(true);
+        }
+        setIsLoadingCircle(false);
+      })
+      .catch((error) => {
+        setIsLoadingCircle(false);
+        console.log(error);
+        setErrorTitle("Qty not available!");
+        setErrorShow(true);
+      });
+  };
+
   return (
     <>
       <NewHeader />
@@ -176,7 +208,11 @@ function AlbumView() {
                 <div className="flex flex-col bg-[#000000 41%] w-fit h-fit rounded-xl p-4 relative">
                   <div className="flex">
                     <img
-                      src={album.cover_image_path}
+                      src={
+                        album.cover_image_path !== null
+                          ? album.cover_image_path
+                          : DefaultAlbum
+                      }
                       alt="default album"
                       className="w-[350px] rounded-3xl"
                     />
@@ -245,7 +281,7 @@ function AlbumView() {
               <></>
             ) : (
               <>
-                <span className="album_heading font-nunito">
+                {/* <span className="album_heading font-nunito">
                   Choose Bead Color
                 </span>
                 <div className="color_container">
@@ -277,8 +313,8 @@ function AlbumView() {
                       style={{ backgroundColor: "yellow" }}
                     ></span>
                   </label>
-                </div>
-                <div className="wrapper">
+                </div> */}
+                {/* <div className="wrapper mt-16">
                   <button
                     className="plusminus"
                     onClick={handleMinus}
@@ -300,7 +336,7 @@ function AlbumView() {
                   >
                     +
                   </button>
-                </div>
+                </div> */}
 
                 <span
                   className="font-nunito"
@@ -347,7 +383,12 @@ function AlbumView() {
             ) : (
               <>
                 <button className="add_cart_btn">
-                  <img src={btn_img} alt="btn-img" width="200px" />
+                  <img
+                    src={btn_img}
+                    alt="btn-img"
+                    width="200px"
+                    onClick={addToCart}
+                  />
                 </button>
               </>
             )}
@@ -384,13 +425,16 @@ function AlbumView() {
               >
                 Meet the Muscian
               </span>
-              <div className="img_container3" style={{width:'190px',height:'190px'}}>
-                <div style={{width:'180px',height:'180px'}}>
+              <div
+                className="img_container3"
+                style={{ width: "190px", height: "190px" }}
+              >
+                <div style={{ width: "180px", height: "180px" }}>
                   <img
                     src={profileImage}
                     alt="Singer"
                     className="rounded-full"
-                    style={{width:'180px',height:'180px'}}
+                    style={{ width: "180px", height: "180px" }}
                   />
                 </div>
               </div>
@@ -415,6 +459,13 @@ function AlbumView() {
         </div>
       </main>
       <NewFooter />
+      <LoadingCircle show={isLoadingClircle} />
+      <SuccessAlert
+        show={successShow}
+        message={successTitle}
+        onClose={successClose}
+      />
+      <ErrorAlert show={errorShow} message={errorTitle} onClose={errorClose} />
     </>
   );
 }
