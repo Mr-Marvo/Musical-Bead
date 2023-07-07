@@ -67,7 +67,7 @@ const ProfileStore = () => {
             </ul>
           </div>
           <div className="profilestore_content">
-            {activeTab === "settings" && <Settings />}
+            {activeTab === "settings" && <Settings/>}
             {activeTab === "billing" && <Billing />}
             {activeTab === "support" && <Support />}
           </div>
@@ -77,6 +77,8 @@ const ProfileStore = () => {
     </>
   );
 };
+
+
 
 const Settings = () => {
   const [nameS, setNameS] = useState("");
@@ -92,45 +94,9 @@ const Settings = () => {
     setIsOn(!isOn);
   };
 
-  const switchStyle = {
-    position: "relative",
-    display: "inline-block",
-    minWidth: "90px",
-    maxWidth: "120px",
-    height: "34px",
-  };
 
-  const sliderStyle = {
-    position: "absolute",
-    cursor: "pointer",
-    top: "0",
-    left: "0",
-    right: "0",
-    bottom: "0",
-    backgroundColor: isOn ? "#12E4A5" : "red",
-    transition: ".4s",
-    borderRadius: "34px",
-  };
 
-  const labelStyle = {
-    position: "absolute",
-    top: "50%",
-    left: isOn ? "8px" : "38px",
-    transform: "translateY(-50%)",
-    color: "white",
-    transition: ".4s",
-    fontWeight: 600,
-  };
-
-  const Container = styled.button`
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    padding: 3rem;
-
-    @media (max-width: 768px) {
-    }
-  `;
+ 
 
   return (
     <div
@@ -145,7 +111,7 @@ const Settings = () => {
       }}
       className="font-nunito"
     >
-      <Container>
+      <div style={{display:'flex',width:'100%',flexDirection:'column',padding:'3rem'}}>
         <div style={{ width: "100%" }}>
           <div style={{ display: "flex", marginBottom: "25px" }} className="fd">
             <div style={{ textAlign: "left" }}>Name</div>
@@ -158,6 +124,7 @@ const Settings = () => {
               }}
               value={nameS}
               onChange={(e) => setNameS(e.target.value)}
+              key="name"
             />
           </div>
           <div style={{ display: "flex", marginBottom: "25px" }} className="fd">
@@ -171,6 +138,7 @@ const Settings = () => {
               }}
               value={emailS}
               onChange={(e) => setEmailS(e.target.value)}
+              key="email"
             ></input>
           </div>
           <div style={{ display: "flex", marginBottom: "25px" }} className="fd">
@@ -204,9 +172,9 @@ const Settings = () => {
             </button>
           </div>
         </div>
-      </Container>
+      </div>
 
-      <Container>
+      <div style={{display:'flex',width:'100%',flexDirection:'column',padding:'3rem'}}>
         <div style={{ width: "100%" }}>
           <div style={{ display: "flex", marginBottom: "25px" }} className="fd">
             <div style={{ textAlign: "left" }}>Current Password</div>
@@ -265,9 +233,9 @@ const Settings = () => {
             </button>
           </div>
         </div>
-      </Container>
+      </div>
 
-      <Container>
+      <div style={{display:'flex',width:'100%',flexDirection:'column',padding:'3rem'}}>
         <div style={{ display: "flex", marginBottom: "25px" }} className="fd">
           <div>Sequrity Question</div>
           <p
@@ -282,9 +250,10 @@ const Settings = () => {
             aliquid sed ipsum minima? Id quis ipsum, porro minus odio voluptas
             soluta.
           </p>
-          <div className="switch" style={switchStyle} onClick={handleToggle}>
-            <div className="slider round" style={sliderStyle}>
-              <span className="label" style={labelStyle}>
+        
+          <div className="switch" style={{position:'relative',display:'inline-block',minWidth:'90px',maxWidth:'120px',height:'34px'}} onClick={handleToggle}>
+            <div className="slider round" style={{  position: "absolute", cursor: "pointer", top: "0", left: "0",right: "0", bottom: "0",  backgroundColor: isOn ? "#12E4A5" : "red",transition: ".4s", borderRadius: "34px",}}>
+              <span className="label" style={{position: "absolute",top: "50%",left: isOn ? "8px" : "38px",transform: "translateY(-50%)",color: "white",transition: ".4s",fontWeight: 600,}}>
                 {isOn ? "ON" : "OFF"}
               </span>
               <span
@@ -317,7 +286,7 @@ const Settings = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };
@@ -358,7 +327,7 @@ const Billing = () => {
       }}
       className="font-nunito"
     >
-      <Container>
+     <div style={{display:'flex',width:'100%',flexDirection:'column',padding:'3rem'}}>
         <h1
           style={{
             fontSize: "20px",
@@ -488,8 +457,8 @@ const Billing = () => {
             </button>
           </div>
         </div>
-      </Container>
-      <Container>
+      </div>
+      <div style={{display:'flex',width:'100%',flexDirection:'column',padding:'3rem'}}>
         <h1
           style={{
             fontSize: "20px",
@@ -555,8 +524,8 @@ const Billing = () => {
             </button>
           </div>
         </div>
-      </Container>
-      <Container>
+      </div>
+      <div style={{display:'flex',width:'100%',flexDirection:'column',padding:'3rem'}}>
         <h1
           style={{
             fontSize: "20px",
@@ -687,7 +656,7 @@ const Billing = () => {
             </button>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };
